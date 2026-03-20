@@ -1,0 +1,53 @@
+[
+  {
+    "name": "Paloma Valencia",
+    "party": "Centro Democrático",
+    "spectrum": "center-right",
+    "party_history": "Senadora desde 2014 por el Centro Democrático, partido fundado por Álvaro Uribe.",
+    "procuraduria": "Sin sanciones disciplinarias vigentes.",
+    "scandals": "Controversia por declaraciones sobre comunidades indígenas en el Cauca (2019).",
+    "stances": {
+      "security": 4,
+      "economy": 5,
+      "health": 3,
+      "energy_environment": 2,
+      "fiscal": 4,
+      "foreign_policy": 3,
+      "anticorruption": 5
+    }
+  },
+  {
+    "name": "Carlos Mendoza",
+    "party": "Pacto Histórico",
+    "spectrum": "left",
+    "party_history": "Exconcejal de Bogotá, vinculado a movimientos sociales y sindicales.",
+    "procuraduria": "Sin sanciones disciplinarias vigentes.",
+    "scandals": "Investigado por presunta financiación irregular de campaña en 2022; caso archivado.",
+    "stances": {
+      "security": 2,
+      "economy": 3,
+      "health": 5,
+      "energy_environment": 4,
+      "fiscal": null,
+      "foreign_policy": 2,
+      "anticorruption": 3
+    }
+  },
+  {
+    "name": "Lucía Rondón",
+    "party": "Alianza Verde",
+    "spectrum": "center-left",
+    "party_history": "Exministra de Ambiente, promotora de la transición energética.",
+    "procuraduria": "Sin sanciones disciplinarias vigentes.",
+    "scandals": "Cuestionamientos por contratos de consultoría ambiental con empresas privadas.",
+    "stances": {
+      "security": 1,
+      "economy": 2,
+      "health": 4,
+      "energy_environment": 5,
+      "fiscal": 3,
+      "foreign_policy": 5,
+      "anticorruption": 4
+    }
+  }
+]
