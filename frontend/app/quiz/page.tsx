@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getQuestions, submitQuiz, type Question } from "@/lib/api";
+import { getQuestions, type Question } from "@/lib/api";
 
 const LABELS: Record<number, string> = {
   1: "Totalmente en desacuerdo",

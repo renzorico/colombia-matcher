@@ -1,7 +1,20 @@
+# Python
 .venv
 venv
 __pycache__
 *.pyc
-node_modules
+*.pyo
 .env
+.env.local
+.env*.local
+
+# Node / Next.js
+node_modules
+frontend/.next/
+frontend/out/
+
+# Spurious root-level lockfile (real lockfile lives in frontend/)
+/package-lock.json
+
+# macOS
 .DS_Store

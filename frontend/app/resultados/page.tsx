@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { submitQuiz, explainCandidate, type Result } from "@/lib/api";
 
@@ -48,7 +48,7 @@ export default function ResultadosPage() {
   const [results, setResults] = useState<Result[]>([]);
   const [candidates, setCandidates] = useState<CandidateInfo[]>([]);
   const [extras, setExtras] = useState<CandidateExtra[]>([]);
-  const [answers, setAnswers] = useState<Record<string, number>>({});
+  const answersRef = useRef<Record<string, number>>({});
   const [explanations, setExplanations] = useState<Record<string, string>>({});
   const [loadingExplain, setLoadingExplain] = useState<Record<string, boolean>>(
     {}
@@ -63,7 +63,7 @@ export default function ResultadosPage() {
     }
 
     const parsedAnswers = JSON.parse(stored) as Record<string, number>;
-    setAnswers(parsedAnswers);
+    answersRef.current = parsedAnswers;
 
     Promise.all([
       submitQuiz(parsedAnswers),
@@ -83,7 +83,7 @@ export default function ResultadosPage() {
     if (explanations[candidateName]) return;
     setLoadingExplain((prev) => ({ ...prev, [candidateName]: true }));
     try {
-      const text = await explainCandidate(candidateName, answers);
+      const text = await explainCandidate(candidateName, answersRef.current);
       setExplanations((prev) => ({ ...prev, [candidateName]: text }));
     } catch {
       setExplanations((prev) => ({

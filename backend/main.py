@@ -11,7 +11,8 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, field_validator
 
-from scorer import compute_affinity, explain_match, load_data
+from agents.pipeline import run_matching_pipeline
+from scorer import explain_match, load_data
 
 
 # ---------------------------------------------------------------------------
@@ -197,15 +198,15 @@ def submit_quiz(submission: QuizSubmission) -> AffinityResponse:
     scoring engine, and returns candidates ranked by match percentage.
     """
     try:
-        ranked = compute_affinity(
-            citizen_answers=submission.answers,
+        result = run_matching_pipeline(
+            submission.answers,
             candidates=app.state.candidates,
             questions=app.state.questions,
         )
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Scoring error: {exc}") from exc
 
-    return AffinityResponse(results=ranked)
+    return AffinityResponse(results=result["results"])
 
 
 @app.get("/explain/{candidate_name}", response_model=ExplainResponse, tags=["Quiz"])
