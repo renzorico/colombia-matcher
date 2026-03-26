@@ -304,6 +304,7 @@ export default function CandidatoDetail() {
               referrerPolicy="no-referrer"
               className="w-24 h-24 rounded-2xl object-cover flex-shrink-0"
               style={{ border: "2px solid var(--border)" }}
+              onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(candidate.name)}&background=6B6B6B&color=fff&size=200`; }}
             />
           ) : (
             <div

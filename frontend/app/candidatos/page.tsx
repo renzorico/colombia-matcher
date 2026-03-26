@@ -89,6 +89,7 @@ export default function CandidatosPage() {
                   referrerPolicy="no-referrer"
                   className="w-20 h-20 rounded-full object-cover"
                   style={{ border: "3px solid var(--border)" }}
+                  onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(c.name)}&background=6B6B6B&color=fff&size=200`; }}
                 />
               ) : (
                 <div
@@ -107,7 +108,6 @@ export default function CandidatosPage() {
               {/* Party */}
               <p className="mt-0.5 text-xs" style={{ color: "var(--muted)" }}>
                 {c.party ?? "Sin partido registrado"}
-                {c.coalition ? ` · ${c.coalition}` : ""}
               </p>
 
               {/* Spectrum bar */}
@@ -116,21 +116,6 @@ export default function CandidatosPage() {
                   <SpectrumBar spectrum={c.spectrum} />
                 </div>
               )}
-
-              {/* Short bio */}
-              {c.short_bio && (
-                <p className="mt-3 text-xs leading-relaxed line-clamp-3 text-left" style={{ color: "var(--muted)" }}>
-                  {c.short_bio}
-                </p>
-              )}
-
-              {/* CTA hint */}
-              <span
-                className="mt-4 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity"
-                style={{ color: "var(--secondary)" }}
-              >
-                Ver perfil →
-              </span>
             </Link>
           ))}
         </div>

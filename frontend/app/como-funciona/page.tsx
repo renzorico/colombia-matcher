@@ -7,7 +7,7 @@ const STEPS = [
     step: "01",
     title: "Respondés",
     desc:
-      "Respondés 25 preguntas sobre los temas que más importan para Colombia en 2026: seguridad, economía, salud, medio ambiente, corrupción y más. Sin respuestas correctas ni incorrectas — solo tus opiniones.",
+      "Respondes 25 preguntas sobre los temas que más importan para Colombia en 2026: seguridad, economía, salud, medio ambiente, corrupción y más. Sin respuestas correctas ni incorrectas — solo tus opiniones.",
     delay: "anim-delay-1",
   },
   {
@@ -25,7 +25,7 @@ const STEPS = [
     step: "03",
     title: "Descubrís",
     desc:
-      "Recibís un ranking personalizado mostrando qué candidato está más alineado con tus ideas, con explicación por tema y enlaces a los perfiles completos.",
+      "Recibes un ranking personalizado mostrando qué candidato está más alineado con tus ideas, con explicación por tema y enlaces a los perfiles completos.",
     delay: "anim-delay-3",
   },
 ];

@@ -43,14 +43,14 @@ export default function MetodologiaPage() {
           <section>
             <h2 className="text-xl font-bold text-gray-800">¿Cómo funciona el quiz?</h2>
             <p className="mt-3 text-gray-600 leading-relaxed">
-              Respondés 25 preguntas sobre temas como seguridad, economía, salud,
+              Respondes 25 preguntas sobre temas como seguridad, economía, salud,
               medio ambiente, política fiscal, relaciones exteriores y corrupción.
-              Para cada pregunta elegís qué tan de acuerdo estás con una afirmación,
+              Para cada pregunta eliges qué tan de acuerdo estás con una afirmación,
               en una escala del 1 (totalmente en desacuerdo) al 5 (totalmente de acuerdo).
             </p>
             <p className="mt-3 text-gray-600 leading-relaxed">
-              No hay respuestas correctas ni incorrectas. Solo tus opiniones. Podés
-              omitir preguntas si no tenés una posición clara sobre un tema. El quiz
+              No hay respuestas correctas ni incorrectas. Solo tus opiniones. Puedes
+              omitir preguntas si no tienes una posición clara sobre un tema. El quiz
               tarda entre 5 y 10 minutos.
             </p>
           </section>
@@ -113,8 +113,8 @@ export default function MetodologiaPage() {
               escríbenos.
             </p>
             <p className="mt-3 text-gray-600 leading-relaxed">
-              Usá Colombia Matcher como un punto de partida, no como la última palabra.
-              Consultá siempre los programas oficiales de los candidatos y otras fuentes
+              Usa Colombia Matcher como un punto de partida, no como la última palabra.
+              Consulta siempre los programas oficiales de los candidatos y otras fuentes
               antes de decidir tu voto.
             </p>
           </section>
@@ -148,7 +148,7 @@ export default function MetodologiaPage() {
         {/* CTA */}
         <div className="mt-12 flex flex-col items-center gap-3 border-t border-gray-100 pt-8">
           <p className="text-sm text-gray-500">
-            ¿Lista/o para descubrir con quién estás alineado?
+            ¿Listo para descubrir con quién estás alineado?
           </p>
           <Link
             href="/quiz"
@@ -160,7 +160,7 @@ export default function MetodologiaPage() {
             href="/bajo-el-capo"
             className="text-xs text-gray-400 hover:text-gray-600 transition"
           >
-            ¿Quieres ver la arquitectura técnica? → Bajo el capó
+            ¿Quieres ver la arquitectura técnica? → Detrás del motor
           </Link>
         </div>
 

@@ -51,9 +51,9 @@ export default function NavBar() {
           ))}
           <Link
             href="/bajo-el-capo"
-            className="text-xs text-muted hover:text-foreground transition"
+            className="text-sm text-muted hover:text-foreground transition"
           >
-            Bajo el capó
+            Detrás del motor
           </Link>
         </div>
 
@@ -90,9 +90,9 @@ export default function NavBar() {
           <Link
             href="/bajo-el-capo"
             onClick={() => setOpen(false)}
-            className="text-xs text-muted hover:text-foreground transition pt-1"
+            className="text-sm text-muted hover:text-foreground transition pt-1"
           >
-            Bajo el capó
+            Detrás del motor
           </Link>
         </div>
       )}

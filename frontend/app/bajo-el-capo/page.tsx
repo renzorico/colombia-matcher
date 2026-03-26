@@ -284,13 +284,7 @@ export default function BajoElCapoPage() {
         </section>
 
         {/* ── Footer ───────────────────────────────────────────────────────── */}
-        <section className="mt-10 border-t border-gray-200 pt-8 flex flex-col sm:flex-row items-start gap-4 justify-between">
-          <div>
-            <p className="text-sm font-semibold text-gray-700">Repositorio</p>
-            <p className="text-sm text-gray-500 mt-1">
-              Código, datos y documentación disponibles en GitHub.
-            </p>
-          </div>
+        <section className="mt-10 border-t border-gray-200 pt-8 flex flex-col sm:flex-row items-start gap-4 justify-end">
           <div className="flex flex-col gap-2 flex-shrink-0">
             <Link
               href="/metodologia"

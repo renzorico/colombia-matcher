@@ -11,6 +11,7 @@ import {
 } from "@/lib/api";
 import { SpectrumBar } from "@/components/SpectrumBar";
 import { TOPIC_COLORS, AXIS_LABELS_ES as TOPIC_LABELS } from "@/lib/topics";
+import ResultsCharts from "@/components/ResultsCharts";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -159,6 +160,7 @@ export default function ResultadosPage() {
                 referrerPolicy="no-referrer"
                 className="w-16 h-16 rounded-full object-cover flex-shrink-0"
                 style={{ border: "2px solid var(--primary)" }}
+                onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(top.candidate)}&background=6B6B6B&color=fff&size=200`; }}
               />
             ) : (
               <div
@@ -239,6 +241,7 @@ export default function ResultadosPage() {
                     referrerPolicy="no-referrer"
                     className="w-12 h-12 rounded-full object-cover flex-shrink-0"
                     style={{ border: "1px solid var(--border)" }}
+                    onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(r.candidate)}&background=6B6B6B&color=fff&size=200`; }}
                   />
                 ) : (
                   <div
@@ -308,6 +311,9 @@ export default function ResultadosPage() {
           );
         })}
       </div>
+
+      {/* ── Charts ────────────────────────────────────────────────────────── */}
+      <ResultsCharts results={results} />
 
       {/* ── Profile links ─────────────────────────────────────────────────── */}
       <div
