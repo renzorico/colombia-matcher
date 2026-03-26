@@ -302,6 +302,522 @@
       "reliability_notes": "Fuente primaria — comunicado oficial de la Procuraduría.",
       "quote": null,
       "language": "es"
+    },
+    {
+      "id": "src-cepeda-programa-pdf-2025-12",
+      "type": "official_program",
+      "title": "El centro de nuestro programa es la política social",
+      "publisher": "Iván Cepeda Castro — sitio oficial",
+      "url": "https://ivancepedacastro.com/wp-content/uploads/2025/12/NEOLIBERALISMO-06122025.pdf",
+      "published_at": "2025-12-06",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Documento oficial del programa de gobierno publicado en el sitio del candidato.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-noveno-mensaje-2025-10",
+      "type": "official_statement",
+      "title": "Noveno mensaje programático — Las tres revoluciones",
+      "publisher": "Iván Cepeda Castro — sitio oficial",
+      "url": "https://ivancepedacastro.com/noveno-mensaje-programatico/",
+      "published_at": "2025-10-23",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Declaración programática oficial publicada en el sitio del candidato.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-cnn-2025-10",
+      "type": "news",
+      "title": "¿Quién es Iván Cepeda, el candidato de Petro a las elecciones de 2026?",
+      "publisher": "CNN en Español",
+      "url": "https://cnnespanol.cnn.com/2025/10/27/colombia/quien-es-ivan-cepeda-propuestas-elecciones-2026-orix",
+      "published_at": "2025-10-27",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Medio internacional de referencia. Perfil periodístico con propuestas del candidato.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-noticias-caracol-2026-02",
+      "type": "interview",
+      "title": "Iván Cepeda presenta sus propuestas en Noticias Caracol",
+      "publisher": "Noticias Caracol",
+      "url": "https://www.youtube.com/watch?v=keUBZq7rc2Y",
+      "published_at": "2026-02-20",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Entrevista en el noticiero de mayor audiencia en Colombia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-youtube-discurso-2026-03",
+      "type": "speech",
+      "title": "Discurso de Iván Cepeda — resultados Pacto Histórico elecciones Congreso 2026",
+      "publisher": "Canal oficial Iván Cepeda Castro",
+      "url": "https://www.youtube.com/watch?v=vKyls3jTtaI",
+      "published_at": "2026-03-09",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Discurso publicado en el canal oficial del candidato tras resultados del Congreso.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-infobae-antioquia-2026-03",
+      "type": "news",
+      "title": "Iván Cepeda provocó polémica tras sus señalamientos hacia Antioquia",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2026/03/15/ivan-cepeda-provoco-polemica-tras-sus-senalamientos-hacia-antioquia-lo-llaman-cinico",
+      "published_at": "2026-03-15",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Infobae Colombia es medio de referencia nacional con cobertura política.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-rcn-antioquia-2026-03",
+      "type": "news",
+      "title": "Controversia por palabras del candidato presidencial Iván Cepeda sobre Antioquia",
+      "publisher": "Noticias RCN",
+      "url": "https://www.noticiasrcn.com/colombia/controversia-por-palabras-del-candidato-presidencial-ivan-cepeda-sobre-antioquia-1002549",
+      "published_at": "2026-03-16",
+      "access_date": "2026-03-26",
+      "reliability_notes": "RCN es uno de los principales canales de televisión colombianos.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-infobae-terrorismo-2025-12",
+      "type": "news",
+      "title": "Iván Cepeda y 30 congresistas de izquierda desataron polémica por petición de liberación",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2025/12/14/ivan-cepeda-y-30-congresistas-de-izquierda-desataron-polemica-por-peticion-de-liberacion",
+      "published_at": "2025-12-14",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Infobae Colombia es medio de referencia nacional con cobertura política.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-infobae-duque-2026-03",
+      "type": "news",
+      "title": "Iván Duque exige debates y cuestiona candidatura de Cepeda",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2026/03/20/que-el-senor-cepeda-deje-la-cobardia-ivan-duque-exige-debates-y-cuestiona-candidatura",
+      "published_at": "2026-03-20",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Infobae Colombia es medio de referencia nacional con cobertura política.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-infobae-2026-03",
+      "type": "interview",
+      "title": "Roy Barreras defiende un centro político con experiencia, diálogo y enfoque social",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2026/03/02/roy-barreras-defiende-un-centro-politico-con-experiencia-dialogo-y-enfoque-social",
+      "published_at": "2026-03-02",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Infobae Colombia es medio de referencia nacional con cobertura política.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-espectador-2026-03",
+      "type": "interview",
+      "title": "Roy Barreras y sus propuestas: 'No necesito una Constituyente'",
+      "publisher": "El Espectador",
+      "url": "https://www.elespectador.com/economia/emprendimiento-y-liderazgo/roy-barreras-y-sus-propuestas-yo-no-necesito-una-constituyente",
+      "published_at": "2026-03-05",
+      "access_date": "2026-03-26",
+      "reliability_notes": "El Espectador es uno de los diarios de referencia más antiguos de Colombia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-lafm-2026-03",
+      "type": "news",
+      "title": "Roy Barreras es candidato presidencial: estas son sus propuestas",
+      "publisher": "La FM",
+      "url": "https://www.lafm.com.co/politica/roy-barreras-perfil-carrera-politica-propuestas-presidenciales-2026-392386",
+      "published_at": "2026-03-09",
+      "access_date": "2026-03-26",
+      "reliability_notes": "La FM es emisora de radio de referencia en Colombia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-caracol-boyaca-2026-02",
+      "type": "news",
+      "title": "La propuesta de Roy Barreras para llegar a la Presidencia es fortalecer el campo en Boyacá",
+      "publisher": "Caracol Radio",
+      "url": "https://caracol.com.co/2026/02/11/la-propuesta-de-roy-barreras-para-llegar-a-la-presidencia-es-fortalecer-el-campo-en-boyaca/",
+      "published_at": "2026-02-11",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Caracol Radio es la emisora de mayor audiencia en Colombia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-semana-dian-2025-02",
+      "type": "news",
+      "title": "Por escándalo de Roy Barreras con lenguaje mafioso le piden a la Corte investigar",
+      "publisher": "Revista Semana",
+      "url": "https://www.semana.com/semana-tv/semana-el-debate/articulo/por-escandalo-de-luis-carlos-reyes-y-roy-barreras-con-lenguaje-mafioso",
+      "published_at": "2025-02-17",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Revista Semana es la revista de noticias de mayor circulación en Colombia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-elpais-lista-2026-02",
+      "type": "news",
+      "title": "La cuestionada lista de Roy Barreras al Senado",
+      "publisher": "El País Colombia",
+      "url": "https://elpais.com/america-colombia/2026-02-12/la-cuestionada-lista-de-roy-barreras-al-senado-imputados-por-corrupcion",
+      "published_at": "2026-02-12",
+      "access_date": "2026-03-26",
+      "reliability_notes": "El País Colombia es diario regional de referencia con cobertura nacional.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-elcolombiano-lista-2026-02",
+      "type": "news",
+      "title": "La polémica lista al Senado de Roy Barreras",
+      "publisher": "El Colombiano",
+      "url": "https://www.elcolombiano.com/colombia/lista-al-senado-roy-barreras-clanes-ungrd-quinterista-OH33253287",
+      "published_at": "2026-02-05",
+      "access_date": "2026-03-26",
+      "reliability_notes": "El Colombiano es el diario regional más importante de Antioquia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-opinioncolombia-2026-03",
+      "type": "analysis",
+      "title": "Roy Barreras 2026: análisis del camaleón político",
+      "publisher": "Opinión Colombia",
+      "url": "https://opinioncolombia.com/roy-barreras-2026-analisis-del-camaleon-politico-y-su-futuro-presidencial",
+      "published_at": "2026-03-22",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Medio de análisis político colombiano.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-valencia-sitio-oficial",
+      "type": "official_program",
+      "title": "Manifiesto y propuestas — Paloma Presidente 2026",
+      "publisher": "Paloma Valencia — sitio oficial de campaña",
+      "url": "https://palomapresidente.com.co",
+      "published_at": "2026-01-01",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Sitio oficial de campaña de la candidata.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-valencia-youtube-propuestas-2026-03",
+      "type": "speech",
+      "title": "Paloma y sus propuestas para los colombianos",
+      "publisher": "Centro Democrático — YouTube",
+      "url": "https://www.youtube.com/watch?v=fetLfmv6lPU",
+      "published_at": "2026-03-02",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Canal oficial del partido Centro Democrático.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-valencia-vertice-2025-11",
+      "type": "interview",
+      "title": "Las propuestas de Paloma Valencia para gobernar Colombia en 2026",
+      "publisher": "Vértice — El Espectador",
+      "url": "https://www.youtube.com/watch?v=EgpmAp82EBM",
+      "published_at": "2025-11-24",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Entrevista en formato Vértice de El Espectador, reconocido por su rigor periodístico.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-valencia-semana-2026-03",
+      "type": "news",
+      "title": "Paloma Valencia arremete contra el programa de gobierno de Iván Cepeda y la paz total",
+      "publisher": "Revista Semana",
+      "url": "https://www.semana.com/politica/articulo/paloma-valencia-arremete-contra-el-programa-de-gobierno-de-ivan-cepeda-y-la-paz-total",
+      "published_at": "2026-03-15",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Revista Semana es la revista de noticias de mayor circulación en Colombia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-valencia-publimetro-2026-02",
+      "type": "news",
+      "title": "Vicky Dávila lanza pulla a Paloma Valencia tras polémica por Uribe como vicepresidente",
+      "publisher": "Publimetro Colombia",
+      "url": "https://www.publimetro.co/noticias/2026/02/25/no-sera-vicepresidente-de-nadie-vicky-davila-lanza-pulla-a-paloma-valencia",
+      "published_at": "2026-02-25",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Publimetro Colombia es medio de amplia distribución nacional.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-valencia-infobae-tarima-2026-02",
+      "type": "news",
+      "title": "Paloma Valencia dijo que milagrosamente la tarima del Ministerio de Salud apareció en la campaña del Pacto",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2026/02/28/paloma-valencia-dijo-que-milagrosamente-la-tarima-que-uso-el-ministerio-de-salud",
+      "published_at": "2026-02-28",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Infobae Colombia es medio de referencia nacional con cobertura política.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-noticias-caracol-2026-01",
+      "type": "interview",
+      "title": "¿Qué propone Abelardo de la Espriella para mejorar la economía y la seguridad?",
+      "publisher": "Noticias Caracol",
+      "url": "https://www.noticiascaracol.com/politica/elecciones-colombia/que-propone-abelardo-de-la-espriella-para-mejorar-la-economia-y-la-seguridad",
+      "published_at": "2026-01-23",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Noticias Caracol es el noticiero de mayor audiencia en Colombia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-caracol-2026-01",
+      "type": "interview",
+      "title": "Abelardo de la Espriella expone propuestas en salud, seguridad y economía",
+      "publisher": "Noticias Caracol — YouTube",
+      "url": "https://www.youtube.com/watch?v=y7y-f7-Uphc",
+      "published_at": "2026-01-22",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Canal oficial de Noticias Caracol en YouTube.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-mañanas-blu-2025-08",
+      "type": "interview",
+      "title": "Abelardo de la Espriella revela su plan para ser presidente de Colombia",
+      "publisher": "Mañanas Blu — Blu Radio",
+      "url": "https://www.youtube.com/watch?v=Fk32_Y-gmIs",
+      "published_at": "2025-08-29",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Blu Radio es emisora de radio de amplia audiencia nacional en Colombia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-estrella-digital-2026-02",
+      "type": "news",
+      "title": "De la Espriella: sus propuestas presidenciales para Colombia",
+      "publisher": "Estrella Digital Colombia",
+      "url": "https://estrelladigital.com.co/politica/abelardo-espriella-candidato-colombia/",
+      "published_at": "2026-02-08",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Medio digital colombiano de noticias políticas.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-radio-nacional-2026-02",
+      "type": "news",
+      "title": "Abelardo de la Espriella: 62% de sus firmas serían falsas y enfrenta denuncia",
+      "publisher": "Radio Nacional de Colombia",
+      "url": "https://www.radionacional.co/actualidad/abelardo-de-la-espriella-62-de-sus-firmas-serian-falsas-y-enfrenta-denuncia",
+      "published_at": "2026-02-12",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Radio Nacional de Colombia es el medio público estatal de referencia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-tiktok-razones-2025-07",
+      "type": "social_media",
+      "title": "10 razones por las que Abelardo de La Espriella no será presidente",
+      "publisher": "TikTok — cuenta @lauracamilavargas96",
+      "url": "https://www.tiktok.com/@lauracamilavargas96/video/7530470327625829638",
+      "published_at": "2025-07-29",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Contenido de opinión en redes sociales. Las afirmaciones deben verificarse con fuentes primarias.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-infobae-2026-02",
+      "type": "interview",
+      "title": "Sergio Fajardo propone salvar la salud, acabar la paz total y fortalecer la seguridad",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2026/02/22/sergio-fajardo-propone-salvar-la-salud-acabar-la-paz-total-y-fortalecer-la-seguridad",
+      "published_at": "2026-02-22",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Infobae Colombia es medio de referencia nacional con cobertura política.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-caracol-2026-02",
+      "type": "interview",
+      "title": "Sergio Fajardo candidato presidencial explica sus propuestas",
+      "publisher": "Noticias Caracol — YouTube",
+      "url": "https://www.youtube.com/watch?v=R_15CmG641E",
+      "published_at": "2026-02-19",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Canal oficial de Noticias Caracol en YouTube.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-semana-anticorrupcion-2025-12",
+      "type": "news",
+      "title": "Lista de corruptos y Agencia Nacional Anticorrupción: la propuesta de Sergio Fajardo",
+      "publisher": "Revista Semana",
+      "url": "https://www.semana.com/politica/articulo/lista-de-corruptos-y-agencia-nacional-anticorrupcion-la-nueva-propuesta-de-sergio-fajardo",
+      "published_at": "2025-12-10",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Revista Semana es la revista de noticias de mayor circulación en Colombia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-efe-2025-12",
+      "type": "news",
+      "title": "Sergio Fajardo plantea crear Agencia Nacional Anticorrupción",
+      "publisher": "Agencia EFE",
+      "url": "https://www.youtube.com/watch?v=um5F5avCj68",
+      "published_at": "2025-12-10",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Agencia EFE es una de las agencias de noticias internacionales de mayor prestigio.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-facebook-propuestas-2025-12",
+      "type": "official_statement",
+      "title": "¿Cuáles son nuestras propuestas para sacar a Colombia adelante?",
+      "publisher": "Sergio Fajardo — Facebook oficial",
+      "url": "https://www.facebook.com/SergioFajardoV/posts/cuales-son-nuestras-propuestas-para-sacar-a-colombia-adelante",
+      "published_at": "2025-12-29",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Página oficial del candidato en Facebook.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-infobae-corte-2025-06",
+      "type": "news",
+      "title": "La Corte Suprema de Justicia archivó un proceso contra Sergio Fajardo",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2025/06/18/sergio-fajardo-gano-un-nuevo-round-corte-suprema-de-justicia-archivo-una-investigacion",
+      "published_at": "2025-06-18",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Infobae Colombia es medio de referencia nacional con cobertura política.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-lafm-darcyquinn-2026-03",
+      "type": "news",
+      "title": "Los Secretos de D'Arcy Quinn revelan señalamientos sobre Sergio Fajardo",
+      "publisher": "La FM",
+      "url": "https://www.instagram.com/reel/DVwA6IOjCpU/",
+      "published_at": "2026-03-11",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Programa de periodismo de investigación. Detalles específicos pendientes de verificación independiente al momento de publicación de este dataset.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-programa-oficial-2026-02",
+      "type": "official_program",
+      "title": "Por una Colombia justa — Programa de gobierno de Claudia López",
+      "publisher": "Claudia López — sitio oficial de campaña",
+      "url": "https://claudia-lopez.com/programa-de-gobierno-de-claudia-lopez/",
+      "published_at": "2026-02-23",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Documento oficial del programa de gobierno publicado en el sitio de la candidata.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-sitio-campana",
+      "type": "official_program",
+      "title": "Propuestas — Claudia López Presidenta 2026",
+      "publisher": "Claudia López — sitio oficial de campaña",
+      "url": "https://claudia-lopez.com/campana/",
+      "published_at": "2026-02-20",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Sitio oficial de campaña de la candidata.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-infobae-programa-2026-03",
+      "type": "news",
+      "title": "La apuesta presidencial de Claudia López con una consulta política y la agenda social",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2026/03/06/la-apuesta-presidencial-de-claudia-lopez-con-una-consulta-politica-y-la-agenda-social",
+      "published_at": "2026-03-06",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Infobae Colombia es medio de referencia nacional con cobertura política.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-semana-alcaldia-2023-12",
+      "type": "analysis",
+      "title": "Claudia López termina una de las peores y más incoherentes administraciones",
+      "publisher": "Revista Semana",
+      "url": "https://www.semana.com/politica/articulo/claudia-lopez-la-incoherente-las-pruebas-de-todas-las-veces-que-la-alcaldesa-cambio-de-opinion",
+      "published_at": "2023-12-16",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Artículo de opinión editorial con postura crítica hacia la gestión de López. Debe leerse junto con fuentes más neutrales.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-infobae-criticas-2025-06",
+      "type": "news",
+      "title": "Críticas a Claudia López tras oficializar su candidatura presidencial",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2025/06/03/le-caen-criticas-a-claudia-lopez-despues-de-oficializar-su-candidatura-presidencial",
+      "published_at": "2025-06-03",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Fuente de noticias de amplia circulación. Recoge reacciones de múltiples sectores políticos.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-wradio-ungrd-2025-08",
+      "type": "news",
+      "title": "Claudia López se refirió a la controversia en torno a Carlos Ramón González y la UNGRD",
+      "publisher": "W Radio Colombia",
+      "url": "https://www.facebook.com/WRadioCo/posts/claudia-lopez-paso-por-los-microfonos-de-la-w-donde-se-refirio-a-controversia",
+      "published_at": "2025-08-15",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Medio de comunicación radial de amplia circulación nacional.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-barrancabermeja-2026-03",
+      "type": "analysis",
+      "title": "Iván Gallo desenmascara el oportunismo político de Claudia López",
+      "publisher": "Barrancabermeja Virtual",
+      "url": "https://barrancabermejavirtual.net/2026/03/03/claudia-gallo/",
+      "published_at": "2026-03-03",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Artículo de opinión con postura crítica. Las afirmaciones sobre la UNGRD deben verificarse con fuentes institucionales.",
+      "quote": null,
+      "language": "es"
     }
   ],
   "candidates": [
@@ -323,7 +839,9 @@
           "plain_language_summary": "Prefiere invertir en comunidades y negociar en fronteras antes que usar la fuerza militar. Propone un modelo de 'seguridad humana' que ataque las causas sociales del crimen.",
           "stance_score": 1,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -333,7 +851,9 @@
           "plain_language_summary": "Defiende un Estado fuerte en la economía y una reforma agraria profunda. Quiere convertir al campesinado en el eje de la economía nacional.",
           "stance_score": 1,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -343,7 +863,9 @@
           "plain_language_summary": "Quiere reformar el sistema de salud: mantener las EPS pero con control estatal estricto. Propone investigar la corrupción en la Nueva EPS y estabilizar los hospitales.",
           "stance_score": 2,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -353,7 +875,9 @@
           "plain_language_summary": "Rechaza el fracking y promueve la transición energética acelerada. Protege la Amazonía y el agua. Apoyaría la autogeneración solar para el campo.",
           "stance_score": 1,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26",
           "merge_note": "Promedio de energy_oil (1) y environment (1). Ambos subcomponentes con confianza alta."
         },
@@ -364,7 +888,9 @@
           "plain_language_summary": "No recortaría el gasto social, pero combatiría la corrupción y el despilfarro como forma de equilibrar las finanzas públicas.",
           "stance_score": 2,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -374,7 +900,9 @@
           "plain_language_summary": "Quiere una política exterior independiente de EE.UU., con integración latinoamericana como prioridad y respaldo a Venezuela como actor en la paz.",
           "stance_score": 1,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -384,11 +912,71 @@
           "plain_language_summary": "Propone reformar el sistema electoral, investigar la corrupción sistémica y reducir los privilegios del Congreso.",
           "stance_score": 2,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         }
       ],
-      "proposals": [],
+      "proposals": [
+        {
+          "id": "prop-cepeda-01",
+          "topic_id": "economy",
+          "title": "Revolución agraria y territorial",
+          "summary": "Garantizar en cada municipio rural agua potable, energías limpias y condiciones productivas. Convertir regiones históricamente excluidas en territorios de desarrollo, dejando de ser enclaves del narcotráfico.",
+          "plain_language_summary": "Llevar agua, luz limpia y trabajo al campo colombiano para que la gente no tenga que irse ni meterse en el narco.",
+          "status": "proposed",
+          "source_ids": [
+            "src-cepeda-youtube-discurso-2026-03",
+            "src-cepeda-cnn-2025-10"
+          ]
+        },
+        {
+          "id": "prop-cepeda-02",
+          "topic_id": "fiscal",
+          "title": "Reforma tributaria progresiva",
+          "summary": "Reducir la carga fiscal sobre las clases trabajadoras y aumentar la contribución de los grandes capitales. Perseguir la evasión fiscal sin privilegios ni excepciones.",
+          "plain_language_summary": "Que los ricos paguen más impuestos y los trabajadores paguen menos. Acabar con la evasión de grandes empresas.",
+          "status": "proposed",
+          "source_ids": [
+            "src-cepeda-programa-pdf-2025-12"
+          ]
+        },
+        {
+          "id": "prop-cepeda-03",
+          "topic_id": "health",
+          "title": "Profundización de reformas sociales",
+          "summary": "Continuar y radicalizar las reformas laboral, pensional, de salud y educativa del gobierno Petro. Entender la inversión social como inversión en crecimiento económico.",
+          "plain_language_summary": "Seguir mejorando el sistema de salud, las pensiones y los derechos laborales, porque invertir en la gente hace crecer el país.",
+          "status": "proposed",
+          "source_ids": [
+            "src-cepeda-noticias-caracol-2026-02"
+          ]
+        },
+        {
+          "id": "prop-cepeda-04",
+          "topic_id": "security",
+          "title": "Paz territorial integral",
+          "summary": "No solo mesas de diálogo con grupos armados, sino transformación real de territorios afectados por el conflicto: verdad, justicia, reparación para víctimas y una política diferente frente al narcotráfico y la minería ilegal.",
+          "plain_language_summary": "La paz no es solo firmar papeles: hay que llevar desarrollo, justicia y oportunidades reales a los territorios donde ha habido guerra.",
+          "status": "proposed",
+          "source_ids": [
+            "src-cepeda-noveno-mensaje-2025-10",
+            "src-cepeda-cnn-2025-10"
+          ]
+        },
+        {
+          "id": "prop-cepeda-05",
+          "topic_id": "anticorruption",
+          "title": "Asamblea Nacional Constituyente",
+          "summary": "Convocar una Asamblea Nacional Constituyente como mecanismo para hacer irreversibles los cambios sociales estructurales y consolidar una revolución democrática pacífica y profunda.",
+          "plain_language_summary": "Cambiar la Constitución de forma democrática para que las mejoras sociales no puedan ser fácilmente revertidas por gobiernos futuros.",
+          "status": "proposed",
+          "source_ids": [
+            "src-cepeda-noveno-mensaje-2025-10"
+          ]
+        }
+      ],
       "controversies": [
         {
           "id": "cepeda-controversy-01",
@@ -397,8 +985,47 @@
           "severity": "low",
           "status": "acquitted",
           "date": "2020-08",
-          "source_ids": ["src-cepeda-procuraduria-01"],
+          "source_ids": [
+            "src-cepeda-procuraduria-01"
+          ],
           "notes": "Proceso cerrado. Sin sanciones ni inhabilidades activas."
+        },
+        {
+          "id": "cont-cepeda-01",
+          "title": "Polémica por declaraciones sobre Antioquia",
+          "summary": "En su programa de gobierno, Cepeda citó al defensor de derechos humanos Jesús María Valle afirmando que 'Antioquia se convirtió en cuna de la parapolítica, la narcoeconomía y del terrorismo de Estado'. Generó reacciones duras de dirigentes paisas, candidatos del Centro Democrático y empresarios. Cepeda argumentó que sus palabras fueron sacadas de contexto.",
+          "severity": "medium",
+          "status": "resolved",
+          "date": "2026-03-15",
+          "source_ids": [
+            "src-cepeda-infobae-antioquia-2026-03",
+            "src-cepeda-rcn-antioquia-2026-03"
+          ],
+          "notes": "Cepeda emitió comunicado aclaratorio. El episodio agitó la campaña dos semanas antes de las consultas del 9 de marzo."
+        },
+        {
+          "id": "cont-cepeda-02",
+          "title": "Carta por liberación de jóvenes acusados de terrorismo",
+          "summary": "Cepeda y 30 congresistas de izquierda firmaron una carta pidiendo la liberación de 11 jóvenes detenidos en Bogotá por actos terroristas. La Fiscalía contaba con más de 4.000 horas de video, 50 líneas interceptadas y 13 allanamientos como evidencia. Generó críticas por presunta defensa de personas imputadas por terrorismo.",
+          "severity": "medium",
+          "status": "past",
+          "date": "2025-12-14",
+          "source_ids": [
+            "src-cepeda-infobae-terrorismo-2025-12"
+          ],
+          "notes": "Ninguno de los firmantes hizo referencia a las pruebas técnicas de la Policía y la Fiscalía en el documento."
+        },
+        {
+          "id": "cont-cepeda-03",
+          "title": "Cuestionamientos por cercanía al gobierno Petro",
+          "summary": "Opositores y el expresidente Iván Duque cuestionaron que la candidatura de Cepeda representa una continuidad del gobierno Petro, señalado por escándalos de corrupción, narcofinanciación y la 'paz total' considerada un fracaso.",
+          "severity": "low",
+          "status": "ongoing",
+          "date": "2026-03-20",
+          "source_ids": [
+            "src-cepeda-infobae-duque-2026-03"
+          ],
+          "notes": "Cepeda reconoció sentirse 'avergonzado' por hechos de corrupción del gobierno actual pero defendió su programa como una continuación de los logros sociales."
         }
       ],
       "metadata": {
@@ -427,7 +1054,9 @@
           "plain_language_summary": "Propone mano dura máxima: bombardeos a grupos armados, fumigación masiva de cultivos y megacárceles. Modelo similar al de El Salvador.",
           "stance_score": 5,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -437,7 +1066,9 @@
           "plain_language_summary": "Quiere reducir el Estado radicalmente: eliminar 136 entidades, bajar impuestos y dejar que el mercado dirija la economía.",
           "stance_score": 5,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -447,7 +1078,9 @@
           "plain_language_summary": "Contra la reforma de salud del gobierno. Propone un plan de choque de 90 días para estabilizar el sistema y pagar deudas, manteniendo las EPS.",
           "stance_score": 4,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -457,7 +1090,9 @@
           "plain_language_summary": "Apoya el fracking y quiere más de 1,3 millones de barriles de petróleo al día. Acepta la minería legal con responsabilidad ambiental. Rechaza la transición energética acelerada.",
           "stance_score": 5,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26",
           "merge_note": "Promedio de energy_oil (5) y environment (4), redondeado a 5 dado el peso mayor de q14 (exploración petrolera) y la centralidad del discurso energético en su campaña."
         },
@@ -468,7 +1103,9 @@
           "plain_language_summary": "Propone una regla de 'freno de deuda', eliminar impuestos distorsivos y reducir el Estado en un 40%. Meta: equilibrar las finanzas públicas rápidamente.",
           "stance_score": 5,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -478,7 +1115,9 @@
           "plain_language_summary": "Alianza total con EE.UU. e Israel. Pide acción militar contra Venezuela. Ha solicitado sanciones estadounidenses contra el gobierno colombiano.",
           "stance_score": 5,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -487,12 +1126,72 @@
           "summary": "El informe disponible no contiene propuestas específicas anticorrupción de De la Espriella más allá de su crítica general al gobierno actual. Su agenda de reducción del Estado se enmarca como eficiencia, no como anticorrupción.",
           "plain_language_summary": "No se identificaron propuestas anticorrupción detalladas. Su discurso se centra en reducir el Estado, no en reformas institucionales anticorrupción.",
           "stance_score": 4,
-          "confidence": 0.40,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "confidence": 0.4,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         }
       ],
-      "proposals": [],
+      "proposals": [
+        {
+          "id": "prop-espriella-01",
+          "topic_id": "security",
+          "title": "Plan Colombia 2 y ofensiva militar en 90 días",
+          "summary": "Alianza estratégica con Estados Unidos e Israel para dotar a la fuerza pública de tecnología de punta e inteligencia artificial. Retomar la fumigación aérea con bioherbicidas y drones. Bombardear campamentos guerrilleros y capturar cabecillas de alto valor en los primeros 90 días de gobierno.",
+          "plain_language_summary": "Golpear duro y rápido a los grupos armados con tecnología de punta y alianzas con EEUU e Israel, incluyendo fumigación aérea de cultivos de coca.",
+          "status": "proposed",
+          "source_ids": [
+            "src-espriella-caracol-2026-01",
+            "src-espriella-noticias-caracol-2026-01"
+          ]
+        },
+        {
+          "id": "prop-espriella-02",
+          "topic_id": "health",
+          "title": "Milagro de la Salud: plan de choque de 90 días",
+          "summary": "Plan de emergencia de 90 días para reactivar tratamientos críticos y suministrar medicamentos represados. Rescate financiero de 10 billones de pesos provenientes del presupuesto nacional o mediante titularización. Proteger las EPS que funcionan bien y revertir los decretos del gobierno Petro que afectaron el sistema.",
+          "plain_language_summary": "En los primeros 90 días de gobierno, conseguir 10 billones de pesos para pagarle a hospitales, comprar medicamentos y salvar las EPS que todavía funcionan.",
+          "status": "proposed",
+          "source_ids": [
+            "src-espriella-noticias-caracol-2026-01"
+          ]
+        },
+        {
+          "id": "prop-espriella-03",
+          "topic_id": "fiscal",
+          "title": "Recortar el Estado un 40% y eliminar impuestos",
+          "summary": "Reducir el tamaño del Estado en un 40% eliminando exceso de funcionarios y contratistas. Eliminar el impuesto 4x1000 y el impuesto a la gasolina. No subir impuestos: explotar los recursos del subsuelo (incluyendo fracking) para sanear las finanzas públicas sin mayor carga tributaria.",
+          "plain_language_summary": "Reducir el gasto del Estado a la mitad, quitar el impuesto al uso del banco y a la gasolina, y usar el petróleo y el gas del subsuelo para financiar el país sin cobrarle más a la gente.",
+          "status": "proposed",
+          "source_ids": [
+            "src-espriella-noticias-caracol-2026-01",
+            "src-espriella-mañanas-blu-2025-08"
+          ]
+        },
+        {
+          "id": "prop-espriella-04",
+          "topic_id": "economy",
+          "title": "Colombia, país de propietarios",
+          "summary": "Que cada colombiano pueda acceder a vivienda propia mediante crédito hipotecario preferencial. Cerrar la brecha social con programas de empleo juvenil en alianza entre el SENA y el sector privado. Meta de 3 millones de empleos y reducción de pobreza en un 20%.",
+          "plain_language_summary": "Que todos los colombianos puedan tener su propia casa con créditos baratos, y que los jóvenes encuentren trabajo a través de alianzas entre el SENA y las empresas.",
+          "status": "proposed",
+          "source_ids": [
+            "src-espriella-mañanas-blu-2025-08"
+          ]
+        },
+        {
+          "id": "prop-espriella-05",
+          "topic_id": "anticorruption",
+          "title": "Megacárceles y nuevo cuerpo de prisiones",
+          "summary": "Suprimir el INPEC y crear un nuevo cuerpo de prisiones integrado por veteranos y reservistas de la Fuerza Pública. Concesionar a privados la construcción de megacárceles en zonas de difícil acceso para aislar a criminales de alta peligrosidad.",
+          "plain_language_summary": "Reemplazar el INPEC por un sistema de cárceles manejado por exmilitares, con nuevas megacárceles construidas por empresas privadas en zonas remotas para los criminales más peligrosos.",
+          "status": "proposed",
+          "source_ids": [
+            "src-espriella-estrella-digital-2026-02"
+          ]
+        }
+      ],
       "controversies": [
         {
           "id": "espriella-controversy-01",
@@ -511,7 +1210,10 @@
           "severity": "medium",
           "status": "pending",
           "date": "2026-02",
-          "source_ids": ["src-espriella-scandal-dmg", "src-espriella-procuraduria-01"],
+          "source_ids": [
+            "src-espriella-scandal-dmg",
+            "src-espriella-procuraduria-01"
+          ],
           "notes": "Proceso ante la Comisión de Disciplina Judicial, no la Procuraduría."
         },
         {
@@ -521,8 +1223,46 @@
           "severity": "medium",
           "status": "investigated",
           "date": null,
-          "source_ids": ["src-espriella-scandal-saab"],
+          "source_ids": [
+            "src-espriella-scandal-saab"
+          ],
           "notes": null
+        },
+        {
+          "id": "cont-espriella-01",
+          "title": "62% de firmas de inscripción invalidadas por la Registraduría",
+          "summary": "La Registraduría anuló más de 3 millones de las 5 millones de firmas presentadas por De la Espriella para inscribir su candidatura, dejando solo 1.978.108 válidas. El candidato había afirmado públicamente que auditó todas sus firmas. La revelación generó cuestionamientos sobre la transparencia y el rigor de su campaña.",
+          "severity": "high",
+          "status": "past",
+          "date": "2026-02-12",
+          "source_ids": [
+            "src-espriella-radio-nacional-2026-02"
+          ],
+          "notes": "El propio candidato dijo 'yo audité todas mis firmas, de algo sirve ser abogado', frase que fue ampliamente criticada al conocerse los resultados oficiales."
+        },
+        {
+          "id": "cont-espriella-02",
+          "title": "Denuncia penal por presunta estafa de David Murcia (DMG)",
+          "summary": "David Murcia, fundador de la pirámide DMG y antiguo cliente de De la Espriella, lo denunció penalmente acusándolo de no devolverle 5.000 millones de pesos que habrían sido recibidos durante su representación legal en el proceso contra Murcia.",
+          "severity": "high",
+          "status": "ongoing",
+          "date": "2026-02-12",
+          "source_ids": [
+            "src-espriella-radio-nacional-2026-02"
+          ],
+          "notes": "De la Espriella fue el abogado de Murcia durante el proceso judicial contra el creador de la pirámide DMG. El candidato negó las acusaciones."
+        },
+        {
+          "id": "cont-espriella-03",
+          "title": "Señalamientos históricos por vínculos con DAS y parapolítica",
+          "summary": "Videos circulados en redes sociales y columnas de opinión citaron su presunto involucramiento en el escándalo de las chuzadas del DAS y señalamientos de haberse querido colar en el proceso de Justicia y Paz. De la Espriella ha negado estas acusaciones.",
+          "severity": "medium",
+          "status": "past",
+          "date": "2025-07-24",
+          "source_ids": [
+            "src-espriella-tiktok-razones-2025-07"
+          ],
+          "notes": "Las acusaciones son de conocimiento público pero no han derivado en condenas penales. El candidato las considera ataques políticos."
         }
       ],
       "metadata": {
@@ -551,7 +1291,9 @@
           "plain_language_summary": "Propone el 'Plan Guardián': modernizar las fuerzas con tecnología, recuperar territorios y sustitución de cultivos. Fin de la 'Paz Total'.",
           "stance_score": 3,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -561,7 +1303,9 @@
           "plain_language_summary": "Maneja la economía desde una perspectiva técnica y no ideológica. Quiere restaurar la confianza inversora y evitar el populismo.",
           "stance_score": 3,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -571,7 +1315,9 @@
           "plain_language_summary": "Quiere auditar las EPS, recalcular la UPC sin sesgos y resolver la crisis de liquidez hospitalaria en 100 días. No elimina las EPS, las reforma.",
           "stance_score": 3,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -581,7 +1327,9 @@
           "plain_language_summary": "Quiere reactivar la exploración de petróleo y gas para no depender de importaciones costosas. En fracking, propone pilotos científicos antes de decidir. Transición energética responsable, no abrupta.",
           "stance_score": 4,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26",
           "merge_note": "Promedio de energy_oil (4) y environment (3), redondeado a 4. Ambos subcomponentes con confianza alta."
         },
@@ -592,7 +1340,9 @@
           "plain_language_summary": "Reforma tributaria consensuada: bajar el impuesto corporativo al 30%, pero manteniendo progresividad. Eliminaría el gasto burocrático innecesario. Prioriza la confianza del mercado.",
           "stance_score": 3,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -602,7 +1352,9 @@
           "plain_language_summary": "Diplomacia pragmática. Mantener relaciones sólidas con EE.UU. (vital para exportaciones), buscar crédito del FMI y evitar confrontaciones ideológicas.",
           "stance_score": 3,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -612,11 +1364,71 @@
           "plain_language_summary": "Crearía una Agencia Nacional Anticorrupción que él mismo lideraría. Publicaría los 30 contratos públicos más grandes del país. Contra la Constituyente.",
           "stance_score": 3,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         }
       ],
-      "proposals": [],
+      "proposals": [
+        {
+          "id": "prop-fajardo-01",
+          "topic_id": "health",
+          "title": "Plan de emergencia en salud: Nueva EPS en 100 días",
+          "summary": "Poner a funcionar la Nueva EPS en los primeros 100 días de gobierno. Reabrir urgencias materno-infantiles y servicios de salud mental cerrados. Auditoría externa al sistema, mesa de trabajo bajo puesto de mando presidencial, y búsqueda de recursos internacionales para reestructurar la deuda del sector.",
+          "plain_language_summary": "En los primeros 100 días arreglar la Nueva EPS, reabrir urgencias de maternidad y salud mental que cerraron, y conseguir plata internacional para pagar las deudas del sistema de salud.",
+          "status": "proposed",
+          "source_ids": [
+            "src-fajardo-infobae-2026-02",
+            "src-fajardo-caracol-2026-02"
+          ]
+        },
+        {
+          "id": "prop-fajardo-02",
+          "topic_id": "security",
+          "title": "Fin de la paz total y seguridad con tecnología",
+          "summary": "Terminar los acuerdos de paz total desde el 7 de agosto. Aumentar el pie de fuerza, fortalecer la capacidad tecnológica de la fuerza pública y reactivar operativos en zonas críticas. Reponer equipos que llevan años sin mantenimiento en el terreno.",
+          "plain_language_summary": "Acabar con la paz total que fracasó, recuperar territorios perdidos y darle a los soldados y policías los equipos y tecnología que necesitan para combatir el crimen.",
+          "status": "proposed",
+          "source_ids": [
+            "src-fajardo-infobae-2026-02"
+          ]
+        },
+        {
+          "id": "prop-fajardo-03",
+          "topic_id": "anticorruption",
+          "title": "Agencia Nacional Anticorrupción y cero impunidad",
+          "summary": "Crear por directiva presidencial una Agencia Nacional Anticorrupción con facultades para investigar, sancionar y recuperar recursos robados. Exigir transparencia de beneficiarios finales en todas las licitaciones. Endurecer penas y condicionar cualquier rebaja de condena a la devolución total de lo robado al Estado.",
+          "plain_language_summary": "Crear una entidad especial anticorrupción que tenga poder real, y obligar a los corruptos a devolver todo lo que robaron antes de que puedan recibir cualquier beneficio penal.",
+          "status": "proposed",
+          "source_ids": [
+            "src-fajardo-semana-anticorrupcion-2025-12",
+            "src-fajardo-efe-2025-12"
+          ]
+        },
+        {
+          "id": "prop-fajardo-04",
+          "topic_id": "economy",
+          "title": "Educación e infraestructura como motores de empleo",
+          "summary": "550.000 nuevos cupos en Jóvenes en Acción, 100.000 beneficiarios de Universidad Pública Digital, 440.000 empleos generados a través de 4.000 proyectos públicos de infraestructura. Rehabilitación de vías secundarias y terciarias en todo el país.",
+          "plain_language_summary": "Crear más de medio millón de cupos de estudio y casi medio millón de empleos construyendo vías y obras públicas en todo Colombia.",
+          "status": "proposed",
+          "source_ids": [
+            "src-fajardo-facebook-propuestas-2025-12"
+          ]
+        },
+        {
+          "id": "prop-fajardo-05",
+          "topic_id": "energy_environment",
+          "title": "Fracking basado en evidencia científica",
+          "summary": "Apoyar la realización de pilotos de fracking con todo el rigor científico. Si los resultados son favorables, proceder con la explotación. Si son desfavorables, no hacerlo. La evidencia, no la ideología, debe decidir la política energética del país.",
+          "plain_language_summary": "Hacer pruebas científicas serias del fracking: si los expertos dicen que es seguro, adelante; si dicen que no, no se hace. La ciencia manda, no la política.",
+          "status": "proposed",
+          "source_ids": [
+            "src-fajardo-infobae-2026-02"
+          ]
+        }
+      ],
       "controversies": [
         {
           "id": "fajardo-controversy-01",
@@ -625,7 +1437,10 @@
           "severity": "high",
           "status": "resolved",
           "date": "2021-11",
-          "source_ids": ["src-fajardo-scandal-hidroituango", "src-fajardo-procuraduria-01"],
+          "source_ids": [
+            "src-fajardo-scandal-hidroituango",
+            "src-fajardo-procuraduria-01"
+          ],
           "notes": "Fallo fiscal confirmado en segunda instancia. Investigación disciplinaria de Procuraduría archivada. Impactó la campaña presidencial de 2022."
         },
         {
@@ -637,6 +1452,30 @@
           "date": null,
           "source_ids": [],
           "notes": "Marcado para investigación adicional. La controversia principal es la de Hidroituango (fajardo-controversy-01)."
+        },
+        {
+          "id": "cont-fajardo-01",
+          "title": "Proceso archivado por contrato en Gobernación de Antioquia",
+          "summary": "La Corte Suprema de Justicia archivó un proceso contra Fajardo por posibles irregularidades en un contrato de concesión minera durante su período como gobernador de Antioquia, al no encontrar pruebas suficientes de delito. El fallo fue a su favor, pero el proceso tuvo amplia cobertura pública.",
+          "severity": "low",
+          "status": "resolved",
+          "date": "2025-06-18",
+          "source_ids": [
+            "src-fajardo-infobae-corte-2025-06"
+          ],
+          "notes": "La Corte Suprema precluó el proceso. Fajardo lo tomó como un aval de su historial limpio. Fue su tercer intento presidencial luego de 2018 y 2022."
+        },
+        {
+          "id": "cont-fajardo-02",
+          "title": "Secretos de D'Arcy Quinn — señalamientos no confirmados",
+          "summary": "El programa periodístico Los Secretos de D'Arcy Quinn publicó en marzo de 2026 señalamientos sobre Sergio Fajardo. El candidato ha sostenido que no ha estado involucrado en ningún escándalo durante toda su trayectoria política.",
+          "severity": "low",
+          "status": "ongoing",
+          "date": "2026-03-11",
+          "source_ids": [
+            "src-fajardo-lafm-darcyquinn-2026-03"
+          ],
+          "notes": "Información en desarrollo al momento de la investigación. Fajardo no ha respondido públicamente en detalle a estos señalamientos. Pendiente de verificación adicional."
         }
       ],
       "metadata": {
@@ -665,7 +1504,9 @@
           "plain_language_summary": "Estrategia '4R': reducir ingresos criminales, tecnificar la fuerza pública, acercarla a las comunidades y restablecer la ley. Erradicación con drones, cárceles efectivas.",
           "stance_score": 4,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -675,7 +1516,9 @@
           "plain_language_summary": "Libre mercado: eliminar el impuesto al patrimonio, reducir impuestos corporativos y simplificar regulaciones. De 19 a 12 ministerios.",
           "stance_score": 4,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -685,7 +1528,9 @@
           "plain_language_summary": "Propone titularizar la deuda del Estado con las EPS para inyectar liquidez inmediata. Red de 'hospitales padrino' con telemedicina rural. Defiende el modelo mixto con EPS privadas.",
           "stance_score": 4,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -695,7 +1540,9 @@
           "plain_language_summary": "Defiende tanto el fracking como las renovables. Argumenta que prohibir el fracking encarecer el gas y daña a los sectores vulnerables. Quiere recuperar la autosuficiencia energética.",
           "stance_score": 4,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26",
           "merge_note": "Promedio de energy_oil (4) y environment (4). Posiciones alineadas entre ambos subcomponentes."
         },
@@ -706,7 +1553,9 @@
           "plain_language_summary": "Austeridad fiscal: fusionar ministerios (19 a 12), recortar el 20% del gasto operativo y ahorrar 30 billones anuales. Eliminar el impuesto al patrimonio.",
           "stance_score": 4,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -716,7 +1565,9 @@
           "plain_language_summary": "Alianza con EE.UU. y un nuevo 'Plan Colombia'. Convertir la Cancillería en ministerio de comercio exterior. Rechaza cualquier alineación con Venezuela.",
           "stance_score": 4,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -726,12 +1577,98 @@
           "plain_language_summary": "Propone que la Contraloría y la Procuraduría sean elegidas por la academia y la ciudadanía, no por políticos. Lideró control político en el Congreso.",
           "stance_score": 3,
           "confidence": 0.85,
-          "evidence_ids": ["src-shared-llyc-2026"],
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
           "updated_at": "2026-03-26"
         }
       ],
-      "proposals": [],
-      "controversies": [],
+      "proposals": [
+        {
+          "id": "prop-valencia-01",
+          "topic_id": "fiscal",
+          "title": "Estado austero y pequeño",
+          "summary": "Recortar la burocracia y el gasto burocrático, eliminar impuestos considerados excesivos, y redirigir los recursos hacia subsidios directos para adultos mayores pobres y madres cabeza de hogar. Más inversión en bienes públicos como vías terciarias y conectividad.",
+          "plain_language_summary": "Gastar menos en burocracia para poder darles más directamente a los adultos mayores pobres y a las madres solas que sacan adelante sus familias.",
+          "status": "proposed",
+          "source_ids": [
+            "src-valencia-youtube-propuestas-2026-03",
+            "src-valencia-sitio-oficial"
+          ]
+        },
+        {
+          "id": "prop-valencia-02",
+          "topic_id": "security",
+          "title": "Seguridad total y recuperación de la autoridad",
+          "summary": "Recuperar el control territorial con una estrategia militar robusta. Fin a la política de paz total que califica como el mayor fracaso en políticas públicas en 50 años. Garantizar que vivir sin miedo sea una realidad para los colombianos.",
+          "plain_language_summary": "Acabar con la 'paz total' que no funcionó y recuperar la seguridad con autoridad real del Estado, para que los colombianos puedan vivir sin miedo.",
+          "status": "proposed",
+          "source_ids": [
+            "src-valencia-semana-2026-03",
+            "src-valencia-sitio-oficial"
+          ]
+        },
+        {
+          "id": "prop-valencia-03",
+          "topic_id": "health",
+          "title": "Plan de choque en salud",
+          "summary": "Reconocer la deuda hospitalaria y pagarla mediante titularización. Compra masiva de medicamentos para recuperar inventarios. Revertir los decretos del gobierno Petro que afectaron a las EPS que funcionaban bien. Cerrar las dos venas rotas del sistema: la corrupción y los presupuestos máximos.",
+          "plain_language_summary": "Pagarle lo que se le debe a los hospitales, conseguir medicamentos urgentes y proteger las EPS que sí funcionaban antes de que el gobierno las afectara.",
+          "status": "proposed",
+          "source_ids": [
+            "src-valencia-vertice-2025-11"
+          ]
+        },
+        {
+          "id": "prop-valencia-04",
+          "topic_id": "economy",
+          "title": "Economía fraterna: menos impuestos, más empleo",
+          "summary": "Menos impuestos a quienes generan empleo, mejores salarios para los trabajadores, garantías para la inversión privada. Un país que se enriquezca para que todos los colombianos puedan vivir con ingresos dignos, sin odio de clases.",
+          "plain_language_summary": "Que las empresas paguen menos impuestos para que puedan contratar más gente con mejores salarios. Más inversión, más trabajo, más ingresos.",
+          "status": "proposed",
+          "source_ids": [
+            "src-valencia-sitio-oficial",
+            "src-valencia-vertice-2025-11"
+          ]
+        },
+        {
+          "id": "prop-valencia-05",
+          "topic_id": "economy",
+          "title": "Campo seguro, competitivo y digno",
+          "summary": "Crédito barato para los campesinos, alianzas entre pequeños y grandes empresarios del agro, vías terciarias como condición indispensable para el desarrollo rural y la transformación productiva del campo colombiano.",
+          "plain_language_summary": "Darle a los campesinos créditos baratos, buenos caminos y alianzas con empresas grandes para que el campo colombiano sea productivo y digno.",
+          "status": "proposed",
+          "source_ids": [
+            "src-valencia-sitio-oficial"
+          ]
+        }
+      ],
+      "controversies": [
+        {
+          "id": "cont-valencia-01",
+          "title": "Polémica por proponer a Álvaro Uribe como fórmula vicepresidencial",
+          "summary": "Valencia declaró públicamente que su 'mejor vicepresidente sería Álvaro Uribe'. La declaración generó tensiones dentro de la Gran Consulta por Colombia, con su rival Vicky Dávila respondiendo que Uribe ya había descartado públicamente ser fórmula vicepresidencial.",
+          "severity": "low",
+          "status": "past",
+          "date": "2026-02-25",
+          "source_ids": [
+            "src-valencia-publimetro-2026-02"
+          ],
+          "notes": "Uribe confirmó el 18 de julio de 2025 que no sería fórmula vicepresidencial de ningún candidato."
+        },
+        {
+          "id": "cont-valencia-02",
+          "title": "Denuncia por presunto uso de recursos públicos en campaña del Pacto",
+          "summary": "Valencia denunció ante la Contraloría y la Procuraduría que la tarima del Ministerio de Salud fue usada en el cierre de campaña del Pacto Histórico en la Plaza de Bolívar. Generó investigación formal de los entes de control pero también críticas de que la denuncia tenía motivación electoral.",
+          "severity": "medium",
+          "status": "ongoing",
+          "date": "2026-02-28",
+          "source_ids": [
+            "src-valencia-infobae-tarima-2026-02"
+          ],
+          "notes": "El gobierno negó la acusación. La Contraloría y Procuraduría abrieron indagación preliminar."
+        }
+      ],
       "metadata": {
         "procuraduria_status": "unknown",
         "procuraduria_summary": "No se encontraron sanciones disciplinarias ni inhabilidades contra Valencia. Trabajó como empleada de la Procuraduría antes de ingresar a la política. La ausencia de hallazgos no confirma un registro limpio — se requiere consulta directa al registro.",
@@ -758,7 +1695,10 @@
           "plain_language_summary": "Fin de la 'Paz Total'. Propone 40.000 nuevos policías y soldados, 5 megacárceles con formación del SENA. Seguridad con presencia social, no solo fuerza.",
           "stance_score": 2,
           "confidence": 0.85,
-          "evidence_ids": ["src-barreras-elespectador-01", "src-barreras-elpais-01"],
+          "evidence_ids": [
+            "src-barreras-elespectador-01",
+            "src-barreras-elpais-01"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -768,7 +1708,10 @@
           "plain_language_summary": "Crecimiento económico para financiar lo social: agroindustria, turismo, infraestructura. Reconstruiría el IDEMA y la red de frío para el agro.",
           "stance_score": 2,
           "confidence": 0.85,
-          "evidence_ids": ["src-barreras-cambio-01", "src-barreras-360radio-01"],
+          "evidence_ids": [
+            "src-barreras-cambio-01",
+            "src-barreras-360radio-01"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -778,7 +1721,10 @@
           "plain_language_summary": "Un 'banco de la salud' para centralizar recursos. Blockchain para rastrear cada peso. Pisos salariales para médicos y bonos rurales. Liquidez inmediata para hospitales mediante titularización.",
           "stance_score": 2,
           "confidence": 0.85,
-          "evidence_ids": ["src-barreras-elespectador-01", "src-barreras-infobae-01"],
+          "evidence_ids": [
+            "src-barreras-elespectador-01",
+            "src-barreras-infobae-01"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -788,7 +1734,10 @@
           "plain_language_summary": "Transición energética gradual: expandir renovables sin eliminar bruscamente los combustibles fósiles. Minería regulada con estándares ambientales. Protección ambiental compatible con el desarrollo.",
           "stance_score": 2,
           "confidence": 0.65,
-          "evidence_ids": ["src-barreras-cambio-01", "src-barreras-elnuevosiglo-01"],
+          "evidence_ids": [
+            "src-barreras-cambio-01",
+            "src-barreras-elnuevosiglo-01"
+          ],
           "updated_at": "2026-03-26",
           "merge_note": "Promedio de energy_oil (2, confianza alta) y environment (2, confianza baja). Confianza reducida a 0.65 por el subcomponente ambiental con evidencia limitada."
         },
@@ -798,8 +1747,11 @@
           "summary": "Enfatiza la sostenibilidad fiscal pero rechaza financiar compromisos sociales mediante deuda externa. La estrategia es crecer la economía primero para generar la base de ingresos para los programas sociales. Menciona superar el déficit fiscal como desafío clave junto con seguridad y salud, pero los instrumentos específicos de consolidación fiscal no están detallados en las fuentes disponibles.",
           "plain_language_summary": "Crecer la economía para pagar lo social, sin endeudamiento externo irresponsable. Los detalles de consolidación fiscal son limitados en fuentes disponibles.",
           "stance_score": 2,
-          "confidence": 0.40,
-          "evidence_ids": ["src-barreras-bluradio-01", "src-barreras-infobae-01"],
+          "confidence": 0.4,
+          "evidence_ids": [
+            "src-barreras-bluradio-01",
+            "src-barreras-infobae-01"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -809,7 +1761,9 @@
           "plain_language_summary": "Reabrir la frontera con Venezuela para comercio y refinar petróleo venezolano localmente. Política exterior centrada en oportunidad económica, no ideología.",
           "stance_score": 2,
           "confidence": 0.85,
-          "evidence_ids": ["src-barreras-infobae-01"],
+          "evidence_ids": [
+            "src-barreras-infobae-01"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -818,12 +1772,72 @@
           "summary": "Enmarca la reforma política como su medida anticorrupción principal: 'una reforma política que limpie la política'. Propone trazabilidad blockchain para los recursos del sector salud. Critica la cultura de 'perseguir presidentes' como divisiva más que constructiva, señalando un enfoque de reconciliación-primero en lugar de judicialización-primero.",
           "plain_language_summary": "Reforma política como herramienta anticorrupción. Blockchain para recursos de salud. Prefiere la reconciliación a la judicialización de ex presidentes.",
           "stance_score": 2,
-          "confidence": 0.40,
-          "evidence_ids": ["src-barreras-cambio-01"],
+          "confidence": 0.4,
+          "evidence_ids": [
+            "src-barreras-cambio-01"
+          ],
           "updated_at": "2026-03-26"
         }
       ],
-      "proposals": [],
+      "proposals": [
+        {
+          "id": "prop-barreras-01",
+          "topic_id": "security",
+          "title": "Plan de Salud Total con recuperación territorial",
+          "summary": "Repotenciar 140 helicópteros y usar tecnología avanzada para combatir grupos armados y recuperar territorios. Fortalecer acuerdos binacionales con Venezuela para proteger fronteras. Seguridad entendida como parte de la salud integral del país.",
+          "plain_language_summary": "Usar helicópteros y tecnología moderna para quitarles el control a los grupos armados y asegurar las fronteras con Venezuela.",
+          "status": "proposed",
+          "source_ids": [
+            "src-barreras-infobae-2026-03"
+          ]
+        },
+        {
+          "id": "prop-barreras-02",
+          "topic_id": "health",
+          "title": "Reforma al sistema de salud",
+          "summary": "Fortalecer el sistema de información en salud, mejorar las condiciones laborales del personal médico y promover la medicina preventiva. Como autor de la ley estatutaria de salud, propone arreglar el sistema sin necesitar una constituyente.",
+          "plain_language_summary": "Mejorar cómo funciona la salud en Colombia: mejores datos, mejores salarios para médicos y enfermeras, y prevenir enfermedades antes de que ocurran.",
+          "status": "proposed",
+          "source_ids": [
+            "src-barreras-espectador-2026-03",
+            "src-barreras-infobae-2026-03"
+          ]
+        },
+        {
+          "id": "prop-barreras-03",
+          "topic_id": "economy",
+          "title": "Bono educativo F-18 y emprendimiento juvenil",
+          "summary": "Crear un bono de seguro educativo denominado F-18 que garantice el acceso a la universidad a los 18 años. Ofrecer capital semilla para emprendimientos juveniles, fomentando la innovación y el empleo entre los jóvenes.",
+          "plain_language_summary": "Que cada joven colombiano al cumplir 18 años tenga garantizado el acceso a la universidad, más plata para arrancar su propio negocio.",
+          "status": "proposed",
+          "source_ids": [
+            "src-barreras-infobae-2026-03"
+          ]
+        },
+        {
+          "id": "prop-barreras-04",
+          "topic_id": "economy",
+          "title": "Fortalecimiento del campo y la agroindustria",
+          "summary": "Plan de reactivación del campo colombiano con énfasis en la agroindustria, dignificación de la vida campesina y alianzas entre productores y empresas del agro.",
+          "plain_language_summary": "Reactivar la agricultura colombiana con inversión real, para que los campesinos vivan mejor y el campo sea productivo.",
+          "status": "proposed",
+          "source_ids": [
+            "src-barreras-caracol-boyaca-2026-02"
+          ]
+        },
+        {
+          "id": "prop-barreras-05",
+          "topic_id": "economy",
+          "title": "Gobierno de centro sin extremos ni constituyente",
+          "summary": "Construir un gobierno de unidad nacional de centro liberal socialdemócrata que una corrientes de centro e izquierda sin continuar las divisiones del gobierno Petro. No necesita una Asamblea Constituyente para resolver los problemas del país.",
+          "plain_language_summary": "Un gobierno que una a Colombia en lugar de dividirla, sin los extremos de la derecha ni de la izquierda, y sin cambiar la Constitución.",
+          "status": "proposed",
+          "source_ids": [
+            "src-barreras-espectador-2026-03",
+            "src-barreras-lafm-2026-03"
+          ]
+        }
+      ],
       "controversies": [
         {
           "id": "barreras-controversy-01",
@@ -832,8 +1846,47 @@
           "severity": "medium",
           "status": "resolved",
           "date": "2023-05-23",
-          "source_ids": ["src-barreras-lafm-profile"],
+          "source_ids": [
+            "src-barreras-lafm-profile"
+          ],
           "notes": "La Procuraduría y el CNE concluyeron que no hubo doble militancia — el fundamento del fallo del Consejo de Estado fue diferente."
+        },
+        {
+          "id": "cont-barreras-01",
+          "title": "Investigación por presunto tráfico de influencias en la DIAN",
+          "summary": "El ministro de Comercio Luis Carlos Reyes reveló que Barreras, siendo embajador en el Reino Unido, le pidió nombrar personas en las aduanas de Cali y Buenaventura usando frases comparadas con amenazas: 'Imagínate lo feo que sería que a Messi le rompieran las piernas'. La Corte Suprema recibió solicitudes de investigación formal.",
+          "severity": "high",
+          "status": "ongoing",
+          "date": "2025-02-17",
+          "source_ids": [
+            "src-barreras-semana-dian-2025-02"
+          ],
+          "notes": "Barreras negó los hechos. El escándalo surgió en el contexto del caso Papá Pitufo, relacionado con narcofinanciación a la campaña de Petro."
+        },
+        {
+          "id": "cont-barreras-02",
+          "title": "Lista al Senado con personas investigadas por corrupción",
+          "summary": "Su lista para el Senado incluyó a la esposa del exsenador Musa Besaile (condenado por múltiples escándalos de corrupción), personas investigadas por contratación irregular, y un individuo confeso del cartel de la hemofilia que robó más de 50.000 millones de pesos al sistema de salud.",
+          "severity": "high",
+          "status": "past",
+          "date": "2026-02-12",
+          "source_ids": [
+            "src-barreras-elpais-lista-2026-02",
+            "src-barreras-elcolombiano-lista-2026-02"
+          ],
+          "notes": "El caso fue ampliamente cubierto por El País Colombia y El Colombiano como ejemplo de alianzas con maquinarias políticas cuestionadas."
+        },
+        {
+          "id": "cont-barreras-03",
+          "title": "Cuestionamientos por trayectoria política cambiante",
+          "summary": "Analistas y medios señalaron que su historial de haber trabajado con Álvaro Uribe y luego con Gustavo Petro genera desconfianza en todos los espectros políticos. No superó el 2% en encuestas de intención de voto pese a su amplia trayectoria.",
+          "severity": "low",
+          "status": "ongoing",
+          "date": "2026-03-22",
+          "source_ids": [
+            "src-barreras-opinioncolombia-2026-03"
+          ],
+          "notes": "Conocido en medios como el 'camaleón político'. Barreras defiende su capacidad de diálogo con distintos sectores como una fortaleza."
         }
       ],
       "metadata": {
@@ -862,7 +1915,11 @@
           "plain_language_summary": "Fiscalía Antimafia, 40.000 nuevos policías y soldados, más cárceles, tecnología de vigilancia. Fin de la 'Paz Total'. Contribución especial de los más ricos para financiarlo.",
           "stance_score": 3,
           "confidence": 0.85,
-          "evidence_ids": ["src-lopez-propuestas-01", "src-lopez-elnuevosiglo-01", "src-lopez-lafm-01"],
+          "evidence_ids": [
+            "src-lopez-propuestas-01",
+            "src-lopez-elnuevosiglo-01",
+            "src-lopez-lafm-01"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -872,7 +1929,10 @@
           "plain_language_summary": "600.000 viviendas como motor de empleo. Becas para un millón de jóvenes. Subsidios a microempresarios. Bajar impuestos si la economía crece al 4%.",
           "stance_score": 3,
           "confidence": 0.85,
-          "evidence_ids": ["src-lopez-propuestas-01", "src-lopez-lafm-01"],
+          "evidence_ids": [
+            "src-lopez-propuestas-01",
+            "src-lopez-lafm-01"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -882,7 +1942,10 @@
           "plain_language_summary": "Liquidez inmediata para hospitales desde el Día 1. Sistema mixto con reglas claras: acceder al servicio más cercano, no al que decida la EPS. Fondo de rescate hospitalario.",
           "stance_score": 3,
           "confidence": 0.85,
-          "evidence_ids": ["src-lopez-propuestas-01", "src-lopez-lafm-01"],
+          "evidence_ids": [
+            "src-lopez-propuestas-01",
+            "src-lopez-lafm-01"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -892,7 +1955,10 @@
           "plain_language_summary": "Apoya el fracking y la explotación de todos los recursos energéticos. Sus propuestas ambientales se centran en la bioeconomía regional, la restauración ecológica y la Amazonía.",
           "stance_score": 3,
           "confidence": 0.65,
-          "evidence_ids": ["src-lopez-fracking-01", "src-lopez-program-01"],
+          "evidence_ids": [
+            "src-lopez-fracking-01",
+            "src-lopez-program-01"
+          ],
           "updated_at": "2026-03-26",
           "merge_note": "Promedio de energy_oil (4, confianza alta) y environment (2, confianza baja). Confianza reducida a 0.65 por el subcomponente ambiental con evidencia limitada. Brecha interna notable: posición de fracking (muy pro) vs propuestas ambientales (moderadas)."
         },
@@ -903,7 +1969,10 @@
           "plain_language_summary": "Emergencia económica el Día 1. Nueva regla fiscal estricta. Bajar impuesto de renta si la economía crece. Contribución especial de los más ricos para la seguridad.",
           "stance_score": 3,
           "confidence": 0.85,
-          "evidence_ids": ["src-lopez-propuestas-01", "src-lopez-caracol-01"],
+          "evidence_ids": [
+            "src-lopez-propuestas-01",
+            "src-lopez-caracol-01"
+          ],
           "updated_at": "2026-03-26"
         },
         {
@@ -924,12 +1993,112 @@
           "plain_language_summary": "Anticorrupción como identidad política. Lideró la Consulta de 2018. Promete cero privilegios, cero burocracia, cero corrupción. Fiscalía Antimafia contra los vínculos narco-políticos.",
           "stance_score": 2,
           "confidence": 0.85,
-          "evidence_ids": ["src-lopez-propuestas-01", "src-lopez-360radio-01"],
+          "evidence_ids": [
+            "src-lopez-propuestas-01",
+            "src-lopez-360radio-01"
+          ],
           "updated_at": "2026-03-26"
         }
       ],
-      "proposals": [],
-      "controversies": [],
+      "proposals": [
+        {
+          "id": "prop-lopez-01",
+          "topic_id": "security",
+          "title": "Recuperación territorial y justicia implacable contra mafias",
+          "summary": "Recuperar el control del territorio con 40.000 nuevos miembros de la fuerza pública, modernización y profesionalización de soldados y policías. Justicia implacable contra el crimen organizado, combinada con justicia restaurativa que brinde soluciones comunitarias y segundas oportunidades reales.",
+          "plain_language_summary": "Contratar 40.000 policías y soldados más, modernizar la fuerza pública y combatir duramente a las mafias, pero también dar oportunidades reales a quienes quieran dejar el crimen.",
+          "status": "proposed",
+          "source_ids": [
+            "src-lopez-programa-oficial-2026-02",
+            "src-lopez-sitio-campana"
+          ]
+        },
+        {
+          "id": "prop-lopez-02",
+          "topic_id": "economy",
+          "title": "Mil manzanas del cuidado para liberar a las mujeres",
+          "summary": "Crear mil manzanas del cuidado en todo el país para atender a niños, adultos mayores y personas en condición de discapacidad, liberando a las mujeres para acceder a educación y empleo digno. Incluye protección efectiva contra violencias de género y feminicidios.",
+          "plain_language_summary": "Crear espacios de cuidado en los barrios para que las mujeres no tengan que quedarse en casa cuidando solas, y puedan estudiar o trabajar.",
+          "status": "proposed",
+          "source_ids": [
+            "src-lopez-programa-oficial-2026-02"
+          ]
+        },
+        {
+          "id": "prop-lopez-03",
+          "topic_id": "health",
+          "title": "Un millón de becas y reforma educativa",
+          "summary": "Garantizar un millón de becas, ampliar la jornada escolar, reformar el SENA para conectar educación con empleo, e integrar subsidios con oportunidades laborales reales. Educación y productividad como motores del desarrollo regional.",
+          "plain_language_summary": "Un millón de becas para que los jóvenes puedan estudiar, más horas en el colegio y un SENA reformado que de verdad conecte a los egresados con el mercado laboral.",
+          "status": "proposed",
+          "source_ids": [
+            "src-lopez-programa-oficial-2026-02"
+          ]
+        },
+        {
+          "id": "prop-lopez-04",
+          "topic_id": "economy",
+          "title": "600.000 subsidios de vivienda y regreso de Mi Casa Ya",
+          "summary": "Otorgar 600.000 subsidios de vivienda con ayudas específicas para mujeres que paguen arriendo. Retomar el programa Mi Casa Ya. Fortalecer el empleo formal en el sector de la construcción. Garantizar agua potable y alcantarillado usando los recursos de las regalías.",
+          "plain_language_summary": "Retomar Mi Casa Ya para que más familias tengan casa propia, con subsidios especiales para mujeres, y usar las regalías del petróleo para llevar agua potable a donde no hay.",
+          "status": "proposed",
+          "source_ids": [
+            "src-lopez-programa-oficial-2026-02"
+          ]
+        },
+        {
+          "id": "prop-lopez-05",
+          "topic_id": "anticorruption",
+          "title": "Descentralización y desarrollo regional sin corrupción",
+          "summary": "Descentralizar el poder y los recursos para que las comunidades voten directamente por los proyectos de sus regiones, reduciendo la intermediación política. Estrategias diferenciadas por región: transición energética en el Caribe, bioeconomía en la Amazonía, agroindustria en los Llanos, sustitución de economías ilegales en el Pacífico.",
+          "plain_language_summary": "Que cada región de Colombia decida cómo se gasta su plata, con proyectos adaptados a lo que necesita cada territorio, sin politiqueros de por medio.",
+          "status": "proposed",
+          "source_ids": [
+            "src-lopez-programa-oficial-2026-02",
+            "src-lopez-sitio-campana"
+          ]
+        }
+      ],
+      "controversies": [
+        {
+          "id": "cont-lopez-01",
+          "title": "Gestión cuestionada como alcaldesa de Bogotá",
+          "summary": "Críticos señalaron que su administración como alcaldesa estuvo marcada por incoherencia política, obras inconclusas, contratos inflados y haber puesto la maquinaria distrital al servicio de la campaña de Gustavo Petro en 2022. La revista Semana la calificó como una de las peores alcaldesas de la ciudad por sus constantes cambios de posición.",
+          "severity": "medium",
+          "status": "past",
+          "date": "2023-12-16",
+          "source_ids": [
+            "src-lopez-semana-alcaldia-2023-12",
+            "src-lopez-infobae-criticas-2025-06"
+          ],
+          "notes": "López responde que su administración dejó avances reales en movilidad, medio ambiente y espacio público. Las críticas provienen principalmente de sectores opositores."
+        },
+        {
+          "id": "cont-lopez-02",
+          "title": "Vinculación indirecta con escándalo UNGRD y Alianza Verde",
+          "summary": "Figuras cercanas a López dentro de la Alianza Verde estuvieron involucradas en el escándalo de la Unidad Nacional para la Gestión del Riesgo de Desastres (UNGRD). López renunció al partido en medio de la controversia, pero críticos señalaron que el gesto fue simbólico ya que no ejercía ninguna dignidad formal dentro del partido en ese momento.",
+          "severity": "medium",
+          "status": "past",
+          "date": "2025-08-15",
+          "source_ids": [
+            "src-lopez-wradio-ungrd-2025-08",
+            "src-lopez-barrancabermeja-2026-03"
+          ],
+          "notes": "López no fue investigada directamente. La controversia afectó la imagen del partido al que estuvo históricamente vinculada."
+        },
+        {
+          "id": "cont-lopez-03",
+          "title": "Consulta popular que costó más de 310.000 millones sin resultado legislativo",
+          "summary": "Durante su alcaldía impulsó una consulta popular que según críticos costó más de 310.000 millones de pesos al Estado colombiano sin producir resultados legislativos concretos. El episodio fue citado repetidamente por opositores como ejemplo de gasto ineficiente durante su administración.",
+          "severity": "medium",
+          "status": "past",
+          "date": "2021-10-26",
+          "source_ids": [
+            "src-lopez-infobae-criticas-2025-06"
+          ],
+          "notes": "López defendió la consulta como ejercicio democrático válido. Los resultados no alcanzaron el umbral requerido para ser vinculantes."
+        }
+      ],
       "metadata": {
         "procuraduria_status": "flagged",
         "procuraduria_summary": "La Procuraduría abrió investigación disciplinaria contra López el 19 de enero de 2022, mientras era alcaldesa de Bogotá, por presuntamente publicar contenido político partidista en Twitter violando las normas de neutralidad de los servidores públicos. El resultado final de esta investigación no ha sido confirmado en las fuentes disponibles.",
