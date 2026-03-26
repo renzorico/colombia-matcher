@@ -1,0 +1,227 @@
+[
+  {
+    "id": "q01",
+    "topic_id": "security",
+    "topic_label": "Seguridad",
+    "statement": "El gobierno debe priorizar el aumento del pie de fuerza militar para combatir los grupos armados.",
+    "weight": 2,
+    "direction": "positive",
+    "note": "Alta puntuación = más apoyo a solución militar."
+  },
+  {
+    "id": "q02",
+    "topic_id": "security",
+    "topic_label": "Seguridad",
+    "statement": "La negociación con grupos armados ilegales es preferible a la solución militar.",
+    "weight": 3,
+    "direction": "negative",
+    "note": "Alta puntuación = preferencia por diálogo sobre fuerza."
+  },
+  {
+    "id": "q03",
+    "topic_id": "security",
+    "topic_label": "Seguridad",
+    "statement": "Se debe permitir el porte de armas a civiles en zonas rurales con alta criminalidad.",
+    "weight": 1,
+    "direction": "positive",
+    "note": "Alta puntuación = más apoyo al porte civil de armas."
+  },
+  {
+    "id": "q04",
+    "topic_id": "security",
+    "topic_label": "Seguridad",
+    "statement": "La erradicación forzada de cultivos ilícitos es la mejor estrategia antidrogas.",
+    "weight": 2,
+    "direction": "positive",
+    "note": "Alta puntuación = más apoyo a erradicación forzada."
+  },
+  {
+    "id": "q05",
+    "topic_id": "economy",
+    "topic_label": "Economía",
+    "statement": "El Estado debe intervenir activamente en la economía para reducir la desigualdad.",
+    "weight": 3,
+    "direction": "negative",
+    "note": "Alta puntuación = más intervención estatal."
+  },
+  {
+    "id": "q06",
+    "topic_id": "economy",
+    "topic_label": "Economía",
+    "statement": "Los TLC han beneficiado más a las multinacionales que a los productores colombianos.",
+    "weight": 1,
+    "direction": "negative",
+    "note": "Alta puntuación = crítico de los TLC."
+  },
+  {
+    "id": "q07",
+    "topic_id": "economy",
+    "topic_label": "Economía",
+    "statement": "Se deben reducir los impuestos a las empresas para generar más empleo.",
+    "weight": 2,
+    "direction": "positive",
+    "note": "Alta puntuación = más apoyo a reducción de impuestos empresariales."
+  },
+  {
+    "id": "q08",
+    "topic_id": "economy",
+    "topic_label": "Economía",
+    "statement": "La reforma agraria con redistribución de tierras es urgente en Colombia.",
+    "weight": 3,
+    "direction": "negative",
+    "note": "Alta puntuación = apoyo a reforma agraria redistributiva."
+  },
+  {
+    "id": "q09",
+    "topic_id": "health",
+    "topic_label": "Salud",
+    "statement": "El sistema de salud debe ser completamente público y universal.",
+    "weight": 1,
+    "direction": "negative",
+    "note": "Alta puntuación = sistema completamente público."
+  },
+  {
+    "id": "q10",
+    "topic_id": "health",
+    "topic_label": "Salud",
+    "statement": "Las EPS privadas deben seguir operando como intermediarias del sistema de salud.",
+    "weight": 2,
+    "direction": "positive",
+    "note": "Alta puntuación = defensa del modelo mixto con EPS privadas."
+  },
+  {
+    "id": "q11",
+    "topic_id": "health",
+    "topic_label": "Salud",
+    "statement": "La salud mental debe tener la misma prioridad presupuestal que la salud física.",
+    "weight": 3,
+    "direction": "neutral",
+    "note": "Pregunta de valor transversal; baja diferenciación entre candidatos."
+  },
+  {
+    "id": "q12",
+    "topic_id": "energy_environment",
+    "topic_label": "Energía y Medio Ambiente",
+    "statement": "Colombia debe prohibir el fracking y la minería a cielo abierto.",
+    "weight": 1,
+    "direction": "negative",
+    "note": "Alta puntuación = posición anti-fracking y anti-minería a cielo abierto."
+  },
+  {
+    "id": "q13",
+    "topic_id": "energy_environment",
+    "topic_label": "Energía y Medio Ambiente",
+    "statement": "La transición energética debe acelerarse aunque implique costos económicos a corto plazo.",
+    "weight": 2,
+    "direction": "negative",
+    "note": "Alta puntuación = apoyo a transición energética acelerada."
+  },
+  {
+    "id": "q14",
+    "topic_id": "energy_environment",
+    "topic_label": "Energía y Medio Ambiente",
+    "statement": "La exploración petrolera es necesaria para financiar el desarrollo del país.",
+    "weight": 3,
+    "direction": "positive",
+    "note": "Alta puntuación = apoyo a la exploración petrolera."
+  },
+  {
+    "id": "q15",
+    "topic_id": "fiscal",
+    "topic_label": "Política Fiscal",
+    "statement": "Los impuestos a las grandes fortunas son necesarios para financiar programas sociales.",
+    "weight": 1,
+    "direction": "negative",
+    "note": "Alta puntuación = apoyo a impuestos al patrimonio."
+  },
+  {
+    "id": "q16",
+    "topic_id": "fiscal",
+    "topic_label": "Política Fiscal",
+    "statement": "El gasto público en Colombia es excesivo y debe reducirse.",
+    "weight": 2,
+    "direction": "positive",
+    "note": "Alta puntuación = apoyo a la austeridad fiscal."
+  },
+  {
+    "id": "q17",
+    "topic_id": "fiscal",
+    "topic_label": "Política Fiscal",
+    "statement": "Las pensiones deben seguir siendo administradas por fondos privados.",
+    "weight": 3,
+    "direction": "positive",
+    "note": "Alta puntuación = defensa de fondos de pensión privados."
+  },
+  {
+    "id": "q18",
+    "topic_id": "foreign_policy",
+    "topic_label": "Política Exterior",
+    "statement": "Colombia debe restablecer relaciones diplomáticas plenas con Venezuela.",
+    "weight": 1,
+    "direction": "negative",
+    "note": "Alta puntuación = apoyo a relaciones con Venezuela."
+  },
+  {
+    "id": "q19",
+    "topic_id": "foreign_policy",
+    "topic_label": "Política Exterior",
+    "statement": "La alianza con Estados Unidos debe ser la prioridad de la política exterior.",
+    "weight": 2,
+    "direction": "positive",
+    "note": "Alta puntuación = prioridad a la alianza con EE.UU."
+  },
+  {
+    "id": "q20",
+    "topic_id": "foreign_policy",
+    "topic_label": "Política Exterior",
+    "statement": "Colombia debe fortalecer la integración con países latinoamericanos antes que con potencias globales.",
+    "weight": 3,
+    "direction": "negative",
+    "note": "Alta puntuación = prioridad a integración regional latinoamericana."
+  },
+  {
+    "id": "q21",
+    "topic_id": "anticorruption",
+    "topic_label": "Anticorrupción",
+    "statement": "Los funcionarios públicos condenados por corrupción deben recibir cadena perpetua.",
+    "weight": 1,
+    "direction": "positive",
+    "note": "Alta puntuación = posición punitiva máxima frente a corrupción."
+  },
+  {
+    "id": "q22",
+    "topic_id": "anticorruption",
+    "topic_label": "Anticorrupción",
+    "statement": "La financiación de campañas políticas debe ser exclusivamente pública.",
+    "weight": 2,
+    "direction": "negative",
+    "note": "Alta puntuación = apoyo a financiación exclusivamente pública."
+  },
+  {
+    "id": "q23",
+    "topic_id": "security",
+    "topic_label": "Seguridad",
+    "statement": "La Policía Nacional debe ser reformada estructuralmente y desmilitarizada.",
+    "weight": 3,
+    "direction": "negative",
+    "note": "Alta puntuación = apoyo a desmilitarización de la policía."
+  },
+  {
+    "id": "q24",
+    "topic_id": "economy",
+    "topic_label": "Economía",
+    "statement": "El salario mínimo en Colombia debería aumentarse significativamente cada año.",
+    "weight": 1,
+    "direction": "negative",
+    "note": "Alta puntuación = apoyo a aumentos significativos del salario mínimo."
+  },
+  {
+    "id": "q25",
+    "topic_id": "health",
+    "topic_label": "Salud",
+    "statement": "El acceso a medicamentos genéricos debe priorizarse sobre las patentes farmacéuticas.",
+    "weight": 2,
+    "direction": "negative",
+    "note": "Alta puntuación = prioridad a medicamentos genéricos sobre patentes."
+  }
+]

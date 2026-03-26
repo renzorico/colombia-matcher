@@ -1,0 +1,942 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-03-26",
+  "notes": "Static curated data. Do not fabricate. Missing fields use null or []. See schema_notes.md.",
+  "sources": [
+    {
+      "id": "src-shared-llyc-2026",
+      "type": "analysis",
+      "title": "Análisis electoral Colombia 2026 — perfiles programáticos de candidatos",
+      "publisher": "Llorente & Cuenca (LLYC)",
+      "url": null,
+      "published_at": "2026",
+      "access_date": "2026-03-01",
+      "reliability_notes": "Firma de análisis político y comunicación estratégica. Informe de múltiples páginas con perfiles de los principales candidatos. Las referencias al documento aparecen como [LLYC, p.XX] en los datos de origen.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-procuraduria-01",
+      "type": "news",
+      "title": "Cepeda absuelto por Procuraduría en segunda instancia por presunta manipulación de testigos",
+      "publisher": "El Colombiano",
+      "url": "https://www.elcolombiano.com/colombia/cepeda-absuelto-por-procuraduria-en-segunda-instancia-por-presunta-manipulacion-de-testigos-IH13508550",
+      "published_at": "2020-08",
+      "access_date": "2026-03-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-procuraduria-01",
+      "type": "news",
+      "title": "El impacto jurídico de la denuncia de David Murcia Guzmán sobre la candidatura de Abelardo de la Espriella",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2026/02/12/el-impacto-juridico-de-la-denuncia-de-david-murcia-guzman-sobre-la-candidatura-de-abelardo-de-la-espriella/",
+      "published_at": "2026-02-12",
+      "access_date": "2026-03-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-scandal-dmg",
+      "type": "news",
+      "title": "Denuncia contra Abelardo de la Espriella por caso DMG abre nuevo frente en campaña",
+      "publisher": "Diario ADN",
+      "url": "https://www.diarioadn.co/noticias/denuncia-contra-abelardo-de-la-espriella-por-caso-dmg-abre-nuevo-frente-en-campana+articulo+72890",
+      "published_at": "2026-02",
+      "access_date": "2026-03-01",
+      "reliability_notes": null,
+      "quote": "David Murcia Guzmán presentó denuncia en febrero de 2026 alegando que De la Espriella retuvo $5 mil millones en honorarios tras retirarse de su defensa en 2008.",
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-scandal-saab",
+      "type": "news",
+      "title": "Abelardo de la Espriella: contactos con policía en caso Saab",
+      "publisher": "Univision",
+      "url": "https://www.univision.com/noticias/mundo/abelardo-de-la-espriella-saab-contactos-policia",
+      "published_at": null,
+      "access_date": "2026-03-01",
+      "reliability_notes": null,
+      "quote": "En una audiencia disciplinaria anterior, De la Espriella admitió haber ordenado la vigilancia de un agente de policía en relación con la defensa de Alex Saab.",
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-scandal-hidroituango",
+      "type": "news",
+      "title": "Hidroituango: Contraloría confirma fallo fiscal",
+      "publisher": "El Tiempo",
+      "url": "https://www.eltiempo.com/justicia/investigacion/hidroituango-contraloria-confirma-fallo-fiscal-635027",
+      "published_at": "2021-11",
+      "access_date": "2026-03-01",
+      "reliability_notes": null,
+      "quote": "La Contraloría confirmó en segunda instancia (noviembre 2021) la responsabilidad fiscal de Fajardo por irregularidades en Hidroituango, con un daño patrimonial de 4.3 billones de pesos.",
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-procuraduria-01",
+      "type": "news",
+      "title": "Procuraduría archivó investigación contra Sergio Fajardo por deuda en dólares",
+      "publisher": "El Espectador",
+      "url": "https://www.elespectador.com/judicial/procuraduria-archivo-investigacion-contra-sergio-fajardo-por-deuda-en-dolares/",
+      "published_at": "2023-05",
+      "access_date": "2026-03-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-valencia-profile-01",
+      "type": "news",
+      "title": "Perfil Paloma Valencia — Gran Consulta Colombia — Elecciones Colombia 8 de marzo de 2026",
+      "publisher": "La FM",
+      "url": "https://www.lafm.com.co/politica/perfil-paloma-valencia-gran-consulta-colombia-elecciones-colombia-8-marzo-2026-392740",
+      "published_at": "2026-03",
+      "access_date": "2026-03-08",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-elespectador-01",
+      "type": "news",
+      "title": "Roy Barreras propone inyectar más recursos al sistema de salud para evitar el cierre de clínicas y hospitales",
+      "publisher": "El Espectador",
+      "url": "https://www.elespectador.com/politica/elecciones-colombia-2026/roy-barreras-propone-inyectar-mas-recursos-al-sistema-de-salud-para-evitar-el-cierre-de-clinicas-y-hospitales-noticia-hoys/",
+      "published_at": "2026",
+      "access_date": "2026-03-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-cambio-01",
+      "type": "program",
+      "title": "Programa Roy Barreras — economía, vivienda, educación, transición energética",
+      "publisher": "Cambio Colombia",
+      "url": "https://cambiocolombia.com/elecciones-colombia-2026/articulo/2026/2/programa-roy-barreras-candidatura-presidencial-economia-vivienda-educacion-transicion-energetica/",
+      "published_at": "2026-02",
+      "access_date": "2026-03-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-infobae-01",
+      "type": "interview",
+      "title": "Roy Barreras defiende un centro político con experiencia, diálogo y enfoque social",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2026/03/02/roy-barreras-defiende-un-centro-politico-con-experiencia-dialogo-y-enfoque-social-no-improviso/",
+      "published_at": "2026-03-02",
+      "access_date": "2026-03-10",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-elnuevosiglo-01",
+      "type": "news",
+      "title": "Quién es Roy Barreras — propuestas del candidato para presidenciales 2026",
+      "publisher": "El Nuevo Siglo",
+      "url": "https://www.elnuevosiglo.com.co/politica/quien-es-roy-barrera-propuestas-del-candidato-para-presidenciales-2026",
+      "published_at": "2026",
+      "access_date": "2026-03-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-360radio-01",
+      "type": "news",
+      "title": "¿Cuáles son las propuestas de Roy Barreras para la presidencia?",
+      "publisher": "360 Radio",
+      "url": "https://360radio.com.co/cuales-son-las-propuestas-de-roy-barreras-para-la-presidencia/212958/",
+      "published_at": "2026",
+      "access_date": "2026-03-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-bluradio-01",
+      "type": "news",
+      "title": "Hay más progresismo que petrismo — Roy Barreras dice que su campaña empieza hoy",
+      "publisher": "Bluradio",
+      "url": "https://www.bluradio.com/nacion/elecciones/hay-mas-progresismo-que-petrismo-roy-barreras-dice-que-su-campana-empieza-hoy-pr30",
+      "published_at": "2026",
+      "access_date": "2026-03-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-eltiempo-procuraduria",
+      "type": "news",
+      "title": "Roy Barreras: CNE y Procuraduría dicen que no hay doble militancia",
+      "publisher": "El Tiempo",
+      "url": "https://www.eltiempo.com/politica/congreso/roy-barreras-cne-y-procuraduria-dicen-que-no-hay-doble-militancia-766605",
+      "published_at": "2023-05",
+      "access_date": "2026-03-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-lafm-profile",
+      "type": "news",
+      "title": "Roy Barreras — perfil y carrera política — propuestas presidenciales 2026",
+      "publisher": "La FM",
+      "url": "https://www.lafm.com.co/politica/roy-barreras-perfil-carrera-politica-propuestas-presidenciales-2026-392386",
+      "published_at": "2026-03",
+      "access_date": "2026-03-10",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-elpais-01",
+      "type": "news",
+      "title": "Roy Barreras se queda con la victoria en el Frente por la Vida y busca unirse al progresismo",
+      "publisher": "El País (Cali)",
+      "url": "https://www.elpais.com.co/politica/roy-barreras-se-queda-con-la-victoria-en-el-frente-por-la-vida-y-busca-unirse-al-progresismo-0810.html",
+      "published_at": "2026-03-08",
+      "access_date": "2026-03-10",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-program-01",
+      "type": "program",
+      "title": "Programa de gobierno de Claudia López",
+      "publisher": "claudia-lopez.com (sitio oficial)",
+      "url": "https://claudia-lopez.com/programa-de-gobierno-de-claudia-lopez/",
+      "published_at": "2026",
+      "access_date": "2026-03-10",
+      "reliability_notes": "Fuente primaria — sitio oficial de campaña.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-propuestas-01",
+      "type": "program",
+      "title": "¿Cuál es su principal propuesta?",
+      "publisher": "claudia-lopez.com (sitio oficial)",
+      "url": "https://claudia-lopez.com/cual-es-su-principal-propuesta/",
+      "published_at": "2026",
+      "access_date": "2026-03-10",
+      "reliability_notes": "Fuente primaria — sitio oficial de campaña.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-lafm-01",
+      "type": "news",
+      "title": "Claudia López revela tres propuestas para ser presidenta de Colombia 2026",
+      "publisher": "La FM",
+      "url": "https://www.lafm.com.co/politica/claudia-lopez-revela-tres-propuestas-para-ser-presidenta-colombia-2026-390421",
+      "published_at": "2026-03",
+      "access_date": "2026-03-10",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-fracking-01",
+      "type": "news",
+      "title": "Claudia López contestó a los ataques de Petro por apoyar el fracking",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2025/06/05/claudia-lopez-contesto-a-los-ataques-de-petro-por-apoyar-el-fracking-si-se-convierte-en-presidente-su-hipocresia-hace-mas-dano/",
+      "published_at": "2025-06-05",
+      "access_date": "2026-03-10",
+      "reliability_notes": null,
+      "quote": "Statement at Asobancaria Banking Convention, June 5, 2025.",
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-elnuevosiglo-01",
+      "type": "news",
+      "title": "Las propuestas de Claudia López para llegar a la presidencia",
+      "publisher": "El Nuevo Siglo",
+      "url": "https://www.elnuevosiglo.com.co/nacion/las-propuestas-de-claudia-lopez-para-llegar-la-presidencia",
+      "published_at": "2026",
+      "access_date": "2026-03-10",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-caracol-01",
+      "type": "news",
+      "title": "Claudia López gana Consulta de las Soluciones y será candidata presidencial en Colombia",
+      "publisher": "Noticias Caracol",
+      "url": "https://www.noticiascaracol.com/politica/elecciones-colombia/claudia-lopez-gana-consulta-de-las-soluciones-y-sera-candidata-presidencial-en-colombia-rg10",
+      "published_at": "2026-03-08",
+      "access_date": "2026-03-10",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-360radio-01",
+      "type": "news",
+      "title": "Claudia López gana la Consulta de las Soluciones y va por la presidencia en 2026",
+      "publisher": "360 Radio",
+      "url": "https://360radio.com.co/claudia-lopez-gana-la-consulta-de-las-soluciones-y-va-por-la-presidencia-en-2026/213105/",
+      "published_at": "2026-03-08",
+      "access_date": "2026-03-10",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-procuraduria-01",
+      "type": "official",
+      "title": "Procuraduría abrió investigación disciplinaria contra alcaldesa de Bogotá, Claudia López, por presunta participación en política",
+      "publisher": "Procuraduría General de la Nación",
+      "url": "https://www.procuraduria.gov.co/portal/PROCURADURIA-ABRIO-INVESTIGACION-DISCIPLINARIA-EN-CONTRA-DE-ALCALDESA-DE-BOGOTA_-CLAUDIA-LOPEZ_-POR-PRESUNTA-PARTICIPACION-EN-POLITICA.news",
+      "published_at": "2022-01-19",
+      "access_date": "2026-03-10",
+      "reliability_notes": "Fuente primaria — comunicado oficial de la Procuraduría.",
+      "quote": null,
+      "language": "es"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "ivan-cepeda",
+      "name": "Iván Cepeda",
+      "party": "Pacto Histórico",
+      "coalition": null,
+      "spectrum": "left",
+      "spectrum_score": 1,
+      "short_bio": "Senador del Pacto Histórico, abogado de derechos humanos e investigador del paramilitarismo. Conocido por liderar el caso contra Álvaro Uribe en el Senado y por su trabajo en derechos de las víctimas.",
+      "profile_status": "curated_static",
+      "last_updated": "2026-03-26",
+      "topics": [
+        {
+          "topic_id": "security",
+          "topic_label": "Seguridad",
+          "summary": "Rechaza el modelo punitivo/militar tradicional en favor de la 'seguridad humana': desmantelar la gobernanza paramilitar y las economías ilícitas en territorios marginados mediante inversión social y cooperación diplomática/comercial en fronteras, en lugar de cierres militares.",
+          "plain_language_summary": "Prefiere invertir en comunidades y negociar en fronteras antes que usar la fuerza militar. Propone un modelo de 'seguridad humana' que ataque las causas sociales del crimen.",
+          "stance_score": 1,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "economy",
+          "topic_label": "Economía",
+          "summary": "Aboga por un 'capitalismo productivo' con fuerte rectoría del Estado y énfasis en dignidad humana. Propone una 'revolución agraria' para hacer de la economía campesina el motor nacional, requiriendo intervención estatal en tierras, vías rurales y recursos básicos. Crítico de las élites de mercado y la desigualdad.",
+          "plain_language_summary": "Defiende un Estado fuerte en la economía y una reforma agraria profunda. Quiere convertir al campesinado en el eje de la economía nacional.",
+          "stance_score": 1,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "health",
+          "topic_label": "Salud",
+          "summary": "Apoya una reforma a la salud para crear un sistema mixto donde las EPS permanecen pero bajo estricta rectoría estatal. Propone una 'Comisión de la Verdad Financiera' para investigar la corrupción (ej. Nueva EPS). Plan de emergencia inmediato para resolver el desabastecimiento de medicamentos y rescatar las finanzas hospitalarias.",
+          "plain_language_summary": "Quiere reformar el sistema de salud: mantener las EPS pero con control estatal estricto. Propone investigar la corrupción en la Nueva EPS y estabilizar los hospitales.",
+          "stance_score": 2,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "energy_environment",
+          "topic_label": "Energía y Medio Ambiente",
+          "summary": "Prioriza la soberanía energética y la transición acelerada, manteniendo un rechazo explícito al fracking como línea roja ambiental. Apoya la autogeneración solar en zonas rurales. Propone intervenir monopolios privados en importaciones de gas para evitar la especulación tarifaria. Concibe la biodiversidad y el agua como 'casa común'; condiciona el desarrollo energético a licencias ambientales estrictas y prioriza la protección de la Amazonía.",
+          "plain_language_summary": "Rechaza el fracking y promueve la transición energética acelerada. Protege la Amazonía y el agua. Apoyaría la autogeneración solar para el campo.",
+          "stance_score": 1,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26",
+          "merge_note": "Promedio de energy_oil (1) y environment (1). Ambos subcomponentes con confianza alta."
+        },
+        {
+          "topic_id": "fiscal",
+          "topic_label": "Política Fiscal",
+          "summary": "Reconoce una deuda grande y un déficit serio pero rechaza los recortes al gasto social como 'austeridad neoliberal'. Propone una 'austeridad republicana': combatir la macrocorrupción y el despilfarro estatal (ej. regalías) como herramienta principal de consolidación fiscal. Arriesga tensión con la Regla Fiscal y las calificadoras de riesgo.",
+          "plain_language_summary": "No recortaría el gasto social, pero combatiría la corrupción y el despilfarro como forma de equilibrar las finanzas públicas.",
+          "stance_score": 2,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "foreign_policy",
+          "topic_label": "Política Exterior",
+          "summary": "Defiende la diplomacia soberana; rechaza explícitamente la interferencia de EE.UU. en asuntos internos y la descertificación en la guerra contra las drogas. Prioriza la integración regional latinoamericana y relaciones estables con Venezuela como garante de los procesos de paz. Posición pro-palestina.",
+          "plain_language_summary": "Quiere una política exterior independiente de EE.UU., con integración latinoamericana como prioridad y respaldo a Venezuela como actor en la paz.",
+          "stance_score": 1,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "anticorruption",
+          "topic_label": "Anticorrupción",
+          "summary": "La anticorrupción es central en su identidad: propone reemplazar el CNE por un ente verdaderamente imparcial, una política sistémica de investigación de 'macrocorrupción', una 'Ley de Austeridad Republicana' para reducir salarios del Congreso, y una 'Comisión de la Verdad Financiera' para el fraude en el sector salud.",
+          "plain_language_summary": "Propone reformar el sistema electoral, investigar la corrupción sistémica y reducir los privilegios del Congreso.",
+          "stance_score": 2,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        }
+      ],
+      "proposals": [],
+      "controversies": [
+        {
+          "id": "cepeda-controversy-01",
+          "title": "Investigación disciplinaria Procuraduría — presunta manipulación de testigos (caso Uribe)",
+          "summary": "La Procuraduría abrió investigación disciplinaria contra Cepeda por presunta manipulación de testigos en el caso contra Álvaro Uribe. Fue absuelto en primera y segunda instancia. El Procurador General Fernando Carrillo confirmó la absolución en segunda instancia en agosto de 2020.",
+          "severity": "low",
+          "status": "acquitted",
+          "date": "2020-08",
+          "source_ids": ["src-cepeda-procuraduria-01"],
+          "notes": "Proceso cerrado. Sin sanciones ni inhabilidades activas."
+        }
+      ],
+      "metadata": {
+        "procuraduria_status": "clean",
+        "procuraduria_summary": "La Procuraduría abrió investigación por presunta manipulación de testigos en el caso Uribe, pero absolvió a Cepeda en primera y segunda instancia. No se encontraron sanciones ni inhabilidades activas.",
+        "procuraduria_source_id": "src-cepeda-procuraduria-01",
+        "party_history": "El Pacto Histórico es la coalición de izquierda que llevó a Gustavo Petro a la presidencia en 2022. Agrupa movimientos sociales, partidos progresistas y operadores políticos del antiguo brazo político de las FARC bajo una plataforma de transformación social estructural, reforma agraria y cambio económico liderado por el Estado.",
+        "spectrum_score": 1
+      }
+    },
+    {
+      "id": "abelardo-de-la-espriella",
+      "name": "Abelardo de la Espriella",
+      "party": "Firmes por la Patria",
+      "coalition": null,
+      "spectrum": "far-right",
+      "spectrum_score": 5,
+      "short_bio": "Abogado penalista y candidato político. Fundador del movimiento de extrema derecha 'Firmes por la Patria' (también registrado como 'Salvación Nacional'), reconocido por haber defendido figuras de alto perfil vinculadas al crimen organizado y el paramilitarismo.",
+      "profile_status": "curated_static",
+      "last_updated": "2026-03-26",
+      "topics": [
+        {
+          "topic_id": "security",
+          "topic_label": "Seguridad",
+          "summary": "Enfoque punitivo extremo: retomar territorios de inmediato, bombardear campamentos 'narcoterroristas', fumigar 330.000 hectáreas de coca y construir megacárceles al estilo El Salvador. Cero tolerancia, 'mano de hierro' en seguridad ciudadana.",
+          "plain_language_summary": "Propone mano dura máxima: bombardeos a grupos armados, fumigación masiva de cultivos y megacárceles. Modelo similar al de El Salvador.",
+          "stance_score": 5,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "economy",
+          "topic_label": "Economía",
+          "summary": "Estrictamente pro-mercado y anti-intervencionista. Propone reducir el tamaño del Estado en un 40% y eliminar hasta 136 entidades públicas para controlar el déficit crónico, bajar impuestos y destrabar la inversión privada. Crítica frontal al modelo intervencionista actual.",
+          "plain_language_summary": "Quiere reducir el Estado radicalmente: eliminar 136 entidades, bajar impuestos y dejar que el mercado dirija la economía.",
+          "stance_score": 5,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "health",
+          "topic_label": "Salud",
+          "summary": "Opone a la reforma de salud actual, acusando al gobierno de intentar estatizar el servicio. Propone un plan de choque de 90 días inyectando 10 billones de pesos para estabilizar el sistema y pagar deudas. Defiende la participación de las EPS; promete 'mano de hierro' contra aseguradoras corruptas y apoyo a las privadas eficientes.",
+          "plain_language_summary": "Contra la reforma de salud del gobierno. Propone un plan de choque de 90 días para estabilizar el sistema y pagar deudas, manteniendo las EPS.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "energy_environment",
+          "topic_label": "Energía y Medio Ambiente",
+          "summary": "Rechaza la transición energética acelerada; considera los hidrocarburos indispensables. Propone explotar activamente las reservas nacionales de gas bloqueadas y defiende el fracking con 'responsabilidad ambiental', con la meta de elevar la producción petrolera de 700.000 a 1,3 millones de barriles diarios. En materia ambiental, plantea un enfoque extractivista pragmático: explotar el subsuelo con 'estricta responsabilidad ambiental'; defiende la minería legal fuera de los límites de los ecosistemas.",
+          "plain_language_summary": "Apoya el fracking y quiere más de 1,3 millones de barriles de petróleo al día. Acepta la minería legal con responsabilidad ambiental. Rechaza la transición energética acelerada.",
+          "stance_score": 5,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26",
+          "merge_note": "Promedio de energy_oil (5) y environment (4), redondeado a 5 dado el peso mayor de q14 (exploración petrolera) y la centralidad del discurso energético en su campaña."
+        },
+        {
+          "topic_id": "fiscal",
+          "topic_label": "Política Fiscal",
+          "summary": "Propone reemplazar la regla fiscal actual con un estricto 'freno de deuda', refinanciar la deuda pública, eliminar impuestos distorsivos y reducir el Estado suprimiendo 136 entidades. Busca revertir un déficit proyectado del 7-8% del PIB y recuperar la confianza de las calificadoras de riesgo.",
+          "plain_language_summary": "Propone una regla de 'freno de deuda', eliminar impuestos distorsivos y reducir el Estado en un 40%. Meta: equilibrar las finanzas públicas rápidamente.",
+          "stance_score": 5,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "foreign_policy",
+          "topic_label": "Política Exterior",
+          "summary": "Política exterior ideologizada y centrada en la seguridad. Prioriza una alianza exclusiva de seguridad con EE.UU. e Israel contra el narcoterrorismo. Celebra rutas militares para derrocar al gobierno de Venezuela. Ha solicitado formalmente a EE.UU. revocar la visa del presidente colombiano y vetar compras de aeronaves militares, cruzando líneas diplomáticas tradicionales.",
+          "plain_language_summary": "Alianza total con EE.UU. e Israel. Pide acción militar contra Venezuela. Ha solicitado sanciones estadounidenses contra el gobierno colombiano.",
+          "stance_score": 5,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "anticorruption",
+          "topic_label": "Anticorrupción",
+          "summary": "El informe disponible no contiene propuestas específicas anticorrupción de De la Espriella más allá de su crítica general al gobierno actual. Su agenda de reducción del Estado se enmarca como eficiencia, no como anticorrupción.",
+          "plain_language_summary": "No se identificaron propuestas anticorrupción detalladas. Su discurso se centra en reducir el Estado, no en reformas institucionales anticorrupción.",
+          "stance_score": 4,
+          "confidence": 0.40,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        }
+      ],
+      "proposals": [],
+      "controversies": [
+        {
+          "id": "espriella-controversy-01",
+          "title": "Clientes de defensa penal vinculados al crimen organizado y paramilitarismo",
+          "summary": "Como abogado, De la Espriella ha defendido figuras vinculadas al crimen organizado y el paramilitarismo. Requiere fuentes adicionales de El Espectador para documentación completa.",
+          "severity": "medium",
+          "status": "pending_research",
+          "date": null,
+          "source_ids": [],
+          "notes": "Marcado para investigación adicional. Sin fuente primaria confirmada al 2026-03-26."
+        },
+        {
+          "id": "espriella-controversy-02",
+          "title": "Denuncia disciplinaria DMG — retención de honorarios de David Murcia Guzmán",
+          "summary": "David Murcia Guzmán presentó denuncia en febrero de 2026 alegando que De la Espriella retuvo 5 mil millones de pesos en honorarios tras retirarse de su defensa en 2008. De la Espriella niega los hechos y alega prescripción.",
+          "severity": "medium",
+          "status": "pending",
+          "date": "2026-02",
+          "source_ids": ["src-espriella-scandal-dmg", "src-espriella-procuraduria-01"],
+          "notes": "Proceso ante la Comisión de Disciplina Judicial, no la Procuraduría."
+        },
+        {
+          "id": "espriella-controversy-03",
+          "title": "Caso Alex Saab — vigilancia de agente de policía",
+          "summary": "En una audiencia disciplinaria previa, De la Espriella admitió haber ordenado la vigilancia de un agente de policía en relación con la defensa de Alex Saab.",
+          "severity": "medium",
+          "status": "investigated",
+          "date": null,
+          "source_ids": ["src-espriella-scandal-saab"],
+          "notes": null
+        }
+      ],
+      "metadata": {
+        "procuraduria_status": "unknown",
+        "procuraduria_summary": "Como abogado privado, De la Espriella está bajo la jurisdicción de la Comisión de Disciplina Judicial, no la Procuraduría. No se identificó registro disciplinario en la Procuraduría. Se requiere consulta directa al registro.",
+        "procuraduria_source_id": "src-espriella-procuraduria-01",
+        "party_history": "El documento LLYC lista su partido como 'Salvación Nacional'. El movimiento es una plataforma de extrema derecha y socialmente conservadora construida en torno a De la Espriella personalmente, oponiéndose al gobierno Petro y abogando por una doctrina de seguridad punitiva y liberalización de mercado radical.",
+        "spectrum_score": 5
+      }
+    },
+    {
+      "id": "sergio-fajardo",
+      "name": "Sergio Fajardo",
+      "party": "Dignidad y Compromiso",
+      "coalition": null,
+      "spectrum": "center",
+      "spectrum_score": 3,
+      "short_bio": "Matemático, ex alcalde de Medellín (2004–2007) y ex gobernador de Antioquia (2012–2015). Tecnocrático centrista, reconocido por la transformación urbana de Medellín a través de la inversión en educación. Candidato presidencial en 2018 (tercer lugar).",
+      "profile_status": "curated_static",
+      "last_updated": "2026-03-26",
+      "topics": [
+        {
+          "topic_id": "security",
+          "topic_label": "Seguridad",
+          "summary": "Termina la 'Paz Total' y recupera el control territorial vía su 'Plan Guardián', combinando fuerzas de seguridad modernizadas (IA, tecnología, apagones de comunicaciones en cárceles) con inversión inmediata en infraestructura y sustitución agrícola. Vincula directamente el financiamiento de la seguridad a la consolidación fiscal.",
+          "plain_language_summary": "Propone el 'Plan Guardián': modernizar las fuerzas con tecnología, recuperar territorios y sustitución de cultivos. Fin de la 'Paz Total'.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "economy",
+          "topic_label": "Economía",
+          "summary": "Enfoque gerencial y no ideológico, enfocado en restaurar la confianza institucional más que en intervención estatal profunda o liberalización radical. Promete evitar decisiones populistas sin respaldo técnico. El informe señala como brecha la baja densidad programática.",
+          "plain_language_summary": "Maneja la economía desde una perspectiva técnica y no ideológica. Quiere restaurar la confianza inversora y evitar el populismo.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "health",
+          "topic_label": "Salud",
+          "summary": "Reformista pero no destructivo del modelo actual. Propone rescatar la Nueva EPS clarificando sus finanzas, someter las EPS a auditorías externas y recalcular la UPC sin sesgos políticos. Inyección de liquidez de emergencia a hospitales en 100 días. Enfoque basado en evidencia y sostenibilidad financiera.",
+          "plain_language_summary": "Quiere auditar las EPS, recalcular la UPC sin sesgos y resolver la crisis de liquidez hospitalaria en 100 días. No elimina las EPS, las reforma.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "energy_environment",
+          "topic_label": "Energía y Medio Ambiente",
+          "summary": "Prioriza la soberanía energética y la seguridad de suministro bajo la premisa de 'no apagar Colombia': propone reactivar inmediatamente la exploración de gas y petróleo con énfasis en proyectos offshore en el Caribe, advirtiendo que frenar la exploración arriesga alzas tarifarias de hasta el 36%. En materia ambiental, rechaza el ambientalismo dogmático en favor de una 'transición responsable'; propone avanzar con pilotos de fracking bajo estricto rigor científico antes de cualquier decisión definitiva—un punto medio explícitamente tecnocrático.",
+          "plain_language_summary": "Quiere reactivar la exploración de petróleo y gas para no depender de importaciones costosas. En fracking, propone pilotos científicos antes de decidir. Transición energética responsable, no abrupta.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26",
+          "merge_note": "Promedio de energy_oil (4) y environment (3), redondeado a 4. Ambos subcomponentes con confianza alta."
+        },
+        {
+          "topic_id": "fiscal",
+          "topic_label": "Política Fiscal",
+          "summary": "Propone un plan de estabilización financiera de 100 días, una reforma tributaria estructural y concertada ('todos ponemos') que reduce el impuesto corporativo del 35% al 30% con alivios para micro y pequeñas empresas, y eliminación del gasto burocrático superfluo. Prioriza la inversión regional y la confianza del mercado. Rechaza explícitamente el populismo.",
+          "plain_language_summary": "Reforma tributaria consensuada: bajar el impuesto corporativo al 30%, pero manteniendo progresividad. Eliminaría el gasto burocrático innecesario. Prioriza la confianza del mercado.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "foreign_policy",
+          "topic_label": "Política Exterior",
+          "summary": "Pragmatismo estratégico y cautela diplomática. Prioriza relaciones estables con EE.UU., que considera vitales para el 30% de las exportaciones, remesas e inversión extranjera. Planea buscar líneas de crédito del FMI para financiar urgencias del sistema de salud sin aumentar irresponsablemente la deuda pública. Evita confrontaciones ideológicas.",
+          "plain_language_summary": "Diplomacia pragmática. Mantener relaciones sólidas con EE.UU. (vital para exportaciones), buscar crédito del FMI y evitar confrontaciones ideológicas.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "anticorruption",
+          "topic_label": "Anticorrupción",
+          "summary": "Bandera central de gobernanza: propone liderar personalmente una nueva Agencia Nacional Anticorrupción, hacer públicos y vigilar los 30 contratos más grandes del país, y trabajar con el Congreso en un 'campo de juego transparente' que elimine la 'mermelada' institucional. Rechaza una Asamblea Constituyente como vector de riesgo de corrupción.",
+          "plain_language_summary": "Crearía una Agencia Nacional Anticorrupción que él mismo lideraría. Publicaría los 30 contratos públicos más grandes del país. Contra la Constituyente.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        }
+      ],
+      "proposals": [],
+      "controversies": [
+        {
+          "id": "fajardo-controversy-01",
+          "title": "Contraloría — responsabilidad fiscal por Hidroituango",
+          "summary": "La Contraloría confirmó en segunda instancia (noviembre 2021) la responsabilidad fiscal de Fajardo por irregularidades en el proyecto Hidroituango durante su gobernación de Antioquia, con un daño patrimonial de 4,3 billones de pesos. La Procuraduría archivó por separado su propia investigación disciplinaria sobre un contrato en dólares de la gobernación en mayo de 2023, absolviéndolo en ese frente.",
+          "severity": "high",
+          "status": "resolved",
+          "date": "2021-11",
+          "source_ids": ["src-fajardo-scandal-hidroituango", "src-fajardo-procuraduria-01"],
+          "notes": "Fallo fiscal confirmado en segunda instancia. Investigación disciplinaria de Procuraduría archivada. Impactó la campaña presidencial de 2022."
+        },
+        {
+          "id": "fajardo-controversy-02",
+          "title": "Investigación Contraloría — contratos gobernación de Antioquia",
+          "summary": "Fajardo enfrentó investigación fiscal de la Contraloría relacionada con contratos durante su gobernación. Eventualmente fue absuelto pero el caso afectó su campaña de 2022. Requiere fuentes adicionales de El Espectador para documentación completa.",
+          "severity": "medium",
+          "status": "pending_research",
+          "date": null,
+          "source_ids": [],
+          "notes": "Marcado para investigación adicional. La controversia principal es la de Hidroituango (fajardo-controversy-01)."
+        }
+      ],
+      "metadata": {
+        "procuraduria_status": "flagged",
+        "procuraduria_summary": "La Contraloría confirmó responsabilidad fiscal en segunda instancia (noviembre 2021) por irregularidades en Hidroituango, con daño de 4,3 billones de pesos. La Procuraduría archivó su investigación disciplinaria sobre un contrato en dólares de la gobernación en mayo de 2023.",
+        "procuraduria_source_id": "src-fajardo-procuraduria-01",
+        "party_history": "Dignidad y Compromiso es el movimiento político personal de Fajardo, de orientación centrista y tecnocrática. Anteriormente candidato a presidente en 2018 como parte de la coalición Colombia Humana–Dignidad, terminó tercero. Fue alcalde de Medellín (2004–2007) y gobernador de Antioquia (2012–2015).",
+        "spectrum_score": 3
+      }
+    },
+    {
+      "id": "paloma-valencia",
+      "name": "Paloma Valencia",
+      "party": "Centro Democrático",
+      "coalition": null,
+      "spectrum": "center-right",
+      "spectrum_score": 4,
+      "short_bio": "Senadora del Centro Democrático, partido fundado por Álvaro Uribe Vélez en 2013. Conocida por su liderazgo en debates de control político y crítica fiscal al gobierno Petro. Previamente trabajó en la Procuraduría General.",
+      "profile_status": "curated_static",
+      "last_updated": "2026-03-26",
+      "topics": [
+        {
+          "topic_id": "security",
+          "topic_label": "Seguridad",
+          "summary": "Enfoque estricto de restauración del orden. Aplica su estrategia de las '4R': Reducir ingresos ilegales (narcotráfico/minería), Robustecer la fuerza pública con tecnología, Reencantar a las comunidades mediante acciones cívico-militares, y Restablecer la legalidad y la justicia. Propone erradicación de cultivos ilícitos con drones de IA, modificación de reglas de flagrancia y penas efectivas sin beneficios políticos.",
+          "plain_language_summary": "Estrategia '4R': reducir ingresos criminales, tecnificar la fuerza pública, acercarla a las comunidades y restablecer la ley. Erradicación con drones, cárceles efectivas.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "economy",
+          "topic_label": "Economía",
+          "summary": "Pro-mercado y anti-estatista. Propone reducir ministerios de 19 a 12, eliminar el impuesto al patrimonio y reducir la carga tributaria corporativa para reactivar la inversión. Su modelo de 'economía fraterna' fortalece el libre mercado y la iniciativa privada. Propone también una 'ley de escalera de formalidad' que elimine barreras regulatorias para pequeños emprendedores.",
+          "plain_language_summary": "Libre mercado: eliminar el impuesto al patrimonio, reducir impuestos corporativos y simplificar regulaciones. De 19 a 12 ministerios.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "health",
+          "topic_label": "Salud",
+          "summary": "Usa la crisis de salud como evidencia del daño de la intervención estatal. Propone un plan de choque financiero incluyendo titularización de la deuda del Estado con las EPS (convirtiendo deudas en títulos valores transables), UPC diferencial por riesgo para pacientes de alto costo, y una red de 'hospitales padrino' equipados con telemedicina para zonas rurales. Defiende el modelo de aseguramiento mixto.",
+          "plain_language_summary": "Propone titularizar la deuda del Estado con las EPS para inyectar liquidez inmediata. Red de 'hospitales padrino' con telemedicina rural. Defiende el modelo mixto con EPS privadas.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "energy_environment",
+          "topic_label": "Energía y Medio Ambiente",
+          "summary": "Denuncia la pérdida de soberanía energética y el alza de tarifas por la dependencia en importaciones de gas. Propone reactivar la exploración de petróleo y gas incluyendo proyectos de fracking; simultáneamente promueve renovables (eólica, solar, pequeñas hidroeléctricas) agilizando licencias ambientales mediante tecnología. El medio ambiente no es una agenda autónoma sino subordinada a las posiciones energéticas y económicas: argumenta que la pobreza es el mayor enemigo ecológico y defiende el fracking argumentando que las prohibiciones actuales paradójicamente causan mayor daño ambiental al encarecer el gas.",
+          "plain_language_summary": "Defiende tanto el fracking como las renovables. Argumenta que prohibir el fracking encarecer el gas y daña a los sectores vulnerables. Quiere recuperar la autosuficiencia energética.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26",
+          "merge_note": "Promedio de energy_oil (4) y environment (4). Posiciones alineadas entre ambos subcomponentes."
+        },
+        {
+          "topic_id": "fiscal",
+          "topic_label": "Política Fiscal",
+          "summary": "Plan de choque de austeridad: reducir el 20% de los presupuestos operativos de todos los ministerios, fusionar ministerios de 19 a 12 ahorrando 30 billones de pesos anuales, eliminar el impuesto al patrimonio para reactivar la inversión privada. Alerta sobre un déficit histórico cercano al 7,5% del PIB y deuda pública que supera los 1.192 billones de pesos. Defiende el ahorro pensional de los ciudadanos frente al gasto corriente del gobierno.",
+          "plain_language_summary": "Austeridad fiscal: fusionar ministerios (19 a 12), recortar el 20% del gasto operativo y ahorrar 30 billones anuales. Eliminar el impuesto al patrimonio.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "foreign_policy",
+          "topic_label": "Política Exterior",
+          "summary": "Usa a Venezuela como advertencia constante de crisis institucional; rechaza cualquier dependencia energética o alineación con el régimen chavista. Busca reconstruir la cooperación en seguridad con EE.UU., proponiendo un nuevo 'Plan Colombia' enfocado en el micro-tráfico urbano. Planea transformar la Cancillería en un cuerpo enfocado en comercio donde los embajadores sean evaluados estrictamente por resultados en exportaciones y turismo, no activismo ideológico.",
+          "plain_language_summary": "Alianza con EE.UU. y un nuevo 'Plan Colombia'. Convertir la Cancillería en ministerio de comercio exterior. Rechaza cualquier alineación con Venezuela.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "anticorruption",
+          "topic_label": "Anticorrupción",
+          "summary": "Propone reformas estructurales para aislar la Contraloría y la Procuraduría de la influencia política, eligiéndolas mediante la academia y la ciudadanía en lugar de cuerpos políticos. Lideró debates de control político en el Congreso sobre casos como el UNGRD. Rechaza una Asamblea Constituyente fuera de los canales legislativos y se opone a gobernar por decreto.",
+          "plain_language_summary": "Propone que la Contraloría y la Procuraduría sean elegidas por la academia y la ciudadanía, no por políticos. Lideró control político en el Congreso.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": ["src-shared-llyc-2026"],
+          "updated_at": "2026-03-26"
+        }
+      ],
+      "proposals": [],
+      "controversies": [],
+      "metadata": {
+        "procuraduria_status": "unknown",
+        "procuraduria_summary": "No se encontraron sanciones disciplinarias ni inhabilidades contra Valencia. Trabajó como empleada de la Procuraduría antes de ingresar a la política. La ausencia de hallazgos no confirma un registro limpio — se requiere consulta directa al registro.",
+        "procuraduria_source_id": "src-valencia-profile-01",
+        "party_history": "El Centro Democrático es el partido fundado por el ex presidente Álvaro Uribe Vélez en 2013. Es la principal fuerza de oposición de centroderecha a derecha de Colombia, construida sobre una plataforma de seguridad democrática, economía de libre mercado y orden institucional fuerte.",
+        "spectrum_score": 4
+      }
+    },
+    {
+      "id": "roy-barreras",
+      "name": "Roy Barreras",
+      "party": "Fuerza por la Paz",
+      "coalition": "Frente por la Vida",
+      "spectrum": "center-left",
+      "spectrum_score": 2,
+      "short_bio": "Médico, ex senador (2010–2023), dos veces presidente del Congreso y ex embajador de Colombia ante el Reino Unido bajo el gobierno Petro. Progresista moderado que se posiciona entre el petrismo y la derecha. Ganó la primaria del Frente por la Vida el 8 de marzo de 2026.",
+      "profile_status": "curated_static",
+      "last_updated": "2026-03-26",
+      "topics": [
+        {
+          "topic_id": "security",
+          "topic_label": "Seguridad",
+          "summary": "Rechaza la 'Paz Total' por confundir guerrillas con mafias criminales. Propone 'seguridad total' bajo la fórmula 'Extirpar, tratar y cuidar': reformar el código penal para que los delincuentes cumplan condenas, agregar 40.000 nuevos soldados y policías, y construir 5 megacárceles productivas de 5.000 internos cada una gestionadas con el SENA. Enfatiza la seguridad territorial mediante presencia institucional y prevención social.",
+          "plain_language_summary": "Fin de la 'Paz Total'. Propone 40.000 nuevos policías y soldados, 5 megacárceles con formación del SENA. Seguridad con presencia social, no solo fuerza.",
+          "stance_score": 2,
+          "confidence": 0.85,
+          "evidence_ids": ["src-barreras-elespectador-01", "src-barreras-elpais-01"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "economy",
+          "topic_label": "Economía",
+          "summary": "Agenda social impulsada por el crecimiento: reactiva la agroindustria, la minería regulada, la energía, el turismo, la construcción y la infraestructura (puertos, aeropuertos, ferrovías) como motores de empleo. Propone reconstruir el IDEMA y la agrológistica de cadena de frío. Posiciona la productividad económica como mecanismo para financiar la deuda social.",
+          "plain_language_summary": "Crecimiento económico para financiar lo social: agroindustria, turismo, infraestructura. Reconstruiría el IDEMA y la red de frío para el agro.",
+          "stance_score": 2,
+          "confidence": 0.85,
+          "evidence_ids": ["src-barreras-cambio-01", "src-barreras-360radio-01"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "health",
+          "topic_label": "Salud",
+          "summary": "Propone un 'banco de la salud' para centralizar recursos actualmente en bancos privados, terminando los retrasos de pago a hospitales y clínicas. Titularizaría la deuda acumulada del Estado con el sector para inyectar liquidez inmediata. Trazabilidad blockchain por cada peso del sistema. Fortalece el personal médico con pisos salariales, estatuto anti-precarización y bonos rurales. Énfasis en medicina preventiva.",
+          "plain_language_summary": "Un 'banco de la salud' para centralizar recursos. Blockchain para rastrear cada peso. Pisos salariales para médicos y bonos rurales. Liquidez inmediata para hospitales mediante titularización.",
+          "stance_score": 2,
+          "confidence": 0.85,
+          "evidence_ids": ["src-barreras-elespectador-01", "src-barreras-infobae-01"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "energy_environment",
+          "topic_label": "Energía y Medio Ambiente",
+          "summary": "Propone una transición energética gradual que evita la 'transformación forzada' que elevaría costos o amenazaría el suministro, combinando la expansión de renovables (hídrica, solar, eólica) con minería regulada y ambientalmente sostenible para garantizar la demanda nacional. Vincula el desarrollo rural y la agroindustria con la minería regulada ambientalmente sostenible. Enmarca la protección ambiental como compatible con la reactivación económica, no opuesta a ella.",
+          "plain_language_summary": "Transición energética gradual: expandir renovables sin eliminar bruscamente los combustibles fósiles. Minería regulada con estándares ambientales. Protección ambiental compatible con el desarrollo.",
+          "stance_score": 2,
+          "confidence": 0.65,
+          "evidence_ids": ["src-barreras-cambio-01", "src-barreras-elnuevosiglo-01"],
+          "updated_at": "2026-03-26",
+          "merge_note": "Promedio de energy_oil (2, confianza alta) y environment (2, confianza baja). Confianza reducida a 0.65 por el subcomponente ambiental con evidencia limitada."
+        },
+        {
+          "topic_id": "fiscal",
+          "topic_label": "Política Fiscal",
+          "summary": "Enfatiza la sostenibilidad fiscal pero rechaza financiar compromisos sociales mediante deuda externa. La estrategia es crecer la economía primero para generar la base de ingresos para los programas sociales. Menciona superar el déficit fiscal como desafío clave junto con seguridad y salud, pero los instrumentos específicos de consolidación fiscal no están detallados en las fuentes disponibles.",
+          "plain_language_summary": "Crecer la economía para pagar lo social, sin endeudamiento externo irresponsable. Los detalles de consolidación fiscal son limitados en fuentes disponibles.",
+          "stance_score": 2,
+          "confidence": 0.40,
+          "evidence_ids": ["src-barreras-bluradio-01", "src-barreras-infobae-01"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "foreign_policy",
+          "topic_label": "Política Exterior",
+          "summary": "Integración regional pragmática: propone reabrir urgentemente la frontera con Venezuela para reactivar el comercio y refinar petróleo venezolano en Cúcuta y Barrancabermeja para bajar los precios domésticos de combustible. Buscaría a Petro como canciller para aprovechar su credibilidad global en la renegociación de la guerra contra las drogas. Enmarca la política exterior en torno a la oportunidad económica, no la alineación ideológica.",
+          "plain_language_summary": "Reabrir la frontera con Venezuela para comercio y refinar petróleo venezolano localmente. Política exterior centrada en oportunidad económica, no ideología.",
+          "stance_score": 2,
+          "confidence": 0.85,
+          "evidence_ids": ["src-barreras-infobae-01"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "anticorruption",
+          "topic_label": "Anticorrupción",
+          "summary": "Enmarca la reforma política como su medida anticorrupción principal: 'una reforma política que limpie la política'. Propone trazabilidad blockchain para los recursos del sector salud. Critica la cultura de 'perseguir presidentes' como divisiva más que constructiva, señalando un enfoque de reconciliación-primero en lugar de judicialización-primero.",
+          "plain_language_summary": "Reforma política como herramienta anticorrupción. Blockchain para recursos de salud. Prefiere la reconciliación a la judicialización de ex presidentes.",
+          "stance_score": 2,
+          "confidence": 0.40,
+          "evidence_ids": ["src-barreras-cambio-01"],
+          "updated_at": "2026-03-26"
+        }
+      ],
+      "proposals": [],
+      "controversies": [
+        {
+          "id": "barreras-controversy-01",
+          "title": "Consejo de Estado — elección como senador anulada",
+          "summary": "El Consejo de Estado anuló la elección de Barreras como senador para el período 2022–2026, confirmado definitivamente el 23 de mayo de 2023 tras rechazarse sus solicitudes de aclaración. Barreras ya había renunciado para asumir la embajada en el Reino Unido.",
+          "severity": "medium",
+          "status": "resolved",
+          "date": "2023-05-23",
+          "source_ids": ["src-barreras-lafm-profile"],
+          "notes": "La Procuraduría y el CNE concluyeron que no hubo doble militancia — el fundamento del fallo del Consejo de Estado fue diferente."
+        }
+      ],
+      "metadata": {
+        "procuraduria_status": "unknown",
+        "procuraduria_summary": "No se encontraron sanciones disciplinarias de la Procuraduría. La Procuraduría y el CNE concluyeron en mayo de 2023 que Barreras no cometió doble militancia — el fundamento por el que el Consejo de Estado anuló su elección como senador. Se requiere consulta directa al registro para confirmar el estado limpio completo.",
+        "procuraduria_source_id": "src-barreras-eltiempo-procuraduria",
+        "party_history": "La coalición con la que Barreras ganó la primaria del 8 de marzo de 2026 es el Frente por la Vida; su partido registrado es Fuerza por la Paz. Barreras es médico, ex senador (2010–2023), dos veces presidente del Congreso y ex embajador ante el Reino Unido bajo Petro. Ha militado en Cambio Radical, el Partido de la U y la órbita del Pacto Histórico.",
+        "spectrum_score": 2
+      }
+    },
+    {
+      "id": "claudia-lopez",
+      "name": "Claudia López",
+      "party": "Independiente",
+      "coalition": null,
+      "spectrum": "center",
+      "spectrum_score": 3,
+      "short_bio": "Ex senadora, primera mujer elegida alcaldesa de Bogotá (2020–2023). PhD en Ciencia Política por Northwestern University. Candidata independiente bajo el movimiento ciudadano 'Imparables'. Ganó la 'Consulta de las Soluciones' el 8 de marzo de 2026 con 574.670 votos. Conocida por liderar la Consulta Anticorrupción de 2018.",
+      "profile_status": "curated_static",
+      "last_updated": "2026-03-26",
+      "topics": [
+        {
+          "topic_id": "security",
+          "topic_label": "Seguridad",
+          "summary": "Termina la 'Paz Total', que califica como política fallida que dio concesiones a criminales. Propone crear una Fiscalía Antimafia para desmantelar el crimen organizado y estructuras narco, duplicar la inversión en seguridad, agregar 40.000 nuevos integrantes de la fuerza pública, construir más cárceles, desplegar tecnología de vigilancia e IA, y restaurar el control territorial con legitimidad democrática. Reconoce que esto requiere una contribución especial de los 5.000 colombianos más ricos, como en 2002.",
+          "plain_language_summary": "Fiscalía Antimafia, 40.000 nuevos policías y soldados, más cárceles, tecnología de vigilancia. Fin de la 'Paz Total'. Contribución especial de los más ricos para financiarlo.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": ["src-lopez-propuestas-01", "src-lopez-elnuevosiglo-01", "src-lopez-lafm-01"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "economy",
+          "topic_label": "Economía",
+          "summary": "Enfocada en crecimiento y productividad. Propone 600.000 soluciones de vivienda como generador inmediato de empleo, subsidios a microempresarios para ayudar a pagar el salario mínimo, 1 millón de becas de educación superior para jóvenes, y planes de desarrollo económico diferenciados regionalmente. Opone el gasto populista sin base económica. Enmarca la reducción progresiva de impuestos como condición del crecimiento de la inversión privada.",
+          "plain_language_summary": "600.000 viviendas como motor de empleo. Becas para un millón de jóvenes. Subsidios a microempresarios. Bajar impuestos si la economía crece al 4%.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": ["src-lopez-propuestas-01", "src-lopez-lafm-01"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "health",
+          "topic_label": "Salud",
+          "summary": "Prioridad del Día 1: restaurar la liquidez de hospitales y clínicas mediante un fondo dedicado para que los medicamentos y tratamientos se entreguen como un derecho, no como un trámite burocrático. Propone regresar a un sistema mixto con reglas y precios claros donde los pacientes accedan al servicio más cercano, no al que sirva los intereses comerciales de las EPS. Crea un fondo para rescatar los hospitales.",
+          "plain_language_summary": "Liquidez inmediata para hospitales desde el Día 1. Sistema mixto con reglas claras: acceder al servicio más cercano, no al que decida la EPS. Fondo de rescate hospitalario.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": ["src-lopez-propuestas-01", "src-lopez-lafm-01"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "energy_environment",
+          "topic_label": "Energía y Medio Ambiente",
+          "summary": "Apoya explícitamente la explotación plena de los recursos energéticos de Colombia — gas, petróleo, fracking, solar, eólico e hídrico — enmarcando la energía barata y confiable como el mayor predictor de industrialización. Señaló la hipocresía del presidente Petro por oponerse al fracking en Colombia mientras Ecopetrol lo practica en EE.UU. Las propuestas ambientales están integradas en los planes de desarrollo regional: autonomía y bioeconomía amazónica con desmantelamiento de minería ilegal y narco; agricultura silvopastoril y corredores de restauración ecológica en el piedemonte; protección ambiental de San Andrés y Providencia.",
+          "plain_language_summary": "Apoya el fracking y la explotación de todos los recursos energéticos. Sus propuestas ambientales se centran en la bioeconomía regional, la restauración ecológica y la Amazonía.",
+          "stance_score": 3,
+          "confidence": 0.65,
+          "evidence_ids": ["src-lopez-fracking-01", "src-lopez-program-01"],
+          "updated_at": "2026-03-26",
+          "merge_note": "Promedio de energy_oil (4, confianza alta) y environment (2, confianza baja). Confianza reducida a 0.65 por el subcomponente ambiental con evidencia limitada. Brecha interna notable: posición de fracking (muy pro) vs propuestas ambientales (moderadas)."
+        },
+        {
+          "topic_id": "fiscal",
+          "topic_label": "Política Fiscal",
+          "summary": "Declara emergencia económica el Día 1 y solicita al Congreso producir leyes fiscales en 90 días. Propone una nueva regla fiscal estricta para detener el endeudamiento excesivo del gobierno, y un mecanismo contingente de reducción del impuesto de renta: si la economía crece al 4% y la inversión privada al 20%, reducir el impuesto de renta en 2 puntos porcentuales. Plantea una contribución de seguridad de los 5.000 colombianos más ricos. Compromiso con la credibilidad institucional mediante la eficiencia del gasto.",
+          "plain_language_summary": "Emergencia económica el Día 1. Nueva regla fiscal estricta. Bajar impuesto de renta si la economía crece. Contribución especial de los más ricos para la seguridad.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": ["src-lopez-propuestas-01", "src-lopez-caracol-01"],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "foreign_policy",
+          "topic_label": "Política Exterior",
+          "summary": null,
+          "plain_language_summary": null,
+          "stance_score": null,
+          "confidence": null,
+          "evidence_ids": [],
+          "updated_at": null,
+          "research_note": "No se identificó posición pública sobre política exterior al marzo de 2026. Las búsquedas sobre Venezuela y relaciones con EE.UU. retornaron resultados dominados por la presidenta mexicana Claudia Sheinbaum. Requiere búsqueda dedicada."
+        },
+        {
+          "topic_id": "anticorruption",
+          "topic_label": "Anticorrupción",
+          "summary": "La anticorrupción es su tema definitorio de carrera. Lideró la Consulta Anticorrupción de 2018 movilizando casi 12 millones de votantes. Administró la alcaldía de Bogotá alegando cero escándalos de corrupción. Promete cumplir la consulta anticorrupción: cero privilegios, cero burocracia, cero corrupción. Propone una Fiscalía Antimafia enfocada específicamente en vínculos de crimen organizado y corrupción.",
+          "plain_language_summary": "Anticorrupción como identidad política. Lideró la Consulta de 2018. Promete cero privilegios, cero burocracia, cero corrupción. Fiscalía Antimafia contra los vínculos narco-políticos.",
+          "stance_score": 2,
+          "confidence": 0.85,
+          "evidence_ids": ["src-lopez-propuestas-01", "src-lopez-360radio-01"],
+          "updated_at": "2026-03-26"
+        }
+      ],
+      "proposals": [],
+      "controversies": [],
+      "metadata": {
+        "procuraduria_status": "flagged",
+        "procuraduria_summary": "La Procuraduría abrió investigación disciplinaria contra López el 19 de enero de 2022, mientras era alcaldesa de Bogotá, por presuntamente publicar contenido político partidista en Twitter violando las normas de neutralidad de los servidores públicos. El resultado final de esta investigación no ha sido confirmado en las fuentes disponibles.",
+        "procuraduria_source_id": "src-lopez-procuraduria-01",
+        "party_history": "Corre como independiente bajo el movimiento ciudadano 'Imparables'. Ganó la 'Consulta de las Soluciones: salud, seguridad y educación' el 8 de marzo de 2026 con 574.670 votos. Ex senadora (2014–2019), primera mujer elegida alcaldesa de Bogotá (2020–2023). PhD en Ciencia Política por Northwestern University. Conocida por sus investigaciones de parapolítica, la reforma constitucional de 1991 (Séptima Papeleta) y la Consulta Anticorrupción de 2018.",
+        "spectrum_score": 3
+      }
+    }
+  ]
+}
