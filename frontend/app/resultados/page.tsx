@@ -10,20 +10,7 @@ import {
   type CandidateSummary,
 } from "@/lib/api";
 import { SpectrumBar } from "@/components/SpectrumBar";
-
-// ---------------------------------------------------------------------------
-// Topic labels (canonical IDs → Spanish display names)
-// ---------------------------------------------------------------------------
-
-const TOPIC_LABELS: Record<string, string> = {
-  security: "Seguridad",
-  economy: "Economía",
-  health: "Salud",
-  energy_environment: "Energía y Medio Ambiente",
-  fiscal: "Política Fiscal",
-  foreign_policy: "Política Exterior",
-  anticorruption: "Anticorrupción",
-};
+import { TOPIC_COLORS, AXIS_LABELS_ES as TOPIC_LABELS } from "@/lib/topics";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -35,10 +22,30 @@ function rankLabel(rank: number): string {
   return `#${rank}`;
 }
 
-function alignmentChip(pct: number): { label: string; cls: string } {
-  if (pct >= 67) return { label: "De acuerdo", cls: "bg-green-100 text-green-700" };
-  if (pct >= 34) return { label: "Parcial", cls: "bg-gray-100 text-gray-600" };
-  return { label: "En desacuerdo", cls: "bg-red-100 text-red-700" };
+function alignmentChip(pct: number): { label: string; color: string } {
+  if (pct >= 67) return { label: "De acuerdo",    color: "#5C8A6B" };
+  if (pct >= 34) return { label: "Parcial",        color: "#6B6B6B" };
+  return              { label: "En desacuerdo",   color: "#C4622D" };
+}
+
+// Mini topic bar used in result cards
+function TopicMiniBar({ topicId, pct }: { topicId: string; pct: number }) {
+  const color = TOPIC_COLORS[topicId] ?? "#4A4A4A";
+  const label = TOPIC_LABELS[topicId] ?? topicId;
+  return (
+    <div className="flex flex-col gap-0.5">
+      <div className="flex items-center justify-between">
+        <span className="text-[10px]" style={{ color: "var(--muted)" }}>{label}</span>
+        <span className="text-[10px] font-semibold" style={{ color }}>{pct}%</span>
+      </div>
+      <div className="h-1 rounded-full" style={{ backgroundColor: "var(--border)" }}>
+        <div
+          className="h-1 rounded-full"
+          style={{ width: `${pct}%`, backgroundColor: color }}
+        />
+      </div>
+    </div>
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -48,27 +55,17 @@ function alignmentChip(pct: number): { label: string; cls: string } {
 export default function ResultadosPage() {
   const router = useRouter();
   const [results, setResults] = useState<Result[]>([]);
-  const [candidateMeta, setCandidateMeta] = useState<
-    Record<string, CandidateSummary>
-  >({});
+  const [candidateMeta, setCandidateMeta] = useState<Record<string, CandidateSummary>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("quizAnswers");
-    if (!stored) {
-      router.push("/quiz");
-      return;
-    }
-
+    if (!stored) { router.push("/quiz"); return; }
     const answers = JSON.parse(stored) as Record<string, number>;
-    if (Object.keys(answers).length === 0) {
-      router.push("/quiz");
-      return;
-    }
+    if (Object.keys(answers).length === 0) { router.push("/quiz"); return; }
 
-    // Fetch quiz results + candidate metadata in parallel.
     Promise.all([submitQuiz(answers), getCandidates()])
       .then(([ranked, candidates]) => {
         setResults(ranked);
@@ -78,11 +75,7 @@ export default function ResultadosPage() {
         setLoading(false);
       })
       .catch((err: unknown) => {
-        setError(
-          err instanceof Error
-            ? err.message
-            : "No se pudieron cargar los resultados.",
-        );
+        setError(err instanceof Error ? err.message : "No se pudieron cargar los resultados.");
         setLoading(false);
       });
   }, [router]);
@@ -97,38 +90,34 @@ export default function ResultadosPage() {
     if (!top) return;
     const text = `Hice el quiz de Colombia Matcher y mi candidato más afín es ${top.candidate} (${top.score}%). ¿Y tú? colombiamatcher.vercel.app`;
     if (typeof navigator.share === "function") {
-      try {
-        await navigator.share({ text });
-        return;
-      } catch {
-        // User cancelled or share not supported — fall through to clipboard
-      }
+      try { await navigator.share({ text }); return; } catch { /* fall through */ }
     }
     await navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   }
 
-  // ── Loading ────────────────────────────────────────────────────────────────
+  // ── Loading ───────────────────────────────────────────────────────────────
   if (loading) {
     return (
       <main className="flex flex-1 items-center justify-center">
-        <p className="text-lg text-gray-500">Calculando afinidad...</p>
+        <p className="text-lg" style={{ color: "var(--muted)" }}>Calculando afinidad...</p>
       </main>
     );
   }
 
-  // ── Error ──────────────────────────────────────────────────────────────────
+  // ── Error ─────────────────────────────────────────────────────────────────
   if (error) {
     return (
       <main className="flex flex-1 flex-col items-center justify-center gap-4 px-4">
         <p className="text-red-600">{error}</p>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm" style={{ color: "var(--muted)" }}>
           El servidor de datos no está disponible. Intenta más tarde.
         </p>
         <button
           onClick={handleRestart}
-          className="rounded-full border border-gray-300 px-6 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 transition"
+          className="rounded-full px-6 py-2 text-sm font-semibold transition"
+          style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
         >
           Volver a empezar
         </button>
@@ -139,140 +128,175 @@ export default function ResultadosPage() {
   const top = results[0];
   const topMeta = top ? candidateMeta[top.id] : null;
 
-  // ── Results ────────────────────────────────────────────────────────────────
+  // ── Results ───────────────────────────────────────────────────────────────
   return (
     <main className="flex flex-1 flex-col items-center px-4 py-8">
-      <h1 className="text-3xl font-bold">Tus resultados</h1>
-      <p className="mt-2 text-gray-500 text-center">
-        Candidatos ordenados por afinidad con tus respuestas
-      </p>
-      <p className="mt-1 text-xs text-gray-400">
-        Información curada manualmente · Datos estáticos a marzo 2026 ·{" "}
-        <Link href="/metodologia" className="underline hover:text-gray-600">
-          Ver metodología
-        </Link>
+      <h1 className="text-3xl font-bold" style={{ color: "var(--foreground)" }}>Tus resultados</h1>
+      <p className="mt-1 text-xs" style={{ color: "var(--muted)" }}>
+        Información curada manualmente · Datos a marzo 2026 ·{" "}
+        <Link href="/metodologia" className="underline hover:opacity-80">Ver metodología</Link>
       </p>
 
-      {/* ── Top candidate hero ────────────────────────────────────────────── */}
+      {/* ── Winner hero ───────────────────────────────────────────────────── */}
       {top && (
-        <div className="mt-8 w-full max-w-2xl rounded-2xl border-2 border-blue-500 bg-blue-50 p-6 shadow-md">
-          <p className="text-xs font-semibold uppercase tracking-widest text-blue-500">
+        <div
+          className="mt-8 w-full max-w-2xl rounded-2xl p-6 shadow-md"
+          style={{ border: "2px solid var(--primary)", backgroundColor: "#FFFBEA" }}
+        >
+          <p
+            className="text-xs font-bold uppercase tracking-widest"
+            style={{ color: "var(--secondary)" }}
+          >
             Tu mejor afinidad
           </p>
-          <div className="mt-1 flex items-start justify-between gap-4">
-            <div>
-              <h2 className="text-2xl font-bold">{top.candidate}</h2>
+
+          <div className="mt-3 flex items-center gap-4">
+            {/* Photo */}
+            {topMeta?.image_url ? (
+              <img
+                src={topMeta.image_url}
+                alt={top.candidate}
+                referrerPolicy="no-referrer"
+                className="w-16 h-16 rounded-full object-cover flex-shrink-0"
+                style={{ border: "2px solid var(--primary)" }}
+              />
+            ) : (
+              <div
+                className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white flex-shrink-0"
+                style={{ backgroundColor: "var(--secondary)" }}
+              >
+                {top.candidate.charAt(0)}
+              </div>
+            )}
+
+            <div className="min-w-0 flex-1">
+              <h2 className="text-2xl font-bold" style={{ color: "var(--foreground)" }}>
+                {top.candidate}
+              </h2>
               {topMeta && (
-                <div className="mt-1 flex flex-col gap-1.5">
-                  <p className="text-sm text-gray-500">{topMeta.party ?? "—"}</p>
-                  {topMeta.spectrum && (
-                    <SpectrumBar spectrum={topMeta.spectrum} />
-                  )}
+                <div className="flex flex-col gap-1.5 mt-1">
+                  <p className="text-sm" style={{ color: "var(--muted)" }}>{topMeta.party ?? "—"}</p>
+                  {topMeta.spectrum && <SpectrumBar spectrum={topMeta.spectrum} />}
                 </div>
               )}
             </div>
+
             <Link
               href={`/candidatos/${top.id}`}
-              className="flex-shrink-0 rounded-full border border-blue-400 px-4 py-1.5 text-xs font-semibold text-blue-700 hover:bg-blue-100 transition"
+              className="flex-shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition"
+              style={{
+                border: "1px solid var(--secondary)",
+                color: "var(--secondary)",
+              }}
             >
               Ver perfil
             </Link>
           </div>
 
-          <p className="mt-4 text-5xl font-extrabold text-blue-600">
+          {/* Score */}
+          <p className="mt-5 text-5xl font-extrabold" style={{ color: "var(--secondary)" }}>
             {top.score}%
           </p>
-          <div className="mt-2 h-3 w-full rounded-full bg-blue-100">
+          <div className="mt-2 h-3 w-full rounded-full" style={{ backgroundColor: "#E0DDD8" }}>
             <div
-              className="h-3 rounded-full bg-blue-500 transition-all"
-              style={{ width: `${top.score}%` }}
+              className="h-3 rounded-full transition-all"
+              style={{ width: `${top.score}%`, backgroundColor: "var(--primary)" }}
             />
           </div>
 
-          {/* Topic breakdown for top candidate */}
+          {/* Topic mini-bars */}
           {Object.keys(top.breakdown).length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              {Object.entries(top.breakdown).map(([topicId, pct]) => {
-                const chip = alignmentChip(pct);
-                return (
-                  <span
-                    key={topicId}
-                    className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${chip.cls}`}
-                    title={`${TOPIC_LABELS[topicId] ?? topicId}: ${pct}%`}
-                  >
-                    {TOPIC_LABELS[topicId] ?? topicId} · {pct}%
-                  </span>
-                );
-              })}
+            <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {Object.entries(top.breakdown).map(([topicId, pct]) => (
+                <TopicMiniBar key={topicId} topicId={topicId} pct={pct} />
+              ))}
             </div>
           )}
         </div>
       )}
 
-      {/* ── Full ranked list ──────────────────────────────────────────────── */}
-      <p className="mt-8 w-full max-w-2xl text-sm text-gray-500 text-center">
+      {/* ── Ranked list (starting at #2) ──────────────────────────────────── */}
+      <p className="mt-8 w-full max-w-2xl text-sm text-center" style={{ color: "var(--muted)" }}>
         Estos son los candidatos ordenados de mayor a menor afinidad con tus respuestas
       </p>
+
       <div className="mt-3 flex w-full max-w-2xl flex-col gap-4">
         {results.slice(1).map((r, i) => {
-          const rank = i + 2; // starts at #2
+          const rank = i + 2;
           const meta = candidateMeta[r.id];
-
           return (
             <div
               key={r.id}
-              className="rounded-xl border border-gray-200 p-5 shadow-sm"
+              className="rounded-xl p-5 bg-surface"
+              style={{ border: "1px solid var(--border)" }}
             >
-              {/* Header row */}
               <div className="flex items-center gap-3">
-                <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-xs font-bold text-gray-500">
-                  {rank}
-                </span>
+                {/* Photo */}
+                {meta?.image_url ? (
+                  <img
+                    src={meta.image_url}
+                    alt={r.candidate}
+                    referrerPolicy="no-referrer"
+                    className="w-12 h-12 rounded-full object-cover flex-shrink-0"
+                    style={{ border: "1px solid var(--border)" }}
+                  />
+                ) : (
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0"
+                    style={{ backgroundColor: "var(--secondary)" }}
+                  >
+                    {r.candidate.charAt(0)}
+                  </div>
+                )}
+
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs text-gray-400 mb-0.5">{rankLabel(rank)}</p>
-                  <h3 className="truncate font-semibold">{r.candidate}</h3>
+                  <p className="text-xs mb-0.5" style={{ color: "var(--muted)" }}>
+                    {rankLabel(rank)}
+                  </p>
+                  <h3 className="font-semibold truncate" style={{ color: "var(--foreground)" }}>
+                    {r.candidate}
+                  </h3>
                   {meta && (
-                    <div className="mt-1 flex flex-col gap-1">
-                      <p className="truncate text-xs text-gray-400">
-                        {meta.party ?? "—"}
-                      </p>
-                      {meta.spectrum && (
-                        <SpectrumBar spectrum={meta.spectrum} />
-                      )}
-                    </div>
+                    <p className="text-xs truncate" style={{ color: "var(--muted)" }}>
+                      {meta.party ?? "—"}
+                    </p>
                   )}
                 </div>
-                <div className="flex flex-col items-end gap-1">
-                  <span className="text-2xl font-extrabold text-blue-600 tabular-nums">
+
+                <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                  <span className="text-2xl font-extrabold tabular-nums" style={{ color: "var(--secondary)" }}>
                     {r.score}%
                   </span>
                   <Link
                     href={`/candidatos/${r.id}`}
-                    className="text-xs text-blue-500 hover:underline"
+                    className="text-xs hover:underline"
+                    style={{ color: "var(--secondary)" }}
                   >
                     Ver perfil →
                   </Link>
                 </div>
               </div>
 
-              {/* Progress bar */}
-              <div className="mt-3 h-2 w-full rounded-full bg-gray-200">
+              {/* Score bar */}
+              <div className="mt-3 h-2 w-full rounded-full" style={{ backgroundColor: "var(--border)" }}>
                 <div
-                  className="h-2 rounded-full bg-blue-500 transition-all"
-                  style={{ width: `${r.score}%` }}
+                  className="h-2 rounded-full transition-all"
+                  style={{ width: `${r.score}%`, backgroundColor: "var(--primary)" }}
                 />
               </div>
 
-              {/* Per-topic chips */}
+              {/* Topic mini-bars */}
               {Object.keys(r.breakdown).length > 0 && (
-                <div className="mt-3 flex flex-wrap gap-1.5">
+                <div className="mt-3 grid grid-cols-2 gap-1.5">
                   {Object.entries(r.breakdown).map(([topicId, pct]) => {
-                    const chip = alignmentChip(pct);
+                    const { label } = alignmentChip(pct);
+                    const color = TOPIC_COLORS[topicId] ?? "#4A4A4A";
                     return (
                       <span
                         key={topicId}
-                        className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${chip.cls}`}
-                        title={`${TOPIC_LABELS[topicId] ?? topicId}: ${pct}%`}
+                        className="rounded-full px-2.5 py-0.5 text-[10px] font-medium text-white"
+                        style={{ backgroundColor: color }}
+                        title={`${TOPIC_LABELS[topicId] ?? topicId}: ${pct}% — ${label}`}
                       >
                         {TOPIC_LABELS[topicId] ?? topicId}
                       </span>
@@ -285,9 +309,12 @@ export default function ResultadosPage() {
         })}
       </div>
 
-      {/* ── Candidate profile links ────────────────────────────────────────── */}
-      <div className="mt-8 w-full max-w-2xl rounded-xl border border-gray-200 px-5 py-4">
-        <p className="text-sm text-gray-600 font-medium mb-3">
+      {/* ── Profile links ─────────────────────────────────────────────────── */}
+      <div
+        className="mt-8 w-full max-w-2xl rounded-xl px-5 py-4"
+        style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
+      >
+        <p className="text-sm font-medium mb-3" style={{ color: "var(--foreground)" }}>
           ¿Quieres saber más? Revisa las propuestas y el perfil completo de cada candidato.
         </p>
         <div className="flex flex-wrap gap-2">
@@ -295,7 +322,8 @@ export default function ResultadosPage() {
             <Link
               key={r.id}
               href={`/candidatos/${r.id}`}
-              className="rounded-full border border-gray-300 px-3 py-1 text-xs font-medium text-gray-700 hover:border-blue-400 hover:text-blue-700 transition"
+              className="rounded-full px-3 py-1 text-xs font-medium transition"
+              style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
             >
               {r.candidate} →
             </Link>
@@ -303,27 +331,30 @@ export default function ResultadosPage() {
         </div>
       </div>
 
-      {/* ── Share button ───────────────────────────────────────────────────── */}
+      {/* ── Share button ──────────────────────────────────────────────────── */}
       <div className="mt-6 flex justify-center">
         <button
           onClick={handleShare}
-          className="rounded-full bg-blue-600 px-6 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
+          className="rounded-full px-6 py-2.5 text-sm font-bold shadow transition hover:opacity-90"
+          style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
         >
           {copied ? "¡Copiado!" : "Compartir mis resultados"}
         </button>
       </div>
 
-      {/* ── Footer actions ─────────────────────────────────────────────────── */}
+      {/* ── Footer actions ────────────────────────────────────────────────── */}
       <div className="mt-6 mb-8 flex flex-col items-center gap-3">
         <Link
           href="/candidatos"
-          className="rounded-full bg-gray-800 px-6 py-2 text-sm font-semibold text-white hover:bg-gray-700 transition"
+          className="rounded-full px-6 py-2 text-sm font-bold shadow transition hover:opacity-90"
+          style={{ backgroundColor: "var(--secondary)", color: "#FFFFFF" }}
         >
           Explorar candidatos
         </Link>
         <button
           onClick={handleRestart}
-          className="rounded-full border border-gray-300 px-6 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 transition"
+          className="rounded-full px-6 py-2 text-sm font-semibold transition"
+          style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
         >
           Volver a empezar
         </button>

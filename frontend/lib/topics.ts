@@ -137,3 +137,31 @@ export const AXIS_WEIGHTS: Readonly<Record<string, number>> = Object.fromEntries
 export const AXIS_LABELS_ES: Readonly<Record<string, string>> = Object.fromEntries(
   TOPICS.map((t) => [t.id, t.labelEs]),
 );
+
+// ---------------------------------------------------------------------------
+// Brand colors per topic — use for chips, bars, and left-border accents.
+// ---------------------------------------------------------------------------
+
+export const TOPIC_COLORS: Readonly<Record<string, string>> = {
+  security:           "#4A6FA5",
+  economy:            "#D4813A",
+  health:             "#5C8A6B",
+  energy_environment: "#3A8A8A",
+  fiscal:             "#7B5EA7",
+  foreign_policy:     "#A55C7B",
+  anticorruption:     "#4A4A4A",
+};
+
+/**
+ * Maps the Spanish bucket label (as returned by the backend /questions endpoint)
+ * back to the canonical topic ID — used in the quiz page to pick topic chip color.
+ */
+export const BUCKET_TO_TOPIC: Readonly<Record<string, string>> = {
+  "Seguridad":                "security",
+  "Economía":                 "economy",
+  "Salud":                    "health",
+  "Energía y Medio Ambiente": "energy_environment",
+  "Política Fiscal":          "fiscal",
+  "Política Exterior":        "foreign_policy",
+  "Anticorrupción":           "anticorruption",
+};

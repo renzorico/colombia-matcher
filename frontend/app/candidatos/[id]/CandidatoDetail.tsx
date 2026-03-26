@@ -14,6 +14,7 @@ import TopicBreakdown from "@/components/TopicBreakdown";
 import SourceList from "@/components/SourceList";
 import EmptyState from "@/components/EmptyState";
 import { SpectrumBar } from "@/components/SpectrumBar";
+import { TOPIC_COLORS } from "@/lib/topics";
 
 // ---------------------------------------------------------------------------
 // Label maps
@@ -38,10 +39,10 @@ const TOPIC_LABELS: Record<string, string> = {
   anticorruption:     "Anticorrupción",
 };
 
-const SEVERITY_LABELS: Record<string, { label: string; cls: string }> = {
-  low:    { label: "Baja", cls: "bg-gray-100 text-gray-600 border-gray-200" },
-  medium: { label: "Media", cls: "bg-yellow-50 text-yellow-700 border-yellow-200" },
-  high:   { label: "Alta", cls: "bg-red-50 text-red-700 border-red-200" },
+const SEVERITY_LABELS: Record<string, { label: string; cls: string; borderColor: string }> = {
+  low:    { label: "Baja",  cls: "bg-gray-50 text-gray-600 border-gray-200",    borderColor: "#6B6B6B" },
+  medium: { label: "Media", cls: "bg-orange-50 text-orange-700 border-orange-200", borderColor: "#D4813A" },
+  high:   { label: "Alta",  cls: "bg-red-50 text-red-700 border-red-200",       borderColor: "#C4622D" },
 };
 
 const CONTROVERSY_STATUS_LABELS: Record<string, string> = {
@@ -95,7 +96,10 @@ function formatDateES(iso: string): string {
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-lg font-bold text-gray-800 mb-3 pb-2 border-b border-gray-100">
+    <h2
+      className="text-lg font-bold mb-3 pb-2"
+      style={{ color: "var(--foreground)", borderBottom: "2px solid var(--primary)" }}
+    >
       {children}
     </h2>
   );
@@ -107,9 +111,17 @@ function ProposalCard({ p, sourceMap }: { p: Proposal; sourceMap: Map<string, So
   const propSources = p.source_ids
     .map((id) => sourceMap.get(id))
     .filter((s): s is Source => s !== undefined);
+  const topicColor = TOPIC_COLORS[p.topic_id] ?? "#4A4A4A";
 
   return (
-    <div className="rounded-xl border border-gray-200 p-4">
+    <div
+      className="rounded-xl p-4"
+      style={{
+        border: "1px solid var(--border)",
+        borderLeft: `4px solid ${topicColor}`,
+        backgroundColor: "var(--surface)",
+      }}
+    >
       <div className="flex items-start gap-2 flex-wrap justify-between">
         <div className="flex gap-2 flex-wrap">
           <span className="rounded-full bg-blue-50 border border-blue-200 px-2.5 py-0.5 text-xs font-medium text-blue-700">
@@ -166,7 +178,14 @@ function ControversyCard({ c, sourceMap }: { c: Controversy; sourceMap: Map<stri
     .filter((s): s is Source => s !== undefined);
 
   return (
-    <div className="rounded-xl border border-gray-200 p-4">
+    <div
+      className="rounded-xl p-4"
+      style={{
+        border: "1px solid var(--border)",
+        borderLeft: `4px solid ${sev.borderColor}`,
+        backgroundColor: "var(--surface)",
+      }}
+    >
       <div className="flex items-center gap-2 flex-wrap">
         <span className={`rounded-full border px-2.5 py-0.5 text-xs font-medium ${sev.cls}`}>
           Gravedad {sev.label}
@@ -267,35 +286,61 @@ export default function CandidatoDetail() {
       <div className="w-full max-w-2xl">
 
         {/* ── Breadcrumb ──────────────────────────────────────────────────── */}
-        <Link href="/candidatos" className="text-sm text-blue-600 hover:underline">
+        <Link
+          href="/candidatos"
+          className="text-sm transition"
+          style={{ color: "var(--secondary)" }}
+        >
           ← Todos los candidatos
         </Link>
 
         {/* ── Header ──────────────────────────────────────────────────────── */}
-        <div className="mt-4">
-          <div className="flex items-start justify-between gap-4">
-            <h1 className="text-3xl font-bold leading-tight">{candidate.name}</h1>
+        <div className="mt-5 flex items-start gap-5">
+          {/* Photo */}
+          {candidate.image_url ? (
+            <img
+              src={candidate.image_url}
+              alt={candidate.name}
+              referrerPolicy="no-referrer"
+              className="w-24 h-24 rounded-2xl object-cover flex-shrink-0"
+              style={{ border: "2px solid var(--border)" }}
+            />
+          ) : (
+            <div
+              className="w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-bold text-white flex-shrink-0"
+              style={{ backgroundColor: "var(--secondary)" }}
+            >
+              {candidate.name.charAt(0)}
+            </div>
+          )}
+
+          {/* Name + meta */}
+          <div className="min-w-0 flex-1">
+            <h1 className="text-2xl sm:text-3xl font-bold leading-tight" style={{ color: "var(--foreground)" }}>
+              {candidate.name}
+            </h1>
+            <p className="mt-1 text-sm" style={{ color: "var(--muted)" }}>
+              {candidate.party ?? "Sin partido registrado"}
+              {candidate.coalition ? ` · Coalición: ${candidate.coalition}` : ""}
+            </p>
             {candidate.spectrum && (
-              <div className="flex-shrink-0 mt-1">
+              <div className="mt-2">
                 <SpectrumBar spectrum={candidate.spectrum} />
               </div>
             )}
+            {candidate.last_updated && (
+              <p className="mt-1.5 text-xs" style={{ color: "var(--muted)" }}>
+                Actualizado al {formatDateES(candidate.last_updated)}
+              </p>
+            )}
           </div>
-          <p className="mt-1.5 text-gray-500">
-            {candidate.party ?? "Sin partido registrado"}
-            {candidate.coalition ? ` · Coalición: ${candidate.coalition}` : ""}
-          </p>
-          {candidate.last_updated && (
-            <p className="mt-1 text-xs text-gray-400">
-              Información actualizada al {formatDateES(candidate.last_updated)}
-            </p>
-          )}
-          {candidate.short_bio && (
-            <p className="mt-4 text-gray-700 leading-relaxed text-sm">
-              {candidate.short_bio}
-            </p>
-          )}
         </div>
+
+        {candidate.short_bio && (
+          <p className="mt-4 text-sm leading-relaxed" style={{ color: "var(--foreground)" }}>
+            {candidate.short_bio}
+          </p>
+        )}
 
         {/* ── Procuraduria ────────────────────────────────────────────────── */}
         {procLabel && (

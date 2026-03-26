@@ -65,9 +65,9 @@ def load_canonical_candidates(path: Path = CANDIDATES_PATH) -> list[dict]:
 
     Returned dicts expose:
       id, name, party, coalition, spectrum, spectrum_score, short_bio,
-      stances (flat dict: topic_id → score | None),
+      image_url, stances (flat dict: topic_id → score | None),
       topics (original array, kept for richer endpoints),
-      controversies, metadata, profile_status, last_updated.
+      proposals, controversies, metadata, profile_status, last_updated.
 
     The 'name' field is always present so scorer.py's candidate["name"]
     lookup never raises a KeyError.
@@ -87,10 +87,12 @@ def load_canonical_candidates(path: Path = CANDIDATES_PATH) -> list[dict]:
                 "spectrum":       c.get("spectrum"),
                 "spectrum_score": c.get("spectrum_score"),
                 "short_bio":      c.get("short_bio"),
+                "image_url":      c.get("image_url"),
                 # scorer.compute_affinity reads this flat dict
                 "stances":        stances,
                 # kept for /candidates/full and richer endpoints
                 "topics":         c.get("topics", []),
+                "proposals":      c.get("proposals", []),
                 "controversies":  c.get("controversies", []),
                 "metadata":       c.get("metadata", {}),
                 "profile_status": c.get("profile_status"),

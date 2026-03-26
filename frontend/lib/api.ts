@@ -52,6 +52,7 @@ export interface CandidateSummary {
   coalition: string | null;
   spectrum: string | null;
   short_bio: string | null;
+  image_url: string | null;
 }
 
 export interface Controversy {
@@ -81,6 +82,7 @@ export interface CandidateTopic {
   summary: string | null;
   plain_language_summary: string | null;
   confidence: number | null;
+  stance_score: number | null;
 }
 
 export interface Source {

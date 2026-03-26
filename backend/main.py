@@ -104,6 +104,7 @@ class CandidateSummary(BaseModel):
     coalition: str | None
     spectrum: str | None
     short_bio: str | None
+    image_url: str | None = None
     # Kept for clients still reading the legacy field name.
     party_history: str | None = None
 
@@ -133,6 +134,7 @@ def _candidate_to_summary(c: dict) -> dict:
         "coalition":     c.get("coalition"),
         "spectrum":      c.get("spectrum"),
         "short_bio":     c.get("short_bio"),
+        "image_url":     c.get("image_url"),
         # Backward-compat alias: surface party_history from metadata if present.
         "party_history": c.get("metadata", {}).get("party_history"),
     }
@@ -195,8 +197,9 @@ def get_candidates_full() -> list[dict[str, Any]]:
     for c in app.state.candidates:
         meta = c.get("metadata", {})
 
-        # Expose only public topic fields — stance scores are internal.
-        # confidence is public: it signals how well-sourced a stance is.
+        # Expose public topic fields.
+        # stance_score is exposed for UI bar-chart visualization.
+        # confidence signals how well-sourced a stance is.
         public_topics = [
             {
                 "topic_id":               t.get("topic_id"),
@@ -204,6 +207,7 @@ def get_candidates_full() -> list[dict[str, Any]]:
                 "summary":                t.get("summary"),
                 "plain_language_summary": t.get("plain_language_summary"),
                 "confidence":             t.get("confidence"),
+                "stance_score":           t.get("stance_score"),
             }
             for t in c.get("topics", [])
         ]
@@ -240,6 +244,7 @@ def get_candidates_full() -> list[dict[str, Any]]:
                 "coalition":            c.get("coalition"),
                 "spectrum":             c.get("spectrum"),
                 "short_bio":            c.get("short_bio"),
+                "image_url":            c.get("image_url"),
                 "topics":               public_topics,
                 "proposals":            c.get("proposals", []),
                 "controversies":        c.get("controversies", []),

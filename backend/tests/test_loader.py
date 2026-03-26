@@ -118,6 +118,11 @@ class TestCandidateLoader:
         espriella = next(c for c in candidates if c["id"] == "abelardo-de-la-espriella")
         assert espriella["spectrum"] == "far-right"
 
+    def test_every_candidate_has_image_url(self, candidates):
+        """Every candidate must have an image_url for UI display."""
+        for c in candidates:
+            assert c.get("image_url"), f"Missing 'image_url' in candidate {c['id']}"
+
     def test_cepeda_security_score_is_1(self, candidates):
         """Spot-check a known curated value."""
         cepeda = next(c for c in candidates if c["id"] == "ivan-cepeda")

@@ -126,12 +126,13 @@ class TestGetCandidatesFull:
             assert "topics" in c
             assert isinstance(c["topics"], list)
 
-    def test_topics_do_not_expose_stance_scores(self, client):
-        # stance_score is internal — never exposed publicly.
-        # confidence is intentionally public: it's a trust signal for UI display.
+    def test_topics_expose_stance_score_for_visualization(self, client):
+        # stance_score is now intentionally public for the topic bar-chart UI.
+        # confidence is a trust signal. Both are expected in every topic.
         for c in client.get("/candidates/full").json():
             for t in c["topics"]:
-                assert "stance_score" not in t
+                assert "stance_score" in t
+                assert "confidence" in t
 
     def test_includes_sources_list(self, client):
         for c in client.get("/candidates/full").json():

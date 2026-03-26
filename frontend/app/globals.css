@@ -1,13 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAFAF7;
+  --foreground: #1A1A1A;
+  --surface: #FFFFFF;
+  --muted: #6B6B6B;
+  --border: #E0DDD8;
+  --primary: #F5C400;
+  --secondary: #2D5016;
+  --accent: #C4622D;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -17,3 +29,42 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+
+/* ── Animations used by /como-funciona ──────────────────────────── */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.08); }
+}
+
+@keyframes revealScale {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.anim-fade-in-up {
+  animation: fadeInUp 0.6s ease both;
+}
+.anim-delay-1 { animation-delay: 0.25s; }
+.anim-delay-2 { animation-delay: 0.5s; }
+.anim-delay-3 { animation-delay: 0.75s; }
+
+.anim-bounce { animation: bounceSlow 2s ease-in-out infinite; }
+.anim-pulse  { animation: pulseSlow  2s ease-in-out infinite; }
+.anim-reveal { animation: revealScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s both; }
