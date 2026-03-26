@@ -2,7 +2,7 @@
 
 Herramienta cívica para las elecciones presidenciales Colombia 2026 — quiz de afinidad política, perfiles de candidatos con propuestas, controversias y fuentes verificadas. Arquitectura multi-agente, estática primero.
 
-> 🌐 **Demo en vivo:** [URL aquí una vez desplegado]
+> 🌐 **Demo en vivo:** https://colombia-matcher.vercel.app
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/renzorico/colombia-matcher&root=frontend)
 

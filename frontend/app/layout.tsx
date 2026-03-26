@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     title: "¿Con quién votas? — Colombia Matcher 2026",
     description:
       "Responde 25 preguntas y descubre con qué candidato presidencial estás más alineado. Propuestas, controversias y fuentes verificadas.",
+    url: "https://colombia-matcher.vercel.app",
     type: "website",
     locale: "es_CO",
   },

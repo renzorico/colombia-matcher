@@ -148,17 +148,6 @@ No es necesario configurar variables de entorno para desarrollo local. El proxy 
 
 ## Post-despliegue: actualizar el README
 
-Una vez que tengas las URLs reales, actualiza el archivo `README.md`:
+El README ya apunta a la demo en vivo: https://colombia-matcher.vercel.app
 
-1. Reemplaza la línea:
-   ```
-   > 🌐 **Demo en vivo:** [URL aquí una vez desplegado]
-   ```
-   por:
-   ```
-   > 🌐 **Demo en vivo:** https://colombia-matcher.vercel.app
-   ```
-
-2. Actualiza `CORS_ORIGINS` en Railway con la URL real de Vercel.
-
-3. Haz commit y push para que el README refleje el deploy.
+Recuerda actualizar `CORS_ORIGINS` en Railway si cambias la URL de Vercel.
