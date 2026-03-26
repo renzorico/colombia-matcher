@@ -62,6 +62,7 @@ export default function ResultadosPage() {
   >({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("quizAnswers");
@@ -98,6 +99,23 @@ export default function ResultadosPage() {
   function handleRestart() {
     sessionStorage.removeItem("quizAnswers");
     router.push("/");
+  }
+
+  async function handleShare() {
+    const top = results[0];
+    if (!top) return;
+    const text = `Hice el quiz de Colombia Matcher y mi candidato más afín es ${top.candidate} (${top.score}%). ¿Y tú? colombiamatcher.vercel.app`;
+    if (typeof navigator.share === "function") {
+      try {
+        await navigator.share({ text });
+        return;
+      } catch {
+        // User cancelled or share not supported — fall through to clipboard
+      }
+    }
+    await navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
   }
 
   // ── Loading ────────────────────────────────────────────────────────────────
@@ -291,8 +309,18 @@ export default function ResultadosPage() {
         </div>
       </div>
 
+      {/* ── Share button ───────────────────────────────────────────────────── */}
+      <div className="mt-6 flex justify-center">
+        <button
+          onClick={handleShare}
+          className="rounded-full bg-blue-600 px-6 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
+        >
+          {copied ? "¡Copiado!" : "Compartir mis resultados"}
+        </button>
+      </div>
+
       {/* ── Footer actions ─────────────────────────────────────────────────── */}
-      <div className="mt-8 mb-8 flex flex-col items-center gap-3">
+      <div className="mt-6 mb-8 flex flex-col items-center gap-3">
         <Link
           href="/candidatos"
           className="rounded-full bg-gray-800 px-6 py-2 text-sm font-semibold text-white hover:bg-gray-700 transition"

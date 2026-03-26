@@ -1,4 +1,12 @@
-# ¿Con quién votas? — Colombia 2026
+# ¿Con quién votas? — Colombia Matcher 2026
+
+Herramienta cívica para las elecciones presidenciales Colombia 2026 — quiz de afinidad política, perfiles de candidatos con propuestas, controversias y fuentes verificadas. Arquitectura multi-agente, estática primero.
+
+> 🌐 **Demo en vivo:** [URL aquí una vez desplegado]
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/renzorico/colombia-matcher&root=frontend)
+
+> **Nota:** el frontend se despliega en Vercel, pero el backend debe desplegarse por separado en Railway. Ver [DEPLOY.md](./DEPLOY.md) para instrucciones completas.
 
 Quiz de afinidad política para las elecciones presidenciales colombianas de 2026.
 El usuario responde 25 preguntas y descubre con qué candidato comparte más posiciones,
@@ -192,6 +200,49 @@ Aprobado → actualización manual de candidates_canonical.json
 ```
 
 El dashboard de revisión está disponible en `/admin/review` durante desarrollo.
+
+---
+
+## Despliegue
+
+### Variables de entorno
+
+| Variable | Dónde | Descripción |
+|---|---|---|
+| `NEXT_PUBLIC_API_URL` | Vercel (build-time) | URL completa del backend desplegado, sin trailing slash. Ej: `https://colombia-matcher.up.railway.app`. **Debe estar seteada antes del primer build.** |
+| `CORS_ORIGINS` | Railway / Render | Orígenes permitidos, separados por comas. Ej: `https://colombia-matcher.vercel.app`. En dev, `localhost:3000` siempre está permitido. |
+| `PORT` | Railway / Render | Inyectada automáticamente por la plataforma. No setear manualmente. |
+
+---
+
+### Backend → Railway (recomendado)
+
+1. Crear un nuevo proyecto en [railway.app](https://railway.app) y conectar este repositorio.
+2. Configurar el **root directory** como `backend`.
+3. Railway detecta `railway.toml` automáticamente — builder nixpacks, start command uvicorn.
+4. Setear la variable de entorno `CORS_ORIGINS` con la URL del frontend Vercel.
+5. Una vez desplegado, copiar la URL pública (ej. `https://colombia-matcher.up.railway.app`).
+
+### Frontend → Vercel (recomendado)
+
+1. Importar el repositorio en [vercel.com](https://vercel.com).
+2. Configurar el **root directory** como `frontend`.
+3. Antes del primer build, setear la variable de entorno `NEXT_PUBLIC_API_URL` con la URL del backend Railway.
+4. Deploy — Vercel detecta Next.js automáticamente.
+
+### Backend → Render (alternativa gratuita)
+
+Render detecta `render.yaml` en la raíz del repositorio. Solo conectar el repo y Render configura el servicio automáticamente. Setear `CORS_ORIGINS` en el dashboard.
+
+### Desarrollo local con Docker
+
+```bash
+docker compose up --build
+# Frontend en http://localhost:3000
+# Backend en http://localhost:8000
+```
+
+El compose monta `./backend/data` como volumen, por lo que los cambios en los JSONs son inmediatos sin reconstruir la imagen.
 
 ---
 

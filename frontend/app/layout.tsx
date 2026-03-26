@@ -14,9 +14,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "¿Con quién votas? — Colombia 2026",
+  title: "¿Con quién votas? — Colombia Matcher 2026",
   description:
-    "Descubre qué candidato presidencial colombiano se acerca más a tus ideas. Quiz de afinidad política basado en datos curados manualmente.",
+    "Responde 25 preguntas y descubre con qué candidato presidencial estás más alineado. Propuestas, controversias y fuentes verificadas.",
+  openGraph: {
+    title: "¿Con quién votas? — Colombia Matcher 2026",
+    description:
+      "Responde 25 preguntas y descubre con qué candidato presidencial estás más alineado. Propuestas, controversias y fuentes verificadas.",
+    type: "website",
+    locale: "es_CO",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "¿Con quién votas? — Colombia Matcher 2026",
+    description:
+      "Responde 25 preguntas y descubre con qué candidato presidencial estás más alineado. Propuestas, controversias y fuentes verificadas.",
+  },
 };
 
 export default function RootLayout({
