@@ -5,7 +5,7 @@ const STEPS = [
     emoji: "🗳️",
     emojiClass: "anim-bounce",
     step: "01",
-    title: "Respondés",
+    title: "Respondes",
     desc:
       "Respondes 25 preguntas sobre los temas que más importan para Colombia en 2026: seguridad, economía, salud, medio ambiente, corrupción y más. Sin respuestas correctas ni incorrectas — solo tus opiniones.",
     delay: "anim-delay-1",
@@ -16,14 +16,14 @@ const STEPS = [
     step: "02",
     title: "Comparamos",
     desc:
-      "Comparamos tus respuestas con las posiciones documentadas y verificadas de cada candidato presidencial, tema por tema. Cada dato tiene su fuente — podés verificarlo tú mismo.",
+      "Comparamos tus respuestas con las posiciones documentadas y verificadas de cada candidato presidencial, tema por tema. Cada dato tiene su fuente — puedes verificarlo tú mismo.",
     delay: "anim-delay-2",
   },
   {
     emoji: "🏆",
     emojiClass: "anim-reveal",
     step: "03",
-    title: "Descubrís",
+    title: "Descubres",
     desc:
       "Recibes un ranking personalizado mostrando qué candidato está más alineado con tus ideas, con explicación por tema y enlaces a los perfiles completos.",
     delay: "anim-delay-3",
@@ -37,7 +37,7 @@ export default function ComoFuncionaPage() {
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section
         className="flex flex-col items-center justify-center px-4 py-20 text-center"
-        style={{ backgroundColor: "var(--secondary)" }}
+        style={{ backgroundColor: "var(--hero)" }}
       >
         <span
           className="text-xs font-bold uppercase tracking-widest mb-4 anim-fade-in-up"
@@ -50,13 +50,13 @@ export default function ComoFuncionaPage() {
           style={{ color: "#FFFFFF" }}
         >
           Así funciona<br />
-          <span style={{ color: "var(--primary)" }}>Colombia Matcher</span>
+          <span style={{ color: "var(--primary)" }}>Elecciones Colombia 2026</span>
         </h1>
         <p
           className="mt-5 max-w-md text-base leading-relaxed anim-fade-in-up anim-delay-2"
           style={{ color: "rgba(255,255,255,0.8)" }}
         >
-          En tres pasos descubrís con qué candidato presidencial colombiano estás más alineado.
+          En tres pasos descubres con qué candidato presidencial colombiano estás más alineado.
         </p>
       </section>
 

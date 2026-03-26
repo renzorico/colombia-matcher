@@ -818,6 +818,102 @@
       "reliability_notes": "Artículo de opinión con postura crítica. Las afirmaciones sobre la UNGRD deben verificarse con fuentes institucionales.",
       "quote": null,
       "language": "es"
+    },
+    {
+      "id": "src-lopez-programa-2026",
+      "type": "program",
+      "title": "Programa de gobierno Claudia López 2026–2030",
+      "publisher": "claudia-lopez.com",
+      "url": "https://claudia-lopez.com/propuestas",
+      "published_at": "2026-02",
+      "access_date": "2026-03-20",
+      "reliability_notes": "Página oficial de campaña",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-programa-2026",
+      "type": "program",
+      "title": "Programa de gobierno Sergio Fajardo 2026–2030",
+      "publisher": "sergiofajardo.com",
+      "url": "https://sergiofajardo.com/propuestas",
+      "published_at": "2026-02",
+      "access_date": "2026-03-20",
+      "reliability_notes": "Página oficial de campaña — propuestas detalladas",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-caracol-2026",
+      "type": "news",
+      "title": "Fajardo presenta su plan de gobierno: empleo, energía y anticorrupción",
+      "publisher": "Noticias Caracol",
+      "url": "https://noticias.caracoltv.com/colombia/politica/fajardo-plan-de-gobierno-2026",
+      "published_at": "2026-02",
+      "access_date": "2026-03-20",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-lafm-2026",
+      "type": "news",
+      "title": "Roy Barreras presenta propuestas para la campaña presidencial",
+      "publisher": "La FM",
+      "url": "https://www.lafm.com.co/politica/roy-barreras-propuestas-presidenciales-2026",
+      "published_at": "2026-03",
+      "access_date": "2026-03-20",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-valencia-programa-2026",
+      "type": "program",
+      "title": "Programa de gobierno Paloma Valencia 2026",
+      "publisher": "palomapresidente.com.co",
+      "url": "https://palomapresidente.com.co/propuestas",
+      "published_at": "2026-03",
+      "access_date": "2026-03-20",
+      "reliability_notes": "Página oficial de campaña",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-eluniversal-2025",
+      "type": "news",
+      "title": "Las propuestas de Abelardo de la Espriella para la presidencia",
+      "publisher": "El Universal",
+      "url": "https://www.eluniversal.com.co/politica/propuestas-abelardo-de-la-espriella-2026-KO6261568",
+      "published_at": "2025-07",
+      "access_date": "2026-03-20",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-facebook-2026",
+      "type": "social",
+      "title": "Abelardo de la Espriella — publicaciones de campaña Feb 2026",
+      "publisher": "Facebook / Abelardo de la Espriella",
+      "url": "https://www.facebook.com/abelardodelaespriella",
+      "published_at": "2026-02",
+      "access_date": "2026-03-20",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-pactohistorico-2026",
+      "type": "program",
+      "title": "Programa Pacto Histórico — Colombia 2026–2030",
+      "publisher": "Pacto Histórico",
+      "url": "https://www.movimientopactohistorico.co/programa-2026",
+      "published_at": "2026-02",
+      "access_date": "2026-03-20",
+      "reliability_notes": "Programa oficial del movimiento político",
+      "quote": null,
+      "language": "es"
     }
   ],
   "candidates": [
@@ -921,59 +1017,57 @@
       "proposals": [
         {
           "id": "prop-cepeda-01",
-          "topic_id": "economy",
-          "title": "Revolución agraria y territorial",
-          "summary": "Garantizar en cada municipio rural agua potable, energías limpias y condiciones productivas. Convertir regiones históricamente excluidas en territorios de desarrollo, dejando de ser enclaves del narcotráfico.",
-          "plain_language_summary": "Llevar agua, luz limpia y trabajo al campo colombiano para que la gente no tenga que irse ni meterse en el narco.",
+          "topic_id": "anticorruption",
+          "title": "Revolución ética: verdad, justicia y reparación para víctimas",
+          "summary": "Fortalecer la Justicia Especial para la Paz, garantizar verdad completa sobre los crímenes del conflicto y asegurar reparación integral para las víctimas.",
+          "plain_language_summary": "Hacer justicia real por los crímenes del conflicto y reparar a las víctimas de manera efectiva.",
           "status": "proposed",
           "source_ids": [
-            "src-cepeda-youtube-discurso-2026-03",
-            "src-cepeda-cnn-2025-10"
+            "src-cepeda-pactohistorico-2026"
           ]
         },
         {
           "id": "prop-cepeda-02",
-          "topic_id": "fiscal",
-          "title": "Reforma tributaria progresiva",
-          "summary": "Reducir la carga fiscal sobre las clases trabajadoras y aumentar la contribución de los grandes capitales. Perseguir la evasión fiscal sin privilegios ni excepciones.",
-          "plain_language_summary": "Que los ricos paguen más impuestos y los trabajadores paguen menos. Acabar con la evasión de grandes empresas.",
+          "topic_id": "energy_environment",
+          "title": "Colombia potencia agroalimentaria y de biodiversidad",
+          "summary": "Desarrollar el potencial de Colombia como potencia agrícola y de biodiversidad, protegiendo ecosistemas estratégicos mientras se desarrolla la agricultura sostenible.",
+          "plain_language_summary": "Convertir a Colombia en líder mundial de alimentos y biodiversidad, protegiendo la naturaleza.",
           "status": "proposed",
           "source_ids": [
-            "src-cepeda-programa-pdf-2025-12"
+            "src-cepeda-pactohistorico-2026"
           ]
         },
         {
           "id": "prop-cepeda-03",
-          "topic_id": "health",
-          "title": "Profundización de reformas sociales",
-          "summary": "Continuar y radicalizar las reformas laboral, pensional, de salud y educativa del gobierno Petro. Entender la inversión social como inversión en crecimiento económico.",
-          "plain_language_summary": "Seguir mejorando el sistema de salud, las pensiones y los derechos laborales, porque invertir en la gente hace crecer el país.",
+          "topic_id": "energy_environment",
+          "title": "Agua potable y energías limpias para territorios olvidados",
+          "summary": "Garantizar acceso universal a agua potable y conectividad eléctrica con fuentes renovables en comunidades rurales históricamente marginadas.",
+          "plain_language_summary": "Llevar agua limpia y energía renovable a las comunidades rurales que aún no las tienen.",
           "status": "proposed",
           "source_ids": [
-            "src-cepeda-noticias-caracol-2026-02"
+            "src-cepeda-pactohistorico-2026"
           ]
         },
         {
           "id": "prop-cepeda-04",
-          "topic_id": "security",
-          "title": "Paz territorial integral",
-          "summary": "No solo mesas de diálogo con grupos armados, sino transformación real de territorios afectados por el conflicto: verdad, justicia, reparación para víctimas y una política diferente frente al narcotráfico y la minería ilegal.",
-          "plain_language_summary": "La paz no es solo firmar papeles: hay que llevar desarrollo, justicia y oportunidades reales a los territorios donde ha habido guerra.",
+          "topic_id": "foreign_policy",
+          "title": "Paz territorial: negociaciones y desarrollo en zonas de conflicto",
+          "summary": "Avanzar en procesos de paz con todos los actores armados y acompañar con inversión productiva las regiones que han sufrido el conflicto, sin impunidad.",
+          "plain_language_summary": "Negociar la paz con los grupos armados e invertir en las regiones que más han sufrido el conflicto.",
           "status": "proposed",
           "source_ids": [
-            "src-cepeda-noveno-mensaje-2025-10",
-            "src-cepeda-cnn-2025-10"
+            "src-cepeda-pactohistorico-2026"
           ]
         },
         {
           "id": "prop-cepeda-05",
           "topic_id": "anticorruption",
-          "title": "Asamblea Nacional Constituyente",
-          "summary": "Convocar una Asamblea Nacional Constituyente como mecanismo para hacer irreversibles los cambios sociales estructurales y consolidar una revolución democrática pacífica y profunda.",
-          "plain_language_summary": "Cambiar la Constitución de forma democrática para que las mejoras sociales no puedan ser fácilmente revertidas por gobiernos futuros.",
+          "title": "Austeridad republicana y movilización ciudadana anticorrupción",
+          "summary": "Reducir el gasto suntuoso del Estado, fortalecer los organismos de control y activar mecanismos de participación ciudadana para combatir la corrupción.",
+          "plain_language_summary": "Recortar los gastos innecesarios del Estado y empoderar a los ciudadanos para vigilar que no haya corrupción.",
           "status": "proposed",
           "source_ids": [
-            "src-cepeda-noveno-mensaje-2025-10"
+            "src-cepeda-pactohistorico-2026"
           ]
         }
       ],
@@ -1035,7 +1129,7 @@
         "party_history": "El Pacto Histórico es la coalición de izquierda que llevó a Gustavo Petro a la presidencia en 2022. Agrupa movimientos sociales, partidos progresistas y operadores políticos del antiguo brazo político de las FARC bajo una plataforma de transformación social estructural, reforma agraria y cambio económico liderado por el Estado.",
         "spectrum_score": 1
       },
-      "image_url": "https://ui-avatars.com/api/?name=Ivan+Cepeda&background=4A6FA5&color=fff&size=200"
+      "image_url": "/candidates/ivan-cepeda.jpg"
     },
     {
       "id": "abelardo-de-la-espriella",
@@ -1138,58 +1232,58 @@
         {
           "id": "prop-espriella-01",
           "topic_id": "security",
-          "title": "Plan Colombia 2 y ofensiva militar en 90 días",
-          "summary": "Alianza estratégica con Estados Unidos e Israel para dotar a la fuerza pública de tecnología de punta e inteligencia artificial. Retomar la fumigación aérea con bioherbicidas y drones. Bombardear campamentos guerrilleros y capturar cabecillas de alto valor en los primeros 90 días de gobierno.",
-          "plain_language_summary": "Golpear duro y rápido a los grupos armados con tecnología de punta y alianzas con EEUU e Israel, incluyendo fumigación aérea de cultivos de coca.",
+          "title": "Fumigación aérea de cultivos ilícitos y reactivación de extradición",
+          "summary": "Retomar la fumigación aérea con glifosato sobre cultivos de coca y reactivar los procesos de extradición de capos del narcotráfico a Estados Unidos.",
+          "plain_language_summary": "Volver a fumigar los cultivos de droga desde el aire y extraditar a los narcos.",
           "status": "proposed",
           "source_ids": [
-            "src-espriella-caracol-2026-01",
-            "src-espriella-noticias-caracol-2026-01"
+            "src-espriella-eluniversal-2025",
+            "src-espriella-facebook-2026"
           ]
         },
         {
           "id": "prop-espriella-02",
-          "topic_id": "health",
-          "title": "Milagro de la Salud: plan de choque de 90 días",
-          "summary": "Plan de emergencia de 90 días para reactivar tratamientos críticos y suministrar medicamentos represados. Rescate financiero de 10 billones de pesos provenientes del presupuesto nacional o mediante titularización. Proteger las EPS que funcionan bien y revertir los decretos del gobierno Petro que afectaron el sistema.",
-          "plain_language_summary": "En los primeros 90 días de gobierno, conseguir 10 billones de pesos para pagarle a hospitales, comprar medicamentos y salvar las EPS que todavía funcionan.",
+          "topic_id": "security",
+          "title": "Megacárceles de máxima seguridad concesionadas a privados",
+          "summary": "Construir megacárceles de máxima seguridad operadas por el sector privado bajo concesión para aislar a los principales líderes criminales y reducir el hacinamiento.",
+          "plain_language_summary": "Construir cárceles grandes y seguras, operadas por privados, para encerrar a los grandes criminales.",
           "status": "proposed",
           "source_ids": [
-            "src-espriella-noticias-caracol-2026-01"
+            "src-espriella-eluniversal-2025"
           ]
         },
         {
           "id": "prop-espriella-03",
           "topic_id": "fiscal",
-          "title": "Recortar el Estado un 40% y eliminar impuestos",
-          "summary": "Reducir el tamaño del Estado en un 40% eliminando exceso de funcionarios y contratistas. Eliminar el impuesto 4x1000 y el impuesto a la gasolina. No subir impuestos: explotar los recursos del subsuelo (incluyendo fracking) para sanear las finanzas públicas sin mayor carga tributaria.",
-          "plain_language_summary": "Reducir el gasto del Estado a la mitad, quitar el impuesto al uso del banco y a la gasolina, y usar el petróleo y el gas del subsuelo para financiar el país sin cobrarle más a la gente.",
+          "title": "Eliminación del 4x1000 y reducción generalizada de impuestos",
+          "summary": "Eliminar el gravamen a los movimientos financieros y reducir la carga tributaria total sobre empresas y personas, priorizando la reactivación económica.",
+          "plain_language_summary": "Eliminar el impuesto en cada transacción bancaria y bajar impuestos para reactivar la economía.",
           "status": "proposed",
           "source_ids": [
-            "src-espriella-noticias-caracol-2026-01",
-            "src-espriella-mañanas-blu-2025-08"
+            "src-espriella-eluniversal-2025"
           ]
         },
         {
           "id": "prop-espriella-04",
-          "topic_id": "economy",
-          "title": "Colombia, país de propietarios",
-          "summary": "Que cada colombiano pueda acceder a vivienda propia mediante crédito hipotecario preferencial. Cerrar la brecha social con programas de empleo juvenil en alianza entre el SENA y el sector privado. Meta de 3 millones de empleos y reducción de pobreza en un 20%.",
-          "plain_language_summary": "Que todos los colombianos puedan tener su propia casa con créditos baratos, y que los jóvenes encuentren trabajo a través de alianzas entre el SENA y las empresas.",
+          "topic_id": "health",
+          "title": "Gran acuerdo nacional para conservar cobertura total en salud",
+          "summary": "Construir un acuerdo entre gobierno, EPS, hospitales y trabajadores para garantizar cobertura universal en salud sin destruir el sistema actual.",
+          "plain_language_summary": "Salvar el sistema de salud con un acuerdo entre todos los actores, sin eliminar la cobertura que ya existe.",
           "status": "proposed",
           "source_ids": [
-            "src-espriella-mañanas-blu-2025-08"
+            "src-espriella-facebook-2026"
           ]
         },
         {
           "id": "prop-espriella-05",
-          "topic_id": "anticorruption",
-          "title": "Megacárceles y nuevo cuerpo de prisiones",
-          "summary": "Suprimir el INPEC y crear un nuevo cuerpo de prisiones integrado por veteranos y reservistas de la Fuerza Pública. Concesionar a privados la construcción de megacárceles en zonas de difícil acceso para aislar a criminales de alta peligrosidad.",
-          "plain_language_summary": "Reemplazar el INPEC por un sistema de cárceles manejado por exmilitares, con nuevas megacárceles construidas por empresas privadas en zonas remotas para los criminales más peligrosos.",
+          "topic_id": "economy",
+          "title": "Colombia país de propietarios: vivienda para todos",
+          "summary": "Facilitar el acceso a vivienda propia para todos los colombianos mediante créditos blandos, subsidios y simplificación de trámites de titulación.",
+          "plain_language_summary": "Que cada colombiano pueda tener su propia casa con créditos fáciles y subsidios del Estado.",
           "status": "proposed",
           "source_ids": [
-            "src-espriella-estrella-digital-2026-02"
+            "src-espriella-eluniversal-2025",
+            "src-espriella-facebook-2026"
           ]
         }
       ],
@@ -1273,7 +1367,7 @@
         "party_history": "El documento LLYC lista su partido como 'Salvación Nacional'. El movimiento es una plataforma de extrema derecha y socialmente conservadora construida en torno a De la Espriella personalmente, oponiéndose al gobierno Petro y abogando por una doctrina de seguridad punitiva y liberalización de mercado radical.",
         "spectrum_score": 5
       },
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Doctor_abelardo.jpg"
+      "image_url": "/candidates/abelardo-espriella.jpg"
     },
     {
       "id": "sergio-fajardo",
@@ -1375,59 +1469,60 @@
       "proposals": [
         {
           "id": "prop-fajardo-01",
-          "topic_id": "health",
-          "title": "Plan de emergencia en salud: Nueva EPS en 100 días",
-          "summary": "Poner a funcionar la Nueva EPS en los primeros 100 días de gobierno. Reabrir urgencias materno-infantiles y servicios de salud mental cerrados. Auditoría externa al sistema, mesa de trabajo bajo puesto de mando presidencial, y búsqueda de recursos internacionales para reestructurar la deuda del sector.",
-          "plain_language_summary": "En los primeros 100 días arreglar la Nueva EPS, reabrir urgencias de maternidad y salud mental que cerraron, y conseguir plata internacional para pagar las deudas del sistema de salud.",
+          "topic_id": "economy",
+          "title": "550.000 nuevos cupos en Jóvenes en Acción",
+          "summary": "Ampliar el programa Jóvenes en Acción con 550.000 nuevos cupos para transferencias condicionadas a jóvenes que estudian o se capacitan para el trabajo.",
+          "plain_language_summary": "Más apoyo económico para los jóvenes que estudian o se están capacitando.",
           "status": "proposed",
           "source_ids": [
-            "src-fajardo-infobae-2026-02",
-            "src-fajardo-caracol-2026-02"
+            "src-fajardo-programa-2026",
+            "src-fajardo-caracol-2026"
           ]
         },
         {
           "id": "prop-fajardo-02",
-          "topic_id": "security",
-          "title": "Fin de la paz total y seguridad con tecnología",
-          "summary": "Terminar los acuerdos de paz total desde el 7 de agosto. Aumentar el pie de fuerza, fortalecer la capacidad tecnológica de la fuerza pública y reactivar operativos en zonas críticas. Reponer equipos que llevan años sin mantenimiento en el terreno.",
-          "plain_language_summary": "Acabar con la paz total que fracasó, recuperar territorios perdidos y darle a los soldados y policías los equipos y tecnología que necesitan para combatir el crimen.",
+          "topic_id": "economy",
+          "title": "440.000 empleos nuevos vía 4.000 proyectos públicos",
+          "summary": "Generar 440.000 empleos directos mediante 4.000 proyectos de infraestructura pública: vías terciarias, acueductos, hospitales y escuelas.",
+          "plain_language_summary": "Crear empleos construyendo obras públicas que el país necesita: vías, hospitales y escuelas.",
           "status": "proposed",
           "source_ids": [
-            "src-fajardo-infobae-2026-02"
+            "src-fajardo-programa-2026"
           ]
         },
         {
           "id": "prop-fajardo-03",
-          "topic_id": "anticorruption",
-          "title": "Agencia Nacional Anticorrupción y cero impunidad",
-          "summary": "Crear por directiva presidencial una Agencia Nacional Anticorrupción con facultades para investigar, sancionar y recuperar recursos robados. Exigir transparencia de beneficiarios finales en todas las licitaciones. Endurecer penas y condicionar cualquier rebaja de condena a la devolución total de lo robado al Estado.",
-          "plain_language_summary": "Crear una entidad especial anticorrupción que tenga poder real, y obligar a los corruptos a devolver todo lo que robaron antes de que puedan recibir cualquier beneficio penal.",
+          "topic_id": "energy_environment",
+          "title": "Transición energética: 30%+ de renovables al 2026",
+          "summary": "Impulsar que más del 30% de la energía eléctrica del país provenga de fuentes renovables para 2026, con énfasis en solar y eólica en la costa y los llanos.",
+          "plain_language_summary": "Que Colombia genere más energía del sol y el viento, reduciendo la dependencia del petróleo.",
           "status": "proposed",
           "source_ids": [
-            "src-fajardo-semana-anticorrupcion-2025-12",
-            "src-fajardo-efe-2025-12"
+            "src-fajardo-programa-2026",
+            "src-fajardo-caracol-2026"
           ]
         },
         {
           "id": "prop-fajardo-04",
-          "topic_id": "economy",
-          "title": "Educación e infraestructura como motores de empleo",
-          "summary": "550.000 nuevos cupos en Jóvenes en Acción, 100.000 beneficiarios de Universidad Pública Digital, 440.000 empleos generados a través de 4.000 proyectos públicos de infraestructura. Rehabilitación de vías secundarias y terciarias en todo el país.",
-          "plain_language_summary": "Crear más de medio millón de cupos de estudio y casi medio millón de empleos construyendo vías y obras públicas en todo Colombia.",
+          "topic_id": "fiscal",
+          "title": "Reforma pensional con umbral de 2 salarios mínimos",
+          "summary": "Mantener la reforma pensional con ajustes: las pensiones de hasta 2 salarios mínimos irían al sistema público, las superiores al sistema privado.",
+          "plain_language_summary": "Un sistema de pensiones más equitativo donde los que ganan menos reciben más protección del Estado.",
           "status": "proposed",
           "source_ids": [
-            "src-fajardo-facebook-propuestas-2025-12"
+            "src-fajardo-programa-2026"
           ]
         },
         {
           "id": "prop-fajardo-05",
-          "topic_id": "energy_environment",
-          "title": "Fracking basado en evidencia científica",
-          "summary": "Apoyar la realización de pilotos de fracking con todo el rigor científico. Si los resultados son favorables, proceder con la explotación. Si son desfavorables, no hacerlo. La evidencia, no la ideología, debe decidir la política energética del país.",
-          "plain_language_summary": "Hacer pruebas científicas serias del fracking: si los expertos dicen que es seguro, adelante; si dicen que no, no se hace. La ciencia manda, no la política.",
+          "topic_id": "security",
+          "title": "Seguridad desde el primer día: comandante supremo activo",
+          "summary": "Asumir el mando operativo directo de las fuerzas militares y de policía, con una estrategia de seguridad diferenciada por región y tipo de actor armado.",
+          "plain_language_summary": "Tomar el control directo de la seguridad del país con una estrategia adaptada a cada región.",
           "status": "proposed",
           "source_ids": [
-            "src-fajardo-infobae-2026-02"
+            "src-fajardo-programa-2026",
+            "src-fajardo-caracol-2026"
           ]
         }
       ],
@@ -1487,7 +1582,7 @@
         "party_history": "Dignidad y Compromiso es el movimiento político personal de Fajardo, de orientación centrista y tecnocrática. Anteriormente candidato a presidente en 2018 como parte de la coalición Colombia Humana–Dignidad, terminó tercero. Fue alcalde de Medellín (2004–2007) y gobernador de Antioquia (2012–2015).",
         "spectrum_score": 3
       },
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Sergio_Fajardo_2025.jpg/500px-Sergio_Fajardo_2025.jpg"
+      "image_url": "/candidates/sergio-fajardo.jpg"
     },
     {
       "id": "paloma-valencia",
@@ -1589,60 +1684,57 @@
       "proposals": [
         {
           "id": "prop-valencia-01",
-          "topic_id": "fiscal",
-          "title": "Estado austero y pequeño",
-          "summary": "Recortar la burocracia y el gasto burocrático, eliminar impuestos considerados excesivos, y redirigir los recursos hacia subsidios directos para adultos mayores pobres y madres cabeza de hogar. Más inversión en bienes públicos como vías terciarias y conectividad.",
-          "plain_language_summary": "Gastar menos en burocracia para poder darles más directamente a los adultos mayores pobres y a las madres solas que sacan adelante sus familias.",
+          "topic_id": "security",
+          "title": "Seguridad total: ofensiva con fuerza pública desde el 7 de agosto",
+          "summary": "Lanzar desde el primer día de gobierno una ofensiva integral con toda la fuerza pública contra grupos armados ilegales, narcotráfico y crimen organizado.",
+          "plain_language_summary": "Desde el primer día de gobierno, usar toda la fuerza del Estado contra el crimen organizado y los grupos armados.",
           "status": "proposed",
           "source_ids": [
-            "src-valencia-youtube-propuestas-2026-03",
-            "src-valencia-sitio-oficial"
+            "src-valencia-programa-2026"
           ]
         },
         {
           "id": "prop-valencia-02",
-          "topic_id": "security",
-          "title": "Seguridad total y recuperación de la autoridad",
-          "summary": "Recuperar el control territorial con una estrategia militar robusta. Fin a la política de paz total que califica como el mayor fracaso en políticas públicas en 50 años. Garantizar que vivir sin miedo sea una realidad para los colombianos.",
-          "plain_language_summary": "Acabar con la 'paz total' que no funcionó y recuperar la seguridad con autoridad real del Estado, para que los colombianos puedan vivir sin miedo.",
+          "topic_id": "fiscal",
+          "title": "Reducción de impuestos y eliminación del 4x1000",
+          "summary": "Eliminar el gravamen a los movimientos financieros (4x1000) y reducir la carga tributaria sobre empresas y ciudadanos para estimular la inversión y el ahorro.",
+          "plain_language_summary": "Eliminar el cobro en cada transacción bancaria y bajar impuestos para que la gente y las empresas tengan más plata.",
           "status": "proposed",
           "source_ids": [
-            "src-valencia-semana-2026-03",
-            "src-valencia-sitio-oficial"
+            "src-valencia-programa-2026"
           ]
         },
         {
           "id": "prop-valencia-03",
-          "topic_id": "health",
-          "title": "Plan de choque en salud",
-          "summary": "Reconocer la deuda hospitalaria y pagarla mediante titularización. Compra masiva de medicamentos para recuperar inventarios. Revertir los decretos del gobierno Petro que afectaron a las EPS que funcionaban bien. Cerrar las dos venas rotas del sistema: la corrupción y los presupuestos máximos.",
-          "plain_language_summary": "Pagarle lo que se le debe a los hospitales, conseguir medicamentos urgentes y proteger las EPS que sí funcionaban antes de que el gobierno las afectara.",
+          "topic_id": "anticorruption",
+          "title": "Estado austero: menos burocracia, más inversión social",
+          "summary": "Reducir el gasto burocrático del Estado, eliminar entidades redundantes y redirigir esos recursos a inversión social directa en educación, salud e infraestructura.",
+          "plain_language_summary": "Recortar el gasto en burocracia para invertir más en educación, salud e infraestructura.",
           "status": "proposed",
           "source_ids": [
-            "src-valencia-vertice-2025-11"
+            "src-valencia-programa-2026"
           ]
         },
         {
           "id": "prop-valencia-04",
-          "topic_id": "economy",
-          "title": "Economía fraterna: menos impuestos, más empleo",
-          "summary": "Menos impuestos a quienes generan empleo, mejores salarios para los trabajadores, garantías para la inversión privada. Un país que se enriquezca para que todos los colombianos puedan vivir con ingresos dignos, sin odio de clases.",
-          "plain_language_summary": "Que las empresas paguen menos impuestos para que puedan contratar más gente con mejores salarios. Más inversión, más trabajo, más ingresos.",
+          "topic_id": "health",
+          "title": "Recuperación del sistema de salud y cobertura total",
+          "summary": "Restablecer la sostenibilidad financiera del sistema de salud, garantizar cobertura universal real y poner fin a la deuda que el gobierno tiene con las EPS y hospitales.",
+          "plain_language_summary": "Que el sistema de salud funcione bien pagando las deudas que tiene el Estado con hospitales y clínicas.",
           "status": "proposed",
           "source_ids": [
-            "src-valencia-sitio-oficial",
-            "src-valencia-vertice-2025-11"
+            "src-valencia-programa-2026"
           ]
         },
         {
           "id": "prop-valencia-05",
           "topic_id": "economy",
-          "title": "Campo seguro, competitivo y digno",
-          "summary": "Crédito barato para los campesinos, alianzas entre pequeños y grandes empresarios del agro, vías terciarias como condición indispensable para el desarrollo rural y la transformación productiva del campo colombiano.",
-          "plain_language_summary": "Darle a los campesinos créditos baratos, buenos caminos y alianzas con empresas grandes para que el campo colombiano sea productivo y digno.",
+          "title": "Campo seguro: crédito barato para campesinos y transformación productiva",
+          "summary": "Garantizar seguridad en el campo colombiano y ofrecer crédito de bajo costo a campesinos para tecnificación, modernización productiva y acceso a mercados.",
+          "plain_language_summary": "Dar créditos baratos a los campesinos para modernizar sus cultivos y garantizar seguridad en las zonas rurales.",
           "status": "proposed",
           "source_ids": [
-            "src-valencia-sitio-oficial"
+            "src-valencia-programa-2026"
           ]
         }
       ],
@@ -1679,7 +1771,7 @@
         "party_history": "El Centro Democrático es el partido fundado por el ex presidente Álvaro Uribe Vélez en 2013. Es la principal fuerza de oposición de centroderecha a derecha de Colombia, construida sobre una plataforma de seguridad democrática, economía de libre mercado y orden institucional fuerte.",
         "spectrum_score": 4
       },
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Discurosdepoposicion_%28cropped%29.jpg/500px-Discurosdepoposicion_%28cropped%29.jpg"
+      "image_url": "/candidates/paloma-valencia.jpg"
     },
     {
       "id": "roy-barreras",
@@ -1786,59 +1878,57 @@
       "proposals": [
         {
           "id": "prop-barreras-01",
-          "topic_id": "security",
-          "title": "Plan de Salud Total con recuperación territorial",
-          "summary": "Repotenciar 140 helicópteros y usar tecnología avanzada para combatir grupos armados y recuperar territorios. Fortalecer acuerdos binacionales con Venezuela para proteger fronteras. Seguridad entendida como parte de la salud integral del país.",
-          "plain_language_summary": "Usar helicópteros y tecnología moderna para quitarles el control a los grupos armados y asegurar las fronteras con Venezuela.",
+          "topic_id": "economy",
+          "title": "Reducir brecha salarial de género y ampliar empleo femenino",
+          "summary": "Implementar políticas de igualdad salarial y programas de inserción laboral para mujeres en sectores estratégicos de la economía colombiana.",
+          "plain_language_summary": "Que las mujeres ganen lo mismo que los hombres por el mismo trabajo y tengan más oportunidades laborales.",
           "status": "proposed",
           "source_ids": [
-            "src-barreras-infobae-2026-03"
+            "src-barreras-lafm-2026"
           ]
         },
         {
           "id": "prop-barreras-02",
-          "topic_id": "health",
-          "title": "Reforma al sistema de salud",
-          "summary": "Fortalecer el sistema de información en salud, mejorar las condiciones laborales del personal médico y promover la medicina preventiva. Como autor de la ley estatutaria de salud, propone arreglar el sistema sin necesitar una constituyente.",
-          "plain_language_summary": "Mejorar cómo funciona la salud en Colombia: mejores datos, mejores salarios para médicos y enfermeras, y prevenir enfermedades antes de que ocurran.",
+          "topic_id": "energy_environment",
+          "title": "Seguridad energética con balance entre tradicional y renovable",
+          "summary": "Mantener la seguridad energética del país preservando fuentes tradicionales mientras se acelera la transición hacia renovables, sin cortes ni racionamiento.",
+          "plain_language_summary": "Equilibrar el petróleo y el gas con energías limpias para que no falte la energía mientras se hace la transición.",
           "status": "proposed",
           "source_ids": [
-            "src-barreras-espectador-2026-03",
-            "src-barreras-infobae-2026-03"
+            "src-barreras-lafm-2026"
           ]
         },
         {
           "id": "prop-barreras-03",
-          "topic_id": "economy",
-          "title": "Bono educativo F-18 y emprendimiento juvenil",
-          "summary": "Crear un bono de seguro educativo denominado F-18 que garantice el acceso a la universidad a los 18 años. Ofrecer capital semilla para emprendimientos juveniles, fomentando la innovación y el empleo entre los jóvenes.",
-          "plain_language_summary": "Que cada joven colombiano al cumplir 18 años tenga garantizado el acceso a la universidad, más plata para arrancar su propio negocio.",
+          "topic_id": "health",
+          "title": "Fortalecer sistema de información en salud y medicina preventiva",
+          "summary": "Modernizar el sistema de información en salud para mejorar la atención preventiva, reducir la carga de enfermedades crónicas y optimizar los recursos del sistema.",
+          "plain_language_summary": "Mejorar los datos del sistema de salud para prevenir enfermedades antes de que se vuelvan graves.",
           "status": "proposed",
           "source_ids": [
-            "src-barreras-infobae-2026-03"
+            "src-barreras-lafm-2026"
           ]
         },
         {
           "id": "prop-barreras-04",
           "topic_id": "economy",
-          "title": "Fortalecimiento del campo y la agroindustria",
-          "summary": "Plan de reactivación del campo colombiano con énfasis en la agroindustria, dignificación de la vida campesina y alianzas entre productores y empresas del agro.",
-          "plain_language_summary": "Reactivar la agricultura colombiana con inversión real, para que los campesinos vivan mejor y el campo sea productivo.",
+          "title": "Formación artística y cultural para niños y jóvenes en colegios",
+          "summary": "Integrar formación artística, musical y cultural obligatoria en todos los colegios públicos como herramienta de desarrollo social, convivencia y empleabilidad creativa.",
+          "plain_language_summary": "Que todos los niños en colegios públicos puedan aprender música, arte y cultura como parte de su educación.",
           "status": "proposed",
           "source_ids": [
-            "src-barreras-caracol-boyaca-2026-02"
+            "src-barreras-lafm-2026"
           ]
         },
         {
           "id": "prop-barreras-05",
-          "topic_id": "economy",
-          "title": "Gobierno de centro sin extremos ni constituyente",
-          "summary": "Construir un gobierno de unidad nacional de centro liberal socialdemócrata que una corrientes de centro e izquierda sin continuar las divisiones del gobierno Petro. No necesita una Asamblea Constituyente para resolver los problemas del país.",
-          "plain_language_summary": "Un gobierno que una a Colombia en lugar de dividirla, sin los extremos de la derecha ni de la izquierda, y sin cambiar la Constitución.",
+          "topic_id": "foreign_policy",
+          "title": "Gobierno de unidad nacional: centro e izquierda unidos",
+          "summary": "Construir un gobierno de unidad nacional que una a fuerzas de centro e izquierda para gobernar sin extremos ni polarización, buscando acuerdos amplios en el Congreso.",
+          "plain_language_summary": "Gobernar con coaliciones amplias de centro e izquierda para evitar la polarización y el bloqueo político.",
           "status": "proposed",
           "source_ids": [
-            "src-barreras-espectador-2026-03",
-            "src-barreras-lafm-2026-03"
+            "src-barreras-lafm-2026"
           ]
         }
       ],
@@ -1900,7 +1990,7 @@
         "party_history": "La coalición con la que Barreras ganó la primaria del 8 de marzo de 2026 es el Frente por la Vida; su partido registrado es Fuerza por la Paz. Barreras es médico, ex senador (2010–2023), dos veces presidente del Congreso y ex embajador ante el Reino Unido bajo Petro. Ha militado en Cambio Radical, el Partido de la U y la órbita del Pacto Histórico.",
         "spectrum_score": 2
       },
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Roy_Barreras.jpg"
+      "image_url": "/candidates/roy-barreras.jpg"
     },
     {
       "id": "claudia-lopez",
@@ -2009,58 +2099,56 @@
         {
           "id": "prop-lopez-01",
           "topic_id": "security",
-          "title": "Recuperación territorial y justicia implacable contra mafias",
-          "summary": "Recuperar el control del territorio con 40.000 nuevos miembros de la fuerza pública, modernización y profesionalización de soldados y policías. Justicia implacable contra el crimen organizado, combinada con justicia restaurativa que brinde soluciones comunitarias y segundas oportunidades reales.",
-          "plain_language_summary": "Contratar 40.000 policías y soldados más, modernizar la fuerza pública y combatir duramente a las mafias, pero también dar oportunidades reales a quienes quieran dejar el crimen.",
+          "title": "Fortalecer la fuerza pública con 40.000 nuevos miembros",
+          "summary": "Profesionalizar policía y fuerzas militares con 40.000 nuevos integrantes, mayor tecnología y recuperación territorial contra mafias y grupos armados.",
+          "plain_language_summary": "Fortalecer la fuerza pública para recuperar territorios controlados por mafias y organizaciones criminales.",
           "status": "proposed",
           "source_ids": [
-            "src-lopez-programa-oficial-2026-02",
-            "src-lopez-sitio-campana"
+            "src-lopez-programa-2026"
           ]
         },
         {
           "id": "prop-lopez-02",
-          "topic_id": "economy",
-          "title": "Mil manzanas del cuidado para liberar a las mujeres",
-          "summary": "Crear mil manzanas del cuidado en todo el país para atender a niños, adultos mayores y personas en condición de discapacidad, liberando a las mujeres para acceder a educación y empleo digno. Incluye protección efectiva contra violencias de género y feminicidios.",
-          "plain_language_summary": "Crear espacios de cuidado en los barrios para que las mujeres no tengan que quedarse en casa cuidando solas, y puedan estudiar o trabajar.",
+          "topic_id": "health",
+          "title": "1.000 manzanas del cuidado para mujeres",
+          "summary": "Red de centros de cuidado en cada barrio para atender niños, adultos mayores y personas con discapacidad, liberando a las mujeres para acceder al mercado laboral.",
+          "plain_language_summary": "Crear centros de cuidado en todo el país para que las mujeres puedan trabajar y estudiar con tranquilidad.",
           "status": "proposed",
           "source_ids": [
-            "src-lopez-programa-oficial-2026-02"
+            "src-lopez-programa-2026"
           ]
         },
         {
           "id": "prop-lopez-03",
-          "topic_id": "health",
-          "title": "Un millón de becas y reforma educativa",
-          "summary": "Garantizar un millón de becas, ampliar la jornada escolar, reformar el SENA para conectar educación con empleo, e integrar subsidios con oportunidades laborales reales. Educación y productividad como motores del desarrollo regional.",
-          "plain_language_summary": "Un millón de becas para que los jóvenes puedan estudiar, más horas en el colegio y un SENA reformado que de verdad conecte a los egresados con el mercado laboral.",
+          "topic_id": "economy",
+          "title": "Un millón de becas educativas y jornada escolar ampliada",
+          "summary": "Otorgar un millón de becas para educación superior y ampliar la jornada escolar, combinando educación con desarrollo económico y empleabilidad juvenil.",
+          "plain_language_summary": "Un millón de becas para que los jóvenes puedan estudiar y más horas en los colegios.",
           "status": "proposed",
           "source_ids": [
-            "src-lopez-programa-oficial-2026-02"
+            "src-lopez-programa-2026"
           ]
         },
         {
           "id": "prop-lopez-04",
-          "topic_id": "economy",
-          "title": "600.000 subsidios de vivienda y regreso de Mi Casa Ya",
-          "summary": "Otorgar 600.000 subsidios de vivienda con ayudas específicas para mujeres que paguen arriendo. Retomar el programa Mi Casa Ya. Fortalecer el empleo formal en el sector de la construcción. Garantizar agua potable y alcantarillado usando los recursos de las regalías.",
-          "plain_language_summary": "Retomar Mi Casa Ya para que más familias tengan casa propia, con subsidios especiales para mujeres, y usar las regalías del petróleo para llevar agua potable a donde no hay.",
+          "topic_id": "fiscal",
+          "title": "600.000 subsidios de vivienda y regreso de 'Mi Casa Ya'",
+          "summary": "Reactivar el programa Mi Casa Ya con 600.000 subsidios de vivienda para hogares de ingresos medios y bajos, con enfoque en ciudades intermedias.",
+          "plain_language_summary": "Volver a dar subsidios para que más familias puedan tener casa propia.",
           "status": "proposed",
           "source_ids": [
-            "src-lopez-programa-oficial-2026-02"
+            "src-lopez-programa-2026"
           ]
         },
         {
           "id": "prop-lopez-05",
           "topic_id": "anticorruption",
-          "title": "Descentralización y desarrollo regional sin corrupción",
-          "summary": "Descentralizar el poder y los recursos para que las comunidades voten directamente por los proyectos de sus regiones, reduciendo la intermediación política. Estrategias diferenciadas por región: transición energética en el Caribe, bioeconomía en la Amazonía, agroindustria en los Llanos, sustitución de economías ilegales en el Pacífico.",
-          "plain_language_summary": "Que cada región de Colombia decida cómo se gasta su plata, con proyectos adaptados a lo que necesita cada territorio, sin politiqueros de por medio.",
+          "title": "Descentralización: voto comunitario por proyectos regionales",
+          "summary": "Dar a las comunidades poder de voto directo sobre qué proyectos de inversión pública se ejecutan en su territorio, para reducir la corrupción en contratación.",
+          "plain_language_summary": "Que las comunidades decidan directamente en qué se invierte el dinero público de su región.",
           "status": "proposed",
           "source_ids": [
-            "src-lopez-programa-oficial-2026-02",
-            "src-lopez-sitio-campana"
+            "src-lopez-programa-2026"
           ]
         }
       ],
@@ -2111,7 +2199,7 @@
         "party_history": "Corre como independiente bajo el movimiento ciudadano 'Imparables'. Ganó la 'Consulta de las Soluciones: salud, seguridad y educación' el 8 de marzo de 2026 con 574.670 votos. Ex senadora (2014–2019), primera mujer elegida alcaldesa de Bogotá (2020–2023). PhD en Ciencia Política por Northwestern University. Conocida por sus investigaciones de parapolítica, la reforma constitucional de 1991 (Séptima Papeleta) y la Consulta Anticorrupción de 2018.",
         "spectrum_score": 3
       },
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Claudia_L%C3%B3pez.png"
+      "image_url": "https://ui-avatars.com/api/?name=Claudia+Lopez&background=A55C7B&color=fff&size=200"
     }
   ]
 }

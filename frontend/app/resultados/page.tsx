@@ -89,7 +89,7 @@ export default function ResultadosPage() {
   async function handleShare() {
     const top = results[0];
     if (!top) return;
-    const text = `Hice el quiz de Colombia Matcher y mi candidato más afín es ${top.candidate} (${top.score}%). ¿Y tú? colombiamatcher.vercel.app`;
+    const text = `Hice el quiz de Elecciones Colombia 2026 y mi candidato más afín es ${top.candidate} (${top.score}%). ¿Y tú? colombia-matcher.vercel.app`;
     if (typeof navigator.share === "function") {
       try { await navigator.share({ text }); return; } catch { /* fall through */ }
     }

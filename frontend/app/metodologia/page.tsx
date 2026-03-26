@@ -5,7 +5,7 @@ export default function MetodologiaPage() {
     <main className="flex flex-1 flex-col items-center px-4 py-12">
       <div className="w-full max-w-2xl">
 
-        <h1 className="text-3xl font-bold">Cómo funciona Colombia Matcher</h1>
+        <h1 className="text-3xl font-bold">Cómo funciona Elecciones Colombia 2026</h1>
         <p className="mt-3 text-gray-500 leading-relaxed">
           Todo lo que necesitas saber sobre esta herramienta, en lenguaje claro.
         </p>
@@ -14,7 +14,7 @@ export default function MetodologiaPage() {
         <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50 px-5 py-4">
           <p className="text-sm font-semibold text-gray-700">Estado del proyecto</p>
           <p className="mt-1 text-sm text-gray-600 leading-relaxed">
-            Colombia Matcher está en fase de lanzamiento. La información sobre los candidatos
+            Elecciones Colombia 2026 está en fase de lanzamiento. La información sobre los candidatos
             es curada manualmente por el equipo del proyecto a partir de fuentes públicas.
             Seguimos incorporando propuestas y actualizando los perfiles a medida que avanza
             la campaña.
@@ -25,7 +25,7 @@ export default function MetodologiaPage() {
 
           {/* 1 */}
           <section>
-            <h2 className="text-xl font-bold text-gray-800">¿Qué es Colombia Matcher?</h2>
+            <h2 className="text-xl font-bold text-gray-800">¿Qué es Elecciones Colombia 2026?</h2>
             <p className="mt-3 text-gray-600 leading-relaxed">
               Es una herramienta informativa independiente que compara tus opiniones sobre
               los grandes temas del país con las posiciones conocidas de cada candidato
@@ -70,7 +70,7 @@ export default function MetodologiaPage() {
               una posición.
             </p>
             <p className="mt-3 text-gray-600 leading-relaxed">
-              Podés ver las fuentes de cada candidato en su perfil individual dentro de la
+              Puedes ver las fuentes de cada candidato en su perfil individual dentro de la
               sección{" "}
               <Link href="/candidatos" className="text-blue-600 hover:underline">
                 Candidatos
@@ -102,7 +102,7 @@ export default function MetodologiaPage() {
           <section>
             <h2 className="text-xl font-bold text-gray-800">¿Es esta herramienta imparcial?</h2>
             <p className="mt-3 text-gray-600 leading-relaxed">
-              Colombia Matcher no apoya a ningún candidato, partido político ni movimiento.
+              Elecciones Colombia 2026 no apoya a ningún candidato, partido político ni movimiento.
               Los datos son curados por personas — no por algoritmos — y cada posición tiene
               su fuente citada para que cualquiera pueda verificarla o cuestionarla.
             </p>
@@ -113,7 +113,7 @@ export default function MetodologiaPage() {
               escríbenos.
             </p>
             <p className="mt-3 text-gray-600 leading-relaxed">
-              Usa Colombia Matcher como un punto de partida, no como la última palabra.
+              Usa Elecciones Colombia 2026 como un punto de partida, no como la última palabra.
               Consulta siempre los programas oficiales de los candidatos y otras fuentes
               antes de decidir tu voto.
             </p>
@@ -123,7 +123,7 @@ export default function MetodologiaPage() {
           <section>
             <h2 className="text-xl font-bold text-gray-800">¿Quién hizo esto?</h2>
             <p className="mt-3 text-gray-600 leading-relaxed">
-              Colombia Matcher es un proyecto cívico independiente creado con el objetivo
+              Elecciones Colombia 2026 es un proyecto cívico independiente creado con el objetivo
               de facilitar una decisión de voto más informada. No tiene financiación de
               partidos políticos, empresas ni entidades gubernamentales.
             </p>
@@ -135,7 +135,7 @@ export default function MetodologiaPage() {
               Aviso legal
             </p>
             <p className="text-sm text-gray-600 leading-relaxed">
-              Colombia Matcher es una herramienta informativa independiente. No está afiliada
+              Elecciones Colombia 2026 es una herramienta informativa independiente. No está afiliada
               a ningún candidato presidencial, partido político, movimiento ciudadano ni
               entidad gubernamental. La información presentada proviene de fuentes públicas
               y es responsabilidad del usuario verificarla y contrastarla con otras fuentes

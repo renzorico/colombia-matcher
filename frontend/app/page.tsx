@@ -7,9 +7,9 @@ const STATS = [
 ];
 
 const STEPS = [
-  { emoji: "🗳️", title: "Respondés",     desc: "25 preguntas sobre los temas que más importan para Colombia en 2026." },
+  { emoji: "🗳️", title: "Respondes",     desc: "25 preguntas sobre los temas que más importan para Colombia en 2026." },
   { emoji: "📊", title: "Comparamos",    desc: "Tus respuestas con las posiciones documentadas de cada candidato, tema por tema." },
-  { emoji: "🏆", title: "Descubrís",     desc: "Qué candidato está más alineado con tus ideas, con fuentes verificables." },
+  { emoji: "🏆", title: "Descubres",     desc: "Qué candidato está más alineado con tus ideas, con fuentes verificables." },
 ];
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section
         className="flex flex-col items-center justify-center px-4 py-20 text-center"
-        style={{ backgroundColor: "var(--secondary)" }}
+        style={{ backgroundColor: "var(--hero)" }}
       >
         <h1
           className="text-5xl sm:text-6xl font-extrabold tracking-tight leading-tight"

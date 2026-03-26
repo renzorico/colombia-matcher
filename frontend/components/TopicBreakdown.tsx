@@ -2,13 +2,6 @@ import type { CandidateTopic } from "@/lib/api";
 import { TOPIC_COLORS } from "@/lib/topics";
 import EmptyState from "./EmptyState";
 
-function confidenceLabel(confidence: number | null | undefined): string | null {
-  if (confidence === null || confidence === undefined) return null;
-  if (confidence >= 0.8) return "Alta confianza";
-  if (confidence >= 0.5) return "Confianza media";
-  return "Confianza baja";
-}
-
 const STANCE_LABELS: Record<number, string> = {
   1: "Muy progresista",
   2: "Centro-izquierda",
@@ -31,7 +24,6 @@ export default function TopicBreakdown({ topics }: TopicBreakdownProps) {
       {topics.map((t) => {
         const color = TOPIC_COLORS[t.topic_id] ?? "#4A4A4A";
         const barPct = t.stance_score != null ? (t.stance_score / 5) * 100 : null;
-        const conf = confidenceLabel(t.confidence);
         const stanceLabel = t.stance_score != null ? STANCE_LABELS[t.stance_score] : null;
 
         return (
@@ -100,12 +92,6 @@ export default function TopicBreakdown({ topics }: TopicBreakdownProps) {
               </details>
             )}
 
-            {/* Confidence */}
-            {conf && (
-              <p className="mt-2 text-xs" style={{ color: "var(--muted)" }}>
-                {conf}
-              </p>
-            )}
           </div>
         );
       })}

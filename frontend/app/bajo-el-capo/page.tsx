@@ -74,7 +74,7 @@ export default function BajoElCapoPage() {
         </div>
         <h1 className="text-3xl font-bold">Bajo el capó</h1>
         <p className="mt-3 text-gray-500 leading-relaxed max-w-2xl">
-          Cómo está construida la infraestructura de datos y matching de Colombia Matcher.
+          Cómo está construida la infraestructura de datos y matching de Elecciones Colombia 2026.
           Esta sección es para desarrolladores e investigadores. Si buscas la explicación
           en lenguaje simple, ve a{" "}
           <Link href="/metodologia" className="text-blue-600 hover:underline">

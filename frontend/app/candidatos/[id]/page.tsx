@@ -34,17 +34,17 @@ export async function generateMetadata({
   const name = CANDIDATE_NAMES[id] ?? id;
   const description = `Propuestas, posiciones y controversias de ${name} para las elecciones presidenciales de Colombia 2026.`;
   return {
-    title: `${name} — Colombia Matcher 2026`,
+    title: `${name} — Elecciones Colombia 2026 2026`,
     description,
     openGraph: {
-      title: `${name} — Colombia Matcher 2026`,
+      title: `${name} — Elecciones Colombia 2026 2026`,
       description,
       type: "website",
       locale: "es_CO",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${name} — Colombia Matcher 2026`,
+      title: `${name} — Elecciones Colombia 2026 2026`,
       description,
     },
   };

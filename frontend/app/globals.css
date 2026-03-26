@@ -9,6 +9,7 @@
   --primary: #F5C400;
   --secondary: #2D5016;
   --accent: #C4622D;
+  --hero: #003087;
 }
 
 @theme {
@@ -20,6 +21,7 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-hero: var(--hero);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

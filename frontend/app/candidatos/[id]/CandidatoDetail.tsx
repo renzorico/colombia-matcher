@@ -10,7 +10,7 @@ import {
   type Proposal,
   type Source,
 } from "@/lib/api";
-import TopicBreakdown from "@/components/TopicBreakdown";
+import TopicRadialChart from "@/components/TopicRadialChart";
 import SourceList from "@/components/SourceList";
 import EmptyState from "@/components/EmptyState";
 import { SpectrumBar } from "@/components/SpectrumBar";
@@ -361,7 +361,7 @@ export default function CandidatoDetail() {
         {/* ── Topics ──────────────────────────────────────────────────────── */}
         <section className="mt-8">
           <SectionHeading>Posiciones por tema</SectionHeading>
-          <TopicBreakdown topics={candidate.topics} />
+          <TopicRadialChart topics={candidate.topics} />
         </section>
 
         {/* ── Proposals ───────────────────────────────────────────────────── */}

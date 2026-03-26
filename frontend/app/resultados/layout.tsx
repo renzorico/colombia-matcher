@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tus resultados — Colombia Matcher 2026",
+  title: "Tus resultados — Elecciones Colombia 2026 2026",
   description:
     "Ve con qué candidato presidencial colombiano tienes más afinidad, con desglose por tema y links a las fuentes.",
   openGraph: {
-    title: "Tus resultados — Colombia Matcher 2026",
+    title: "Tus resultados — Elecciones Colombia 2026 2026",
     description:
       "Ve con qué candidato presidencial colombiano tienes más afinidad, con desglose por tema y links a las fuentes.",
     type: "website",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tus resultados — Colombia Matcher 2026",
+    title: "Tus resultados — Elecciones Colombia 2026 2026",
     description:
       "Ve con qué candidato presidencial colombiano tienes más afinidad, con desglose por tema y links a las fuentes.",
   },
