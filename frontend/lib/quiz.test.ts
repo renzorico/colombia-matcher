@@ -1,8 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { axisToTopic, buildUserTopicScores, QUIZ_TOPICS } from "./quiz";
-import type { Question } from "./api";
+import { axisToTopic, buildUserTopicScores, QUIZ_TOPICS, type QuestionWithAxis } from "./quiz";
 
-// All axis values that appear in questions_v1.json
+// All axis values that appear in questions_canonical.json
 const ALL_BACKEND_AXES = [
   "security",
   "economy",
@@ -17,8 +16,8 @@ function makeQuestion(
   id: string,
   axis: string,
   weight = 1,
-): Question {
-  return { id, axis, bucket: "", statement: "", weight };
+): QuestionWithAxis {
+  return { id, axis, weight };
 }
 
 // ---------------------------------------------------------------------------
@@ -59,7 +58,7 @@ describe("axisToTopic — mapping", () => {
 
 describe("buildUserTopicScores — aggregation", () => {
   it("computes a weighted average across questions for the same topic", () => {
-    const questions: Question[] = [
+    const questions: QuestionWithAxis[] = [
       makeQuestion("q01", "security", 2),
       makeQuestion("q02", "security", 3),
     ];
@@ -70,7 +69,7 @@ describe("buildUserTopicScores — aggregation", () => {
   });
 
   it("handles multiple topics in one call", () => {
-    const questions: Question[] = [
+    const questions: QuestionWithAxis[] = [
       makeQuestion("q01", "economy", 1),
       makeQuestion("q02", "health",  1),
     ];
@@ -81,21 +80,21 @@ describe("buildUserTopicScores — aggregation", () => {
   });
 
   it("translates energy_environment axis to 'environment' key", () => {
-    const questions: Question[] = [makeQuestion("q01", "energy_environment", 1)];
+    const questions: QuestionWithAxis[] = [makeQuestion("q01", "energy_environment", 1)];
     const scores = buildUserTopicScores(questions, { q01: 3 });
     expect(scores["environment"]).toBeCloseTo(3);
     expect(scores["energy_environment"]).toBeUndefined();
   });
 
   it("translates foreign_policy axis to 'foreign-policy' key", () => {
-    const questions: Question[] = [makeQuestion("q01", "foreign_policy", 1)];
+    const questions: QuestionWithAxis[] = [makeQuestion("q01", "foreign_policy", 1)];
     const scores = buildUserTopicScores(questions, { q01: 4 });
     expect(scores["foreign-policy"]).toBeCloseTo(4);
     expect(scores["foreign_policy"]).toBeUndefined();
   });
 
   it("skips questions that have no answer", () => {
-    const questions: Question[] = [
+    const questions: QuestionWithAxis[] = [
       makeQuestion("q01", "economy", 1),
       makeQuestion("q02", "economy", 1),
     ];
@@ -104,13 +103,13 @@ describe("buildUserTopicScores — aggregation", () => {
   });
 
   it("returns empty object when no questions are answered", () => {
-    const questions: Question[] = [makeQuestion("q01", "security", 1)];
+    const questions: QuestionWithAxis[] = [makeQuestion("q01", "security", 1)];
     const scores = buildUserTopicScores(questions, {});
     expect(Object.keys(scores)).toHaveLength(0);
   });
 
   it("produces entries for all 7 topics when all axes are answered", () => {
-    const questions: Question[] = ALL_BACKEND_AXES.map((axis, i) =>
+    const questions: QuestionWithAxis[] = ALL_BACKEND_AXES.map((axis, i) =>
       makeQuestion(`q${i + 1}`, axis, 1),
     );
     const answers = Object.fromEntries(questions.map((q) => [q.id, 3]));

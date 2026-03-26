@@ -9,7 +9,7 @@
 // The public Question type in api.ts no longer carries `axis` because the
 // backend strips it; this keeps the legacy pipeline compiling without polluting
 // the production type.
-interface QuestionWithAxis {
+export interface QuestionWithAxis {
   id: string;
   axis: string;
   weight: number;
