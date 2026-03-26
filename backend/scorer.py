@@ -193,6 +193,7 @@ def compute_affinity(
         final_score = round(weighted_sum * 100, 1)
 
         results.append({
+            "id":        candidate.get("id", ""),
             "candidate": name,
             "score":     final_score,
             "breakdown": breakdown,

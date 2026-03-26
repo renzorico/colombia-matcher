@@ -10,12 +10,20 @@ export default function Home() {
         Responde 25 preguntas y descubre qué candidato presidencial se acerca
         más a tus ideas.
       </p>
-      <Link
-        href="/quiz"
-        className="mt-8 rounded-full bg-blue-600 px-8 py-3 text-lg font-semibold text-white shadow hover:bg-blue-700 transition"
-      >
-        Comenzar
-      </Link>
+      <div className="mt-8 flex flex-col items-center gap-3">
+        <Link
+          href="/quiz"
+          className="rounded-full bg-blue-600 px-8 py-3 text-lg font-semibold text-white shadow hover:bg-blue-700 transition"
+        >
+          Comenzar
+        </Link>
+        <Link
+          href="/candidatos"
+          className="text-sm text-gray-500 hover:text-gray-800 transition"
+        >
+          Ver candidatos →
+        </Link>
+      </div>
     </main>
   );
 }

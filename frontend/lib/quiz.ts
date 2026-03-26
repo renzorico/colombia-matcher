@@ -5,7 +5,15 @@
  * the frontend QuizTopic strings used by the research pipeline and matcher.
  */
 
-import type { Question } from "./api";
+// Internal type used only by the deprecated /api/match route.
+// The public Question type in api.ts no longer carries `axis` because the
+// backend strips it; this keeps the legacy pipeline compiling without polluting
+// the production type.
+interface QuestionWithAxis {
+  id: string;
+  axis: string;
+  weight: number;
+}
 
 // ---------------------------------------------------------------------------
 // QuizTopic — canonical frontend topic names
@@ -86,7 +94,7 @@ export function axisToTopic(axis: string): QuizTopic {
  * @returns Weighted-average answer per topic in [1, 5].
  */
 export function buildUserTopicScores(
-  questions: Question[],
+  questions: QuestionWithAxis[],
   answers: Record<string, number>,
 ): Record<string, number> {
   const weightedSum: Record<string, number> = {};

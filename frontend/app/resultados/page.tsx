@@ -2,63 +2,52 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import type { MatchResult } from "@/services/matcher";
+import Link from "next/link";
+import {
+  submitQuiz,
+  getCandidates,
+  type Result,
+  type CandidateSummary,
+} from "@/lib/api";
 
 // ---------------------------------------------------------------------------
-// Static candidate metadata
+// Topic labels (canonical IDs → Spanish display names)
 // ---------------------------------------------------------------------------
-
-const CANDIDATE_INFO: Record<string, { displayName: string; bio: string }> = {
-  "ivan-cepeda": {
-    displayName: "Iván Cepeda",
-    bio: "Senador, Pacto Histórico. Izquierda.",
-  },
-  "german-vargas-lleras": {
-    displayName: "Germán Vargas Lleras",
-    bio: "Ex vicepresidente, Cambio Radical. Centro-derecha.",
-  },
-  "abelardo-de-la-espriella": {
-    displayName: "Abelardo de la Espriella",
-    bio: "Abogado y político, Conservador. Derecha.",
-  },
-  "paloma-valencia": {
-    displayName: "Paloma Valencia",
-    bio: "Senadora, Centro Democrático. Centro-derecha.",
-  },
-  "sergio-fajardo": {
-    displayName: "Sergio Fajardo",
-    bio: "Ex gobernador de Antioquia, Independiente. Centro.",
-  },
-  "claudia-lopez": {
-    displayName: "Claudia López",
-    bio: "Ex alcaldesa de Bogotá, Ganadora Consulta de las Soluciones. Centro.",
-  },
-};
 
 const TOPIC_LABELS: Record<string, string> = {
   security: "Seguridad",
   economy: "Economía",
   health: "Salud",
-  environment: "Medio Ambiente",
+  energy_environment: "Energía y Medio Ambiente",
   fiscal: "Política Fiscal",
-  "foreign-policy": "Política Exterior",
+  foreign_policy: "Política Exterior",
   anticorruption: "Anticorrupción",
+};
+
+const SPECTRUM_LABELS: Record<string, string> = {
+  left: "Izquierda",
+  "center-left": "Centro-izquierda",
+  center: "Centro",
+  "center-right": "Centro-derecha",
+  right: "Derecha",
+  "far-right": "Derecha radical",
 };
 
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
-function pct(score: number): number {
-  return Math.round(score * 100);
+function alignmentChip(pct: number): { label: string; cls: string } {
+  if (pct >= 67) return { label: "De acuerdo", cls: "bg-green-100 text-green-700" };
+  if (pct >= 34) return { label: "Parcial", cls: "bg-gray-100 text-gray-600" };
+  return { label: "En desacuerdo", cls: "bg-red-100 text-red-700" };
 }
 
-function alignmentChip(agreement: number): { label: string; cls: string } {
-  if (agreement >= 0.67)
-    return { label: "De acuerdo", cls: "bg-green-100 text-green-700" };
-  if (agreement >= 0.34)
-    return { label: "Neutral", cls: "bg-gray-100 text-gray-600" };
-  return { label: "En desacuerdo", cls: "bg-red-100 text-red-700" };
+function spectrumBadge(spectrum: string | null): string {
+  if (!spectrum) return "border-gray-200 text-gray-500";
+  if (spectrum.startsWith("left")) return "border-red-200 text-red-700";
+  if (spectrum.startsWith("center")) return "border-blue-200 text-blue-700";
+  return "border-green-200 text-green-700";
 }
 
 // ---------------------------------------------------------------------------
@@ -67,7 +56,10 @@ function alignmentChip(agreement: number): { label: string; cls: string } {
 
 export default function ResultadosPage() {
   const router = useRouter();
-  const [matches, setMatches] = useState<MatchResult[]>([]);
+  const [results, setResults] = useState<Result[]>([]);
+  const [candidateMeta, setCandidateMeta] = useState<
+    Record<string, CandidateSummary>
+  >({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -79,29 +71,25 @@ export default function ResultadosPage() {
     }
 
     const answers = JSON.parse(stored) as Record<string, number>;
-    // Guard: if the user somehow landed here with an empty answers object,
-    // send back to the quiz rather than showing a meaningless all-0% ranking.
     if (Object.keys(answers).length === 0) {
       router.push("/quiz");
       return;
     }
 
-    fetch("/api/match", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ answers }),
-    })
-      .then((r) => {
-        if (!r.ok) throw new Error(`Error ${r.status}`);
-        return r.json() as Promise<MatchResult[]>;
-      })
-      .then((data) => {
-        setMatches(data);
+    // Fetch quiz results + candidate metadata in parallel.
+    Promise.all([submitQuiz(answers), getCandidates()])
+      .then(([ranked, candidates]) => {
+        setResults(ranked);
+        const byId: Record<string, CandidateSummary> = {};
+        for (const c of candidates) byId[c.id] = c;
+        setCandidateMeta(byId);
         setLoading(false);
       })
       .catch((err: unknown) => {
         setError(
-          err instanceof Error ? err.message : "No se pudieron cargar los resultados.",
+          err instanceof Error
+            ? err.message
+            : "No se pudieron cargar los resultados.",
         );
         setLoading(false);
       });
@@ -116,7 +104,7 @@ export default function ResultadosPage() {
   if (loading) {
     return (
       <main className="flex flex-1 items-center justify-center">
-        <p className="text-lg text-gray-500">Calculando resultados...</p>
+        <p className="text-lg text-gray-500">Calculando afinidad...</p>
       </main>
     );
   }
@@ -126,6 +114,10 @@ export default function ResultadosPage() {
     return (
       <main className="flex flex-1 flex-col items-center justify-center gap-4 px-4">
         <p className="text-red-600">{error}</p>
+        <p className="text-sm text-gray-500">
+          Asegúrate de que el servidor backend esté activo en{" "}
+          {process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000"}.
+        </p>
         <button
           onClick={handleRestart}
           className="rounded-full border border-gray-300 px-6 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 transition"
@@ -136,8 +128,8 @@ export default function ResultadosPage() {
     );
   }
 
-  const top = matches[0];
-  const topInfo = top ? CANDIDATE_INFO[top.candidateId] : null;
+  const top = results[0];
+  const topMeta = top ? candidateMeta[top.id] : null;
 
   // ── Results ────────────────────────────────────────────────────────────────
   return (
@@ -146,38 +138,72 @@ export default function ResultadosPage() {
       <p className="mt-2 text-gray-500 text-center">
         Candidatos ordenados por afinidad con tus respuestas
       </p>
+      <p className="mt-1 text-xs text-gray-400">
+        Información curada manualmente · Datos estáticos a marzo 2026
+      </p>
 
       {/* ── Top candidate hero ────────────────────────────────────────────── */}
-      {top && topInfo && (
+      {top && (
         <div className="mt-8 w-full max-w-2xl rounded-2xl border-2 border-blue-500 bg-blue-50 p-6 shadow-md">
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-500">
             Tu mejor afinidad
           </p>
-          <h2 className="mt-1 text-2xl font-bold">{topInfo.displayName}</h2>
-          <p className="mt-0.5 text-sm text-gray-500">{topInfo.bio}</p>
+          <div className="mt-1 flex items-start justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-bold">{top.candidate}</h2>
+              {topMeta && (
+                <p className="mt-0.5 text-sm text-gray-500">
+                  {topMeta.party ?? "—"}
+                  {topMeta.spectrum ? ` · ${SPECTRUM_LABELS[topMeta.spectrum] ?? topMeta.spectrum}` : ""}
+                </p>
+              )}
+            </div>
+            <Link
+              href={`/candidatos/${top.id}`}
+              className="flex-shrink-0 rounded-full border border-blue-400 px-4 py-1.5 text-xs font-semibold text-blue-700 hover:bg-blue-100 transition"
+            >
+              Ver perfil
+            </Link>
+          </div>
 
           <p className="mt-4 text-5xl font-extrabold text-blue-600">
-            {pct(top.overallScore)}%
+            {top.score}%
           </p>
           <div className="mt-2 h-3 w-full rounded-full bg-blue-100">
             <div
               className="h-3 rounded-full bg-blue-500 transition-all"
-              style={{ width: `${pct(top.overallScore)}%` }}
+              style={{ width: `${top.score}%` }}
             />
           </div>
+
+          {/* Topic breakdown for top candidate */}
+          {Object.keys(top.breakdown).length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {Object.entries(top.breakdown).map(([topicId, pct]) => {
+                const chip = alignmentChip(pct);
+                return (
+                  <span
+                    key={topicId}
+                    className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${chip.cls}`}
+                    title={`${TOPIC_LABELS[topicId] ?? topicId}: ${pct}%`}
+                  >
+                    {TOPIC_LABELS[topicId] ?? topicId} · {pct}%
+                  </span>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
 
       {/* ── Full ranked list ──────────────────────────────────────────────── */}
       <div className="mt-6 flex w-full max-w-2xl flex-col gap-4">
-        {matches.map((m, i) => {
-          const info = CANDIDATE_INFO[m.candidateId];
-          const displayName = info?.displayName ?? m.candidateId;
-          const bio = info?.bio ?? "";
+        {results.map((r, i) => {
+          const meta = candidateMeta[r.id];
 
           return (
             <div
-              key={m.candidateId}
+              key={r.id}
               className="rounded-xl border border-gray-200 p-5 shadow-sm"
             >
               {/* Header row */}
@@ -186,35 +212,55 @@ export default function ResultadosPage() {
                   {i + 1}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <h3 className="truncate font-semibold">{displayName}</h3>
-                  <p className="truncate text-xs text-gray-400">{bio}</p>
+                  <h3 className="truncate font-semibold">{r.candidate}</h3>
+                  {meta && (
+                    <div className="mt-0.5 flex items-center gap-2">
+                      <p className="truncate text-xs text-gray-400">
+                        {meta.party ?? "—"}
+                      </p>
+                      {meta.spectrum && (
+                        <span
+                          className={`rounded-full border px-2 py-px text-xs ${spectrumBadge(meta.spectrum)}`}
+                        >
+                          {SPECTRUM_LABELS[meta.spectrum] ?? meta.spectrum}
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </div>
-                <span className="text-2xl font-extrabold text-blue-600 tabular-nums">
-                  {pct(m.overallScore)}%
-                </span>
+                <div className="flex flex-col items-end gap-1">
+                  <span className="text-2xl font-extrabold text-blue-600 tabular-nums">
+                    {r.score}%
+                  </span>
+                  <Link
+                    href={`/candidatos/${r.id}`}
+                    className="text-xs text-blue-500 hover:underline"
+                  >
+                    Ver perfil →
+                  </Link>
+                </div>
               </div>
 
               {/* Progress bar */}
               <div className="mt-3 h-2 w-full rounded-full bg-gray-200">
                 <div
                   className="h-2 rounded-full bg-blue-500 transition-all"
-                  style={{ width: `${pct(m.overallScore)}%` }}
+                  style={{ width: `${r.score}%` }}
                 />
               </div>
 
               {/* Per-topic chips */}
-              {m.topicAlignments.length > 0 && (
+              {Object.keys(r.breakdown).length > 0 && (
                 <div className="mt-3 flex flex-wrap gap-1.5">
-                  {m.topicAlignments.map((a) => {
-                    const chip = alignmentChip(a.agreement);
-                    const topicLabel = TOPIC_LABELS[a.topic] ?? a.topic;
+                  {Object.entries(r.breakdown).map(([topicId, pct]) => {
+                    const chip = alignmentChip(pct);
                     return (
                       <span
-                        key={a.topic}
+                        key={topicId}
                         className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${chip.cls}`}
-                        title={`${topicLabel}: ${pct(a.agreement)}% afinidad`}
+                        title={`${TOPIC_LABELS[topicId] ?? topicId}: ${pct}%`}
                       >
-                        {topicLabel} · {chip.label}
+                        {TOPIC_LABELS[topicId] ?? topicId}
                       </span>
                     );
                   })}
@@ -225,13 +271,21 @@ export default function ResultadosPage() {
         })}
       </div>
 
-      {/* ── Restart ───────────────────────────────────────────────────────── */}
-      <button
-        onClick={handleRestart}
-        className="mt-10 mb-8 rounded-full border border-gray-300 px-6 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 transition"
-      >
-        Volver a empezar
-      </button>
+      {/* ── Footer actions ─────────────────────────────────────────────────── */}
+      <div className="mt-10 mb-8 flex flex-col items-center gap-3">
+        <Link
+          href="/candidatos"
+          className="rounded-full bg-gray-800 px-6 py-2 text-sm font-semibold text-white hover:bg-gray-700 transition"
+        >
+          Explorar candidatos
+        </Link>
+        <button
+          onClick={handleRestart}
+          className="rounded-full border border-gray-300 px-6 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 transition"
+        >
+          Volver a empezar
+        </button>
+      </div>
     </main>
   );
 }

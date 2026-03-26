@@ -4,11 +4,34 @@ Colombia Matcher is a web app where people answer policy questions and get match
 
 ## What It Does
 
-- Asks 25 policy questions (Likert scale 1-5)
-- Computes affinity scores against candidate positions across 7 axes
-- Returns ranked matches with per-axis breakdown
-- Shows extra context (party, background, controversies)
-- Can generate short plain-Spanish explanations for each match
+- Asks 25 policy questions (Likert scale 1–5)
+- Computes affinity scores against candidate positions across 7 topic axes
+- Returns ranked matches with per-topic breakdown
+- Lets users browse candidate profiles (bio, controversies, topic summaries)
+- Generates plain-Spanish explanations per match
+
+## Data Model
+
+All candidate data is **static and curated** — no paid APIs, no live ingestion.
+Source of truth: `backend/data/candidates_canonical.json` and `backend/data/questions_canonical.json`.
+
+7 canonical topics: security (25%), economy (20%), health (15%), energy_environment (15%),
+fiscal (10%), foreign_policy (10%), anticorruption (5%).
+
+## Production Data Flow
+
+```
+Quiz page
+  → GET /questions   (canonical backend)
+  → collect answers locally (sessionStorage)
+  → POST /quiz/submit (canonical backend scorer)
+  → Results page (ranked candidates + per-topic breakdown)
+  → /candidatos/[id] (full candidate profile from backend)
+```
+
+The old TypeScript mock matching pipeline (`frontend/services/`, `frontend/skills/`,
+`frontend/app/api/match`) is **no longer the production path**. It remains in the
+codebase for dev/debug purposes only. The production path is the canonical Python backend.
 
 ## Project Structure
 

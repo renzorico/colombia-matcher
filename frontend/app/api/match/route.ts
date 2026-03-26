@@ -1,18 +1,12 @@
 /**
- * POST /api/match
+ * POST /api/match  [DEPRECATED — dev/debug only]
  *
- * Runs the mock research pipeline for all 6 candidates and returns them
- * ranked by alignment with the user's quiz answers.
+ * Legacy TypeScript mock matching pipeline. No longer used by the production
+ * quiz/results flow.  The production path calls the Python backend directly:
+ *   POST http://localhost:8000/quiz/submit
  *
- * Body: { answers: Record<string, number> }
- *   answers — map of question ID → Likert answer (1–5) as stored in
- *             sessionStorage["quizAnswers"] by the quiz page.
- *
- * Response: MatchResult[] sorted by overallScore descending.
- *
- * NOTE: The Python backend's GET /questions endpoint omits the `axis` field,
- * so we embed the question→axis+weight mapping here rather than reading it
- * from the backend at request time.
+ * Kept here so existing dev tooling (debug profile page, preview scripts)
+ * does not break. Do not expose or link this route in production UI.
  */
 
 import { NextResponse } from "next/server";

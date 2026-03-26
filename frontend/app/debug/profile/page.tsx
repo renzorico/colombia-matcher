@@ -1,5 +1,7 @@
 // DEV ONLY — internal candidate-profile debugger. Not linked from public nav.
+// Returns 404 when NODE_ENV is not "development".
 
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getCandidateProfile } from "@/services/profiles";
 
@@ -13,6 +15,8 @@ export default async function DebugProfilePage({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
+  if (process.env.NODE_ENV !== "development") notFound();
+
   const { candidateId: rawId } = await searchParams;
   const candidateId = typeof rawId === "string" ? rawId : "ivan-cepeda";
 

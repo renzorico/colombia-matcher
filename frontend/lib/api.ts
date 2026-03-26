@@ -1,54 +1,119 @@
-import axios from "axios";
+/**
+ * api.ts — typed client for the canonical Python backend.
+ *
+ * All production data flows through these functions.
+ * Set NEXT_PUBLIC_API_URL to point at the backend in staging/production;
+ * defaults to http://localhost:8000 for local development.
+ */
 
-const api = axios.create({
-  baseURL: "http://localhost:8000",
-});
+const BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ?? "http://localhost:8000";
+
+async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
+  const res = await fetch(`${BASE_URL}${path}`, {
+    ...init,
+    headers: { "Content-Type": "application/json", ...init?.headers },
+  });
+  if (!res.ok) {
+    const detail = await res.text().catch(() => "");
+    throw new Error(`Backend error ${res.status} on ${path}: ${detail}`);
+  }
+  return res.json() as Promise<T>;
+}
+
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
 
 export interface Question {
   id: string;
-  /** Backend axis name (e.g. "energy_environment"). Use axisToTopic() to convert to QuizTopic. */
-  axis: string;
   bucket: string;
   statement: string;
   weight: number;
 }
 
+/** One candidate in the ranked quiz result. */
 export interface Result {
+  /** Slug ID (e.g. "paloma-valencia") — use for /candidatos/[id] links. */
+  id: string;
+  /** Full display name (e.g. "Paloma Valencia"). */
   candidate: string;
+  /** Affinity percentage 0–100. */
   score: number;
+  /** Per-topic affinity percentage, keyed by canonical topic ID. */
   breakdown: Record<string, number>;
 }
 
-interface AffinityResponse {
-  results: Result[];
+/** Lightweight candidate for the /candidatos listing. */
+export interface CandidateSummary {
+  id: string;
+  name: string;
+  party: string | null;
+  coalition: string | null;
+  spectrum: string | null;
+  short_bio: string | null;
 }
 
-interface ExplainResponse {
-  candidate: string;
-  explanation: string;
+export interface Controversy {
+  id: string;
+  title: string;
+  summary: string;
+  severity: "low" | "medium" | "high" | string;
+  status: string;
+  date: string | null;
 }
+
+export interface CandidateTopic {
+  topic_id: string;
+  topic_label: string;
+  summary: string | null;
+  plain_language_summary: string | null;
+}
+
+/** Full candidate data for the /candidatos/[id] detail page. */
+export interface CandidateFull extends CandidateSummary {
+  topics: CandidateTopic[];
+  proposals: unknown[];
+  controversies: Controversy[];
+  procuraduria_status: string | null;
+  procuraduria_summary: string | null;
+  profile_status: string | null;
+  last_updated: string | null;
+}
+
+// ---------------------------------------------------------------------------
+// API calls
+// ---------------------------------------------------------------------------
 
 export async function getQuestions(): Promise<Question[]> {
-  const { data } = await api.get<Question[]>("/questions");
-  return data;
+  return apiFetch<Question[]>("/questions");
+}
+
+export async function getCandidates(): Promise<CandidateSummary[]> {
+  return apiFetch<CandidateSummary[]>("/candidates");
+}
+
+export async function getCandidatesFull(): Promise<CandidateFull[]> {
+  return apiFetch<CandidateFull[]>("/candidates/full");
 }
 
 export async function submitQuiz(
-  answers: Record<string, number>
+  answers: Record<string, number>,
 ): Promise<Result[]> {
-  const { data } = await api.post<AffinityResponse>("/quiz/submit", {
-    answers,
+  const data = await apiFetch<{ results: Result[] }>("/quiz/submit", {
+    method: "POST",
+    body: JSON.stringify({ answers }),
   });
   return data.results;
 }
 
 export async function explainCandidate(
   name: string,
-  answers: Record<string, number>
+  answers: Record<string, number>,
 ): Promise<string> {
-  const { data } = await api.get<ExplainResponse>(
-    `/explain/${encodeURIComponent(name)}`,
-    { params: { answers: JSON.stringify(answers) } }
+  const params = new URLSearchParams({ answers: JSON.stringify(answers) });
+  const data = await apiFetch<{ candidate: string; explanation: string }>(
+    `/explain/${encodeURIComponent(name)}?${params}`,
   );
   return data.explanation;
 }

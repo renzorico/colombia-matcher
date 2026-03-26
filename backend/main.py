@@ -78,6 +78,7 @@ class QuizSubmission(BaseModel):
 
 
 class AffinityBreakdown(BaseModel):
+    id: str
     candidate: str
     score: float
     breakdown: dict[str, int]
@@ -185,19 +186,33 @@ def get_candidates_full() -> list[dict[str, Any]]:
     result = []
     for c in app.state.candidates:
         meta = c.get("metadata", {})
+
+        # Expose only public topic fields — stance scores are internal.
+        public_topics = [
+            {
+                "topic_id":               t.get("topic_id"),
+                "topic_label":            t.get("topic_label"),
+                "summary":                t.get("summary"),
+                "plain_language_summary": t.get("plain_language_summary"),
+            }
+            for t in c.get("topics", [])
+        ]
+
         result.append(
             {
-                "id":                  c["id"],
-                "name":                c["name"],
-                "party":               c.get("party"),
-                "coalition":           c.get("coalition"),
-                "spectrum":            c.get("spectrum"),
-                "short_bio":           c.get("short_bio"),
-                "controversies":       c.get("controversies", []),
-                "procuraduria_status": meta.get("procuraduria_status"),
+                "id":                   c["id"],
+                "name":                 c["name"],
+                "party":                c.get("party"),
+                "coalition":            c.get("coalition"),
+                "spectrum":             c.get("spectrum"),
+                "short_bio":            c.get("short_bio"),
+                "topics":               public_topics,
+                "proposals":            c.get("proposals", []),
+                "controversies":        c.get("controversies", []),
+                "procuraduria_status":  meta.get("procuraduria_status"),
                 "procuraduria_summary": meta.get("procuraduria_summary"),
-                "profile_status":      c.get("profile_status"),
-                "last_updated":        c.get("last_updated"),
+                "profile_status":       c.get("profile_status"),
+                "last_updated":         c.get("last_updated"),
             }
         )
     return result
