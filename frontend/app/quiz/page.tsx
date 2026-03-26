@@ -13,6 +13,8 @@ const LABELS: Record<number, string> = {
   5: "Totalmente de acuerdo",
 };
 
+const STORAGE_KEY = "quizProgress";
+
 function hexWithAlpha(hex: string, alpha: number): string {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
@@ -27,13 +29,40 @@ export default function QuizPage() {
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [showValidation, setShowValidation] = useState(false);
+  const [showResume, setShowResume] = useState(false);
 
   useEffect(() => {
     getQuestions().then((qs) => {
       setQuestions(qs);
+
+      // Check for saved progress
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const { answers: savedAnswers, index: savedIndex } = JSON.parse(saved) as {
+            answers: Record<string, number>;
+            index: number;
+          };
+          if (Object.keys(savedAnswers).length > 0) {
+            setAnswers(savedAnswers);
+            setIndex(Math.min(savedIndex, qs.length - 1));
+            setShowResume(true);
+          }
+        }
+      } catch { /* ignore */ }
+
       setLoading(false);
     });
   }, []);
+
+  // Persist progress to localStorage on every change
+  useEffect(() => {
+    if (loading || questions.length === 0) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ answers, index }));
+    } catch { /* ignore */ }
+  }, [answers, index, loading, questions.length]);
 
   if (loading) {
     return (
@@ -49,30 +78,70 @@ export default function QuizPage() {
   const topicId = BUCKET_TO_TOPIC[q.bucket] ?? "security";
   const topicColor = TOPIC_COLORS[topicId] ?? "#4A6FA5";
 
-  async function handleNext() {
+  function handleNext() {
+    if (selected === null) {
+      setShowValidation(true);
+      return;
+    }
+    setShowValidation(false);
     if (index < total - 1) {
       setIndex(index + 1);
     } else {
       setSubmitting(true);
+      localStorage.removeItem(STORAGE_KEY);
       sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
       router.push("/resultados");
     }
   }
 
   function handleSkip() {
-    setAnswers((prev) => ({ ...prev, [q.id]: 3 }));
+    setShowValidation(false);
+    const updated = { ...answers, [q.id]: 3 };
+    setAnswers(updated);
     if (index < total - 1) {
       setIndex(index + 1);
     } else {
-      const finalAnswers = { ...answers, [q.id]: 3 };
-      sessionStorage.setItem("quizAnswers", JSON.stringify(finalAnswers));
+      setSubmitting(true);
+      localStorage.removeItem(STORAGE_KEY);
+      sessionStorage.setItem("quizAnswers", JSON.stringify(updated));
       router.push("/resultados");
     }
+  }
+
+  function handleSelectAnswer(val: number) {
+    setShowValidation(false);
+    setAnswers((prev) => ({ ...prev, [q.id]: val }));
+  }
+
+  function handleRestart() {
+    localStorage.removeItem(STORAGE_KEY);
+    setAnswers({});
+    setIndex(0);
+    setShowResume(false);
   }
 
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-4 py-8">
       <div className="w-full max-w-lg">
+
+        {/* Resume banner */}
+        {showResume && (
+          <div
+            className="mb-6 rounded-xl px-4 py-3 flex items-center justify-between gap-3 text-sm"
+            style={{ backgroundColor: "var(--surface)", border: "1px solid var(--border)" }}
+          >
+            <span style={{ color: "var(--foreground)" }}>
+              Tienes progreso guardado en la pregunta {index + 1}.
+            </span>
+            <button
+              onClick={handleRestart}
+              className="text-xs font-medium underline flex-shrink-0"
+              style={{ color: "var(--muted)" }}
+            >
+              Empezar de cero
+            </button>
+          </div>
+        )}
 
         {/* Topic chip */}
         <span
@@ -108,7 +177,7 @@ export default function QuizPage() {
             return (
               <button
                 key={val}
-                onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: val }))}
+                onClick={() => handleSelectAnswer(val)}
                 className="rounded-xl px-5 py-3.5 text-left text-sm font-medium transition"
                 style={{
                   border: `1.5px solid ${isSelected ? topicColor : "var(--border)"}`,
@@ -122,12 +191,19 @@ export default function QuizPage() {
           })}
         </div>
 
+        {/* Validation message */}
+        {showValidation && (
+          <p className="mt-3 text-sm font-medium" style={{ color: "var(--accent)" }}>
+            Selecciona una opción o usa &ldquo;Sin opinión&rdquo; para continuar.
+          </p>
+        )}
+
         {/* Actions */}
         <div className="mt-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
             {index > 0 && (
               <button
-                onClick={() => setIndex(index - 1)}
+                onClick={() => { setShowValidation(false); setIndex(index - 1); }}
                 className="text-sm transition"
                 style={{ color: "var(--muted)" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--foreground)")}
@@ -136,19 +212,21 @@ export default function QuizPage() {
                 ← Anterior
               </button>
             )}
-            <button
-              onClick={handleSkip}
-              className="text-sm transition"
-              style={{ color: "var(--muted)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--foreground)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
-            >
-              Omitir
-            </button>
+            <div className="flex flex-col">
+              <button
+                onClick={handleSkip}
+                className="text-sm transition"
+                style={{ color: "var(--muted)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--foreground)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+              >
+                Sin opinión
+              </button>
+            </div>
           </div>
           <button
             onClick={handleNext}
-            disabled={selected === null || submitting}
+            disabled={submitting}
             className="rounded-full px-6 py-2.5 text-sm font-bold shadow transition disabled:opacity-40 disabled:cursor-not-allowed"
             style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
           >

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -65,7 +65,9 @@ const PROPOSAL_STATUS_LABELS: Record<string, string> = {
 
 const PROCURADURIA_LABELS: Record<string, { label: string; cls: string }> = {
   clean:       { label: "Sin sanciones activas", cls: "text-green-700 bg-green-50 border-green-200" },
+  flagged:     { label: "⚠ Con anotaciones", cls: "text-amber-700 bg-amber-50 border-amber-200" },
   investigated: { label: "Investigado/a", cls: "text-orange-700 bg-orange-50 border-orange-200" },
+  under_investigation: { label: "Bajo investigación", cls: "text-orange-700 bg-orange-50 border-orange-200" },
   sanctioned:  { label: "Sancionado/a", cls: "text-red-700 bg-red-50 border-red-200" },
 };
 
@@ -257,8 +259,8 @@ function ControversyCard({ c, sourceMap }: { c: Controversy; sourceMap: Map<stri
 
 export default function CandidatoDetail() {
   const params = useParams<{ id: string }>();
-  const router = useRouter();
   const [candidate, setCandidate] = useState<CandidateFull | null>(null);
+  const [notFound, setNotFound] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -267,7 +269,8 @@ export default function CandidatoDetail() {
       .then((all) => {
         const found = all.find((c) => c.id === params.id) ?? null;
         if (!found) {
-          router.replace("/candidatos");
+          setNotFound(true);
+          setLoading(false);
           return;
         }
         setCandidate(found);
@@ -277,7 +280,7 @@ export default function CandidatoDetail() {
         setError(err instanceof Error ? err.message : "Error al cargar candidato.");
         setLoading(false);
       });
-  }, [params.id, router]);
+  }, [params.id]);
 
   if (loading) {
     return (
@@ -287,11 +290,31 @@ export default function CandidatoDetail() {
     );
   }
 
+  if (notFound) {
+    return (
+      <main className="flex flex-1 flex-col items-center justify-center gap-4 px-4 text-center">
+        <p className="text-2xl font-bold" style={{ color: "var(--foreground)" }}>
+          Candidato no encontrado
+        </p>
+        <p className="text-sm" style={{ color: "var(--muted)" }}>
+          El perfil que buscas no existe o la URL es incorrecta.
+        </p>
+        <Link
+          href="/candidatos"
+          className="rounded-full px-6 py-2 text-sm font-bold shadow transition hover:opacity-90"
+          style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
+        >
+          Ver todos los candidatos
+        </Link>
+      </main>
+    );
+  }
+
   if (error || !candidate) {
     return (
       <main className="flex flex-1 flex-col items-center justify-center gap-3 px-4">
-        <p className="text-red-600">{error ?? "Candidato no encontrado."}</p>
-        <Link href="/candidatos" className="text-sm text-blue-600 hover:underline">
+        <p className="text-red-600">{error ?? "Error al cargar el candidato."}</p>
+        <Link href="/candidatos" className="text-sm hover:underline" style={{ color: "var(--secondary)" }}>
           Ver todos los candidatos
         </Link>
       </main>

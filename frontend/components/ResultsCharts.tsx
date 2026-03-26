@@ -94,8 +94,8 @@ export default function ResultsCharts({ results }: Props) {
         <p className="text-xs mb-4" style={{ color: "var(--muted)" }}>
           Comparación entre tus dos candidatos más afines
         </p>
-        <ResponsiveContainer width="100%" height={300}>
-          <RadarChart data={radarData} margin={{ top: 20, right: 60, bottom: 20, left: 60 }}>
+        <ResponsiveContainer width="100%" height={320}>
+          <RadarChart data={radarData} margin={{ top: 30, right: 70, bottom: 20, left: 70 }}>
             <PolarGrid stroke="var(--border)" />
             <PolarAngleAxis
               dataKey="topic"
