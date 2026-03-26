@@ -6,9 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dev:preview:sources": "vite-node scripts/dev_preview_sources.ts",
+    "dev:preview:stances": "vite-node scripts/dev_preview_stances.ts",
+    "dev:preview:profile": "vite-node scripts/dev_preview_profile.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.80.0",
     "axios": "^1.13.6",
     "next": "16.2.0",
     "react": "19.2.4",
@@ -22,6 +28,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^2.1.9"
   }
 }

@@ -1,53 +1,420 @@
 [
   {
-    "name": "Paloma Valencia",
-    "party": "Centro Democrático",
-    "spectrum": "center-right",
-    "party_history": "Senadora desde 2014 por el Centro Democrático, partido fundado por Álvaro Uribe.",
-    "procuraduria": "Sin sanciones disciplinarias vigentes.",
-    "scandals": "Controversia por declaraciones sobre comunidades indígenas en el Cauca (2019).",
-    "stances": {
-      "security": 4,
-      "economy": 5,
-      "health": 3,
-      "energy_environment": 2,
-      "fiscal": 4,
-      "foreign_policy": 3,
-      "anticorruption": 5
-    }
-  },
-  {
-    "name": "Carlos Mendoza",
+    "candidate": "Iván Cepeda",
     "party": "Pacto Histórico",
+    "coalition": null,
     "spectrum": "left",
-    "party_history": "Exconcejal de Bogotá, vinculado a movimientos sociales y sindicales.",
-    "procuraduria": "Sin sanciones disciplinarias vigentes.",
-    "scandals": "Investigado por presunta financiación irregular de campaña en 2022; caso archivado.",
     "stances": {
-      "security": 2,
-      "economy": 3,
-      "health": 5,
-      "energy_environment": 4,
-      "fiscal": null,
-      "foreign_policy": 2,
-      "anticorruption": 3
-    }
+      "security": {
+        "score": 1,
+        "summary": "Rejects the traditional punitive/military model in favour of 'human security': dismantling paramilitary governance and illicit economies in marginalised territories through social investment and diplomatic/commercial cooperation at borders rather than military closures.",
+        "source": "Su enfoque propone transitar del modelo punitivo tradicional hacia una 'seguridad humana' basada en la transformación integral de territorios y el ataque a las causas sociales del crimen… plantea sustituir el cierre militar por cooperación diplomática y comercial para desarticular economías ilícitas. [LLYC, p.10]",
+        "confidence": "high"
+      },
+      "economy": {
+        "score": 1,
+        "summary": "Advocates a 'productive capitalism' with strong state stewardship and a focus on human dignity. Proposes an 'agrarian revolution' to make the peasant economy the national engine, requiring vigorous state intervention in land, rural roads and basic resources. Critical of market elites and inequality.",
+        "source": "Plantea transitar hacia un 'capitalismo productivo' con fuerte rectoría del Estado y un enfoque de dignidad humana… impulsa una 'revolución agraria' destinada a convertir la economía campesina en el motor de la economía nacional, lo cual requeriría una vigorosa intervención estatal. [LLYC, p.9]",
+        "confidence": "high"
+      },
+      "health": {
+        "score": 2,
+        "summary": "Supports passing a health reform to create a mixed system where EPS remain but under strict state oversight. Proposes a 'Financial Truth Commission' to investigate corruption (e.g. Nueva EPS). Immediate emergency plan to solve medicine supply and rescue hospital finances.",
+        "source": "Cepeda insiste en aprobar la reforma a la salud para transitar hacia un sistema mixto: las EPS mantendrían su participación, pero sometidas a una estricta rectoría y control del Estado. [LLYC, p.9]",
+        "confidence": "high"
+      },
+      "energy_oil": {
+        "score": 1,
+        "summary": "Prioritises energy sovereignty and accelerated transition. Maintains an explicit red line against fracking. Supports solar self-generation in rural areas for his agrarian revolution. Proposes intervening private monopolies in gas imports to prevent tariff speculation.",
+        "source": "Su escenario de gobernabilidad prioriza la soberanía energética y una transición acelerada, manteniendo un rechazo explícito al fracking como línea roja ambiental… sugiere intervenir monopolios privados en la importación de gas para evitar la especulación de tarifas. [LLYC, p.10]",
+        "confidence": "high"
+      },
+      "environment": {
+        "score": 1,
+        "summary": "Conceives biodiversity and water as a 'common home'. Conditions energy development on strict environmental licences, prioritises Amazon protection, and maintains a blanket ban on fracking due to its damage to water and territorial resources.",
+        "source": "Cepeda condiciona el desarrollo energético a licencias ambientales estrictas, prioriza la protección de la Amazonía y mantiene una prohibición rotunda frente a la técnica del fracking por sus daños a la riqueza hídrica y territorial. [LLYC, p.10]",
+        "confidence": "high"
+      },
+      "fiscal": {
+        "score": 2,
+        "summary": "Acknowledges a large debt and serious deficit but rejects social spending cuts as 'neoliberal austerity'. Proposes 'republican austerity': fighting macro-corruption and state waste (e.g. royalties) as the primary fiscal consolidation tool. Risks tension with the Fiscal Rule and ratings agencies.",
+        "source": "Reconoce la existencia de una 'deuda enorme' y un déficit serio, pero rechaza los recortes al gasto social, clasificándolos de 'austeridad neoliberal'… propone una 'austeridad republicana' basada en combatir la 'macrocorrupción' y el despilfarro estatal. [LLYC, p.10]",
+        "confidence": "high"
+      },
+      "foreign_policy": {
+        "score": 1,
+        "summary": "Advocates sovereign diplomacy, explicitly rejects US interference in domestic affairs and US drug-war decertification. Prioritises Latin American regional integration and stable relations with Venezuela as guarantor of peace processes. Pro-Palestinian.",
+        "source": "Propone transitar de una agenda de seguridad militar a una de cooperación bilateral respetuosa y autonomía política, rechazando explícitamente cualquier intervención militar en la región y calificando de 'vergonzosa' la descertificación de EE. UU. en la lucha antidrogas. [LLYC, p.11]",
+        "confidence": "high"
+      },
+      "anticorruption": {
+        "score": 2,
+        "summary": "Anti-corruption is central to his identity: proposes replacing the CNE with a genuinely impartial body, a systemic 'macro-corruption' investigation policy, a 'Republican Austerity Law' to cut congressional salaries, and a 'Financial Truth Commission' for health-sector fraud.",
+        "source": "Como propuestas concretas, plantea sustituir el actual Consejo Nacional Electoral (CNE) por un ente verdaderamente imparcial y ejecutar una política sistémica e investigativa contra la 'macrocorrupción'. [LLYC, p.8]",
+        "confidence": "high"
+      }
+    },
+    "party_history": "Pacto Histórico is the left-wing coalition that brought Gustavo Petro to the presidency in 2022. It groups together social movements, progressive parties and former FARC political operatives under a platform of structural social transformation, land reform and state-led economic change.",
+    "procuraduria": {
+      "status": "clean",
+      "summary": "The Procuraduría opened a disciplinary investigation for alleged witness manipulation in the Uribe case but absolved Cepeda in both first and second instance. Procurador General Fernando Carrillo confirmed the second-instance absolution in August 2020. No active sanctions or inhabilidades found.",
+      "source": "https://www.elcolombiano.com/colombia/cepeda-absuelto-por-procuraduria-en-segunda-instancia-por-presunta-manipulacion-de-testigos-IH13508550"
+    },
+    "scandals": []
   },
   {
-    "name": "Lucía Rondón",
-    "party": "Alianza Verde",
-    "spectrum": "center-left",
-    "party_history": "Exministra de Ambiente, promotora de la transición energética.",
-    "procuraduria": "Sin sanciones disciplinarias vigentes.",
-    "scandals": "Cuestionamientos por contratos de consultoría ambiental con empresas privadas.",
+    "candidate": "Abelardo de la Espriella",
+    "party": "Firmes por la Patria",
+    "coalition": null,
+    "spectrum": "far-right",
     "stances": {
-      "security": 1,
-      "economy": 2,
-      "health": 4,
-      "energy_environment": 5,
-      "fiscal": 3,
-      "foreign_policy": 5,
-      "anticorruption": 4
-    }
+      "security": {
+        "score": 5,
+        "summary": "Hardline punitive approach: retake territories immediately, bomb 'narco-terrorist' camps, fumigate 330,000 hectares of coca, and build mega-prisons in the style of El Salvador. Zero tolerance, 'iron fist' on citizen security.",
+        "source": "Para combatir el narcotráfico y el crimen organizado, propone retomar los territorios de inmediato, bombardear campamentos 'narcoterroristas' y fumigar 330.000 hectáreas de coca. En cuanto a la seguridad ciudadana, promete 'mano de hierro', cero tolerancia y construir megacárceles al estilo de El Salvador. [LLYC, p.16]",
+        "confidence": "high"
+      },
+      "economy": {
+        "score": 5,
+        "summary": "Strictly pro-market, anti-interventionist. Proposes reducing the size of the state by 40% and eliminating up to 136 public entities to cut the chronic deficit, lower taxes and unblock private investment. Frontal critique of the current interventionist model.",
+        "source": "Destaca su intención de reducir el tamaño del Estado en un 40 % y eliminar hasta 136 entidades públicas con el fin de controlar el déficit crónico, bajar los impuestos y destrabar la inversión privada. [LLYC, p.13-14]",
+        "confidence": "high"
+      },
+      "health": {
+        "score": 4,
+        "summary": "Opposes the current health reform, accusing the government of seeking to statise the service. Proposes a 90-day emergency plan injecting 10 trillion pesos to stabilise the system and pay debts. Defends EPS participation; promises 'iron fist' against corrupt insurers and support for efficient private ones.",
+        "source": "Como propuesta propositiva plantea un plan de choque de 90 días inyectando 10 billones de pesos para estabilizar el sistema y pagar deudas. Además, defiende activamente la participación de las EPS en el mercado, prometiendo respaldar a las aseguradoras privadas eficientes y aplicar 'mano de hierro' a las corruptas. [LLYC, p.14]",
+        "confidence": "high"
+      },
+      "energy_oil": {
+        "score": 5,
+        "summary": "Rejects accelerated energy transition. Considers hydrocarbons one of four indispensable engines of sovereignty and wealth. Proposes actively exploiting currently blocked national gas reserves and defends fracking with 'environmental responsibility', targeting an increase in oil production from 700,000 to 1.3 million barrels per day.",
+        "source": "Defiende decididamente el uso del fracking con responsabilidad ambiental, con la meta de elevar la producción petrolera de 700.000 a 1,3 millones de barriles diarios. [LLYC, p.15]",
+        "confidence": "high"
+      },
+      "environment": {
+        "score": 4,
+        "summary": "Pragmatic extractivist approach. Proposes exploiting subsoil resources with 'strict environmental responsibility' to fund state finances. On Santurbán páramo: eradicate illegal mining firmly to protect water, but defend legal mining operating outside the ecosystem boundary.",
+        "source": "Plantea explotar los recursos del subsuelo con estricta 'responsabilidad ambiental' para sanear las finanzas del Estado… promete erradicar la minería ilegal con firmeza para proteger el agua, pero defiende la minería legal siempre que opere por fuera de los límites del ecosistema. [LLYC, p.15]",
+        "confidence": "high"
+      },
+      "fiscal": {
+        "score": 5,
+        "summary": "Proposes replacing the current fiscal rule with a strict 'debt brake', refinancing public debt, eliminating distortive taxes, and reducing the state by suppressing 136 entities. Aims to reverse a projected 7–8% GDP deficit and recover credit-rating agency confidence.",
+        "source": "Plantea sustituir la actual regla fiscal por un estricto 'freno de deuda', refinanciar la deuda pública, eliminar impuestos distorsivos y reducir el tamaño del Estado suprimiendo 136 entidades. [LLYC, p.16]",
+        "confidence": "high"
+      },
+      "foreign_policy": {
+        "score": 5,
+        "summary": "Ideologised, security-first foreign policy. Prioritises an exclusive security alliance with the US and Israel against narco-terrorism. Celebrates military routes to oust Venezuela's government. Has formally requested the US revoke the current Colombian president's visa and veto military aircraft purchases — crossing traditional diplomatic lines.",
+        "source": "El candidato prioriza exclusivamente una alianza de seguridad con Washington e Israel para combatir el narcoterrorismo… ha cruzado la línea diplomática tradicional al solicitar formalmente a Estados Unidos revocar la visa del actual mandatario colombiano y vetar la compra de aeronaves militares. [LLYC, p.17]",
+        "confidence": "high"
+      },
+      "anticorruption": {
+        "score": 4,
+        "summary": "The report does not contain specific anti-corruption proposals from De la Espriella beyond his general critique of the current government and his 'cultural counter-revolution' framing. His fiscal and state-reduction agenda is framed as efficiency-driven rather than corruption-focused.",
+        "source": "Su narrativa no se centra en una arquitectura institucional detallada, sino en la confrontación directa contra el Gobierno actual. [LLYC, p.13]",
+        "confidence": "low"
+      }
+    },
+    "party_history": "The report lists his party as 'Salvación Nacional' (the name used in the LLYC document), presented in the project instructions as 'Firmes por la Patria'. The movement is a hard-right, socially conservative platform built around De la Espriella personally, opposing the Petro government and advocating a punitive security doctrine and radical market liberalisation.",
+    "procuraduria": {
+      "status": "unknown",
+      "summary": "As a private lawyer, De la Espriella falls under the jurisdiction of the Comisión de Disciplina Judicial, not the Procuraduría. No Procuraduría disciplinary record identified. Direct registry lookup required.",
+      "source": "https://www.infobae.com/colombia/2026/02/12/el-impacto-juridico-de-la-denuncia-de-david-murcia-guzman-sobre-la-candidatura-de-abelardo-de-la-espriella/"
+    },
+    "scandals": [
+      {
+        "title": "Criminal defence clients",
+        "summary": "As a lawyer, De la Espriella has defended figures linked to organised crime and paramilitaries. Requires sourcing from El Espectador — flagged for Phase 1 Step 5.",
+        "source": null,
+        "confidence": "low"
+      },
+      {
+        "title": "Disciplina Judicial — DMG fee complaint",
+        "summary": "David Murcia Guzmán filed complaint Feb 2026 alleging De la Espriella retained $5 billion in fees after withdrawing from his defence in 2008. De la Espriella denies and argues prescription.",
+        "source": "https://www.diarioadn.co/noticias/denuncia-contra-abelardo-de-la-espriella-por-caso-dmg-abre-nuevo-frente-en-campana+articulo+72890",
+        "confidence": "high"
+      },
+      {
+        "title": "Disciplina Judicial — Alex Saab case",
+        "summary": "In a prior disciplinary hearing De la Espriella admitted to ordering surveillance of a police officer in connection with the Alex Saab defence.",
+        "source": "https://www.univision.com/noticias/mundo/abelardo-de-la-espriella-saab-contactos-policia",
+        "confidence": "high"
+      }
+    ]
+  },
+  {
+    "candidate": "Sergio Fajardo",
+    "party": "Dignidad y Compromiso",
+    "coalition": null,
+    "spectrum": "center",
+    "stances": {
+      "security": {
+        "score": 3,
+        "summary": "Ends 'Paz Total' and recovers territorial control via his 'Plan Guardián', combining modernised security forces (AI, technology, communications blackouts in prisons) with immediate infrastructure investment and agricultural substitution. Links security funding directly to fiscal consolidation.",
+        "source": "Su estrategia, materializada en el 'Plan Guardián', propone acabar con la 'Paz Total' para recuperar el control territorial y modernizar la Fuerza Pública con inteligencia y tecnología. [LLYC, p.21]",
+        "confidence": "high"
+      },
+      "economy": {
+        "score": 3,
+        "summary": "Managerial, non-ideological approach focused on restoring institutional confidence rather than deep state intervention or radical liberalisation. Promises to avoid populist decisions without technical backing. Low programmatic detail flagged as a gap by the report.",
+        "source": "Su discurso no plantea un intervencionismo estatal profundo ni una ideología económica radical, sino que aborda los mercados desde una perspectiva puramente gerencial, orientada a recuperar la confianza frente al 'desgobierno' actual. [LLYC, p.19]",
+        "confidence": "high"
+      },
+      "health": {
+        "score": 3,
+        "summary": "Reformist but not destructive of the current model. Proposes rescuing Nueva EPS by clarifying its finances, subjecting EPS to external audits and recalculating UPC without political bias. Emergency 100-day liquidity injection for hospitals. Evidence-based and financially sustainable approach.",
+        "source": "Propone rescatar la Nueva EPS clarificando sus finanzas tras la intervención gubernamental y mantener la participación de las EPS sometiéndolas a auditorías externas para recalcular la Unidad de Pago por Capitación (UPC) sin sesgos políticos. [LLYC, p.19]",
+        "confidence": "high"
+      },
+      "energy_oil": {
+        "score": 4,
+        "summary": "Prioritises energy sovereignty and supply security under the premise of 'not turning Colombia off'. Proposes immediately reactivating gas and oil exploration, with emphasis on offshore Caribbean projects. Warns that halting exploration risks tariff hikes of up to 36%. Favours a responsible, structured energy transition rather than an abrupt one.",
+        "source": "Plantea reactivar inmediatamente la exploración de gas y petróleo, con especial énfasis en proyectos offshore en el mar Caribe para asegurar el suministro. El candidato advierte bajo la premisa de 'no apagar Colombia' que frenar la exploración arriesga alzas tarifarias de hasta el 36% en el gas. [LLYC, p.20]",
+        "confidence": "high"
+      },
+      "environment": {
+        "score": 3,
+        "summary": "Rejects dogmatic environmentalism in favour of a 'responsible transition' balancing territorial protection with energy security. On fracking, proposes advancing pilot projects under strict scientific rigour to evaluate real viability before any definitive decision — an explicitly technocratic middle ground.",
+        "source": "En materia de fracking, propone avanzar con proyectos piloto bajo estricto rigor científico para evaluar su viabilidad real antes de tomar decisiones definitivas. [LLYC, p.20]",
+        "confidence": "high"
+      },
+      "fiscal": {
+        "score": 3,
+        "summary": "Proposes a 100-day financial stabilisation plan, a structural and consensual tax reform ('todos ponemos') reducing corporate tax from 35% to 30% with relief for micro and small businesses, and elimination of superfluous bureaucratic spending. Prioritises regional investment and market confidence. Explicitly rejects populism.",
+        "source": "Plantea medidas propositivas para reactivar la inversión, como tramitar una reforma tributaria estructural y concertada ('todos ponemos') que reduzca la carga impositiva corporativa del 35% al 30 %, aliviando especialmente a las micro y pequeñas empresas. [LLYC, p.20-21]",
+        "confidence": "high"
+      },
+      "foreign_policy": {
+        "score": 3,
+        "summary": "Strategic pragmatism and diplomatic caution. Prioritises stable relations with the US, which he considers vital for 30% of exports, remittances and foreign investment. Plans to seek IMF credit lines to fund health system urgencies without irresponsibly increasing public debt. Avoids ideological confrontations.",
+        "source": "Evitaría los choques retóricos e ideológicos, priorizando la estabilidad con aliados clave como Estados Unidos, relación que considera vital para proteger el 30% de las exportaciones, las remesas y la inversión extranjera. [LLYC, p.21]",
+        "confidence": "high"
+      },
+      "anticorruption": {
+        "score": 3,
+        "summary": "Central governance banner: proposes personally leading a new National Anti-Corruption Agency, making the 30 largest public contracts transparent and publicly monitored, and working with Congress on a 'transparency playing field' eliminating institutional 'mermelada'. Rejects a Constituent Assembly as a corruption-risk vector.",
+        "source": "Como propuesta concreta, promete crear y liderar personalmente una Agencia Nacional Anticorrupción, así como hacer públicos y vigilar los 30 contratos más grandes del país. [LLYC, p.18]",
+        "confidence": "high"
+      }
+    },
+    "party_history": "Dignidad y Compromiso is Fajardo's personal political movement, centrist and technocratic in orientation. Fajardo previously ran for president in 2018 as part of the Colombia Humana–Dignidad coalition, finishing third. He served as Mayor of Medellín (2004–2007) and Governor of Antioquia (2012–2015), building a reputation for urban transformation through education investment.",
+    "procuraduria": {
+      "status": "flagged",
+      "summary": "The Contraloría confirmed fiscal responsibility against Fajardo in second instance (November 2021) for Hidroituango irregularities, finding a 4.3 trillion peso patrimony damage. Separately, the Procuraduría archived its own disciplinary investigation into a dollar-denominated debt contract from his Antioquia governorship in May 2023, absolving him on that front.",
+      "source": "https://www.eltiempo.com/justicia/investigacion/hidroituango-contraloria-confirma-fallo-fiscal-635027 ; https://www.elespectador.com/judicial/procuraduria-archivo-investigacion-contra-sergio-fajardo-por-deuda-en-dolares/"
+    },
+    "scandals": [
+      {
+        "title": "Contraloría investigation — Antioquia governorship",
+        "summary": "Fajardo faced fiscal investigation by the Contraloría related to contracts during his governorship. He was eventually cleared but the case affected his 2022 campaign. Requires sourcing from El Espectador — flagged for Phase 1 Step 5.",
+        "source": null,
+        "confidence": "low"
+      },
+      {
+        "title": "Contraloría — Hidroituango fiscal responsibility",
+        "summary": "Contraloría confirmed fiscal responsibility in second instance (Nov 2021) for irregularities in Hidroituango project, finding 4.3 trillion peso patrimony damage. Procuraduría's own disciplinary case was archived May 2023.",
+        "source": "https://www.eltiempo.com/justicia/investigacion/hidroituango-contraloria-confirma-fallo-fiscal-635027",
+        "confidence": "high"
+      }
+    ]
+  },
+  {
+    "candidate": "Paloma Valencia",
+    "party": "Centro Democrático",
+    "coalition": null,
+    "spectrum": "center-right",
+    "stances": {
+      "security": {
+        "score": 4,
+        "summary": "Strict order-restoration focus. Applies her '4R' strategy: Reduce illegal revenues (drug trafficking/mining), Robustify security forces with technology, Re-engage communities via civic-military actions, and Restore legality and justice. Proposes drone-based AI eradication of illicit crops, modification of flagrante delicto arrest rules, and effective prison sentences with no political benefits.",
+        "source": "Para combatir el crimen organizado, aplicaría su estrategia de las '4R': Reducir los ingresos ilegales (narcotráfico/minería), Robustecer la fuerza pública con tecnología, Reenamorar a las comunidades mediante acciones cívico-militares, y Restablecer la legalidad y la justicia. [LLYC, p.26]",
+        "confidence": "high"
+      },
+      "economy": {
+        "score": 4,
+        "summary": "Pro-market, anti-statist. Proposes reducing ministries from 19 to 12, eliminating the wealth tax and cutting corporate tax burden to reactivate investment. Her 'fraternal economy' model strengthens free markets and private initiative. Also proposes a 'formality ladder law' easing regulatory barriers for small entrepreneurs.",
+        "source": "Su modelo de 'economía fraterna' busca fortalecer el libre mercado y la iniciativa privada. Un ejemplo concreto de sus propuestas es la eliminación del impuesto al patrimonio y la reducción de la carga tributaria corporativa para dinamizar la inversión. [LLYC, p.24]",
+        "confidence": "high"
+      },
+      "health": {
+        "score": 4,
+        "summary": "Uses the health crisis as evidence of damage from state intervention. Proposes a financial shock plan including securitisation of state debt with EPS (converting debts into tradeable securities to inject immediate liquidity), a risk-differential UPC premium for costly patients, and a network of 'godfather hospitals' equipped with telemedicine for rural areas. Defends the mixed insurance model.",
+        "source": "Su propuesta de gobernabilidad plantea un plan de choque financiero que incluye la titularización de la deuda acumulada; es decir, convertir las deudas del Estado con el sistema en títulos valores transables para inyectar liquidez inmediata a clínicas y hospitales, evitando su cierre masivo. [LLYC, p.24]",
+        "confidence": "high"
+      },
+      "energy_oil": {
+        "score": 4,
+        "summary": "Denounces loss of energy sovereignty and rising tariffs from gas import dependency. Proposes reactivating oil and gas exploration including fracking projects. Simultaneously promotes renewable energy (wind, solar, small hydroelectric) by fast-tracking environmental licences via technology and reforming prior consultation so it operates as a profit-sharing mechanism rather than an investment veto.",
+        "source": "Propone detonar proyectos de energías renovables (eólica, solar y pequeñas centrales hidroeléctricas) mediante la agilización tecnológica de licencias ambientales… su administración se enfocaría en recuperar la autosuficiencia reactivando la exploración petrolera y gasífera, incluyendo el desarrollo de proyectos de fracking. [LLYC, p.25]",
+        "confidence": "high"
+      },
+      "environment": {
+        "score": 4,
+        "summary": "Environment is not an autonomous agenda but subordinated to energy and economic positions. Argues poverty is the greatest ecological enemy and development must not be halted by 'ideologies'. Defends fracking and hydrocarbon exploration, arguing current prohibitions paradoxically cause greater environmental and health damage by forcing vulnerable sectors to cook with firewood.",
+        "source": "Valencia argumenta que las prohibiciones actuales encarecen el gas, obligando a los sectores vulnerables a 'cocinar con leña', lo que paradójicamente causa un daño ambiental y sanitario mayor. [LLYC, p.25]",
+        "confidence": "high"
+      },
+      "fiscal": {
+        "score": 4,
+        "summary": "Austerity-first shock plan: cut 20% across all ministry operating budgets, merge ministries from 19 to 12 saving 30 trillion pesos annually, eliminate the wealth tax to reactivate private investment. Alerts to a historic deficit near 7.5% of GDP and public debt exceeding 1,192 trillion pesos. Defends citizens' pension savings from being used to finance current government spending.",
+        "source": "Plantea un plan de choque de austeridad: reducir la burocracia fusionando ministerios (de 19 a 12) para ahorrar 30 billones de pesos anuales y eliminar el impuesto al patrimonio para reactivar la inversión privada. [LLYC, p.25-26]",
+        "confidence": "high"
+      },
+      "foreign_policy": {
+        "score": 4,
+        "summary": "Uses Venezuela as a constant warning of institutional crisis; rejects any energy dependence on or alignment with the Chavista regime. Seeks to rebuild security cooperation with the US, proposing a new 'Plan Colombia' focused on urban micro-trafficking. Plans to transform the Foreign Ministry into a trade-focused body where ambassadors are evaluated strictly on export and tourism results, not ideological activism.",
+        "source": "Buscaría reconstruir la cooperación en seguridad, proponiendo concretamente firmar un nuevo 'Plan Colombia' enfocado en el micro tráfico urbano. Su propuesta central es transformar la Cancillería en un Ministerio de Comercio Exterior, donde los embajadores no hagan activismo ideológico. [LLYC, p.27]",
+        "confidence": "high"
+      },
+      "anticorruption": {
+        "score": 3,
+        "summary": "Proposes structural reforms to insulate the Contraloría and Procuraduría from political influence by having them elected by academia and citizens rather than political bodies. Led congressional oversight debates on scandals such as the UNGRD case. Rejects Constituent Assembly outside legislative channels and opposes governing by decree.",
+        "source": "Propone reformas estructurales para que la Contraloría y Procuraduría sean elegidas por la academia y la ciudadanía, blindándolas de la política. [LLYC, p.23]",
+        "confidence": "high"
+      }
+    },
+    "party_history": "Centro Democrático is the party founded by former president Álvaro Uribe Vélez in 2013. It is Colombia's main centre-right to right opposition force, built on a platform of democratic security, free-market economics and strong institutional order. Valencia is a senator and one of the party's most prominent figures, known for her role in congressional oversight and fiscal criticism of the Petro government.",
+    "procuraduria": {
+      "status": "unknown",
+      "summary": "No disciplinary sanctions or inhabilidades found against Valencia. Search results note she previously worked as an employee at the Procuraduría itself before entering politics. Absence of findings does not confirm a clean record — direct registry lookup required.",
+      "source": "https://www.lafm.com.co/politica/perfil-paloma-valencia-gran-consulta-colombia-elecciones-colombia-8-marzo-2026-392740"
+    },
+    "scandals": []
+  },
+  {
+    "candidate": "Roy Barreras",
+    "party": "Fuerza por la Paz",
+    "coalition": "Frente por la Vida",
+    "spectrum": "center-left",
+    "stances": {
+      "security": {
+        "score": 2,
+        "summary": "Rejects 'Paz Total' as naive for conflating guerrillas with criminal mafias. Proposes 'seguridad total' under the formula 'Extirpar, tratar y cuidar': reform criminal procedure code so offenders serve sentences, add 40,000 new soldiers and police, and build 5 productive mega-prisons of 5,000 inmates each run with SENA vocational training. Emphasises territorial security through institutional presence and social prevention rather than pure force.",
+        "source": "https://www.elespectador.com/politica/elecciones-colombia-2026/roy-barreras-propone-inyectar-mas-recursos-al-sistema-de-salud-para-evitar-el-cierre-de-clinicas-y-hospitales-noticia-hoys/ ; https://www.elpais.com.co/politica/roy-barreras-se-queda-con-la-victoria-en-el-frente-por-la-vida-y-busca-unirse-al-progresismo-0810.html",
+        "confidence": "high"
+      },
+      "economy": {
+        "score": 2,
+        "summary": "Growth-driven social agenda: reactivates agroindustry, regulated mining, energy, tourism, construction and infrastructure (ports, airports, rail) as employment engines. Proposes rebuilding IDEMA and cold-chain agro-logistics. Positions economic productivity as the mechanism to finance social debt and subsidies rather than external borrowing.",
+        "source": "https://cambiocolombia.com/elecciones-colombia-2026/articulo/2026/2/programa-roy-barreras-candidatura-presidencial-economia-vivienda-educacion-transicion-energetica/ ; https://360radio.com.co/cuales-son-las-propuestas-de-roy-barreras-para-la-presidencia/212958/",
+        "confidence": "high"
+      },
+      "health": {
+        "score": 2,
+        "summary": "Proposes a 'health bank' to centralise resources currently held in private banks, ending payment delays to hospitals and clinics. Would securitise the state's accumulated debt with the sector (titularización) to inject immediate liquidity. Blockchain traceability for every peso in the system. Strengthens medical workforce with salary floors, anti-precarious contracting statute and rural bonuses. Emphasises preventive medicine.",
+        "source": "https://www.elespectador.com/politica/elecciones-colombia-2026/roy-barreras-propone-inyectar-mas-recursos-al-sistema-de-salud-para-evitar-el-cierre-de-clinicas-y-hospitales-noticia-hoys/ ; https://www.infobae.com/colombia/2026/03/02/roy-barreras-defiende-un-centro-politico-con-experiencia-dialogo-y-enfoque-social-no-improviso/",
+        "confidence": "high"
+      },
+      "energy_oil": {
+        "score": 2,
+        "summary": "Proposes a gradual energy transition that avoids 'forced transformation' that would raise costs or threaten supply. Combines expansion of renewables (hydro, solar, wind) with regulated and environmentally sustainable mining to guarantee national demand. Opposes abrupt fossil fuel phase-out.",
+        "source": "https://cambiocolombia.com/elecciones-colombia-2026/articulo/2026/2/programa-roy-barreras-candidatura-presidencial-economia-vivienda-educacion-transicion-energetica/ ; https://www.elnuevosiglo.com.co/politica/quien-es-roy-barrera-propuestas-del-candidato-para-presidenciales-2026",
+        "confidence": "high"
+      },
+      "environment": {
+        "score": 2,
+        "summary": "Links rural development and agroindustry with environmentally sustainable and regulated mining. Supports renewable energy expansion and bioeconomy. Frames environmental protection as compatible with economic reactivation rather than opposed to it.",
+        "source": "https://cambiocolombia.com/elecciones-colombia-2026/articulo/2026/2/programa-roy-barreras-candidatura-presidencial-economia-vivienda-educacion-transicion-energetica/",
+        "confidence": "low"
+      },
+      "fiscal": {
+        "score": 2,
+        "summary": "Stresses fiscal sustainability but rejects financing social commitments through external debt. Strategy is to grow the economy first to generate the revenue base for social programmes. Mentions overcoming the fiscal deficit as a key challenge alongside security and health, but specific fiscal consolidation instruments are not detailed in available sources.",
+        "source": "https://www.bluradio.com/nacion/elecciones/hay-mas-progresismo-que-petrismo-roy-barreras-dice-que-su-campana-empieza-hoy-pr30 ; https://www.infobae.com/colombia/2026/03/02/roy-barreras-defiende-un-centro-politico-con-experiencia-dialogo-y-enfoque-social-no-improviso/",
+        "confidence": "low"
+      },
+      "foreign_policy": {
+        "score": 2,
+        "summary": "Pragmatic regional integration: proposes urgently reopening the Venezuela border to reactivate trade and refining Venezuelan oil at Cúcuta and Barrancabermeja to lower domestic fuel prices. Would seek Petro as foreign minister to leverage his global credibility in renegotiating the war on drugs. Frames foreign policy around economic opportunity rather than ideological alignment.",
+        "source": "https://www.infobae.com/colombia/2026/03/02/roy-barreras-defiende-un-centro-politico-con-experiencia-dialogo-y-enfoque-social-no-improviso/",
+        "confidence": "high"
+      },
+      "anticorruption": {
+        "score": 2,
+        "summary": "Frames political reform as his primary anti-corruption measure: 'a political reform that cleans up politics'. Proposes blockchain traceability for health sector resources. Criticises the culture of 'persecuting presidents' as divisive rather than constructive, signalling a reconciliation-first rather than prosecution-first approach to accountability.",
+        "source": "https://cambiocolombia.com/elecciones-colombia-2026/articulo/2026/2/programa-roy-barreras-candidatura-presidencial-economia-vivienda-educacion-transicion-energetica/",
+        "confidence": "low"
+      }
+    },
+    "party_history": "The coalition through which Barreras won the March 8, 2026 primary is Frente por la Vida; his registered party is Fuerza por la Paz. Barreras is a physician, former senator (2010–2023), twice president of Congress, and former ambassador to the UK under Petro. He has migrated through Cambio Radical, Partido de la U, and the Pacto Histórico orbit, positioning himself as a moderate progressive alternative to both Petrismo and the right.",
+    "procuraduria": {
+      "status": "unknown",
+      "summary": "No Procuraduría disciplinary sanctions found. The Procuraduría and CNE both concluded in May 2023 that Barreras did not commit double party membership — the ground on which the Consejo de Estado separately annulled his senatorial election. Direct registry lookup required to confirm full clean status.",
+      "source": "https://www.eltiempo.com/politica/congreso/roy-barreras-cne-y-procuraduria-dicen-que-no-hay-doble-militancia-766605"
+    },
+    "scandals": [
+      {
+        "title": "Consejo de Estado — senatorial election annulled",
+        "summary": "The Consejo de Estado annulled Barreras's election as senator for 2022–2026, confirmed definitively on May 23, 2023 after his requests for clarification were denied. He had already resigned to take the UK ambassadorship.",
+        "source": "https://www.lafm.com.co/politica/roy-barreras-perfil-carrera-politica-propuestas-presidenciales-2026-392386",
+        "confidence": "high"
+      }
+    ]
+  },
+  {
+    "candidate": "Claudia López",
+    "party": "independent",
+    "coalition": null,
+    "spectrum": "center",
+    "stances": {
+      "security": {
+        "score": 3,
+        "summary": "Ends 'Paz Total', which she calls a failed policy that gave concessions to criminals. Proposes creating a Fiscalía Antimafia to dismantle organised crime and narco structures, doubling security investment, adding 40,000 new security force members, building more prisons, deploying surveillance technology and AI, and restoring territorial control with democratic legitimacy. Acknowledges this requires a specific wealth contribution from the 5,000 richest Colombians, as in 2002.",
+        "source": "https://claudia-lopez.com/cual-es-su-principal-propuesta/ ; https://www.elnuevosiglo.com.co/nacion/las-propuestas-de-claudia-lopez-para-llegar-la-presidencia ; https://www.lafm.com.co/politica/elecciones-2026-marzo-claudia-lopez-votos-consulta-del-centro-392780",
+        "confidence": "high"
+      },
+      "economy": {
+        "score": 3,
+        "summary": "Growth-and-productivity focused. Proposes 600,000 housing solutions as an immediate employment generator, microentrepreneur subsidies to help pay minimum wage, 1 million higher-education grants for youth, and regionally differentiated economic development plans. Opposes populist spending without economic basis. Frames private investment growth as the condition for progressive tax reduction.",
+        "source": "https://claudia-lopez.com/cual-es-su-principal-propuesta/ ; https://www.lafm.com.co/politica/claudia-lopez-revela-tres-propuestas-para-ser-presidenta-colombia-2026-390421",
+        "confidence": "high"
+      },
+      "health": {
+        "score": 3,
+        "summary": "Day-1 priority: restore hospital and clinic liquidity via a dedicated fund so medicines and treatments are delivered as a right, not a bureaucratic ordeal. Proposes returning to a mixed system with clear rules and prices where patients can access the nearest useful facility, not one that serves EPS business interests. Creates a fund to rescue hospitals.",
+        "source": "https://claudia-lopez.com/cual-es-su-principal-propuesta/ ; https://www.lafm.com.co/politica/claudia-lopez-revela-tres-propuestas-para-ser-presidenta-colombia-2026-390421",
+        "confidence": "high"
+      },
+      "energy_oil": {
+        "score": 4,
+        "summary": "Explicitly supports full exploitation of Colombia's energy resources — gas, oil, fracking, solar, wind and water — framing cheap, reliable energy as the greatest predictor of industrialisation. Called out President Petro's hypocrisy for opposing fracking in Colombia while Ecopetrol practices it in the US.",
+        "source": "https://www.infobae.com/colombia/2025/06/05/claudia-lopez-contesto-a-los-ataques-de-petro-por-apoyar-el-fracking-si-se-convierte-en-presidente-su-hipocresia-hace-mas-dano/ — Statement at Asobancaria Banking Convention, June 5, 2025.",
+        "confidence": "high"
+      },
+      "environment": {
+        "score": 2,
+        "summary": "Environmental proposals are embedded in regional development plans: Amazon autonomy and bioeconomy with dismantling of illegal mining and narco; silvopastoral farming and ecological restoration corridors in the piedmont; environmental protection for San Andrés and Providencia. Frames sustainable land use as part of regional economic strategy.",
+        "source": "https://claudia-lopez.com/programa-de-gobierno-de-claudia-lopez/",
+        "confidence": "low"
+      },
+      "fiscal": {
+        "score": 3,
+        "summary": "Declares an economic emergency on Day 1 and requests Congress to produce fiscal laws within 90 days. Proposes a new strict fiscal rule to stop government over-borrowing, and a contingent income tax reduction mechanism: if the economy grows at 4% and private investment at 20%, reduce income tax by 2 percentage points. Raises a one-off security contribution from the 5,000 wealthiest Colombians. Commits to institutional credibility through spending efficiency.",
+        "source": "https://claudia-lopez.com/cual-es-su-principal-propuesta/ ; https://www.noticiascaracol.com/politica/elecciones-colombia/claudia-lopez-gana-consulta-de-las-soluciones-y-sera-candidata-presidencial-en-colombia-rg10",
+        "confidence": "high"
+      },
+      "foreign_policy": {
+        "score": null,
+        "summary": null,
+        "source": null,
+        "confidence": "low",
+        "note": "No public position identified as of March 2026. Targeted searches for Venezuela and US policy returned results dominated by Mexico's Claudia Sheinbaum. Requires dedicated sourcing."
+      },
+      "anticorruption": {
+        "score": 2,
+        "summary": "Anticorruption is her career-defining issue. Led the 2018 Consulta Anticorrupción mobilising nearly 12 million voters. Ran Bogotá's mayorship claiming zero corruption scandals. Pledges to fulfil the anti-corruption consulta: cero privileges, cero bureaucracy, cero corruption. Proposes Fiscalía Antimafia explicitly targeting organised crime and corruption linkages.",
+        "source": "https://claudia-lopez.com/cual-es-su-principal-propuesta/ ; https://360radio.com.co/claudia-lopez-gana-la-consulta-de-las-soluciones-y-va-por-la-presidencia-en-2026/213105/",
+        "confidence": "high"
+      }
+    },
+    "party_history": "Running as independent under the 'Imparables' citizen movement. Won the 'Consulta de las Soluciones: salud, seguridad y educación' on March 8, 2026 with 574,670 votes. Former senator (2014–2019), first woman elected Mayor of Bogotá (2020–2023). PhD in Political Science from Northwestern University. Prominent career in anti-corruption investigation (parapolítica exposés), the 1991 constitutional reform (Séptima Papeleta), and the 2018 Consulta Anticorrupción.",
+    "procuraduria": {
+      "status": "flagged",
+      "summary": "The Procuraduría formally opened a disciplinary investigation against López on January 19, 2022, while she was Bogotá mayor, for allegedly posting partisan political content on Twitter in violation of public-servant neutrality rules. The final outcome of this investigation has not been confirmed in available sources.",
+      "source": "https://www.procuraduria.gov.co/portal/PROCURADURIA-ABRIO-INVESTIGACION-DISCIPLINARIA-EN-CONTRA-DE-ALCALDESA-DE-BOGOTA_-CLAUDIA-LOPEZ_-POR-PRESUNTA-PARTICIPACION-EN-POLITICA.news"
+    },
+    "scandals": []
   }
 ]

@@ -1,72 +1,181 @@
-# CLAUDE.md
+# Project: Colombia Matcher – 2026 Colombian Presidential Elections
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## High-level product vision
 
-## Project Location
+This is **not** a plain survey with hand-tuned weights.
 
-The actual codebase lives at `/Users/renzorico/code/renzorico/colombia-matcher/` with two subdirectories:
-- `backend/` — FastAPI Python server
-- `frontend/` — Next.js TypeScript app
+The core of the product is an automated research engine that:
+- Continuously scans the web for **evidence** about each candidate:
+  - speeches and interviews
+  - news coverage and op-eds
+  - social media posts
+  - scandals, investigations, and legal cases
+  - party affiliations, alliances, and associations
+  - official programs and policy documents
+- Runs a multi-agent pipeline to turn that evidence into **structured stance profiles**:
+  - per topic and subtopic (security, economy, health, environment, fiscal policy, foreign policy, anticorruption, etc.)
+  - per “dimension” (policy stance, behavior/ethics, alliances, rhetoric)
+  - each stance backed by **citations** (URLs, quotes, dates).
 
-## Commands
+The quiz is just a frontend that:
+- asks users about their priorities, values, and positions,
+- matches those answers to the **dynamic, evidence-based stance profiles**,
+- shows not only a similarity score but also **why**, with links to the underlying evidence.
 
-### Backend
+Static/manual weights are a fallback only.
+The primary source of truth is the **agent-generated candidate profile**, continuously updated from public information.
 
-```bash
-cd /Users/renzorico/colombia-matcher/backend
-pip install -r requirements.txt
-python main.py          # Runs on http://localhost:8000 with auto-reload
-```
+---
 
-### Frontend
+## Current status (from previous tooling)
 
-```bash
-cd /Users/renzorico/colombia-matcher/frontend
-npm install
-npm run dev             # Runs on http://localhost:3000
-npm run build           # Production build
-npm run lint            # ESLint
-npx tsc --noEmit        # Type check without emitting files
-```
+Repository and app:
+- Repo exists and is synced: `renzorico/colombia-matcher`.
+- The repository is public and has a basic structure for backend + frontend.
+- The app already works as a **quiz + candidate matcher** (a first version of the matching logic exists).
 
-Both services must be running simultaneously for the app to work.
+Backend:
+- A first version of the **multi-agent backend research pipeline** has been added.
+- Backend API smoke tests pass (runtime works).
+- There are **no automated backend tests** yet for research and scoring logic.
 
-## Architecture
+Frontend:
+- Lint issues that blocked a clean check were fixed.
+- TypeScript checks pass.
+- The production build has been successfully run and validated.
 
-This is a **Colombian 2026 presidential election quiz** ("¿Con quién votas?") that matches users to candidates based on policy alignment.
+What remains, conceptually:
+- Make the research pipeline **stronger and more production-ready** by improving:
+  - source collection (coverage, diversity, recency)
+  - extraction quality (stance detection, evidence selection)
+  - confidence/scoring logic (aggregating multiple sources)
+  - scheduling and triggering updates automatically
+  - an optional human review layer before overwriting candidate positions
+- Add backend tests for:
+  - stance extraction and aggregation
+  - matching logic and scoring behavior
+  - the overall research pipeline (end-to-end smoke tests)
 
-### Backend (`backend/`)
+---
 
-- **`main.py`** — FastAPI app. Data (candidates + questions) is loaded once at startup via a lifespan context manager. CORS allows `localhost:3000`.
-  - `GET /questions` — 25 quiz questions
-  - `GET /candidates` — lightweight candidate list
-  - `GET /candidates/full` — includes `procuraduria` and `scandals` fields
-  - `POST /quiz/submit` — accepts `{"answers": {"q01": 1, ..., "q25": 5}}`, returns ranked results
-  - `GET /explain/{candidate_name}?answers=...` — returns a 2-sentence Spanish explanation
+## System goals for Claude
 
-- **`scorer.py`** — Core affinity engine. Computes weighted axis scores for the user, then calculates agreement per axis with each candidate using `1 - |diff|/4`. Seven weighted axes: `security(0.25)`, `economy(0.20)`, `health(0.15)`, `energy_environment(0.15)`, `fiscal(0.10)`, `foreign_policy(0.10)`, `anticorruption(0.05)`. Null stances are handled by redistributing weights proportionally.
+When working in this repository, you (Claude) should focus on:
 
-- **`candidates_v2.json`** — Candidate data: name, party, spectrum, party_history, procuraduria, scandals, stances (per-axis scores 1–5 or null).
+1. Designing and improving the **multi-agent research system** that:
+   - searches the web for diverse evidence about candidates,
+   - extracts structured stances from that evidence,
+   - aggregates these into candidate profiles with scores + confidence + citations,
+   - keeps profiles updated with minimal manual work.
 
-- **`questions_v1.json`** — 25 questions with fields: id (q01–q25), axis, bucket (Spanish category name), statement, weight (1–3).
+2. Ensuring the **matching system**:
+   - reads from these generated profiles (not hard-coded weights),
+   - matches users to candidates,
+   - explains the match using transparent evidence.
 
-### Frontend (`frontend/`)
+3. Keeping the implementation:
+   - modular (skills vs agents),
+   - testable (unit + integration tests),
+   - token-efficient (short prompts, structured outputs).
 
-Built with **Next.js 16.2.0 + React 19.2.4 + TypeScript + Tailwind CSS v4**. Uses the App Router.
+---
 
-> **Warning:** Next.js 16.2.0 has breaking changes from earlier versions. Before writing any Next.js-specific code, read the relevant guide in `node_modules/next/dist/docs/`.
+## Conceptual architecture
 
-Three pages:
-- **`app/page.tsx`** — Landing page, links to `/quiz`
-- **`app/quiz/page.tsx`** — One-at-a-time question interface with 5-point Likert scale. Answers stored in `sessionStorage`. Skipped questions default to 3.
-- **`app/resultados/page.tsx`** — Results page. Fetches candidates and submits stored answers. Shows candidates ranked by affinity %, per-axis breakdown bars, political spectrum badge, procuraduria/scandals info, and optional AI explanation.
+### Layers
 
-**`lib/api.ts`** — Axios client pointing to `http://localhost:8000` with typed wrappers: `getQuestions()`, `submitQuiz(answers)`, `explainCandidate(name, answers)`.
+1. **Research Layer (multi-agent):**
+   - Role: continually build an evidence-backed **candidate knowledge base**.
+   - Output: candidate profiles with topic/dimension scores, confidence, and citations.
 
-### Data Flow
+2. **Matching Layer (quiz + matcher):**
+   - Role: ask users structured questions, compute alignment vs the profiles, and surface explanations and evidence.
 
-1. User answers 25 questions (values 1–5) in the quiz
-2. Answers saved to `sessionStorage`
-3. Results page reads `sessionStorage`, POSTs to `/quiz/submit`
-4. Backend scores answers against each candidate's stances across 7 weighted axes
-5. Returns candidates sorted by total affinity percentage with per-axis breakdown
+---
+
+## Agents (high-level orchestrators)
+
+Place these in an `agents/` directory (or equivalent) and keep them thin, delegating heavy logic to skills.
+
+### `agents/research_agent.*`
+
+Purpose:
+- Orchestrate a full research/update run for one candidate or all candidates.
+
+Responsibilities:
+- For each candidate (and optionally each topic or dimension):
+  - call source collection skill(s) to gather a diverse set of sources,
+  - call content extraction skill(s) to fetch and clean text,
+  - call stance extraction skill(s) on each source to produce micro-stances,
+  - call profile aggregation skill(s) to combine micro-stances,
+  - call profile publishing skill(s) to persist updated profiles (possibly in a “proposed” state for review).
+
+### `agents/profile_refresh_agent.*`
+
+Purpose:
+- Provide a lightweight entry point for scheduled updates (cron / task scheduler).
+
+Responsibilities:
+- Trigger `research_agent` with:
+  - a time window (e.g., “last 7 days”),
+  - a subset of candidates or topics.
+- Enforce rate limits, source caps, and basic guardrails.
+
+### `agents/review_agent.*`
+
+Purpose:
+- Support the human review layer before stance changes go live.
+
+Responsibilities:
+- Compare existing stored profile vs newly proposed profile.
+- Generate a **diff** per candidate and topic:
+  - what changed (score / confidence / evidence),
+  - which new sources and quotes are driving the change.
+- Produce a human-readable summary and recommendation (accept / reject / flag).
+- Prepare data for a simple admin UI or review API.
+
+### `agents/matcher_agent.*`
+
+Purpose:
+- Use stored candidate profiles + user quiz answers to compute matches and explanations.
+
+Responsibilities:
+- Map user answers into a vector over topics/dimensions.
+- Read candidate vectors from the profile store.
+- Compute similarity scores (e.g., cosine similarity or weighted distance).
+- Return:
+  - ranked candidates,
+  - per-topic alignment,
+  - supporting evidence snippets.
+
+---
+
+## Skills (low-level, reusable utilities)
+
+Place these in a `skills/` directory. Skills should be small, focused, and testable.
+
+### `skills/source_collector.*`
+
+Purpose:
+- Collect **diverse, high-signal sources** for a candidate and topic.
+
+Input:
+- `candidateId`
+- optional `topics`
+- optional `timeWindow` (e.g., last 30 days)
+
+Output:
+- A list of standardized `Source` objects, e.g.:
+
+```ts
+type SourceType = "speech" | "interview" | "news" | "opinion" | "social" | "scandal" | "program" | "other";
+
+interface Source {
+  candidateId: string;
+  type: SourceType;
+  url: string;
+  title?: string;
+  snippet?: string;
+  date?: string; // ISO
+  sourceName?: string; // media outlet, platform, etc.
+}

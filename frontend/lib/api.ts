@@ -6,6 +6,8 @@ const api = axios.create({
 
 export interface Question {
   id: string;
+  /** Backend axis name (e.g. "energy_environment"). Use axisToTopic() to convert to QuizTopic. */
+  axis: string;
   bucket: string;
   statement: string;
   weight: number;
