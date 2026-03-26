@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "El quiz — Elecciones Colombia 2026",
+  title: "El quiz",
   description:
     "25 preguntas para descubrir qué candidato presidencial representa mejor tus ideas.",
   openGraph: {

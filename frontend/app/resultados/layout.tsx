@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tus resultados — Elecciones Colombia 2026",
+  title: "Tus resultados",
   description:
     "Ve con qué candidato presidencial colombiano tienes más afinidad, con desglose por tema y links a las fuentes.",
   openGraph: {

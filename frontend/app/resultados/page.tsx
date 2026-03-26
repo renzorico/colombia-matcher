@@ -24,6 +24,62 @@ function rankLabel(rank: number): string {
   return `#${rank}`;
 }
 
+// Key points: top agreements + disagreements derived from breakdown
+function KeyPoints({ breakdown }: { breakdown: Record<string, number> }) {
+  const [open, setOpen] = useState(false);
+  const entries = Object.entries(breakdown).sort((a, b) => b[1] - a[1]);
+  const agreements = entries.slice(0, 2);
+  const disagreements = [...entries].sort((a, b) => a[1] - b[1]).slice(0, 2);
+
+  return (
+    <div className="mt-3">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1 text-xs font-medium transition-colors"
+        style={{ color: "var(--secondary)" }}
+      >
+        <span
+          className="inline-block transition-transform duration-200"
+          style={{ transform: open ? "rotate(90deg)" : "rotate(0deg)" }}
+        >
+          ›
+        </span>
+        {open ? "Ocultar puntos clave" : "Ver puntos clave"}
+      </button>
+
+      <div
+        className="overflow-hidden transition-all duration-200"
+        style={{ maxHeight: open ? "300px" : "0px", opacity: open ? 1 : 0 }}
+      >
+        <div className="mt-2 flex flex-col gap-2">
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-wide mb-1" style={{ color: "var(--muted)" }}>
+              Mayor acuerdo
+            </p>
+            {agreements.map(([topicId, pct]) => (
+              <div key={topicId} className="flex items-center justify-between text-xs mb-0.5">
+                <span style={{ color: "var(--foreground)" }}>{TOPIC_LABELS[topicId] ?? topicId}</span>
+                <span className="font-semibold" style={{ color: "#5C8A6B" }}>{pct}%</span>
+              </div>
+            ))}
+          </div>
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-wide mb-1" style={{ color: "var(--muted)" }}>
+              Mayor diferencia
+            </p>
+            {disagreements.map(([topicId, pct]) => (
+              <div key={topicId} className="flex items-center justify-between text-xs mb-0.5">
+                <span style={{ color: "var(--foreground)" }}>{TOPIC_LABELS[topicId] ?? topicId}</span>
+                <span className="font-semibold" style={{ color: "#C4622D" }}>{pct}%</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Mini topic bar used in result cards
 function TopicMiniBar({ topicId, pct }: { topicId: string; pct: number }) {
   const color = TOPIC_COLORS[topicId] ?? "#4A4A4A";
@@ -340,6 +396,11 @@ export default function ResultadosPage() {
                     <TopicMiniBar key={topicId} topicId={topicId} pct={pct} />
                   ))}
                 </div>
+              )}
+
+              {/* Key agreement/disagreement points */}
+              {Object.keys(r.breakdown).length > 0 && (
+                <KeyPoints breakdown={r.breakdown} />
               )}
             </div>
           );

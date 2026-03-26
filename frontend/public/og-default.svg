@@ -1,0 +1,18 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#003087"/>
+  <rect x="0" y="540" width="1200" height="90" fill="#F5C400"/>
+  <!-- Flag stripe accent -->
+  <rect x="0" y="0" width="1200" height="8" fill="#F5C400"/>
+
+  <!-- Main heading -->
+  <text x="600" y="220" font-family="Arial, Helvetica, sans-serif" font-size="80" font-weight="900" fill="#F5C400" text-anchor="middle" letter-spacing="-2">¿Por quién votarás?</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="310" font-family="Arial, Helvetica, sans-serif" font-size="36" fill="rgba(255,255,255,0.85)" text-anchor="middle">Elecciones Colombia 2026</text>
+
+  <!-- Description -->
+  <text x="600" y="380" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="rgba(255,255,255,0.65)" text-anchor="middle">25 preguntas · 6 candidatos · Datos verificados</text>
+
+  <!-- URL in yellow bar -->
+  <text x="600" y="598" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#003087" text-anchor="middle">colombia-matcher.vercel.app</text>
+</svg>
