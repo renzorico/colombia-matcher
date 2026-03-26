@@ -9,6 +9,7 @@ import {
   type Result,
   type CandidateSummary,
 } from "@/lib/api";
+import { SpectrumBar } from "@/components/SpectrumBar";
 
 // ---------------------------------------------------------------------------
 // Topic labels (canonical IDs → Spanish display names)
@@ -24,30 +25,20 @@ const TOPIC_LABELS: Record<string, string> = {
   anticorruption: "Anticorrupción",
 };
 
-const SPECTRUM_LABELS: Record<string, string> = {
-  left: "Izquierda",
-  "center-left": "Centro-izquierda",
-  center: "Centro",
-  "center-right": "Centro-derecha",
-  right: "Derecha",
-  "far-right": "Derecha radical",
-};
-
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
+
+function rankLabel(rank: number): string {
+  if (rank === 2) return "Segunda mayor afinidad";
+  if (rank === 3) return "Tercera mayor afinidad";
+  return `#${rank}`;
+}
 
 function alignmentChip(pct: number): { label: string; cls: string } {
   if (pct >= 67) return { label: "De acuerdo", cls: "bg-green-100 text-green-700" };
   if (pct >= 34) return { label: "Parcial", cls: "bg-gray-100 text-gray-600" };
   return { label: "En desacuerdo", cls: "bg-red-100 text-red-700" };
-}
-
-function spectrumBadge(spectrum: string | null): string {
-  if (!spectrum) return "border-gray-200 text-gray-500";
-  if (spectrum.startsWith("left")) return "border-red-200 text-red-700";
-  if (spectrum.startsWith("center")) return "border-blue-200 text-blue-700";
-  return "border-green-200 text-green-700";
 }
 
 // ---------------------------------------------------------------------------
@@ -172,10 +163,12 @@ export default function ResultadosPage() {
             <div>
               <h2 className="text-2xl font-bold">{top.candidate}</h2>
               {topMeta && (
-                <p className="mt-0.5 text-sm text-gray-500">
-                  {topMeta.party ?? "—"}
-                  {topMeta.spectrum ? ` · ${SPECTRUM_LABELS[topMeta.spectrum] ?? topMeta.spectrum}` : ""}
-                </p>
+                <div className="mt-1 flex flex-col gap-1.5">
+                  <p className="text-sm text-gray-500">{topMeta.party ?? "—"}</p>
+                  {topMeta.spectrum && (
+                    <SpectrumBar spectrum={topMeta.spectrum} />
+                  )}
+                </div>
               )}
             </div>
             <Link
@@ -217,8 +210,12 @@ export default function ResultadosPage() {
       )}
 
       {/* ── Full ranked list ──────────────────────────────────────────────── */}
-      <div className="mt-6 flex w-full max-w-2xl flex-col gap-4">
-        {results.map((r, i) => {
+      <p className="mt-8 w-full max-w-2xl text-sm text-gray-500 text-center">
+        Estos son los candidatos ordenados de mayor a menor afinidad con tus respuestas
+      </p>
+      <div className="mt-3 flex w-full max-w-2xl flex-col gap-4">
+        {results.slice(1).map((r, i) => {
+          const rank = i + 2; // starts at #2
           const meta = candidateMeta[r.id];
 
           return (
@@ -229,21 +226,18 @@ export default function ResultadosPage() {
               {/* Header row */}
               <div className="flex items-center gap-3">
                 <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-xs font-bold text-gray-500">
-                  {i + 1}
+                  {rank}
                 </span>
                 <div className="min-w-0 flex-1">
+                  <p className="text-xs text-gray-400 mb-0.5">{rankLabel(rank)}</p>
                   <h3 className="truncate font-semibold">{r.candidate}</h3>
                   {meta && (
-                    <div className="mt-0.5 flex items-center gap-2">
+                    <div className="mt-1 flex flex-col gap-1">
                       <p className="truncate text-xs text-gray-400">
                         {meta.party ?? "—"}
                       </p>
                       {meta.spectrum && (
-                        <span
-                          className={`rounded-full border px-2 py-px text-xs ${spectrumBadge(meta.spectrum)}`}
-                        >
-                          {SPECTRUM_LABELS[meta.spectrum] ?? meta.spectrum}
-                        </span>
+                        <SpectrumBar spectrum={meta.spectrum} />
                       )}
                     </div>
                   )}

@@ -13,6 +13,7 @@ import {
 import TopicBreakdown from "@/components/TopicBreakdown";
 import SourceList from "@/components/SourceList";
 import EmptyState from "@/components/EmptyState";
+import { SpectrumBar } from "@/components/SpectrumBar";
 
 // ---------------------------------------------------------------------------
 // Label maps
@@ -275,9 +276,9 @@ export default function CandidatoDetail() {
           <div className="flex items-start justify-between gap-4">
             <h1 className="text-3xl font-bold leading-tight">{candidate.name}</h1>
             {candidate.spectrum && (
-              <span className="flex-shrink-0 mt-1 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
-                {SPECTRUM_LABELS[candidate.spectrum] ?? candidate.spectrum}
-              </span>
+              <div className="flex-shrink-0 mt-1">
+                <SpectrumBar spectrum={candidate.spectrum} />
+              </div>
             )}
           </div>
           <p className="mt-1.5 text-gray-500">

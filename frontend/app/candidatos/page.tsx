@@ -3,23 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getCandidates, type CandidateSummary } from "@/lib/api";
-
-const SPECTRUM_LABELS: Record<string, string> = {
-  left: "Izquierda",
-  "center-left": "Centro-izquierda",
-  center: "Centro",
-  "center-right": "Centro-derecha",
-  right: "Derecha",
-  "far-right": "Derecha radical",
-};
-
-function spectrumColor(spectrum: string | null): string {
-  if (!spectrum) return "bg-gray-100 text-gray-500";
-  if (spectrum.startsWith("left")) return "bg-red-50 text-red-700";
-  if (spectrum === "center") return "bg-blue-50 text-blue-700";
-  if (spectrum.startsWith("center")) return "bg-blue-50 text-blue-700";
-  return "bg-green-50 text-green-700";
-}
+import { SpectrumBar } from "@/components/SpectrumBar";
 
 export default function CandidatosPage() {
   const [candidates, setCandidates] = useState<CandidateSummary[]>([]);
@@ -90,11 +74,9 @@ export default function CandidatosPage() {
                   )}
                 </div>
                 {c.spectrum && (
-                  <span
-                    className={`flex-shrink-0 rounded-full px-3 py-1 text-xs font-medium ${spectrumColor(c.spectrum)}`}
-                  >
-                    {SPECTRUM_LABELS[c.spectrum] ?? c.spectrum}
-                  </span>
+                  <div className="flex-shrink-0 mt-1">
+                    <SpectrumBar spectrum={c.spectrum} />
+                  </div>
                 )}
               </div>
             </Link>

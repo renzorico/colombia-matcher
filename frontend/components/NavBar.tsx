@@ -8,7 +8,7 @@ export default function NavBar() {
           href="/"
           className="text-sm font-bold tracking-tight text-gray-900 hover:text-blue-600 transition"
         >
-          ¿Con quién votas?
+          ¿Por quién votarás?
         </Link>
         <div className="flex items-center gap-5 text-sm text-gray-500">
           <Link href="/candidatos" className="hover:text-gray-900 transition">
@@ -19,6 +19,12 @@ export default function NavBar() {
           </Link>
           <Link href="/metodologia" className="hover:text-gray-900 transition">
             Metodología
+          </Link>
+          <Link
+            href="/bajo-el-capo"
+            className="text-xs text-gray-400 hover:text-gray-700 transition"
+          >
+            Bajo el capó
           </Link>
         </div>
       </nav>

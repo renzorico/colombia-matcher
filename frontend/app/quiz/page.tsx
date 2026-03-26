@@ -103,12 +103,22 @@ export default function QuizPage() {
 
         {/* Actions */}
         <div className="mt-6 flex items-center justify-between">
-          <button
-            onClick={handleSkip}
-            className="text-sm text-gray-500 hover:text-gray-700 transition"
-          >
-            Omitir
-          </button>
+          <div className="flex items-center gap-4">
+            {index > 0 && (
+              <button
+                onClick={() => setIndex(index - 1)}
+                className="text-sm text-gray-500 hover:text-gray-700 transition"
+              >
+                ← Anterior
+              </button>
+            )}
+            <button
+              onClick={handleSkip}
+              className="text-sm text-gray-500 hover:text-gray-700 transition"
+            >
+              Omitir
+            </button>
+          </div>
           <button
             onClick={handleNext}
             disabled={selected === null || submitting}

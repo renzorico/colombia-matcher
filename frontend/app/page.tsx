@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-4 text-center">
       <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl">
-        ¿Con quién votas?
+        ¿Por quién votarás?
       </h1>
       <p className="mt-4 max-w-md text-lg text-gray-600">
         Responde 25 preguntas y descubre qué candidato presidencial se acerca

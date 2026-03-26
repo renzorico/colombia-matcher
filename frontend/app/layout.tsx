@@ -14,11 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "¿Con quién votas? — Colombia Matcher 2026",
+  title: "¿Por quién votarás? — Colombia Matcher 2026",
   description:
     "Responde 25 preguntas y descubre con qué candidato presidencial estás más alineado. Propuestas, controversias y fuentes verificadas.",
   openGraph: {
-    title: "¿Con quién votas? — Colombia Matcher 2026",
+    title: "¿Por quién votarás? — Colombia Matcher 2026",
     description:
       "Responde 25 preguntas y descubre con qué candidato presidencial estás más alineado. Propuestas, controversias y fuentes verificadas.",
     url: "https://colombia-matcher.vercel.app",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "¿Con quién votas? — Colombia Matcher 2026",
+    title: "¿Por quién votarás? — Colombia Matcher 2026",
     description:
       "Responde 25 preguntas y descubre con qué candidato presidencial estás más alineado. Propuestas, controversias y fuentes verificadas.",
   },
