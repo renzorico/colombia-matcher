@@ -1,9 +1,14 @@
 """
 main.py — FastAPI backend for the citizen–candidate affinity quiz.
-Loads JSON data once at startup and delegates scoring to scorer.py.
+
+Canonical data source: backend/data/candidates_canonical.json
+                       backend/data/questions_canonical.json
+
+Data is loaded once at startup via loader.py and shared through
+app.state.  All scoring delegates to scorer.py.
 """
 
-import json
+import os
 from contextlib import asynccontextmanager
 from typing import Any
 
@@ -12,21 +17,18 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, field_validator
 
 from agents.pipeline import run_matching_pipeline
-from scorer import explain_match, load_data
+from loader import load_canonical_candidates, load_canonical_questions
+from scorer import explain_match
 
 
 # ---------------------------------------------------------------------------
-# Startup / shutdown: load data once, share via app.state
+# Startup: load canonical data once, share via app.state
 # ---------------------------------------------------------------------------
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    candidates, questions = load_data(
-        candidates_path="candidates_v2.json",
-        questions_path="questions_v1.json",
-    )
-    app.state.candidates = candidates
-    app.state.questions  = questions
+    app.state.candidates = load_canonical_candidates()
+    app.state.questions  = load_canonical_questions()
     yield
     # Nothing to tear down — in-memory data only
 
@@ -35,18 +37,20 @@ async def lifespan(app: FastAPI):
 # App + CORS
 # ---------------------------------------------------------------------------
 
+_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    *[o.strip() for o in os.getenv("CORS_ORIGINS", "").split(",") if o.strip()],
+]
+
 app = FastAPI(
     title="Affinity Quiz API",
-    version="1.0.0",
+    version="2.0.0",
     lifespan=lifespan,
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "https://your-app.vercel.app",  # update second entry before deploy
-    ],
+    allow_origins=_ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -83,11 +87,16 @@ class AffinityResponse(BaseModel):
     results: list[AffinityBreakdown]
 
 
-class Candidate(BaseModel):
+class CandidateSummary(BaseModel):
+    """Lightweight public candidate record for /candidates."""
+    id: str
     name: str
-    party: str
-    spectrum: str
-    party_history: str
+    party: str | None
+    coalition: str | None
+    spectrum: str | None
+    short_bio: str | None
+    # Kept for clients still reading the legacy field name.
+    party_history: str | None = None
 
 
 class Question(BaseModel):
@@ -103,45 +112,45 @@ class ExplainResponse(BaseModel):
 
 
 # ---------------------------------------------------------------------------
-# Shared answer-dict validator (reused by /explain)
+# Helpers
 # ---------------------------------------------------------------------------
 
-def _parse_and_validate_answers(raw: str) -> dict[str, int]:
+def _candidate_to_summary(c: dict) -> dict:
+    """Project a normalised candidate dict to the public summary shape."""
+    return {
+        "id":            c["id"],
+        "name":          c["name"],
+        "party":         c.get("party"),
+        "coalition":     c.get("coalition"),
+        "spectrum":      c.get("spectrum"),
+        "short_bio":     c.get("short_bio"),
+        # Backward-compat alias: surface party_history from metadata if present.
+        "party_history": c.get("metadata", {}).get("party_history"),
+    }
+
+
+def _parse_answers_query(raw: str) -> dict[str, int]:
     """
-    Decode a JSON string into an answer dict and validate that it contains
-    exactly 25 keys with integer values between 1 and 5 inclusive.
+    Decode a JSON string into an answer dict (25 keys, values 1–5).
     Raises HTTPException 422 on any violation.
     """
+    import json as _json
+
     try:
-        answers = json.loads(raw)
-    except json.JSONDecodeError as exc:
-        raise HTTPException(
-            status_code=422,
-            detail=f"'answers' is not valid JSON: {exc}",
-        ) from exc
+        answers = _json.loads(raw)
+    except _json.JSONDecodeError as exc:
+        raise HTTPException(status_code=422, detail=f"'answers' is not valid JSON: {exc}") from exc
 
     if not isinstance(answers, dict):
-        raise HTTPException(
-            status_code=422,
-            detail="'answers' must be a JSON object.",
-        )
-
+        raise HTTPException(status_code=422, detail="'answers' must be a JSON object.")
     if len(answers) != 25:
-        raise HTTPException(
-            status_code=422,
-            detail=f"Expected 25 answers, got {len(answers)}.",
-        )
-
+        raise HTTPException(status_code=422, detail=f"Expected 25 answers, got {len(answers)}.")
     for qid, score in answers.items():
         if not isinstance(score, int) or score not in range(1, 6):
             raise HTTPException(
                 status_code=422,
-                detail=(
-                    f"Answer for '{qid}' must be an integer between 1 and 5, "
-                    f"got {score!r}."
-                ),
+                detail=f"Answer for '{qid}' must be an integer 1–5, got {score!r}.",
             )
-
     return answers
 
 
@@ -151,51 +160,67 @@ def _parse_and_validate_answers(raw: str) -> dict[str, int]:
 
 @app.get("/health", tags=["Meta"])
 def health_check() -> dict[str, str]:
-    """Liveness probe — always returns 200 OK."""
+    """Liveness probe."""
     return {"status": "ok"}
 
 
-@app.get("/candidates", response_model=list[Candidate], tags=["Data"])
-def get_candidates() -> list[dict[str, Any]]:
+@app.get("/candidates", response_model=list[CandidateSummary], tags=["Data"])
+def get_candidates() -> list[dict]:
     """
-    Returns all candidates with lightweight profile fields only.
-    Stances are intentionally excluded to keep the payload small.
+    Returns all candidates with lightweight public fields.
+    Stance scores and internal metadata are excluded.
     """
-    safe_fields = {"name", "party", "spectrum", "party_history"}
-    return [
-        {k: v for k, v in candidate.items() if k in safe_fields}
-        for candidate in app.state.candidates
-    ]
+    return [_candidate_to_summary(c) for c in app.state.candidates]
 
 
 @app.get("/candidates/full", tags=["Data"])
 def get_candidates_full() -> list[dict[str, Any]]:
-    """Returns candidates with procuraduria and scandals info."""
-    fields = {"name", "procuraduria", "scandals"}
-    return [
-        {k: v for k, v in candidate.items() if k in fields}
-        for candidate in app.state.candidates
-    ]
+    """
+    Returns candidates with richer public context:
+    id, name, party, spectrum, controversies, procuraduria status,
+    profile_status, last_updated.
+
+    Raw internal metadata and full stance details are excluded.
+    """
+    result = []
+    for c in app.state.candidates:
+        meta = c.get("metadata", {})
+        result.append(
+            {
+                "id":                  c["id"],
+                "name":                c["name"],
+                "party":               c.get("party"),
+                "coalition":           c.get("coalition"),
+                "spectrum":            c.get("spectrum"),
+                "short_bio":           c.get("short_bio"),
+                "controversies":       c.get("controversies", []),
+                "procuraduria_status": meta.get("procuraduria_status"),
+                "procuraduria_summary": meta.get("procuraduria_summary"),
+                "profile_status":      c.get("profile_status"),
+                "last_updated":        c.get("last_updated"),
+            }
+        )
+    return result
 
 
 @app.get("/questions", response_model=list[Question], tags=["Data"])
-def get_questions() -> list[dict[str, Any]]:
+def get_questions() -> list[dict]:
     """
     Returns all 25 quiz questions.
-    'axis' and 'note' fields are stripped — not exposed to the frontend.
+    Internal fields (topic_id, direction, note, axis) are stripped.
     """
     safe_fields = {"id", "bucket", "statement", "weight"}
     return [
-        {k: v for k, v in question.items() if k in safe_fields}
-        for question in app.state.questions
+        {k: v for k, v in q.items() if k in safe_fields}
+        for q in app.state.questions
     ]
 
 
 @app.post("/quiz/submit", response_model=AffinityResponse, tags=["Quiz"])
 def submit_quiz(submission: QuizSubmission) -> AffinityResponse:
     """
-    Accepts 25 citizen answers on a 1–5 scale, runs the affinity
-    scoring engine, and returns candidates ranked by match percentage.
+    Accepts 25 citizen answers on a 1–5 scale and returns candidates
+    ranked by affinity score with a per-topic breakdown.
     """
     try:
         result = run_matching_pipeline(
@@ -214,21 +239,18 @@ def explain_candidate(
     candidate_name: str,
     answers: str = Query(
         ...,
-        description=(
-            "JSON string of the 25-answer dict, e.g. "
-            '\'{"q01": 3, "q02": 5, ...}\''
-        ),
+        description='JSON string of the 25-answer dict, e.g. \'{"q01": 3, "q02": 5, ...}\'',
     ),
 ) -> ExplainResponse:
     """
-    Returns a 2-sentence plain-Spanish explanation of the strongest
-    agreement and biggest divergence between the citizen and the
-    named candidate.
+    Returns a plain-Spanish explanation of the strongest agreement and
+    biggest divergence between the citizen and the named candidate.
+    Only uses computed scores and canonical topic labels — no invented claims.
 
-    - **candidate_name**: exact candidate name (URL-encoded if it contains spaces)
+    - **candidate_name**: exact name (URL-encoded if it contains spaces)
     - **answers**: query param — JSON string of the 25-answer dict
     """
-    citizen_answers = _parse_and_validate_answers(answers)
+    citizen_answers = _parse_answers_query(answers)
 
     try:
         explanation = explain_match(
@@ -238,13 +260,8 @@ def explain_candidate(
             questions=app.state.questions,
         )
     except Exception as exc:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Explanation error: {exc}",
-        ) from exc
+        raise HTTPException(status_code=500, detail=f"Explanation error: {exc}") from exc
 
-    # explain_match signals a missing candidate via a Spanish string;
-    # surface that as a 404 so callers can handle it cleanly.
     if explanation.startswith("No se encontró"):
         raise HTTPException(status_code=404, detail=explanation)
 
@@ -257,5 +274,4 @@ def explain_candidate(
 
 if __name__ == "__main__":
     import uvicorn
-
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

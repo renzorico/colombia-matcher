@@ -1,38 +1,15 @@
 """
-scorer.py — Phase 3: Citizen–Candidate Affinity Engine
-Loads candidates_v2.json and questions_v1.json from disk,
-computes weighted axis scores, and returns ranked affinity results.
+scorer.py — Citizen–Candidate Affinity Engine.
+
+Computes weighted topic scores from citizen answers and returns
+candidates ranked by affinity.  All topic IDs and weights are sourced
+from topics.py — do not redefine them here.
 """
 
 import json
 from pathlib import Path
 
-
-# ---------------------------------------------------------------------------
-# Axis weights (must sum to 1.0)
-# ---------------------------------------------------------------------------
-AXIS_WEIGHTS: dict[str, float] = {
-    "security":            0.25,
-    "economy":             0.20,
-    "health":              0.15,
-    "energy_environment":  0.15,
-    "fiscal":              0.10,
-    "foreign_policy":      0.10,
-    "anticorruption":      0.05,
-}
-
-# ---------------------------------------------------------------------------
-# Axis labels in Spanish (used by explain_match)
-# ---------------------------------------------------------------------------
-AXIS_LABELS_ES: dict[str, str] = {
-    "security":            "Seguridad",
-    "economy":             "Economía",
-    "health":              "Salud",
-    "energy_environment":  "Energía y Medio Ambiente",
-    "fiscal":              "Política Fiscal",
-    "foreign_policy":      "Política Exterior",
-    "anticorruption":      "Anticorrupción",
-}
+from topics import AXIS_WEIGHTS, AXIS_LABELS_ES  # single source of truth
 
 
 # ---------------------------------------------------------------------------
@@ -49,16 +26,16 @@ def load_data(
     questions_path: str,
 ) -> tuple[list, list]:
     """
-    Load and return (candidates, questions) from disk.
+    Load raw JSON files and return (candidates, questions).
+
+    Prefer loader.load_canonical_candidates() / load_canonical_questions()
+    for new code — they normalise the canonical schema into scorer-ready
+    dicts.  This function is kept for backward compatibility only.
 
     Parameters
     ----------
-    candidates_path : path to candidates_v2.json
-    questions_path  : path to questions_v1.json
-
-    Returns
-    -------
-    tuple[list, list] — (candidates, questions)
+    candidates_path : path to a candidates JSON file
+    questions_path  : path to a questions JSON file
     """
     candidates = _load_json(candidates_path)
     questions  = _load_json(questions_path)
@@ -74,25 +51,45 @@ def _weighted_axis_scores(
     questions: list[dict],
 ) -> dict[str, float]:
     """
-    For each axis, compute a weighted average of the citizen's answers
-    across all questions mapped to that axis.
+    For each topic axis, compute a direction-normalised weighted average of
+    the citizen's answers across all questions mapped to that axis.
 
-    Each question dict is expected to have:
-        { "id": "q01", "axis": "security", "weight": 2, ... }
+    Expected question fields:
+        id       — question identifier matching a key in citizen_answers
+        axis     — canonical topic ID (set by loader from topic_id)
+        weight   — integer importance weight (default 1)
+        direction — "positive" | "negative" | "neutral"  (default "positive")
+                   "positive": higher answer → higher axis score (agrees with
+                               the right/interventionist end of that topic)
+                   "negative": higher answer → LOWER axis score; the answer is
+                               inverted (6 - answer) before averaging so it
+                               aligns with the candidate's 1–5 stance scale.
+                   "neutral" : treated as "positive" (no inversion).
 
-    Returns { axis_name: weighted_avg_score }
+    Direction-normalisation ensures that a citizen who strongly disagrees with
+    a left-framed question (answers 1) receives a high axis score — matching
+    a right-leaning candidate — rather than a low score that would spuriously
+    match the left-leaning candidate.
+
+    Returns { axis_name: weighted_avg_score } with values on the [1, 5] scale.
     """
     axis_numerator:   dict[str, float] = {}
     axis_denominator: dict[str, float] = {}
 
     for q in questions:
-        qid    = q["id"]
-        axis   = q["axis"]
-        weight = float(q.get("weight", 1))
+        qid       = q["id"]
+        axis      = q["axis"]
+        weight    = float(q.get("weight", 1))
+        direction = q.get("direction", "positive")
 
         answer = citizen_answers.get(qid)
         if answer is None:
             continue  # skip unanswered questions gracefully
+
+        # Invert "negative direction" answers so the result stays on the same
+        # 1–5 scale as candidate stance scores: 1→5, 2→4, 3→3, 4→2, 5→1.
+        if direction == "negative":
+            answer = 6 - answer
 
         axis_numerator[axis]   = axis_numerator.get(axis, 0.0)   + answer * weight
         axis_denominator[axis] = axis_denominator.get(axis, 0.0) + weight
@@ -264,121 +261,31 @@ def explain_match(
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    import os
     import pprint
+    from loader import load_canonical_candidates, load_canonical_questions
 
-    # ------------------------------------------------------------------
-    # Synthetic citizen answers — 25 questions, values across 1–5 range
-    # Adjust q-ids to match whatever your questions_v1.json uses.
-    # ------------------------------------------------------------------
     TEST_ANSWERS: dict[str, int] = {
-        "q01": 5, "q02": 4, "q03": 3, "q04": 2, "q05": 1,
-        "q06": 5, "q07": 4, "q08": 3, "q09": 2, "q10": 1,
-        "q11": 5, "q12": 4, "q13": 3, "q14": 2, "q15": 1,
-        "q16": 5, "q17": 4, "q18": 3, "q19": 2, "q20": 1,
-        "q21": 5, "q22": 4, "q23": 3, "q24": 2, "q25": 1,
+        "q01": 5, "q02": 1, "q03": 4, "q04": 5, "q05": 1,
+        "q06": 2, "q07": 5, "q08": 1, "q09": 1, "q10": 5,
+        "q11": 3, "q12": 5, "q13": 1, "q14": 5, "q15": 1,
+        "q16": 5, "q17": 5, "q18": 1, "q19": 5, "q20": 1,
+        "q21": 3, "q22": 3, "q23": 1, "q24": 4, "q25": 3,
     }
 
     print("=" * 60)
-    print("SCORING ENGINE — Phase 3 Test Run")
+    print("SCORING ENGINE — canonical data test run")
     print("=" * 60)
 
-    # ------------------------------------------------------------------
-    # If the real JSON files aren't on disk yet, generate minimal stubs
-    # so the test block is self-contained and runnable immediately.
-    # ------------------------------------------------------------------
-    STUB_CANDIDATES = "candidates_v2.json"
-    STUB_QUESTIONS  = "questions_v1.json"
-
-    if not os.path.exists(STUB_CANDIDATES):
-        print("[INFO] candidates_v2.json not found — writing stub data for demo.\n")
-        stub_candidates = [
-            {
-                "name": "Paloma Valencia",
-                "stances": {
-                    "security":      4,
-                    "economy":       5,
-                    "health":        3,
-                    "energy_oil":    2,
-                    "environment":   3,
-                    "fiscal":        4,
-                    "foreign_policy":     3,
-                    "anticorruption":     5,
-                },
-            },
-            {
-                "name": "Carlos Mendoza",
-                "stances": {
-                    "security":      2,
-                    "economy":       3,
-                    "health":        5,
-                    "energy_oil":    4,
-                    "environment":   5,
-                    "fiscal":        None,   # null stance → redistributed
-                    "foreign_policy":     2,
-                    "anticorruption":     3,
-                },
-            },
-            {
-                "name": "Lucía Rondón",
-                "stances": {
-                    "security":      1,
-                    "economy":       2,
-                    "health":        4,
-                    "energy_oil":    3,
-                    "environment":   5,
-                    "fiscal":        3,
-                    "foreign_policy":     5,
-                    "anticorruption":     4,
-                },
-            },
-        ]
-        with open(STUB_CANDIDATES, "w", encoding="utf-8") as f:
-            json.dump(stub_candidates, f, ensure_ascii=False, indent=2)
-
-    if not os.path.exists(STUB_QUESTIONS):
-        print("[INFO] questions_v1.json not found — writing stub data for demo.\n")
-        axes_cycle = [
-            "security", "security", "security", "security",
-            "economy",  "economy",  "economy",  "economy",
-            "health",   "health",   "health",
-            "energy_oil",  "energy_oil",  "energy_oil",
-            "environment", "environment",
-            "fiscal",   "fiscal",
-            "foreign_policy", "foreign_policy", "foreign_policy",
-            "anticorruption", "anticorruption",
-            "security", "economy",  # fill to 25
-        ]
-        stub_questions = [
-            {
-                "id":     f"q{str(i).zfill(2)}",
-                "axis":   axes_cycle[i - 1],
-                "weight": (i % 3) + 1,           # weights 1, 2, 3 cycling
-                "text":   f"Pregunta de prueba {i}",
-            }
-            for i in range(1, 26)
-        ]
-        with open(STUB_QUESTIONS, "w", encoding="utf-8") as f:
-            json.dump(stub_questions, f, ensure_ascii=False, indent=2)
-
-    # ------------------------------------------------------------------
-    # Load data explicitly, then pass into public functions
-    # ------------------------------------------------------------------
-    candidates, questions = load_data(STUB_CANDIDATES, STUB_QUESTIONS)
+    candidates = load_canonical_candidates()
+    questions  = load_canonical_questions()
 
     print("\n▶ compute_affinity() results:\n")
     ranking = compute_affinity(TEST_ANSWERS, candidates, questions)
     pprint.pprint(ranking, sort_dicts=False)
 
-    # ------------------------------------------------------------------
-    # Run explain_match for the top candidate
-    # ------------------------------------------------------------------
     if ranking:
-        top_candidate = ranking[0]["candidate"]
-        print(f"\n▶ explain_match() for top candidate: {top_candidate}\n")
-        explanation = explain_match(top_candidate, TEST_ANSWERS, candidates, questions)
-        print(explanation)
+        top = ranking[0]["candidate"]
+        print(f"\n▶ explain_match() for top candidate: {top}\n")
+        print(explain_match(top, TEST_ANSWERS, candidates, questions))
 
     print("\n" + "=" * 60)
-    print("Test run complete.")
-    print("=" * 60)
