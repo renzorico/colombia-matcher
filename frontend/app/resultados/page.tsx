@@ -115,8 +115,7 @@ export default function ResultadosPage() {
       <main className="flex flex-1 flex-col items-center justify-center gap-4 px-4">
         <p className="text-red-600">{error}</p>
         <p className="text-sm text-gray-500">
-          Asegúrate de que el servidor backend esté activo en{" "}
-          {process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000"}.
+          El servidor de datos no está disponible. Intenta más tarde.
         </p>
         <button
           onClick={handleRestart}
@@ -274,8 +273,26 @@ export default function ResultadosPage() {
         })}
       </div>
 
+      {/* ── Candidate profile links ────────────────────────────────────────── */}
+      <div className="mt-8 w-full max-w-2xl rounded-xl border border-gray-200 px-5 py-4">
+        <p className="text-sm text-gray-600 font-medium mb-3">
+          ¿Quieres saber más? Revisa las propuestas y el perfil completo de cada candidato.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {results.map((r) => (
+            <Link
+              key={r.id}
+              href={`/candidatos/${r.id}`}
+              className="rounded-full border border-gray-300 px-3 py-1 text-xs font-medium text-gray-700 hover:border-blue-400 hover:text-blue-700 transition"
+            >
+              {r.candidate} →
+            </Link>
+          ))}
+        </div>
+      </div>
+
       {/* ── Footer actions ─────────────────────────────────────────────────── */}
-      <div className="mt-10 mb-8 flex flex-col items-center gap-3">
+      <div className="mt-8 mb-8 flex flex-col items-center gap-3">
         <Link
           href="/candidatos"
           className="rounded-full bg-gray-800 px-6 py-2 text-sm font-semibold text-white hover:bg-gray-700 transition"

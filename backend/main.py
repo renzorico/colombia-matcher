@@ -196,30 +196,37 @@ def get_candidates_full() -> list[dict[str, Any]]:
         meta = c.get("metadata", {})
 
         # Expose only public topic fields — stance scores are internal.
+        # confidence is public: it signals how well-sourced a stance is.
         public_topics = [
             {
                 "topic_id":               t.get("topic_id"),
                 "topic_label":            t.get("topic_label"),
                 "summary":                t.get("summary"),
                 "plain_language_summary": t.get("plain_language_summary"),
+                "confidence":             t.get("confidence"),
             }
             for t in c.get("topics", [])
         ]
 
-        # Resolve source evidence: collect unique source IDs from all topics,
-        # then return public fields only for sources that have a URL.
+        # Collect all source IDs referenced by topics, proposals, and controversies.
         source_ids: set[str] = set()
         for t in c.get("topics", []):
             source_ids.update(t.get("evidence_ids", []))
+        for p in c.get("proposals", []):
+            source_ids.update(p.get("source_ids", []))
+        for cont in c.get("controversies", []):
+            source_ids.update(cont.get("source_ids", []))
 
         sources_data = app.state.sources
         candidate_sources = [
             {
-                "id":           src["id"],
-                "title":        src.get("title"),
-                "publisher":    src.get("publisher"),
-                "url":          src["url"],
-                "published_at": src.get("published_at"),
+                "id":                src["id"],
+                "type":              src.get("type"),
+                "title":             src.get("title"),
+                "publisher":         src.get("publisher"),
+                "url":               src["url"],
+                "published_at":      src.get("published_at"),
+                "reliability_notes": src.get("reliability_notes"),
             }
             for sid in sorted(source_ids)
             if (src := sources_data.get(sid)) and src.get("url")

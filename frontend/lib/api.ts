@@ -1,13 +1,13 @@
 /**
  * api.ts — typed client for the canonical Python backend.
  *
- * All production data flows through these functions.
- * Set NEXT_PUBLIC_API_URL to point at the backend in staging/production;
- * defaults to http://localhost:8000 for local development.
+ * All requests go through the Next.js rewrite proxy at /api/backend/*.
+ * The proxy forwards to the backend URL configured in next.config.ts via
+ * NEXT_PUBLIC_API_URL (set in Vercel env vars before the first deploy).
+ * In local dev the proxy forwards to http://localhost:8000 by default.
  */
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ?? "http://localhost:8000";
+const BASE_URL = "/api/backend";
 
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE_URL}${path}`, {
@@ -61,6 +61,18 @@ export interface Controversy {
   severity: "low" | "medium" | "high" | string;
   status: string;
   date: string | null;
+  notes: string | null;
+  source_ids: string[];
+}
+
+export interface Proposal {
+  id: string;
+  topic_id: string;
+  title: string;
+  summary: string;
+  plain_language_summary: string;
+  status: string;
+  source_ids: string[];
 }
 
 export interface CandidateTopic {
@@ -68,20 +80,23 @@ export interface CandidateTopic {
   topic_label: string;
   summary: string | null;
   plain_language_summary: string | null;
+  confidence: number | null;
 }
 
 export interface Source {
   id: string;
+  type: string | null;
   title: string | null;
   publisher: string | null;
   url: string;
   published_at: string | null;
+  reliability_notes: string | null;
 }
 
 /** Full candidate data for the /candidatos/[id] detail page. */
 export interface CandidateFull extends CandidateSummary {
   topics: CandidateTopic[];
-  proposals: unknown[];
+  proposals: Proposal[];
   controversies: Controversy[];
   sources: Source[];
   procuraduria_status: string | null;

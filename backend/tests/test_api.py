@@ -127,10 +127,11 @@ class TestGetCandidatesFull:
             assert isinstance(c["topics"], list)
 
     def test_topics_do_not_expose_stance_scores(self, client):
+        # stance_score is internal — never exposed publicly.
+        # confidence is intentionally public: it's a trust signal for UI display.
         for c in client.get("/candidates/full").json():
             for t in c["topics"]:
                 assert "stance_score" not in t
-                assert "confidence" not in t
 
     def test_includes_sources_list(self, client):
         for c in client.get("/candidates/full").json():
