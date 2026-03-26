@@ -70,15 +70,63 @@ export interface CandidateTopic {
   plain_language_summary: string | null;
 }
 
+export interface Source {
+  id: string;
+  title: string | null;
+  publisher: string | null;
+  url: string;
+  published_at: string | null;
+}
+
 /** Full candidate data for the /candidatos/[id] detail page. */
 export interface CandidateFull extends CandidateSummary {
   topics: CandidateTopic[];
   proposals: unknown[];
   controversies: Controversy[];
+  sources: Source[];
   procuraduria_status: string | null;
   procuraduria_summary: string | null;
   profile_status: string | null;
   last_updated: string | null;
+}
+
+// ---------------------------------------------------------------------------
+// Review workflow types (used by admin/review page)
+// ---------------------------------------------------------------------------
+
+export interface ProposalEvidence {
+  url: string | null;
+  title: string | null;
+  publisher: string | null;
+  quote: string | null;
+  date: string | null;
+}
+
+export interface ProposedUpdate {
+  id: string;
+  candidate_id: string;
+  topic_id: string;
+  field: string;
+  current_value: unknown;
+  proposed_value: unknown;
+  proposed_summary: string | null;
+  proposed_plain_language_summary: string | null;
+  evidence: ProposalEvidence;
+  proposed_by: string;
+  proposed_at: string;
+  status: "pending" | "approved" | "rejected";
+  agent_confidence: number;
+  agent_notes: string | null;
+}
+
+export interface ReviewDecision {
+  id: string;
+  proposal_id: string;
+  decision: "approved" | "rejected";
+  reviewer: string | null;
+  reviewed_at: string | null;
+  notes: string | null;
+  will_publish: boolean;
 }
 
 // ---------------------------------------------------------------------------
@@ -105,6 +153,18 @@ export async function submitQuiz(
     body: JSON.stringify({ answers }),
   });
   return data.results;
+}
+
+export async function getPendingProposals(): Promise<ProposedUpdate[]> {
+  return apiFetch<ProposedUpdate[]>("/review/pending");
+}
+
+export async function getAllProposals(): Promise<ProposedUpdate[]> {
+  return apiFetch<ProposedUpdate[]>("/review/all");
+}
+
+export async function getReviewLog(): Promise<ReviewDecision[]> {
+  return apiFetch<ReviewDecision[]>("/review/log");
 }
 
 export async function explainCandidate(

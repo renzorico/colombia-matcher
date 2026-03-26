@@ -62,8 +62,12 @@ export default function CandidatosPage() {
       <div className="w-full max-w-2xl">
         <h1 className="text-3xl font-bold">Candidatos presidenciales</h1>
         <p className="mt-2 text-gray-500 text-sm">
-          Información curada manualmente · Colombia 2026
+          Colombia 2026 · Información curada manualmente a partir de fuentes públicas verificables
         </p>
+        <div className="mt-3 rounded-lg border border-blue-100 bg-blue-50 px-4 py-2.5 text-xs text-blue-700">
+          Los perfiles muestran posturas documentadas en discursos, programas e
+          entrevistas. Haz clic en un candidato para ver fuentes y detalles por tema.
+        </div>
 
         <div className="mt-8 flex flex-col gap-4">
           {candidates.map((c) => (

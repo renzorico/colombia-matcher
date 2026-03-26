@@ -139,7 +139,10 @@ export default function ResultadosPage() {
         Candidatos ordenados por afinidad con tus respuestas
       </p>
       <p className="mt-1 text-xs text-gray-400">
-        Información curada manualmente · Datos estáticos a marzo 2026
+        Información curada manualmente · Datos estáticos a marzo 2026 ·{" "}
+        <Link href="/metodologia" className="underline hover:text-gray-600">
+          Ver metodología
+        </Link>
       </p>
 
       {/* ── Top candidate hero ────────────────────────────────────────────── */}

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "rev-001",
+    "proposal_id": "prop-002",
+    "decision": "approved",
+    "reviewer": "human",
+    "reviewed_at": "2026-03-23T08:45:00Z",
+    "notes": "Evidencia verificada en fuente primaria (programa oficial Cambio Colombia). El cambio de 3→4 es justificado. Se actualizará el dato canónico en el siguiente ciclo de publicación.",
+    "will_publish": true
+  },
+  {
+    "id": "rev-002",
+    "proposal_id": "prop-003",
+    "decision": "rejected",
+    "reviewer": "human",
+    "reviewed_at": "2026-03-25T14:20:00Z",
+    "notes": "La cita no tiene URL verificable. No se puede publicar sin fuente primaria accesible. Agente debe reintentar con fuente de W Radio archivada o transcripción oficial.",
+    "will_publish": false
+  }
+]

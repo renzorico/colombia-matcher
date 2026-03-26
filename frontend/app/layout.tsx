@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import NavBar from "@/components/NavBar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "¿Con quién votas? — Colombia 2026",
-  description: "Descubre qué candidato presidencial se acerca más a tus ideas.",
+  description:
+    "Descubre qué candidato presidencial colombiano se acerca más a tus ideas. Quiz de afinidad política basado en datos curados manualmente.",
 };
 
 export default function RootLayout({
@@ -27,7 +29,16 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-white text-gray-900">
+        <NavBar />
+        <div className="flex flex-1 flex-col">{children}</div>
+        <footer className="border-t border-gray-100 py-5 text-center text-xs text-gray-400">
+          Datos curados manualmente · Última actualización marzo 2026 ·{" "}
+          <span className="italic">
+            Herramienta informativa — consulta siempre los programas oficiales de cada candidato.
+          </span>
+        </footer>
+      </body>
     </html>
   );
 }

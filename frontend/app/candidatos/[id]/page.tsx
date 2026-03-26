@@ -5,7 +5,12 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { getCandidatesFull, type CandidateFull, type Controversy } from "@/lib/api";
 import TopicBreakdown from "@/components/TopicBreakdown";
+import SourceList from "@/components/SourceList";
 import EmptyState from "@/components/EmptyState";
+
+// ---------------------------------------------------------------------------
+// Label maps
+// ---------------------------------------------------------------------------
 
 const SPECTRUM_LABELS: Record<string, string> = {
   left: "Izquierda",
@@ -32,10 +37,22 @@ const STATUS_LABELS: Record<string, string> = {
 };
 
 const PROCURADURIA_LABELS: Record<string, { label: string; cls: string }> = {
-  clean: { label: "Sin sanciones activas", cls: "text-green-700 bg-green-50" },
-  investigated: { label: "Investigado/a", cls: "text-orange-700 bg-orange-50" },
-  sanctioned: { label: "Sancionado/a", cls: "text-red-700 bg-red-50" },
+  clean: { label: "Sin sanciones activas", cls: "text-green-700 bg-green-50 border-green-200" },
+  investigated: { label: "Investigado/a", cls: "text-orange-700 bg-orange-50 border-orange-200" },
+  sanctioned: { label: "Sancionado/a", cls: "text-red-700 bg-red-50 border-red-200" },
 };
+
+// ---------------------------------------------------------------------------
+// Sub-components
+// ---------------------------------------------------------------------------
+
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="text-lg font-bold text-gray-800 mb-3 pb-2 border-b border-gray-100">
+      {children}
+    </h2>
+  );
+}
 
 function ControversyCard({ c }: { c: Controversy }) {
   const sev = SEVERITY_LABELS[c.severity] ?? {
@@ -46,19 +63,24 @@ function ControversyCard({ c }: { c: Controversy }) {
 
   return (
     <div className="rounded-xl border border-gray-200 p-4">
-      <div className="flex items-start gap-3">
-        <span
-          className={`flex-shrink-0 rounded-full border px-2.5 py-0.5 text-xs font-medium ${sev.cls}`}
-        >
+      <div className="flex items-center gap-2 flex-wrap">
+        <span className={`rounded-full border px-2.5 py-0.5 text-xs font-medium ${sev.cls}`}>
           {sev.label}
         </span>
-        <span className="text-xs text-gray-400">{status}{c.date ? ` · ${c.date}` : ""}</span>
+        <span className="text-xs text-gray-400">
+          {status}
+          {c.date ? ` · ${c.date}` : ""}
+        </span>
       </div>
       <h4 className="mt-2 text-sm font-semibold text-gray-800">{c.title}</h4>
       <p className="mt-1 text-sm text-gray-600 leading-relaxed">{c.summary}</p>
     </div>
   );
 }
+
+// ---------------------------------------------------------------------------
+// Page
+// ---------------------------------------------------------------------------
 
 export default function CandidatoDetailPage() {
   const params = useParams<{ id: string }>();
@@ -87,7 +109,7 @@ export default function CandidatoDetailPage() {
   if (loading) {
     return (
       <main className="flex flex-1 items-center justify-center">
-        <p className="text-gray-500">Cargando perfil...</p>
+        <p className="text-gray-400">Cargando perfil...</p>
       </main>
     );
   }
@@ -106,7 +128,7 @@ export default function CandidatoDetailPage() {
   const procLabel = candidate.procuraduria_status
     ? (PROCURADURIA_LABELS[candidate.procuraduria_status] ?? {
         label: candidate.procuraduria_status,
-        cls: "text-gray-700 bg-gray-50",
+        cls: "text-gray-700 bg-gray-50 border-gray-200",
       })
     : null;
 
@@ -114,44 +136,41 @@ export default function CandidatoDetailPage() {
     <main className="flex flex-1 flex-col items-center px-4 py-10">
       <div className="w-full max-w-2xl">
 
-        {/* ── Back link ───────────────────────────────────────────────────── */}
-        <Link
-          href="/candidatos"
-          className="text-sm text-blue-600 hover:underline"
-        >
+        {/* ── Breadcrumb ──────────────────────────────────────────────────── */}
+        <Link href="/candidatos" className="text-sm text-blue-600 hover:underline">
           ← Todos los candidatos
         </Link>
 
         {/* ── Header ──────────────────────────────────────────────────────── */}
         <div className="mt-4">
           <div className="flex items-start justify-between gap-4">
-            <h1 className="text-3xl font-bold">{candidate.name}</h1>
+            <h1 className="text-3xl font-bold leading-tight">{candidate.name}</h1>
             {candidate.spectrum && (
-              <span className="flex-shrink-0 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
+              <span className="flex-shrink-0 mt-1 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
                 {SPECTRUM_LABELS[candidate.spectrum] ?? candidate.spectrum}
               </span>
             )}
           </div>
-          <p className="mt-1 text-gray-500">
+          <p className="mt-1.5 text-gray-500">
             {candidate.party ?? "Sin partido registrado"}
             {candidate.coalition ? ` · Coalición: ${candidate.coalition}` : ""}
           </p>
           {candidate.short_bio && (
-            <p className="mt-3 text-gray-700 leading-relaxed">
+            <p className="mt-4 text-gray-700 leading-relaxed text-sm">
               {candidate.short_bio}
             </p>
           )}
         </div>
 
-        {/* ── Procuraduría status ─────────────────────────────────────────── */}
+        {/* ── Procuraduria ────────────────────────────────────────────────── */}
         {procLabel && (
-          <div className={`mt-5 rounded-xl px-4 py-3 ${procLabel.cls}`}>
-            <p className="text-xs font-semibold uppercase tracking-wide opacity-70">
+          <div className={`mt-5 rounded-xl border px-4 py-3 ${procLabel.cls}`}>
+            <p className="text-xs font-semibold uppercase tracking-wide opacity-60">
               Estado Procuraduría
             </p>
-            <p className="mt-0.5 text-sm font-medium">{procLabel.label}</p>
+            <p className="mt-0.5 text-sm font-semibold">{procLabel.label}</p>
             {candidate.procuraduria_summary && (
-              <p className="mt-1 text-sm opacity-80 leading-relaxed">
+              <p className="mt-1.5 text-sm opacity-80 leading-relaxed">
                 {candidate.procuraduria_summary}
               </p>
             )}
@@ -160,13 +179,13 @@ export default function CandidatoDetailPage() {
 
         {/* ── Topics ──────────────────────────────────────────────────────── */}
         <section className="mt-8">
-          <h2 className="text-xl font-bold mb-4">Posiciones por tema</h2>
+          <SectionHeading>Posiciones por tema</SectionHeading>
           <TopicBreakdown topics={candidate.topics} />
         </section>
 
         {/* ── Proposals ───────────────────────────────────────────────────── */}
         <section className="mt-8">
-          <h2 className="text-xl font-bold mb-4">Propuestas</h2>
+          <SectionHeading>Propuestas</SectionHeading>
           {candidate.proposals.length === 0 ? (
             <EmptyState />
           ) : (
@@ -185,7 +204,7 @@ export default function CandidatoDetailPage() {
 
         {/* ── Controversies ───────────────────────────────────────────────── */}
         <section className="mt-8">
-          <h2 className="text-xl font-bold mb-4">Controversias</h2>
+          <SectionHeading>Controversias y antecedentes</SectionHeading>
           {candidate.controversies.length === 0 ? (
             <EmptyState message="No se registran controversias documentadas." />
           ) : (
@@ -197,19 +216,33 @@ export default function CandidatoDetailPage() {
           )}
         </section>
 
-        {/* ── Data footer ─────────────────────────────────────────────────── */}
-        <div className="mt-10 border-t border-gray-200 pt-4 text-xs text-gray-400 flex flex-col gap-1">
-          <span>
+        {/* ── Sources ─────────────────────────────────────────────────────── */}
+        <section className="mt-8">
+          <SectionHeading>Fuentes consultadas</SectionHeading>
+          <p className="text-xs text-gray-400 mb-3">
+            Las posturas de este perfil se basan en las siguientes fuentes públicas verificables.
+          </p>
+          <SourceList sources={candidate.sources ?? []} />
+        </section>
+
+        {/* ── Data provenance ─────────────────────────────────────────────── */}
+        <div className="mt-10 rounded-xl border border-gray-100 bg-gray-50 px-5 py-4 text-xs text-gray-500 flex flex-col gap-1.5">
+          <p className="font-semibold text-gray-600 text-sm">Nota de transparencia</p>
+          <p>
             Estado del perfil:{" "}
             <span className="font-medium">
               {candidate.profile_status === "curated_static"
                 ? "Información curada manualmente"
                 : (candidate.profile_status ?? "—")}
             </span>
-          </span>
+          </p>
           {candidate.last_updated && (
-            <span>Última actualización: {candidate.last_updated}</span>
+            <p>Última actualización: {candidate.last_updated}</p>
           )}
+          <p className="italic mt-1">
+            Esta herramienta es informativa. Consulta siempre los programas y declaraciones
+            oficiales de cada candidato antes de tomar decisiones electorales.
+          </p>
         </div>
 
         {/* ── CTA ─────────────────────────────────────────────────────────── */}
@@ -221,6 +254,7 @@ export default function CandidatoDetailPage() {
             Ver tu afinidad con este candidato
           </Link>
         </div>
+
       </div>
     </main>
   );

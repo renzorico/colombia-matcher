@@ -121,6 +121,95 @@ class TestGetCandidatesFull:
         for c in client.get("/candidates/full").json():
             assert "stances" not in c
 
+    def test_includes_topics(self, client):
+        for c in client.get("/candidates/full").json():
+            assert "topics" in c
+            assert isinstance(c["topics"], list)
+
+    def test_topics_do_not_expose_stance_scores(self, client):
+        for c in client.get("/candidates/full").json():
+            for t in c["topics"]:
+                assert "stance_score" not in t
+                assert "confidence" not in t
+
+    def test_includes_sources_list(self, client):
+        for c in client.get("/candidates/full").json():
+            assert "sources" in c
+            assert isinstance(c["sources"], list)
+
+    def test_sources_have_required_fields(self, client):
+        for c in client.get("/candidates/full").json():
+            for s in c["sources"]:
+                assert "url" in s
+                assert "title" in s
+                assert s["url"] is not None  # only sources with URLs are included
+
+    def test_includes_proposals(self, client):
+        for c in client.get("/candidates/full").json():
+            assert "proposals" in c
+
+
+# ---------------------------------------------------------------------------
+# /review endpoints
+# ---------------------------------------------------------------------------
+
+class TestReviewEndpoints:
+
+    def test_pending_returns_200(self, client):
+        resp = client.get("/review/pending")
+        assert resp.status_code == 200
+
+    def test_pending_returns_list(self, client):
+        data = client.get("/review/pending").json()
+        assert isinstance(data, list)
+
+    def test_pending_only_contains_pending_status(self, client):
+        data = client.get("/review/pending").json()
+        for p in data:
+            assert p["status"] == "pending"
+
+    def test_all_proposals_returns_200(self, client):
+        resp = client.get("/review/all")
+        assert resp.status_code == 200
+
+    def test_all_proposals_has_correct_count(self, client):
+        data = client.get("/review/all").json()
+        assert len(data) == 3  # matches proposed_updates.json fixture
+
+    def test_all_proposals_have_required_fields(self, client):
+        for p in client.get("/review/all").json():
+            for field in ("id", "candidate_id", "topic_id", "status", "agent_confidence"):
+                assert field in p, f"Missing field '{field}' in proposal {p.get('id')}"
+
+    def test_all_proposals_statuses_are_valid(self, client):
+        valid = {"pending", "approved", "rejected"}
+        for p in client.get("/review/all").json():
+            assert p["status"] in valid
+
+    def test_review_log_returns_200(self, client):
+        resp = client.get("/review/log")
+        assert resp.status_code == 200
+
+    def test_review_log_returns_list(self, client):
+        data = client.get("/review/log").json()
+        assert isinstance(data, list)
+
+    def test_review_log_has_correct_count(self, client):
+        data = client.get("/review/log").json()
+        assert len(data) == 2  # matches review_log.json fixture
+
+    def test_review_log_decisions_are_valid(self, client):
+        valid = {"approved", "rejected"}
+        for r in client.get("/review/log").json():
+            assert r["decision"] in valid
+
+    def test_review_log_references_known_proposals(self, client):
+        all_ids = {p["id"] for p in client.get("/review/all").json()}
+        for r in client.get("/review/log").json():
+            assert r["proposal_id"] in all_ids, (
+                f"Review log entry {r['id']} references unknown proposal {r['proposal_id']}"
+            )
+
 
 # ---------------------------------------------------------------------------
 # /questions

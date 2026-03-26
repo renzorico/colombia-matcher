@@ -100,6 +100,18 @@ def load_canonical_candidates(path: Path = CANDIDATES_PATH) -> list[dict]:
     return result
 
 
+def load_canonical_sources(path: Path = CANDIDATES_PATH) -> dict[str, dict]:
+    """
+    Return {source_id: source_dict} for every source in the top-level
+    'sources' array of candidates_canonical.json.
+
+    Used by main.py to resolve evidence_ids in topic records so that
+    /candidates/full can include cited URLs per candidate.
+    """
+    raw = _load_json(path)
+    return {s["id"]: s for s in raw.get("sources", [])}
+
+
 def load_canonical_questions(path: Path = QUESTIONS_PATH) -> list[dict]:
     """
     Load and normalise questions from questions_canonical.json.

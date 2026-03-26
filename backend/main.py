@@ -17,7 +17,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, field_validator
 
 from agents.pipeline import run_matching_pipeline
-from loader import load_canonical_candidates, load_canonical_questions
+from loader import (
+    load_canonical_candidates,
+    load_canonical_questions,
+    load_canonical_sources,
+)
+from review import load_proposals, load_review_log
 from scorer import explain_match
 
 
@@ -27,8 +32,11 @@ from scorer import explain_match
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    app.state.candidates = load_canonical_candidates()
-    app.state.questions  = load_canonical_questions()
+    app.state.candidates       = load_canonical_candidates()
+    app.state.questions        = load_canonical_questions()
+    app.state.sources          = load_canonical_sources()
+    app.state.proposals        = load_proposals()
+    app.state.review_log       = load_review_log()
     yield
     # Nothing to tear down — in-memory data only
 
@@ -198,6 +206,25 @@ def get_candidates_full() -> list[dict[str, Any]]:
             for t in c.get("topics", [])
         ]
 
+        # Resolve source evidence: collect unique source IDs from all topics,
+        # then return public fields only for sources that have a URL.
+        source_ids: set[str] = set()
+        for t in c.get("topics", []):
+            source_ids.update(t.get("evidence_ids", []))
+
+        sources_data = app.state.sources
+        candidate_sources = [
+            {
+                "id":           src["id"],
+                "title":        src.get("title"),
+                "publisher":    src.get("publisher"),
+                "url":          src["url"],
+                "published_at": src.get("published_at"),
+            }
+            for sid in sorted(source_ids)
+            if (src := sources_data.get(sid)) and src.get("url")
+        ]
+
         result.append(
             {
                 "id":                   c["id"],
@@ -209,6 +236,7 @@ def get_candidates_full() -> list[dict[str, Any]]:
                 "topics":               public_topics,
                 "proposals":            c.get("proposals", []),
                 "controversies":        c.get("controversies", []),
+                "sources":              candidate_sources,
                 "procuraduria_status":  meta.get("procuraduria_status"),
                 "procuraduria_summary": meta.get("procuraduria_summary"),
                 "profile_status":       c.get("profile_status"),
@@ -281,6 +309,43 @@ def explain_candidate(
         raise HTTPException(status_code=404, detail=explanation)
 
     return ExplainResponse(candidate=candidate_name, explanation=explanation)
+
+
+# ---------------------------------------------------------------------------
+# Review workflow endpoints (read-only — no auth required)
+#
+# These endpoints expose the static review data files so that:
+#   - the admin UI can display pending proposals
+#   - developers and reviewers can inspect what changes are queued
+#
+# Writing to the files (approve/reject) is done by editing the JSON directly
+# or via future CLI tooling.  This keeps the review layer simple and
+# auditable without requiring authentication infrastructure.
+# ---------------------------------------------------------------------------
+
+@app.get("/review/pending", tags=["Review"])
+def get_pending_proposals() -> list[dict]:
+    """
+    Returns proposals that are still awaiting human review.
+    Proposals with status 'approved' or 'rejected' are excluded.
+    """
+    return [
+        p.model_dump()
+        for p in app.state.proposals
+        if p.status == "pending"
+    ]
+
+
+@app.get("/review/all", tags=["Review"])
+def get_all_proposals() -> list[dict]:
+    """Returns all proposals regardless of status (pending, approved, rejected)."""
+    return [p.model_dump() for p in app.state.proposals]
+
+
+@app.get("/review/log", tags=["Review"])
+def get_review_log() -> list[dict]:
+    """Returns the complete human review decision log."""
+    return [r.model_dump() for r in app.state.review_log]
 
 
 # ---------------------------------------------------------------------------

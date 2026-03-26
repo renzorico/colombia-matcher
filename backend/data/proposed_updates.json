@@ -1,0 +1,68 @@
+[
+  {
+    "id": "prop-001",
+    "candidate_id": "ivan-cepeda",
+    "topic_id": "anticorruption",
+    "field": "stance_score",
+    "current_value": 4,
+    "proposed_value": 5,
+    "proposed_summary": "Cepeda ha radicalizado su postura anticorrupción en el primer trimestre de 2026, impulsando dos proyectos de ley que aumentan penas por peculado y amplían la acción penal popular. Lideró el debate de control político a contratos del Ministerio de Defensa en febrero de 2026.",
+    "proposed_plain_language_summary": "En 2026 presentó proyectos de ley para endurecer las penas por corrupción y lideró debates sobre contratos irregulares. Su postura es claramente a favor de mayor control y transparencia.",
+    "evidence": {
+      "url": "https://www.senado.gov.co/debates/control-politico-contratacion-2026",
+      "title": "Debate de control político — Contratación Ministerio de Defensa 2026",
+      "publisher": "Senado de la República",
+      "quote": "Cepeda pidió al Ministro explicaciones por $230.000 millones en contratos sin proceso competitivo en 2025.",
+      "date": "2026-02-18"
+    },
+    "proposed_by": "research_agent_v1",
+    "proposed_at": "2026-03-20T09:14:00Z",
+    "status": "pending",
+    "agent_confidence": 0.71,
+    "agent_notes": "La evidencia es sólida pero el cambio de postura es marginal (4→5). Recomiendo validar con más fuentes antes de aprobar."
+  },
+  {
+    "id": "prop-002",
+    "candidate_id": "roy-barreras",
+    "topic_id": "economy",
+    "field": "stance_score",
+    "current_value": 3,
+    "proposed_value": 4,
+    "proposed_summary": "Barreras ha tomado distancia del modelo económico del gobierno Petro, proponiendo incentivos a la inversión privada en infraestructura y reducción del déficit fiscal. Su programa económico publicado en febrero 2026 da mayor espacio al sector privado.",
+    "proposed_plain_language_summary": "Se ha alejado de la línea económica del gobierno actual y propone más espacio para la empresa privada en infraestructura. Su postura está más cerca del centro-derecha económico que antes.",
+    "evidence": {
+      "url": "https://cambiocolombia.com/elecciones-colombia-2026/articulo/2026/2/programa-roy-barreras-candidatura-presidencial-economia-vivienda-educacion-transicion-energetica/",
+      "title": "Programa Roy Barreras — economía, vivienda, educación, transición energética",
+      "publisher": "Cambio Colombia",
+      "quote": "Barreras propone reducir el déficit fiscal al 3% del PIB en cuatro años y crear zonas de desarrollo empresarial con incentivos tributarios en regiones rezagadas.",
+      "date": "2026-02"
+    },
+    "proposed_by": "research_agent_v1",
+    "proposed_at": "2026-03-22T11:30:00Z",
+    "status": "approved",
+    "agent_confidence": 0.83,
+    "agent_notes": "Evidencia de fuente primaria (programa oficial). Cambio de 3→4 respaldado por el documento."
+  },
+  {
+    "id": "prop-003",
+    "candidate_id": "abelardo-de-la-espriella",
+    "topic_id": "foreign_policy",
+    "field": "stance_score",
+    "current_value": null,
+    "proposed_value": 5,
+    "proposed_summary": "De la Espriella ha declarado en varias entrevistas que restablecería relaciones plenas con EE.UU., retomaría la aspersión aérea con glifosato como condición de cooperación antinarcóticos y se distanciaría de Venezuela y Nicaragua.",
+    "proposed_plain_language_summary": "Propone restablecer la alianza con EE.UU. y retomar la fumigación de cultivos ilícitos. Postura clara de alineamiento con occidente y distancia de Venezuela.",
+    "evidence": {
+      "url": null,
+      "title": "Entrevista W Radio — enero 2026",
+      "publisher": "W Radio",
+      "quote": "Si llegamos a la presidencia, el primer mensaje que le enviamos a Washington es: Colombia vuelve a ser su aliado estratégico en seguridad.",
+      "date": "2026-01"
+    },
+    "proposed_by": "research_agent_v1",
+    "proposed_at": "2026-03-24T15:00:00Z",
+    "status": "rejected",
+    "agent_confidence": 0.60,
+    "agent_notes": "URL de evidencia no disponible — se necesita fuente primaria verificable antes de publicar."
+  }
+]
