@@ -5,16 +5,11 @@ import {
   PieChart,
   Pie,
   Cell,
-  Tooltip,
   ResponsiveContainer,
 } from "recharts";
 import type { CandidateTopic } from "@/lib/api";
 import { TOPIC_COLORS } from "@/lib/topics";
 import EmptyState from "./EmptyState";
-
-// ---------------------------------------------------------------------------
-// Stance labels
-// ---------------------------------------------------------------------------
 
 const STANCE_LABELS: Record<number, string> = {
   1: "Muy progresista",
@@ -24,65 +19,9 @@ const STANCE_LABELS: Record<number, string> = {
   5: "Muy conservador/a",
 };
 
-// ---------------------------------------------------------------------------
-// Custom tooltip
-// ---------------------------------------------------------------------------
-
-interface TooltipPayloadEntry {
-  payload: {
-    topic: CandidateTopic;
-  };
-}
-
-function TopicTooltip({
-  active,
-  payload,
-}: {
-  active?: boolean;
-  payload?: TooltipPayloadEntry[];
-}) {
-  if (!active || !payload?.length) return null;
-  const t = payload[0].payload.topic;
-  const stanceLabel =
-    t.stance_score != null ? STANCE_LABELS[t.stance_score] : "Sin datos";
-  const raw = t.plain_language_summary ?? t.summary ?? "";
-  const truncated = raw.length > 120 ? raw.slice(0, 120) + "…" : raw;
-
-  return (
-    <div
-      className="rounded-xl px-3 py-2.5 shadow-lg max-w-[220px]"
-      style={{
-        backgroundColor: "var(--surface)",
-        border: "1px solid var(--border)",
-        fontSize: 12,
-      }}
-    >
-      <p className="font-bold text-sm" style={{ color: "var(--foreground)" }}>
-        {t.topic_label}
-      </p>
-      <p className="mt-0.5 text-xs font-medium" style={{ color: "var(--muted)" }}>
-        {stanceLabel}
-      </p>
-      {truncated && (
-        <p className="mt-1.5 text-xs leading-relaxed" style={{ color: "var(--foreground)" }}>
-          {truncated}
-        </p>
-      )}
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Props
-// ---------------------------------------------------------------------------
-
 export interface TopicRadialChartProps {
   topics: CandidateTopic[];
 }
-
-// ---------------------------------------------------------------------------
-// Component
-// ---------------------------------------------------------------------------
 
 export default function TopicRadialChart({ topics }: TopicRadialChartProps) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
@@ -95,18 +34,21 @@ export default function TopicRadialChart({ topics }: TopicRadialChartProps) {
 
   const data = topics.map((t) => ({
     name: t.topic_label,
-    value: 1, // equal slices — chart shows coverage, not score size
+    value: 1,
     topic: t,
     color: TOPIC_COLORS[t.topic_id] ?? "#4A4A4A",
     hasData: t.stance_score != null,
   }));
 
-  const activeLabel =
-    activeIdx != null ? topics[activeIdx]?.topic_label : "Temas";
+  const activeTopic = activeIdx != null ? topics[activeIdx] : null;
+  const centerName = activeTopic?.topic_label ?? "Temas";
+  const centerScore =
+    activeTopic?.stance_score != null
+      ? STANCE_LABELS[activeTopic.stance_score] ?? ""
+      : "";
 
   return (
     <div className="flex flex-col gap-5">
-      {/* Donut chart */}
       <div className="relative">
         <ResponsiveContainer width="100%" height={280}>
           <PieChart>
@@ -114,8 +56,8 @@ export default function TopicRadialChart({ topics }: TopicRadialChartProps) {
               data={data}
               cx="50%"
               cy="50%"
-              innerRadius={72}
-              outerRadius={112}
+              innerRadius={75}
+              outerRadius={110}
               dataKey="value"
               strokeWidth={2}
               stroke="var(--surface)"
@@ -126,43 +68,39 @@ export default function TopicRadialChart({ topics }: TopicRadialChartProps) {
                 <Cell
                   key={d.name}
                   fill={d.color}
-                  opacity={d.hasData ? 1 : 0.28}
+                  opacity={
+                    activeIdx == null
+                      ? d.hasData ? 1 : 0.28
+                      : i === activeIdx ? 1 : 0.3
+                  }
+                  style={{ transition: "opacity 0.2s ease" }}
                 />
               ))}
             </Pie>
-            <Tooltip content={<TopicTooltip />} />
           </PieChart>
         </ResponsiveContainer>
 
-        {/* Center label */}
+        {/* Center label via absolute-positioned div (SVG text within recharts is unreliable) */}
         <div
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
         >
-          <span
-            className="text-sm font-semibold text-center px-6 leading-tight"
-            style={{ color: "var(--foreground)" }}
-          >
-            {activeLabel}
-          </span>
-        </div>
-      </div>
-
-      {/* Legend — 2-column grid */}
-      <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-        {data.map((d) => (
-          <div key={d.name} className="flex items-center gap-2 min-w-0">
-            <div
-              className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-              style={{ backgroundColor: d.color, opacity: d.hasData ? 1 : 0.28 }}
-            />
+          <div className="flex flex-col items-center px-6">
             <span
-              className="text-xs truncate"
-              style={{ color: "var(--muted)" }}
+              className="text-sm font-semibold text-center leading-tight"
+              style={{ color: "var(--foreground)" }}
             >
-              {d.name}
+              {centerName}
             </span>
+            {centerScore && (
+              <span
+                className="text-xs mt-0.5 text-center"
+                style={{ color: "var(--muted)" }}
+              >
+                {centerScore}
+              </span>
+            )}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

@@ -1,166 +1,136 @@
 import Link from "next/link";
+import { TOPIC_COLORS } from "@/lib/topics";
+
+const TOPICS = [
+  { id: "security",           label: "Seguridad",                weight: 25 },
+  { id: "economy",            label: "Economía",                 weight: 20 },
+  { id: "health",             label: "Salud",                    weight: 15 },
+  { id: "energy_environment", label: "Energía y Medio Ambiente", weight: 15 },
+  { id: "fiscal",             label: "Política Fiscal",          weight: 10 },
+  { id: "foreign_policy",     label: "Política Exterior",        weight: 10 },
+  { id: "anticorruption",     label: "Anticorrupción",           weight: 5 },
+];
+
+const SECTIONS = [
+  {
+    title: "¿Qué es esto?",
+    body: "Una herramienta informativa que compara tus opiniones con las posiciones documentadas de cada candidato presidencial para 2026. Sin sesgos, sin publicidad, sin afiliación política.",
+  },
+  {
+    title: "¿Cómo funciona el quiz?",
+    body: "Respondes 25 preguntas en escala 1–5. Cada pregunta corresponde a un eje temático. No hay respuestas correctas — solo tus opiniones. Tarda 5–10 minutos.",
+  },
+  {
+    title: "¿De dónde viene la información?",
+    body: "Revisamos discursos, entrevistas, programas de gobierno y noticias. Cada posición tiene una fuente verificable. Si un candidato no tiene posición clara sobre un tema, no le asignamos puntaje.",
+  },
+  {
+    title: "¿Cómo se calcula la afinidad?",
+    body: "Comparamos tus respuestas con las de cada candidato tema por tema. El resultado es un promedio ponderado — los temas más relevantes pesan más. Un resultado entre 65% y 75% ya es afinidad alta.",
+  },
+  {
+    title: "¿Es imparcial?",
+    body: "No apoyamos a ningún candidato. Los datos son curados por personas y cada posición tiene fuente citada. Úsalo como punto de partida, no como última palabra.",
+  },
+];
 
 export default function MetodologiaPage() {
   return (
     <main className="flex flex-1 flex-col items-center px-4 py-12">
       <div className="w-full max-w-2xl">
 
-        <h1 className="text-3xl font-bold">Cómo funciona Elecciones Colombia 2026</h1>
-        <p className="mt-3 text-gray-500 leading-relaxed">
-          Todo lo que necesitas saber sobre esta herramienta, en lenguaje claro.
+        <h1 className="text-3xl font-bold" style={{ color: "var(--foreground)" }}>
+          Metodología
+        </h1>
+        <p className="mt-2 text-sm" style={{ color: "var(--muted)" }}>
+          Cómo funciona Elecciones Colombia 2026, en lenguaje claro.
         </p>
 
-        {/* Estado del proyecto */}
-        <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50 px-5 py-4">
-          <p className="text-sm font-semibold text-gray-700">Estado del proyecto</p>
-          <p className="mt-1 text-sm text-gray-600 leading-relaxed">
-            Elecciones Colombia 2026 está en fase de lanzamiento. La información sobre los candidatos
-            es curada manualmente por el equipo del proyecto a partir de fuentes públicas.
-            Seguimos incorporando propuestas y actualizando los perfiles a medida que avanza
-            la campaña.
+        {/* ── Section cards ─────────────────────────────────────────────── */}
+        <div className="mt-8 flex flex-col gap-4">
+          {SECTIONS.map((s) => (
+            <div
+              key={s.title}
+              className="rounded-xl p-5"
+              style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
+            >
+              <h2 className="text-base font-bold" style={{ color: "var(--foreground)" }}>
+                {s.title}
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+                {s.body}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Topic weights grid ────────────────────────────────────────── */}
+        <h2
+          className="mt-10 text-lg font-bold pb-2"
+          style={{ color: "var(--foreground)", borderBottom: "2px solid var(--primary)" }}
+        >
+          Peso por tema
+        </h2>
+        <p className="mt-2 text-xs" style={{ color: "var(--muted)" }}>
+          Los temas más relevantes para la agenda colombiana 2026 tienen mayor peso en el cálculo.
+        </p>
+
+        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {TOPICS.map((t) => {
+            const color = TOPIC_COLORS[t.id] ?? "#4A4A4A";
+            return (
+              <div
+                key={t.id}
+                className="rounded-xl p-4 flex flex-col items-center text-center"
+                style={{
+                  border: "1px solid var(--border)",
+                  borderTop: `3px solid ${color}`,
+                  backgroundColor: "var(--surface)",
+                }}
+              >
+                <span
+                  className="text-2xl font-extrabold"
+                  style={{ color }}
+                >
+                  {t.weight}%
+                </span>
+                <span className="mt-1 text-xs font-medium" style={{ color: "var(--foreground)" }}>
+                  {t.label}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ── Disclaimer ────────────────────────────────────────────────── */}
+        <div
+          className="mt-8 rounded-xl px-5 py-4"
+          style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
+        >
+          <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--muted)" }}>
+            Aviso legal
+          </p>
+          <p className="mt-1.5 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+            Herramienta informativa independiente. No afiliada a ningún candidato, partido
+            o entidad gubernamental. Verifica siempre la información con otras fuentes.
           </p>
         </div>
 
-        <div className="mt-10 flex flex-col gap-10">
-
-          {/* 1 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-800">¿Qué es Elecciones Colombia 2026?</h2>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Es una herramienta informativa independiente que compara tus opiniones sobre
-              los grandes temas del país con las posiciones conocidas de cada candidato
-              presidencial para 2026. Al final del quiz ves con quién estás más de acuerdo
-              y, lo más importante, <strong>por qué</strong>: con fuentes reales que puedes
-              verificar tú mismo.
-            </p>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              No es una encuesta, no predice votos y no tiene ningún propósito comercial.
-              Es simplemente una forma de informarte mejor antes de decidir.
-            </p>
-          </section>
-
-          {/* 2 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-800">¿Cómo funciona el quiz?</h2>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Respondes 25 preguntas sobre temas como seguridad, economía, salud,
-              medio ambiente, política fiscal, relaciones exteriores y corrupción.
-              Para cada pregunta eliges qué tan de acuerdo estás con una afirmación,
-              en una escala del 1 (totalmente en desacuerdo) al 5 (totalmente de acuerdo).
-            </p>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              No hay respuestas correctas ni incorrectas. Solo tus opiniones. Puedes
-              omitir preguntas si no tienes una posición clara sobre un tema. El quiz
-              tarda entre 5 y 10 minutos.
-            </p>
-          </section>
-
-          {/* 3 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-800">¿De dónde viene la información sobre los candidatos?</h2>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Revisamos discursos, entrevistas, programas de gobierno, debates y noticias
-              publicadas en medios colombianos de referencia. Por cada posición que le
-              asignamos a un candidato, hay una fuente verificable: un artículo, un video,
-              un comunicado oficial.
-            </p>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Si un candidato no ha dicho nada claro sobre un tema, no le asignamos un
-              puntaje para ese tema. Preferimos reconocer que no sabemos antes que inventar
-              una posición.
-            </p>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Puedes ver las fuentes de cada candidato en su perfil individual dentro de la
-              sección{" "}
-              <Link href="/candidatos" className="text-blue-600 hover:underline">
-                Candidatos
-              </Link>.
-            </p>
-          </section>
-
-          {/* 4 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-800">¿Cómo se calcula la afinidad?</h2>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Comparamos tus respuestas con las posiciones de cada candidato tema por tema.
-              Cuanto más cerca estén tus opiniones de las de un candidato en un tema,
-              mayor es la afinidad en ese tema.
-            </p>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              El resultado final es un promedio ponderado: los temas más relevantes para
-              la agenda política colombiana 2026 pesan más que los secundarios. Por ejemplo,
-              seguridad y economía tienen más peso que política exterior.
-            </p>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              El puntaje final va de 0% a 100%. Un 100% significaría acuerdo total en
-              todos los temas — algo muy poco frecuente. Un resultado entre 65% y 75%
-              ya representa una afinidad alta.
-            </p>
-          </section>
-
-          {/* 5 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-800">¿Es esta herramienta imparcial?</h2>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Elecciones Colombia 2026 no apoya a ningún candidato, partido político ni movimiento.
-              Los datos son curados por personas — no por algoritmos — y cada posición tiene
-              su fuente citada para que cualquiera pueda verificarla o cuestionarla.
-            </p>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Sin embargo, ninguna herramienta es perfectamente neutral. La selección de
-              preguntas y la importancia que le damos a cada tema implican criterios
-              editoriales. Si crees que algo es incorrecto o está desactualizado,
-              escríbenos.
-            </p>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Usa Elecciones Colombia 2026 como un punto de partida, no como la última palabra.
-              Consulta siempre los programas oficiales de los candidatos y otras fuentes
-              antes de decidir tu voto.
-            </p>
-          </section>
-
-          {/* 6 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-800">¿Quién hizo esto?</h2>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Elecciones Colombia 2026 es un proyecto cívico independiente creado con el objetivo
-              de facilitar una decisión de voto más informada. No tiene financiación de
-              partidos políticos, empresas ni entidades gubernamentales.
-            </p>
-          </section>
-
-          {/* Disclaimer */}
-          <section className="rounded-xl border border-gray-200 bg-gray-50 px-5 py-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">
-              Aviso legal
-            </p>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              Elecciones Colombia 2026 es una herramienta informativa independiente. No está afiliada
-              a ningún candidato presidencial, partido político, movimiento ciudadano ni
-              entidad gubernamental. La información presentada proviene de fuentes públicas
-              y es responsabilidad del usuario verificarla y contrastarla con otras fuentes
-              antes de tomar cualquier decisión electoral.
-            </p>
-          </section>
-
-        </div>
-
-        {/* CTA */}
-        <div className="mt-12 flex flex-col items-center gap-3 border-t border-gray-100 pt-8">
-          <p className="text-sm text-gray-500">
-            ¿Listo para descubrir con quién estás alineado?
-          </p>
+        {/* ── CTA ───────────────────────────────────────────────────────── */}
+        <div className="mt-10 flex flex-col items-center gap-3">
           <Link
             href="/quiz"
-            className="rounded-full bg-blue-600 px-8 py-3 text-sm font-semibold text-white shadow hover:bg-blue-700 transition"
+            className="rounded-full px-8 py-3 text-sm font-bold shadow transition hover:opacity-90"
+            style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
           >
-            Haz el quiz ahora →
+            Haz el quiz ahora
           </Link>
           <Link
             href="/bajo-el-capo"
-            className="text-xs text-gray-400 hover:text-gray-600 transition"
+            className="text-xs transition hover:opacity-80"
+            style={{ color: "var(--muted)" }}
           >
-            ¿Quieres ver la arquitectura técnica? → Detrás del motor
+            Ver arquitectura técnica
           </Link>
         </div>
 

@@ -7,7 +7,7 @@
   --muted: #6B6B6B;
   --border: #E0DDD8;
   --primary: #F5C400;
-  --secondary: #2D5016;
+  --secondary: #1a2e6b;
   --accent: #C4622D;
   --hero: #003087;
 }
@@ -32,7 +32,7 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
-/* ── Animations used by /como-funciona ──────────────────────────── */
+/* ── Animations ──────────────────────────────────────────────────── */
 
 @keyframes fadeInUp {
   from {

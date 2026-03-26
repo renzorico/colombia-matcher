@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   getCandidatesFull,
   type CandidateFull,
@@ -168,9 +169,11 @@ function ProposalCard({ p, sourceMap }: { p: Proposal; sourceMap: Map<string, So
 }
 
 function ControversyCard({ c, sourceMap }: { c: Controversy; sourceMap: Map<string, Source> }) {
+  const [open, setOpen] = useState(false);
   const sev = SEVERITY_LABELS[c.severity] ?? {
     label: c.severity,
     cls: "bg-gray-100 text-gray-600 border-gray-200",
+    borderColor: "#6B6B6B",
   };
   const status = CONTROVERSY_STATUS_LABELS[c.status] ?? c.status;
   const contSources = (c.source_ids ?? [])
@@ -179,45 +182,71 @@ function ControversyCard({ c, sourceMap }: { c: Controversy; sourceMap: Map<stri
 
   return (
     <div
-      className="rounded-xl p-4"
+      className="rounded-xl"
       style={{
         border: "1px solid var(--border)",
         borderLeft: `4px solid ${sev.borderColor}`,
         backgroundColor: "var(--surface)",
       }}
     >
-      <div className="flex items-center gap-2 flex-wrap">
-        <span className={`rounded-full border px-2.5 py-0.5 text-xs font-medium ${sev.cls}`}>
-          Gravedad {sev.label}
+      {/* Collapsed header — always visible */}
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center gap-2 p-4 text-left"
+      >
+        <span
+          className="flex-shrink-0 text-gray-400 text-sm transition-transform duration-200"
+          style={{ transform: open ? "rotate(90deg)" : "rotate(0deg)" }}
+        >
+          ›
         </span>
-        <span className="text-xs text-gray-400">
-          {status}
-          {c.date ? ` · ${formatDateES(c.date)}` : ""}
+        <h4 className="text-sm font-semibold text-gray-800 flex-1 min-w-0">{c.title}</h4>
+        <span className={`rounded-full border px-2.5 py-0.5 text-xs font-medium flex-shrink-0 ${sev.cls}`}>
+          {sev.label}
         </span>
-      </div>
+        {c.date && (
+          <span className="text-xs text-gray-400 flex-shrink-0 hidden sm:inline">
+            {formatDateES(c.date)}
+          </span>
+        )}
+      </button>
 
-      <h4 className="mt-2 text-sm font-semibold text-gray-800">{c.title}</h4>
-      <p className="mt-1 text-sm text-gray-600 leading-relaxed">{c.summary}</p>
+      {/* Expanded content */}
+      <div
+        className="overflow-hidden transition-all duration-200"
+        style={{ maxHeight: open ? "600px" : "0px", opacity: open ? 1 : 0 }}
+      >
+        <div className="px-4 pb-4 pt-0">
+          <div className="flex items-center gap-2 flex-wrap mb-2">
+            <span className="text-xs text-gray-400">
+              Gravedad {sev.label} · {status}
+              {c.date ? ` · ${formatDateES(c.date)}` : ""}
+            </span>
+          </div>
 
-      {c.notes && (
-        <p className="mt-2 text-xs text-gray-400 italic leading-relaxed">{c.notes}</p>
-      )}
+          <p className="text-sm text-gray-600 leading-relaxed">{c.summary}</p>
 
-      {contSources.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
-          {contSources.map((s) => (
-            <a
-              key={s.id}
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-blue-500 hover:underline"
-            >
-              {s.publisher ?? s.title ?? s.url}
-            </a>
-          ))}
+          {c.notes && (
+            <p className="mt-2 text-xs text-gray-400 italic leading-relaxed">{c.notes}</p>
+          )}
+
+          {contSources.length > 0 && (
+            <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
+              {contSources.map((s) => (
+                <a
+                  key={s.id}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-blue-500 hover:underline"
+                >
+                  {s.publisher ?? s.title ?? s.url}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }
@@ -298,13 +327,14 @@ export default function CandidatoDetail() {
         <div className="mt-5 flex items-start gap-5">
           {/* Photo */}
           {candidate.image_url ? (
-            <img
+            <Image
               src={candidate.image_url}
               alt={candidate.name}
-              referrerPolicy="no-referrer"
+              width={96}
+              height={96}
               className="w-24 h-24 rounded-2xl object-cover flex-shrink-0"
               style={{ border: "2px solid var(--border)" }}
-              onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(candidate.name)}&background=6B6B6B&color=fff&size=200`; }}
+              onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(candidate.name)}&background=6B6B6B&color=fff&size=200`; }}
             />
           ) : (
             <div
@@ -430,7 +460,8 @@ export default function CandidatoDetail() {
         <div className="mt-8 flex justify-center">
           <Link
             href="/quiz"
-            className="rounded-full bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow hover:bg-blue-700 transition"
+            className="rounded-full px-6 py-2 text-sm font-bold shadow transition hover:opacity-90"
+            style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
           >
             Ver tu afinidad con este candidato
           </Link>

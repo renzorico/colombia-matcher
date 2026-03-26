@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { getCandidates, type CandidateSummary } from "@/lib/api";
 import { SpectrumBar } from "@/components/SpectrumBar";
 
@@ -53,9 +54,9 @@ export default function CandidatosPage() {
         <div
           className="mt-3 rounded-lg px-4 py-2.5 text-xs"
           style={{
-            backgroundColor: "#4A6FA510",
-            border: "1px solid #4A6FA530",
-            color: "#2D4A7A",
+            backgroundColor: "color-mix(in srgb, var(--hero) 6%, transparent)",
+            border: "1px solid color-mix(in srgb, var(--hero) 18%, transparent)",
+            color: "var(--secondary)",
           }}
         >
           Los perfiles muestran posturas documentadas en discursos, programas e entrevistas.
@@ -83,13 +84,14 @@ export default function CandidatosPage() {
             >
               {/* Circular photo */}
               {c.image_url ? (
-                <img
+                <Image
                   src={c.image_url}
                   alt={c.name}
-                  referrerPolicy="no-referrer"
+                  width={80}
+                  height={80}
                   className="w-20 h-20 rounded-full object-cover"
                   style={{ border: "3px solid var(--border)" }}
-                  onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(c.name)}&background=6B6B6B&color=fff&size=200`; }}
+                  onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(c.name)}&background=6B6B6B&color=fff&size=200`; }}
                 />
               ) : (
                 <div

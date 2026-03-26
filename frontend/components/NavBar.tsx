@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 const MAIN_LINKS = [
   { href: "/candidatos",    label: "Candidatos" },
   { href: "/quiz",          label: "Quiz" },
-  { href: "/como-funciona", label: "¿Cómo funciona?" },
   { href: "/metodologia",   label: "Metodología" },
 ];
 
@@ -28,7 +27,7 @@ export default function NavBar() {
         {/* Wordmark */}
         <Link
           href="/"
-          className="text-sm font-bold tracking-tight text-foreground hover:text-secondary transition"
+          className="text-sm font-bold tracking-tight text-foreground hover:text-hero transition"
         >
           ¿Por quién votarás?
         </Link>
@@ -53,7 +52,7 @@ export default function NavBar() {
             href="/bajo-el-capo"
             className="text-sm text-muted hover:text-foreground transition"
           >
-            Detrás del motor
+            ¿Cómo funciona?
           </Link>
         </div>
 
@@ -92,7 +91,7 @@ export default function NavBar() {
             onClick={() => setOpen(false)}
             className="text-sm text-muted hover:text-foreground transition pt-1"
           >
-            Detrás del motor
+            ¿Cómo funciona?
           </Link>
         </div>
       )}

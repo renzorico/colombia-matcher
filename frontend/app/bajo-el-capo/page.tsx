@@ -182,7 +182,7 @@ export default function BajoElCapoPage() {
           <p className="text-sm text-gray-500 mb-4">
             El sistema está diseñado como un pipeline de agentes especializados.
             Los marcados como{" "}
-            <span className="font-semibold text-green-700">Activo</span> están en producción;
+            <span className="font-semibold" style={{ color: "var(--hero)" }}>Activo</span> están en producción;
             los <span className="font-semibold text-amber-700">Futuros</span> están diseñados
             pero no habilitados.
           </p>
@@ -194,7 +194,7 @@ export default function BajoElCapoPage() {
                   <span
                     className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
                       a.status === "active"
-                        ? "bg-green-100 text-green-700"
+                        ? "bg-blue-100 text-blue-800"
                         : "bg-amber-100 text-amber-700"
                     }`}
                   >
@@ -294,7 +294,8 @@ export default function BajoElCapoPage() {
             </Link>
             <Link
               href="/quiz"
-              className="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white text-center hover:bg-blue-700 transition"
+              className="rounded-full px-5 py-2 text-sm font-bold text-center shadow transition hover:opacity-90"
+            style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
             >
               Hacer el quiz
             </Link>

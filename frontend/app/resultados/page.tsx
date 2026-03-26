@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   submitQuiz,
   getCandidates,
@@ -21,12 +22,6 @@ function rankLabel(rank: number): string {
   if (rank === 2) return "Segunda mayor afinidad";
   if (rank === 3) return "Tercera mayor afinidad";
   return `#${rank}`;
-}
-
-function alignmentChip(pct: number): { label: string; color: string } {
-  if (pct >= 67) return { label: "De acuerdo",    color: "#5C8A6B" };
-  if (pct >= 34) return { label: "Parcial",        color: "#6B6B6B" };
-  return              { label: "En desacuerdo",   color: "#C4622D" };
 }
 
 // Mini topic bar used in result cards
@@ -154,13 +149,14 @@ export default function ResultadosPage() {
           <div className="mt-3 flex items-center gap-4">
             {/* Photo */}
             {topMeta?.image_url ? (
-              <img
+              <Image
                 src={topMeta.image_url}
                 alt={top.candidate}
-                referrerPolicy="no-referrer"
+                width={64}
+                height={64}
                 className="w-16 h-16 rounded-full object-cover flex-shrink-0"
                 style={{ border: "2px solid var(--primary)" }}
-                onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(top.candidate)}&background=6B6B6B&color=fff&size=200`; }}
+                onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(top.candidate)}&background=6B6B6B&color=fff&size=200`; }}
               />
             ) : (
               <div
@@ -235,13 +231,14 @@ export default function ResultadosPage() {
               <div className="flex items-center gap-3">
                 {/* Photo */}
                 {meta?.image_url ? (
-                  <img
+                  <Image
                     src={meta.image_url}
                     alt={r.candidate}
-                    referrerPolicy="no-referrer"
+                    width={48}
+                    height={48}
                     className="w-12 h-12 rounded-full object-cover flex-shrink-0"
                     style={{ border: "1px solid var(--border)" }}
-                    onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(r.candidate)}&background=6B6B6B&color=fff&size=200`; }}
+                    onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(r.candidate)}&background=6B6B6B&color=fff&size=200`; }}
                   />
                 ) : (
                   <div
@@ -290,21 +287,10 @@ export default function ResultadosPage() {
 
               {/* Topic mini-bars */}
               {Object.keys(r.breakdown).length > 0 && (
-                <div className="mt-3 grid grid-cols-2 gap-1.5">
-                  {Object.entries(r.breakdown).map(([topicId, pct]) => {
-                    const { label } = alignmentChip(pct);
-                    const color = TOPIC_COLORS[topicId] ?? "#4A4A4A";
-                    return (
-                      <span
-                        key={topicId}
-                        className="rounded-full px-2.5 py-0.5 text-[10px] font-medium text-white"
-                        style={{ backgroundColor: color }}
-                        title={`${TOPIC_LABELS[topicId] ?? topicId}: ${pct}% — ${label}`}
-                      >
-                        {TOPIC_LABELS[topicId] ?? topicId}
-                      </span>
-                    );
-                  })}
+                <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                  {Object.entries(r.breakdown).map(([topicId, pct]) => (
+                    <TopicMiniBar key={topicId} topicId={topicId} pct={pct} />
+                  ))}
                 </div>
               )}
             </div>
@@ -328,10 +314,20 @@ export default function ResultadosPage() {
             <Link
               key={r.id}
               href={`/candidatos/${r.id}`}
-              className="rounded-full px-3 py-1 text-xs font-medium transition"
+              className="rounded-full px-3 py-1 text-xs font-medium transition-colors"
               style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = "#1a2e6b";
+                (e.currentTarget as HTMLElement).style.color = "#FFFFFF";
+                (e.currentTarget as HTMLElement).style.borderColor = "#1a2e6b";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = "";
+                (e.currentTarget as HTMLElement).style.color = "var(--foreground)";
+                (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
+              }}
             >
-              {r.candidate} →
+              {r.candidate}
             </Link>
           ))}
         </div>
@@ -353,7 +349,7 @@ export default function ResultadosPage() {
         <Link
           href="/candidatos"
           className="rounded-full px-6 py-2 text-sm font-bold shadow transition hover:opacity-90"
-          style={{ backgroundColor: "var(--secondary)", color: "#FFFFFF" }}
+          style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
         >
           Explorar candidatos
         </Link>
