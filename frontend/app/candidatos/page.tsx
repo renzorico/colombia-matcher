@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getCandidates, type CandidateSummary } from "@/lib/api";
 import { SpectrumBar } from "@/components/SpectrumBar";
+import { candidatePhoto } from "@/lib/photos";
 
 type SpectrumFilter = "all" | "left" | "center" | "right";
 
@@ -124,15 +125,15 @@ export default function CandidatosPage() {
               }}
             >
               {/* Circular photo */}
-              {c.image_url ? (
+              {candidatePhoto(c.id) ? (
                 <Image
-                  src={c.image_url}
+                  src={candidatePhoto(c.id)!}
                   alt={c.name}
                   width={80}
                   height={80}
+                  unoptimized
                   className="w-20 h-20 rounded-full object-cover"
                   style={{ border: "3px solid var(--border)" }}
-                  onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(c.name)}&background=6B6B6B&color=fff&size=200`; }}
                 />
               ) : (
                 <div

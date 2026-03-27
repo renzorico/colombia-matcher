@@ -15,6 +15,7 @@ import SourceList from "@/components/SourceList";
 import EmptyState from "@/components/EmptyState";
 import { SpectrumBar } from "@/components/SpectrumBar";
 import { TOPIC_COLORS } from "@/lib/topics";
+import { candidatePhoto } from "@/lib/photos";
 
 // ---------------------------------------------------------------------------
 // Candidate ordering for prev/next navigation
@@ -294,15 +295,13 @@ export default function CandidatoDetail() {
         {/* ── Header ──────────────────────────────────────────────────────── */}
         <div className="mt-5 flex items-start gap-5">
           {/* Photo */}
-          {candidate.image_url ? (
+          {candidatePhoto(candidate.id) ? (
             <Image
-              src={candidate.image_url}
+              src={candidatePhoto(candidate.id)!}
               alt={candidate.name}
               width={96}
-              height={96}
-              className="w-24 h-24 rounded-2xl object-cover flex-shrink-0"
+              height={96}              unoptimized              className="w-24 h-24 rounded-2xl object-cover flex-shrink-0"
               style={{ border: "2px solid var(--border)" }}
-              onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(candidate.name)}&background=6B6B6B&color=fff&size=200`; }}
             />
           ) : (
             <div
