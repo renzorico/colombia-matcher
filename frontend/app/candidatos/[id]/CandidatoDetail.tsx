@@ -68,6 +68,7 @@ const CONTROVERSY_STATUS_LABELS: Record<string, string> = {
   active:    "Activo",
   resolved:  "Resuelto",
   past:      "Pasado",
+  unknown:   "Desconocido",
 };
 
 const PROCURADURIA_LABELS: Record<string, { label: string; cls: string }> = {
@@ -76,6 +77,7 @@ const PROCURADURIA_LABELS: Record<string, { label: string; cls: string }> = {
   investigated: { label: "Investigado/a", cls: "text-orange-700 bg-orange-50 border-orange-200" },
   under_investigation: { label: "Bajo investigación", cls: "text-orange-700 bg-orange-50 border-orange-200" },
   sanctioned:  { label: "Sancionado/a", cls: "text-red-700 bg-red-50 border-red-200" },
+  unknown:     { label: "Desconocido", cls: "text-gray-700 bg-gray-50 border-gray-200" },
 };
 
 // ---------------------------------------------------------------------------
@@ -300,7 +302,9 @@ export default function CandidatoDetail() {
               src={candidatePhoto(candidate.id)!}
               alt={candidate.name}
               width={96}
-              height={96}              unoptimized              className="w-24 h-24 rounded-2xl object-cover flex-shrink-0"
+              height={96}
+              unoptimized
+              className="w-24 h-24 rounded-2xl object-contain p-1 bg-white flex-shrink-0"
               style={{ border: "2px solid var(--border)" }}
             />
           ) : (

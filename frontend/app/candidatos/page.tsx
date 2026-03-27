@@ -132,7 +132,7 @@ export default function CandidatosPage() {
                   width={80}
                   height={80}
                   unoptimized
-                  className="w-20 h-20 rounded-full object-cover"
+                  className="w-20 h-20 rounded-full object-contain p-1 bg-white"
                   style={{ border: "3px solid var(--border)" }}
                 />
               ) : (

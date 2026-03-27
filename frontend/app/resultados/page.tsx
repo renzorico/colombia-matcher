@@ -300,7 +300,7 @@ export default function ResultadosPage() {
                 alt={top.candidate}
                 width={64}
                 height={64}
-                className="w-16 h-16 rounded-full object-cover flex-shrink-0"
+                className="w-16 h-16 rounded-full object-contain p-1 bg-white flex-shrink-0"
                 style={{ border: "2px solid var(--primary)" }}
               />
             ) : (
@@ -386,7 +386,7 @@ export default function ResultadosPage() {
                     alt={r.candidate}
                     width={48}
                     height={48}
-                    className="w-12 h-12 rounded-full object-cover flex-shrink-0"
+                    className="w-12 h-12 rounded-full object-contain p-1 bg-white flex-shrink-0"
                     style={{ border: "1px solid var(--border)" }}
                   />
                 ) : (
