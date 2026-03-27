@@ -95,16 +95,17 @@ export default function ResultsCharts({ results }: Props) {
           Comparación entre tus dos candidatos más afines
         </p>
         <ResponsiveContainer width="100%" height={320}>
-          <RadarChart data={radarData} margin={{ top: 30, right: 70, bottom: 20, left: 70 }}>
-            <PolarGrid stroke="var(--border)" />
+          <RadarChart data={radarData} margin={{ top: 35, right: 80, bottom: 25, left: 80 }}>
+            <PolarGrid stroke="var(--border)" strokeDasharray="4 4" strokeOpacity={0.5} />
             <PolarAngleAxis
               dataKey="topic"
-              tick={{ fill: "var(--muted)", fontSize: 12 }}
+              tick={{ fill: "var(--foreground)", fontSize: 11 }}
             />
             <PolarRadiusAxis
               angle={90}
               domain={[0, 100]}
-              tick={{ fill: "var(--muted)", fontSize: 9 }}
+              tick={false}
+              axisLine={false}
               tickCount={4}
             />
             {top2.map((r, i) => (
@@ -134,7 +135,7 @@ export default function ResultsCharts({ results }: Props) {
         </ResponsiveContainer>
       </div>
 
-      {/* ── BarChart (vertical columns) ──────────────────────────────────── */}
+      {/* ── BarChart (horizontal bars) ───────────────────────────────────── */}
       <div
         className="rounded-2xl p-5"
         style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
@@ -142,23 +143,24 @@ export default function ResultsCharts({ results }: Props) {
         <h3 className="text-sm font-bold mb-4" style={{ color: "var(--foreground)" }}>
           Afinidad total — todos los candidatos
         </h3>
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={barData.length * 52}>
           <BarChart
             data={barData}
-            margin={{ top: 0, right: 10, bottom: 40, left: 10 }}
+            layout="vertical"
+            margin={{ top: 0, right: 48, bottom: 0, left: 0 }}
           >
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" />
+            <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="var(--border)" />
             <XAxis
-              dataKey="name"
-              tick={{ fill: "var(--foreground)", fontSize: 11 }}
-              angle={-35}
-              textAnchor="end"
-              interval={0}
-            />
-            <YAxis
+              type="number"
               domain={[0, 100]}
               tickFormatter={(v) => `${v}%`}
               tick={{ fill: "var(--muted)", fontSize: 11 }}
+            />
+            <YAxis
+              type="category"
+              dataKey="name"
+              tick={{ fill: "var(--foreground)", fontSize: 11 }}
+              width={140}
             />
             <Tooltip
               formatter={(value) => [`${value}%`, "Afinidad"]}
@@ -169,7 +171,7 @@ export default function ResultsCharts({ results }: Props) {
                 fontSize: 12,
               }}
             />
-            <Bar dataKey="score" radius={[6, 6, 0, 0]}>
+            <Bar dataKey="score" radius={[0, 6, 6, 0]} label={{ position: "right", fontSize: 11, formatter: (v: unknown) => `${v}%`, fill: "var(--muted)" }}>
               {barData.map((_, i) => (
                 <Cell key={i} fill={CANDIDATE_COLORS[i] ?? "#6B6B6B"} />
               ))}

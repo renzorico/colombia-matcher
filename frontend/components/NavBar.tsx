@@ -29,7 +29,7 @@ export default function NavBar() {
           href="/"
           className="text-sm font-bold tracking-tight text-foreground hover:text-hero transition"
         >
-          ¿Por quién votarás?
+          🇨🇴 ¿Por quién votarás?
         </Link>
 
         {/* Desktop links */}

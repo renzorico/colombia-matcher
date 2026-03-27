@@ -31,6 +31,8 @@ export default function QuizPage() {
   const [submitting, setSubmitting] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
   const [showResume, setShowResume] = useState(false);
+  const [explicitAnswerIds, setExplicitAnswerIds] = useState<Set<string>>(new Set());
+  const [showAllSkippedWarning, setShowAllSkippedWarning] = useState(false);
 
   useEffect(() => {
     getQuestions().then((qs) => {
@@ -78,38 +80,52 @@ export default function QuizPage() {
   const topicId = BUCKET_TO_TOPIC[q.bucket] ?? "security";
   const topicColor = TOPIC_COLORS[topicId] ?? "#4A6FA5";
 
+  function doSubmit(finalAnswers: Record<string, number>) {
+    setSubmitting(true);
+    localStorage.removeItem(STORAGE_KEY);
+    sessionStorage.setItem("quizAnswers", JSON.stringify(finalAnswers));
+    router.push("/resultados");
+  }
+
   function handleNext() {
     if (selected === null) {
       setShowValidation(true);
       return;
     }
     setShowValidation(false);
+    setShowAllSkippedWarning(false);
     if (index < total - 1) {
       setIndex(index + 1);
     } else {
-      setSubmitting(true);
-      localStorage.removeItem(STORAGE_KEY);
-      sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
-      router.push("/resultados");
+      // On last question: warn if nothing was ever explicitly answered
+      if (explicitAnswerIds.size === 0) {
+        setShowAllSkippedWarning(true);
+        return;
+      }
+      doSubmit(answers);
     }
   }
 
   function handleSkip() {
     setShowValidation(false);
+    setShowAllSkippedWarning(false);
     const updated = { ...answers, [q.id]: 3 };
     setAnswers(updated);
     if (index < total - 1) {
       setIndex(index + 1);
     } else {
-      setSubmitting(true);
-      localStorage.removeItem(STORAGE_KEY);
-      sessionStorage.setItem("quizAnswers", JSON.stringify(updated));
-      router.push("/resultados");
+      if (explicitAnswerIds.size === 0) {
+        setShowAllSkippedWarning(true);
+        return;
+      }
+      doSubmit(updated);
     }
   }
 
   function handleSelectAnswer(val: number) {
     setShowValidation(false);
+    setShowAllSkippedWarning(false);
+    setExplicitAnswerIds((prev) => new Set([...prev, q.id]));
     setAnswers((prev) => ({ ...prev, [q.id]: val }));
   }
 
@@ -196,6 +212,28 @@ export default function QuizPage() {
           <p className="mt-3 text-sm font-medium" style={{ color: "var(--accent)" }}>
             Selecciona una opción o usa &ldquo;Sin opinión&rdquo; para continuar.
           </p>
+        )}
+
+        {/* All-skipped warning */}
+        {showAllSkippedWarning && (
+          <div
+            className="mt-3 rounded-xl px-4 py-3 text-sm"
+            style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
+          >
+            <p className="font-medium" style={{ color: "var(--foreground)" }}>
+              Respondiste todo con &ldquo;Sin opinión&rdquo;.
+            </p>
+            <p className="mt-0.5 text-xs" style={{ color: "var(--muted)" }}>
+              Los resultados podrían no ser representativos. ¿Quieres continuar de todas formas?
+            </p>
+            <button
+              onClick={() => doSubmit(answers)}
+              className="mt-2 text-xs font-semibold underline"
+              style={{ color: "var(--secondary)" }}
+            >
+              Continuar de todas formas
+            </button>
+          </div>
         )}
 
         {/* Actions */}

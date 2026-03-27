@@ -52,11 +52,11 @@ export default function TopicRadialChart({ topics }: TopicRadialChartProps) {
 
   const activeEntry = activeIdx != null ? data[activeIdx] : null;
   const activeTopic = activeEntry?.topic ?? null;
-  const centerName = activeEntry?.name ?? "Posiciones";
+  const centerName = activeEntry?.name ?? "Temas";
   const centerScore =
     activeTopic?.stance_score != null
       ? STANCE_LABELS[activeTopic.stance_score] ?? `${activeTopic.stance_score}/5`
-      : activeEntry != null ? "Sin datos" : "";
+      : "";
   const centerSummary =
     activeTopic?.plain_language_summary ?? activeTopic?.summary ?? null;
 
@@ -97,9 +97,9 @@ export default function TopicRadialChart({ topics }: TopicRadialChartProps) {
 
         {/* Center label */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="flex flex-col items-center px-8 text-center">
+          <div className="flex flex-col items-center px-10 text-center">
             <span
-              className="text-sm font-bold leading-tight"
+              className="text-xs font-bold leading-tight"
               style={{ color: "var(--foreground)" }}
             >
               {centerName}
@@ -152,31 +152,6 @@ export default function TopicRadialChart({ topics }: TopicRadialChartProps) {
         </div>
       )}
 
-      {/* Legend — 2-column grid */}
-      <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-        {data.map((d) => (
-          <div key={d.id} className="flex items-center gap-2 min-w-0">
-            <div
-              className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-              style={{ backgroundColor: d.color, opacity: d.hasData ? 1 : 0.3 }}
-            />
-            <span
-              className="text-xs truncate"
-              style={{ color: d.hasData ? "var(--foreground)" : "var(--muted)" }}
-            >
-              {d.name}
-            </span>
-            {d.topic?.stance_score != null && (
-              <span
-                className="text-[10px] font-semibold ml-auto flex-shrink-0"
-                style={{ color: d.color }}
-              >
-                {d.topic.stance_score}/5
-              </span>
-            )}
-          </div>
-        ))}
-      </div>
     </div>
   );
 }

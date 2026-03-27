@@ -447,10 +447,10 @@ export default function ResultadosPage() {
         className="mt-8 w-full max-w-2xl rounded-xl px-5 py-5"
         style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
       >
-        <p className="text-sm font-bold mb-4" style={{ color: "var(--foreground)" }}>
+        <p className="text-sm font-bold mb-4 text-center" style={{ color: "var(--foreground)" }}>
           Comparte tus resultados
         </p>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-3 justify-center">
           {/* WhatsApp */}
           <button
             onClick={handleShareWhatsApp}
@@ -487,6 +487,19 @@ export default function ResultadosPage() {
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
             </svg>
             {copied ? "¡Copiado!" : "Copiar enlace"}
+          </button>
+
+          {/* Download PDF */}
+          <button
+            onClick={() => window.print()}
+            className="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition hover:opacity-90"
+            style={{ border: "1px solid var(--border)", color: "var(--foreground)", backgroundColor: "var(--surface)" }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M12 16l-4-4h2.5V4h3v8H16l-4 4z"/>
+              <path d="M4 18h16v2H4z"/>
+            </svg>
+            Descargar PDF
           </button>
         </div>
       </div>

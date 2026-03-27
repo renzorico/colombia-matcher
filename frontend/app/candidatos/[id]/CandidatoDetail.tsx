@@ -8,7 +8,6 @@ import {
   getCandidatesFull,
   type CandidateFull,
   type Controversy,
-  type Proposal,
   type Source,
 } from "@/lib/api";
 import TopicRadialChart from "@/components/TopicRadialChart";
@@ -16,6 +15,19 @@ import SourceList from "@/components/SourceList";
 import EmptyState from "@/components/EmptyState";
 import { SpectrumBar } from "@/components/SpectrumBar";
 import { TOPIC_COLORS } from "@/lib/topics";
+
+// ---------------------------------------------------------------------------
+// Candidate ordering for prev/next navigation
+// ---------------------------------------------------------------------------
+
+const CANDIDATE_ORDER = [
+  { id: "ivan-cepeda",                name: "Iván Cepeda" },
+  { id: "abelardo-de-la-espriella",   name: "Abelardo de la Espriella" },
+  { id: "sergio-fajardo",             name: "Sergio Fajardo" },
+  { id: "paloma-valencia",            name: "Paloma Valencia" },
+  { id: "roy-barreras",               name: "Roy Barreras" },
+  { id: "claudia-lopez",              name: "Claudia López" },
+];
 
 // ---------------------------------------------------------------------------
 // Label maps
@@ -55,12 +67,6 @@ const CONTROVERSY_STATUS_LABELS: Record<string, string> = {
   active:    "Activo",
   resolved:  "Resuelto",
   past:      "Pasado",
-};
-
-const PROPOSAL_STATUS_LABELS: Record<string, string> = {
-  proposed: "Propuesto",
-  debate:   "En debate",
-  approved: "Aprobado",
 };
 
 const PROCURADURIA_LABELS: Record<string, { label: string; cls: string }> = {
@@ -105,68 +111,6 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
     >
       {children}
     </h2>
-  );
-}
-
-function ProposalCard({ p, sourceMap }: { p: Proposal; sourceMap: Map<string, Source> }) {
-  const topicLabel = TOPIC_LABELS[p.topic_id] ?? p.topic_id;
-  const statusLabel = PROPOSAL_STATUS_LABELS[p.status] ?? p.status;
-  const propSources = p.source_ids
-    .map((id) => sourceMap.get(id))
-    .filter((s): s is Source => s !== undefined);
-  const topicColor = TOPIC_COLORS[p.topic_id] ?? "#4A4A4A";
-
-  return (
-    <div
-      className="rounded-xl p-4"
-      style={{
-        border: "1px solid var(--border)",
-        borderLeft: `4px solid ${topicColor}`,
-        backgroundColor: "var(--surface)",
-      }}
-    >
-      <div className="flex items-start gap-2 flex-wrap justify-between">
-        <div className="flex gap-2 flex-wrap">
-          <span className="rounded-full bg-blue-50 border border-blue-200 px-2.5 py-0.5 text-xs font-medium text-blue-700">
-            {topicLabel}
-          </span>
-          <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-gray-500">
-            {statusLabel}
-          </span>
-        </div>
-      </div>
-
-      <h4 className="mt-2 text-sm font-semibold text-gray-800">{p.title}</h4>
-
-      <p className="mt-1 text-sm text-gray-700 leading-relaxed">
-        {p.plain_language_summary}
-      </p>
-
-      {p.summary && p.summary !== p.plain_language_summary && (
-        <details className="mt-2">
-          <summary className="cursor-pointer text-xs text-gray-400 hover:text-gray-600 select-none">
-            Leer más
-          </summary>
-          <p className="mt-1 text-sm text-gray-500 leading-relaxed">{p.summary}</p>
-        </details>
-      )}
-
-      {propSources.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
-          {propSources.map((s) => (
-            <a
-              key={s.id}
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-blue-500 hover:underline"
-            >
-              {s.publisher ?? s.title ?? s.url}
-            </a>
-          ))}
-        </div>
-      )}
-    </div>
   );
 }
 
@@ -417,20 +361,6 @@ export default function CandidatoDetail() {
           <TopicRadialChart topics={candidate.topics} />
         </section>
 
-        {/* ── Proposals ───────────────────────────────────────────────────── */}
-        <section className="mt-8">
-          <SectionHeading>Propuestas de campaña</SectionHeading>
-          {candidate.proposals.length === 0 ? (
-            <EmptyState message="No se han documentado propuestas para este candidato en las fuentes consultadas." />
-          ) : (
-            <div className="flex flex-col gap-3">
-              {candidate.proposals.map((p) => (
-                <ProposalCard key={p.id} p={p} sourceMap={sourceMap} />
-              ))}
-            </div>
-          )}
-        </section>
-
         {/* ── Controversies ───────────────────────────────────────────────── */}
         <section className="mt-8">
           <SectionHeading>Controversias y antecedentes</SectionHeading>
@@ -467,6 +397,8 @@ export default function CandidatoDetail() {
             <span className="font-medium">
               {candidate.profile_status === "curated_static"
                 ? "Información curada manualmente"
+                : candidate.profile_status === "unknown"
+                ? "Desconocido"
                 : (candidate.profile_status ?? "—")}
             </span>
           </p>
@@ -478,6 +410,37 @@ export default function CandidatoDetail() {
             oficiales de cada candidato antes de tomar decisiones electorales.
           </p>
         </div>
+
+        {/* ── Prev / Next navigation ──────────────────────────────────────── */}
+        {(() => {
+          const idx = CANDIDATE_ORDER.findIndex((c) => c.id === params.id);
+          const prev = idx > 0 ? CANDIDATE_ORDER[idx - 1] : null;
+          const next = idx < CANDIDATE_ORDER.length - 1 ? CANDIDATE_ORDER[idx + 1] : null;
+          return (
+            <div className="mt-10 flex items-center justify-between gap-4 border-t pt-6" style={{ borderColor: "var(--border)" }}>
+              {prev ? (
+                <Link
+                  href={`/candidatos/${prev.id}`}
+                  className="flex flex-col text-sm transition"
+                  style={{ color: "var(--secondary)" }}
+                >
+                  <span className="text-xs" style={{ color: "var(--muted)" }}>← Anterior</span>
+                  <span className="font-medium">{prev.name}</span>
+                </Link>
+              ) : <div />}
+              {next ? (
+                <Link
+                  href={`/candidatos/${next.id}`}
+                  className="flex flex-col text-right text-sm transition"
+                  style={{ color: "var(--secondary)" }}
+                >
+                  <span className="text-xs" style={{ color: "var(--muted)" }}>Siguiente →</span>
+                  <span className="font-medium">{next.name}</span>
+                </Link>
+              ) : <div />}
+            </div>
+          );
+        })()}
 
         {/* ── CTA ─────────────────────────────────────────────────────────── */}
         <div className="mt-8 flex justify-center">

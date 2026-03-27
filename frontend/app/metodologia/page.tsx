@@ -75,27 +75,28 @@ export default function MetodologiaPage() {
           Los temas más relevantes para la agenda colombiana 2026 tienen mayor peso en el cálculo.
         </p>
 
-        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div className="mt-4 flex flex-col gap-3">
           {TOPICS.map((t) => {
             const color = TOPIC_COLORS[t.id] ?? "#4A4A4A";
             return (
-              <div
-                key={t.id}
-                className="rounded-xl p-4 flex flex-col items-center text-center"
-                style={{
-                  border: "1px solid var(--border)",
-                  borderTop: `3px solid ${color}`,
-                  backgroundColor: "var(--surface)",
-                }}
-              >
+              <div key={t.id} className="flex items-center gap-3">
                 <span
-                  className="text-2xl font-extrabold"
+                  className="w-44 flex-shrink-0 text-sm font-medium text-right"
+                  style={{ color: "var(--foreground)" }}
+                >
+                  {t.label}
+                </span>
+                <div className="flex-1 h-2 rounded-full" style={{ backgroundColor: "var(--border)" }}>
+                  <div
+                    className="h-2 rounded-full transition-all"
+                    style={{ width: `${t.weight}%`, backgroundColor: color }}
+                  />
+                </div>
+                <span
+                  className="w-8 flex-shrink-0 text-sm font-bold tabular-nums"
                   style={{ color }}
                 >
                   {t.weight}%
-                </span>
-                <span className="mt-1 text-xs font-medium" style={{ color: "var(--foreground)" }}>
-                  {t.label}
                 </span>
               </div>
             );
