@@ -1132,6 +1132,410 @@
       "image_url": "/candidates/ivan-cepeda.jpg"
     },
     {
+      "id": "paloma-valencia",
+      "name": "Paloma Valencia",
+      "party": "Centro Democrático",
+      "coalition": null,
+      "spectrum": "center-right",
+      "spectrum_score": 4,
+      "short_bio": "Senadora del Centro Democrático, partido fundado por Álvaro Uribe Vélez en 2013. Conocida por su liderazgo en debates de control político y crítica fiscal al gobierno Petro. Previamente trabajó en la Procuraduría General.",
+      "profile_status": "curated_static",
+      "last_updated": "2026-03-26",
+      "topics": [
+        {
+          "topic_id": "security",
+          "topic_label": "Seguridad",
+          "summary": "Enfoque estricto de restauración del orden. Aplica su estrategia de las '4R': Reducir ingresos ilegales (narcotráfico/minería), Robustecer la fuerza pública con tecnología, Reencantar a las comunidades mediante acciones cívico-militares, y Restablecer la legalidad y la justicia. Propone erradicación de cultivos ilícitos con drones de IA, modificación de reglas de flagrancia y penas efectivas sin beneficios políticos.",
+          "plain_language_summary": "Estrategia '4R': reducir ingresos criminales, tecnificar la fuerza pública, acercarla a las comunidades y restablecer la ley. Erradicación con drones, cárceles efectivas.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "economy",
+          "topic_label": "Economía",
+          "summary": "Pro-mercado y anti-estatista. Propone reducir ministerios de 19 a 12, eliminar el impuesto al patrimonio y reducir la carga tributaria corporativa para reactivar la inversión. Su modelo de 'economía fraterna' fortalece el libre mercado y la iniciativa privada. Propone también una 'ley de escalera de formalidad' que elimine barreras regulatorias para pequeños emprendedores.",
+          "plain_language_summary": "Libre mercado: eliminar el impuesto al patrimonio, reducir impuestos corporativos y simplificar regulaciones. De 19 a 12 ministerios.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "health",
+          "topic_label": "Salud",
+          "summary": "Usa la crisis de salud como evidencia del daño de la intervención estatal. Propone un plan de choque financiero incluyendo titularización de la deuda del Estado con las EPS (convirtiendo deudas en títulos valores transables), UPC diferencial por riesgo para pacientes de alto costo, y una red de 'hospitales padrino' equipados con telemedicina para zonas rurales. Defiende el modelo de aseguramiento mixto.",
+          "plain_language_summary": "Propone titularizar la deuda del Estado con las EPS para inyectar liquidez inmediata. Red de 'hospitales padrino' con telemedicina rural. Defiende el modelo mixto con EPS privadas.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "energy_environment",
+          "topic_label": "Energía y Medio Ambiente",
+          "summary": "Denuncia la pérdida de soberanía energética y el alza de tarifas por la dependencia en importaciones de gas. Propone reactivar la exploración de petróleo y gas incluyendo proyectos de fracking; simultáneamente promueve renovables (eólica, solar, pequeñas hidroeléctricas) agilizando licencias ambientales mediante tecnología. El medio ambiente no es una agenda autónoma sino subordinada a las posiciones energéticas y económicas: argumenta que la pobreza es el mayor enemigo ecológico y defiende el fracking argumentando que las prohibiciones actuales paradójicamente causan mayor daño ambiental al encarecer el gas.",
+          "plain_language_summary": "Defiende tanto el fracking como las renovables. Argumenta que prohibir el fracking encarecer el gas y daña a los sectores vulnerables. Quiere recuperar la autosuficiencia energética.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26",
+          "merge_note": "Promedio de energy_oil (4) y environment (4). Posiciones alineadas entre ambos subcomponentes."
+        },
+        {
+          "topic_id": "fiscal",
+          "topic_label": "Política Fiscal",
+          "summary": "Plan de choque de austeridad: reducir el 20% de los presupuestos operativos de todos los ministerios, fusionar ministerios de 19 a 12 ahorrando 30 billones de pesos anuales, eliminar el impuesto al patrimonio para reactivar la inversión privada. Alerta sobre un déficit histórico cercano al 7,5% del PIB y deuda pública que supera los 1.192 billones de pesos. Defiende el ahorro pensional de los ciudadanos frente al gasto corriente del gobierno.",
+          "plain_language_summary": "Austeridad fiscal: fusionar ministerios (19 a 12), recortar el 20% del gasto operativo y ahorrar 30 billones anuales. Eliminar el impuesto al patrimonio.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "foreign_policy",
+          "topic_label": "Política Exterior",
+          "summary": "Usa a Venezuela como advertencia constante de crisis institucional; rechaza cualquier dependencia energética o alineación con el régimen chavista. Busca reconstruir la cooperación en seguridad con EE.UU., proponiendo un nuevo 'Plan Colombia' enfocado en el micro-tráfico urbano. Planea transformar la Cancillería en un cuerpo enfocado en comercio donde los embajadores sean evaluados estrictamente por resultados en exportaciones y turismo, no activismo ideológico.",
+          "plain_language_summary": "Alianza con EE.UU. y un nuevo 'Plan Colombia'. Convertir la Cancillería en ministerio de comercio exterior. Rechaza cualquier alineación con Venezuela.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "anticorruption",
+          "topic_label": "Anticorrupción",
+          "summary": "Propone reformas estructurales para aislar la Contraloría y la Procuraduría de la influencia política, eligiéndolas mediante la academia y la ciudadanía en lugar de cuerpos políticos. Lideró debates de control político en el Congreso sobre casos como el UNGRD. Rechaza una Asamblea Constituyente fuera de los canales legislativos y se opone a gobernar por decreto.",
+          "plain_language_summary": "Propone que la Contraloría y la Procuraduría sean elegidas por la academia y la ciudadanía, no por políticos. Lideró control político en el Congreso.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26"
+        }
+      ],
+      "proposals": [
+        {
+          "id": "prop-valencia-01",
+          "topic_id": "security",
+          "title": "Seguridad total: ofensiva con fuerza pública desde el 7 de agosto",
+          "summary": "Lanzar desde el primer día de gobierno una ofensiva integral con toda la fuerza pública contra grupos armados ilegales, narcotráfico y crimen organizado.",
+          "plain_language_summary": "Desde el primer día de gobierno, usar toda la fuerza del Estado contra el crimen organizado y los grupos armados.",
+          "status": "proposed",
+          "source_ids": [
+            "src-valencia-programa-2026"
+          ]
+        },
+        {
+          "id": "prop-valencia-02",
+          "topic_id": "fiscal",
+          "title": "Reducción de impuestos y eliminación del 4x1000",
+          "summary": "Eliminar el gravamen a los movimientos financieros (4x1000) y reducir la carga tributaria sobre empresas y ciudadanos para estimular la inversión y el ahorro.",
+          "plain_language_summary": "Eliminar el cobro en cada transacción bancaria y bajar impuestos para que la gente y las empresas tengan más plata.",
+          "status": "proposed",
+          "source_ids": [
+            "src-valencia-programa-2026"
+          ]
+        },
+        {
+          "id": "prop-valencia-03",
+          "topic_id": "anticorruption",
+          "title": "Estado austero: menos burocracia, más inversión social",
+          "summary": "Reducir el gasto burocrático del Estado, eliminar entidades redundantes y redirigir esos recursos a inversión social directa en educación, salud e infraestructura.",
+          "plain_language_summary": "Recortar el gasto en burocracia para invertir más en educación, salud e infraestructura.",
+          "status": "proposed",
+          "source_ids": [
+            "src-valencia-programa-2026"
+          ]
+        },
+        {
+          "id": "prop-valencia-04",
+          "topic_id": "health",
+          "title": "Recuperación del sistema de salud y cobertura total",
+          "summary": "Restablecer la sostenibilidad financiera del sistema de salud, garantizar cobertura universal real y poner fin a la deuda que el gobierno tiene con las EPS y hospitales.",
+          "plain_language_summary": "Que el sistema de salud funcione bien pagando las deudas que tiene el Estado con hospitales y clínicas.",
+          "status": "proposed",
+          "source_ids": [
+            "src-valencia-programa-2026"
+          ]
+        },
+        {
+          "id": "prop-valencia-05",
+          "topic_id": "economy",
+          "title": "Campo seguro: crédito barato para campesinos y transformación productiva",
+          "summary": "Garantizar seguridad en el campo colombiano y ofrecer crédito de bajo costo a campesinos para tecnificación, modernización productiva y acceso a mercados.",
+          "plain_language_summary": "Dar créditos baratos a los campesinos para modernizar sus cultivos y garantizar seguridad en las zonas rurales.",
+          "status": "proposed",
+          "source_ids": [
+            "src-valencia-programa-2026"
+          ]
+        }
+      ],
+      "controversies": [
+        {
+          "id": "cont-valencia-01",
+          "title": "Polémica por proponer a Álvaro Uribe como fórmula vicepresidencial",
+          "summary": "Valencia declaró públicamente que su 'mejor vicepresidente sería Álvaro Uribe'. La declaración generó tensiones dentro de la Gran Consulta por Colombia, con su rival Vicky Dávila respondiendo que Uribe ya había descartado públicamente ser fórmula vicepresidencial.",
+          "severity": "low",
+          "status": "past",
+          "date": "2026-02-25",
+          "source_ids": [
+            "src-valencia-publimetro-2026-02"
+          ],
+          "notes": "Uribe confirmó el 18 de julio de 2025 que no sería fórmula vicepresidencial de ningún candidato."
+        },
+        {
+          "id": "cont-valencia-02",
+          "title": "Denuncia por presunto uso de recursos públicos en campaña del Pacto",
+          "summary": "Valencia denunció ante la Contraloría y la Procuraduría que la tarima del Ministerio de Salud fue usada en el cierre de campaña del Pacto Histórico en la Plaza de Bolívar. Generó investigación formal de los entes de control pero también críticas de que la denuncia tenía motivación electoral.",
+          "severity": "medium",
+          "status": "ongoing",
+          "date": "2026-02-28",
+          "source_ids": [
+            "src-valencia-infobae-tarima-2026-02"
+          ],
+          "notes": "El gobierno negó la acusación. La Contraloría y Procuraduría abrieron indagación preliminar."
+        }
+      ],
+      "metadata": {
+        "procuraduria_status": "unknown",
+        "procuraduria_summary": "No se encontraron sanciones disciplinarias ni inhabilidades contra Valencia. Trabajó como empleada de la Procuraduría antes de ingresar a la política. La ausencia de hallazgos no confirma un registro limpio — se requiere consulta directa al registro.",
+        "procuraduria_source_id": "src-valencia-profile-01",
+        "party_history": "El Centro Democrático es el partido fundado por el ex presidente Álvaro Uribe Vélez en 2013. Es la principal fuerza de oposición de centroderecha a derecha de Colombia, construida sobre una plataforma de seguridad democrática, economía de libre mercado y orden institucional fuerte.",
+        "spectrum_score": 4
+      },
+      "image_url": "/candidates/paloma-valencia.jpg"
+    },
+    {
+      "id": "sergio-fajardo",
+      "name": "Sergio Fajardo",
+      "party": "Dignidad y Compromiso",
+      "coalition": null,
+      "spectrum": "center",
+      "spectrum_score": 3,
+      "short_bio": "Matemático, ex alcalde de Medellín (2004–2007) y ex gobernador de Antioquia (2012–2015). Tecnocrático centrista, reconocido por la transformación urbana de Medellín a través de la inversión en educación. Candidato presidencial en 2018 (tercer lugar).",
+      "profile_status": "curated_static",
+      "last_updated": "2026-03-26",
+      "topics": [
+        {
+          "topic_id": "security",
+          "topic_label": "Seguridad",
+          "summary": "Termina la 'Paz Total' y recupera el control territorial vía su 'Plan Guardián', combinando fuerzas de seguridad modernizadas (IA, tecnología, apagones de comunicaciones en cárceles) con inversión inmediata en infraestructura y sustitución agrícola. Vincula directamente el financiamiento de la seguridad a la consolidación fiscal.",
+          "plain_language_summary": "Propone el 'Plan Guardián': modernizar las fuerzas con tecnología, recuperar territorios y sustitución de cultivos. Fin de la 'Paz Total'.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "economy",
+          "topic_label": "Economía",
+          "summary": "Enfoque gerencial y no ideológico, enfocado en restaurar la confianza institucional más que en intervención estatal profunda o liberalización radical. Promete evitar decisiones populistas sin respaldo técnico. El informe señala como brecha la baja densidad programática.",
+          "plain_language_summary": "Maneja la economía desde una perspectiva técnica y no ideológica. Quiere restaurar la confianza inversora y evitar el populismo.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "health",
+          "topic_label": "Salud",
+          "summary": "Reformista pero no destructivo del modelo actual. Propone rescatar la Nueva EPS clarificando sus finanzas, someter las EPS a auditorías externas y recalcular la UPC sin sesgos políticos. Inyección de liquidez de emergencia a hospitales en 100 días. Enfoque basado en evidencia y sostenibilidad financiera.",
+          "plain_language_summary": "Quiere auditar las EPS, recalcular la UPC sin sesgos y resolver la crisis de liquidez hospitalaria en 100 días. No elimina las EPS, las reforma.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "energy_environment",
+          "topic_label": "Energía y Medio Ambiente",
+          "summary": "Prioriza la soberanía energética y la seguridad de suministro bajo la premisa de 'no apagar Colombia': propone reactivar inmediatamente la exploración de gas y petróleo con énfasis en proyectos offshore en el Caribe, advirtiendo que frenar la exploración arriesga alzas tarifarias de hasta el 36%. En materia ambiental, rechaza el ambientalismo dogmático en favor de una 'transición responsable'; propone avanzar con pilotos de fracking bajo estricto rigor científico antes de cualquier decisión definitiva—un punto medio explícitamente tecnocrático.",
+          "plain_language_summary": "Quiere reactivar la exploración de petróleo y gas para no depender de importaciones costosas. En fracking, propone pilotos científicos antes de decidir. Transición energética responsable, no abrupta.",
+          "stance_score": 4,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26",
+          "merge_note": "Promedio de energy_oil (4) y environment (3), redondeado a 4. Ambos subcomponentes con confianza alta."
+        },
+        {
+          "topic_id": "fiscal",
+          "topic_label": "Política Fiscal",
+          "summary": "Propone un plan de estabilización financiera de 100 días, una reforma tributaria estructural y concertada ('todos ponemos') que reduce el impuesto corporativo del 35% al 30% con alivios para micro y pequeñas empresas, y eliminación del gasto burocrático superfluo. Prioriza la inversión regional y la confianza del mercado. Rechaza explícitamente el populismo.",
+          "plain_language_summary": "Reforma tributaria consensuada: bajar el impuesto corporativo al 30%, pero manteniendo progresividad. Eliminaría el gasto burocrático innecesario. Prioriza la confianza del mercado.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "foreign_policy",
+          "topic_label": "Política Exterior",
+          "summary": "Pragmatismo estratégico y cautela diplomática. Prioriza relaciones estables con EE.UU., que considera vitales para el 30% de las exportaciones, remesas e inversión extranjera. Planea buscar líneas de crédito del FMI para financiar urgencias del sistema de salud sin aumentar irresponsablemente la deuda pública. Evita confrontaciones ideológicas.",
+          "plain_language_summary": "Diplomacia pragmática. Mantener relaciones sólidas con EE.UU. (vital para exportaciones), buscar crédito del FMI y evitar confrontaciones ideológicas.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26"
+        },
+        {
+          "topic_id": "anticorruption",
+          "topic_label": "Anticorrupción",
+          "summary": "Bandera central de gobernanza: propone liderar personalmente una nueva Agencia Nacional Anticorrupción, hacer públicos y vigilar los 30 contratos más grandes del país, y trabajar con el Congreso en un 'campo de juego transparente' que elimine la 'mermelada' institucional. Rechaza una Asamblea Constituyente como vector de riesgo de corrupción.",
+          "plain_language_summary": "Crearía una Agencia Nacional Anticorrupción que él mismo lideraría. Publicaría los 30 contratos públicos más grandes del país. Contra la Constituyente.",
+          "stance_score": 3,
+          "confidence": 0.85,
+          "evidence_ids": [
+            "src-shared-llyc-2026"
+          ],
+          "updated_at": "2026-03-26"
+        }
+      ],
+      "proposals": [
+        {
+          "id": "prop-fajardo-01",
+          "topic_id": "economy",
+          "title": "550.000 nuevos cupos en Jóvenes en Acción",
+          "summary": "Ampliar el programa Jóvenes en Acción con 550.000 nuevos cupos para transferencias condicionadas a jóvenes que estudian o se capacitan para el trabajo.",
+          "plain_language_summary": "Más apoyo económico para los jóvenes que estudian o se están capacitando.",
+          "status": "proposed",
+          "source_ids": [
+            "src-fajardo-programa-2026",
+            "src-fajardo-caracol-2026"
+          ]
+        },
+        {
+          "id": "prop-fajardo-02",
+          "topic_id": "economy",
+          "title": "440.000 empleos nuevos vía 4.000 proyectos públicos",
+          "summary": "Generar 440.000 empleos directos mediante 4.000 proyectos de infraestructura pública: vías terciarias, acueductos, hospitales y escuelas.",
+          "plain_language_summary": "Crear empleos construyendo obras públicas que el país necesita: vías, hospitales y escuelas.",
+          "status": "proposed",
+          "source_ids": [
+            "src-fajardo-programa-2026"
+          ]
+        },
+        {
+          "id": "prop-fajardo-03",
+          "topic_id": "energy_environment",
+          "title": "Transición energética: 30%+ de renovables al 2026",
+          "summary": "Impulsar que más del 30% de la energía eléctrica del país provenga de fuentes renovables para 2026, con énfasis en solar y eólica en la costa y los llanos.",
+          "plain_language_summary": "Que Colombia genere más energía del sol y el viento, reduciendo la dependencia del petróleo.",
+          "status": "proposed",
+          "source_ids": [
+            "src-fajardo-programa-2026",
+            "src-fajardo-caracol-2026"
+          ]
+        },
+        {
+          "id": "prop-fajardo-04",
+          "topic_id": "fiscal",
+          "title": "Reforma pensional con umbral de 2 salarios mínimos",
+          "summary": "Mantener la reforma pensional con ajustes: las pensiones de hasta 2 salarios mínimos irían al sistema público, las superiores al sistema privado.",
+          "plain_language_summary": "Un sistema de pensiones más equitativo donde los que ganan menos reciben más protección del Estado.",
+          "status": "proposed",
+          "source_ids": [
+            "src-fajardo-programa-2026"
+          ]
+        },
+        {
+          "id": "prop-fajardo-05",
+          "topic_id": "security",
+          "title": "Seguridad desde el primer día: comandante supremo activo",
+          "summary": "Asumir el mando operativo directo de las fuerzas militares y de policía, con una estrategia de seguridad diferenciada por región y tipo de actor armado.",
+          "plain_language_summary": "Tomar el control directo de la seguridad del país con una estrategia adaptada a cada región.",
+          "status": "proposed",
+          "source_ids": [
+            "src-fajardo-programa-2026",
+            "src-fajardo-caracol-2026"
+          ]
+        }
+      ],
+      "controversies": [
+        {
+          "id": "fajardo-controversy-01",
+          "title": "Contraloría — responsabilidad fiscal por Hidroituango",
+          "summary": "La Contraloría confirmó en segunda instancia (noviembre 2021) la responsabilidad fiscal de Fajardo por irregularidades en el proyecto Hidroituango durante su gobernación de Antioquia, con un daño patrimonial de 4,3 billones de pesos. La Procuraduría archivó por separado su propia investigación disciplinaria sobre un contrato en dólares de la gobernación en mayo de 2023, absolviéndolo en ese frente.",
+          "severity": "high",
+          "status": "resolved",
+          "date": "2021-11",
+          "source_ids": [
+            "src-fajardo-scandal-hidroituango",
+            "src-fajardo-procuraduria-01"
+          ],
+          "notes": "Fallo fiscal confirmado en segunda instancia. Investigación disciplinaria de Procuraduría archivada. Impactó la campaña presidencial de 2022."
+        },
+        {
+          "id": "fajardo-controversy-02",
+          "title": "Investigación Contraloría — contratos gobernación de Antioquia",
+          "summary": "Fajardo enfrentó investigación fiscal de la Contraloría relacionada con contratos durante su gobernación. Eventualmente fue absuelto pero el caso afectó su campaña de 2022. Requiere fuentes adicionales de El Espectador para documentación completa.",
+          "severity": "medium",
+          "status": "pending_research",
+          "date": null,
+          "source_ids": [],
+          "notes": "Marcado para investigación adicional. La controversia principal es la de Hidroituango (fajardo-controversy-01)."
+        },
+        {
+          "id": "cont-fajardo-01",
+          "title": "Proceso archivado por contrato en Gobernación de Antioquia",
+          "summary": "La Corte Suprema de Justicia archivó un proceso contra Fajardo por posibles irregularidades en un contrato de concesión minera durante su período como gobernador de Antioquia, al no encontrar pruebas suficientes de delito. El fallo fue a su favor, pero el proceso tuvo amplia cobertura pública.",
+          "severity": "low",
+          "status": "resolved",
+          "date": "2025-06-18",
+          "source_ids": [
+            "src-fajardo-infobae-corte-2025-06"
+          ],
+          "notes": "La Corte Suprema precluó el proceso. Fajardo lo tomó como un aval de su historial limpio. Fue su tercer intento presidencial luego de 2018 y 2022."
+        },
+        {
+          "id": "cont-fajardo-02",
+          "title": "Secretos de D'Arcy Quinn — señalamientos no confirmados",
+          "summary": "El programa periodístico Los Secretos de D'Arcy Quinn publicó en marzo de 2026 señalamientos sobre Sergio Fajardo. El candidato ha sostenido que no ha estado involucrado en ningún escándalo durante toda su trayectoria política.",
+          "severity": "low",
+          "status": "ongoing",
+          "date": "2026-03-11",
+          "source_ids": [
+            "src-fajardo-lafm-darcyquinn-2026-03"
+          ],
+          "notes": "Información en desarrollo al momento de la investigación. Fajardo no ha respondido públicamente en detalle a estos señalamientos. Pendiente de verificación adicional."
+        }
+      ],
+      "metadata": {
+        "procuraduria_status": "flagged",
+        "procuraduria_summary": "La Contraloría confirmó responsabilidad fiscal en segunda instancia (noviembre 2021) por irregularidades en Hidroituango, con daño de 4,3 billones de pesos. La Procuraduría archivó su investigación disciplinaria sobre un contrato en dólares de la gobernación en mayo de 2023.",
+        "procuraduria_source_id": "src-fajardo-procuraduria-01",
+        "party_history": "Dignidad y Compromiso es el movimiento político personal de Fajardo, de orientación centrista y tecnocrática. Anteriormente candidato a presidente en 2018 como parte de la coalición Colombia Humana–Dignidad, terminó tercero. Fue alcalde de Medellín (2004–2007) y gobernador de Antioquia (2012–2015).",
+        "spectrum_score": 3
+      },
+      "image_url": "/candidates/sergio-fajardo.jpg"
+    },
+    {
       "id": "abelardo-de-la-espriella",
       "name": "Abelardo de la Espriella",
       "party": "Firmes por la Patria",
@@ -1368,410 +1772,6 @@
         "spectrum_score": 5
       },
       "image_url": "/candidates/abelardo-de-la-espriella.jpg"
-    },
-    {
-      "id": "sergio-fajardo",
-      "name": "Sergio Fajardo",
-      "party": "Dignidad y Compromiso",
-      "coalition": null,
-      "spectrum": "center",
-      "spectrum_score": 3,
-      "short_bio": "Matemático, ex alcalde de Medellín (2004–2007) y ex gobernador de Antioquia (2012–2015). Tecnocrático centrista, reconocido por la transformación urbana de Medellín a través de la inversión en educación. Candidato presidencial en 2018 (tercer lugar).",
-      "profile_status": "curated_static",
-      "last_updated": "2026-03-26",
-      "topics": [
-        {
-          "topic_id": "security",
-          "topic_label": "Seguridad",
-          "summary": "Termina la 'Paz Total' y recupera el control territorial vía su 'Plan Guardián', combinando fuerzas de seguridad modernizadas (IA, tecnología, apagones de comunicaciones en cárceles) con inversión inmediata en infraestructura y sustitución agrícola. Vincula directamente el financiamiento de la seguridad a la consolidación fiscal.",
-          "plain_language_summary": "Propone el 'Plan Guardián': modernizar las fuerzas con tecnología, recuperar territorios y sustitución de cultivos. Fin de la 'Paz Total'.",
-          "stance_score": 3,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26"
-        },
-        {
-          "topic_id": "economy",
-          "topic_label": "Economía",
-          "summary": "Enfoque gerencial y no ideológico, enfocado en restaurar la confianza institucional más que en intervención estatal profunda o liberalización radical. Promete evitar decisiones populistas sin respaldo técnico. El informe señala como brecha la baja densidad programática.",
-          "plain_language_summary": "Maneja la economía desde una perspectiva técnica y no ideológica. Quiere restaurar la confianza inversora y evitar el populismo.",
-          "stance_score": 3,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26"
-        },
-        {
-          "topic_id": "health",
-          "topic_label": "Salud",
-          "summary": "Reformista pero no destructivo del modelo actual. Propone rescatar la Nueva EPS clarificando sus finanzas, someter las EPS a auditorías externas y recalcular la UPC sin sesgos políticos. Inyección de liquidez de emergencia a hospitales en 100 días. Enfoque basado en evidencia y sostenibilidad financiera.",
-          "plain_language_summary": "Quiere auditar las EPS, recalcular la UPC sin sesgos y resolver la crisis de liquidez hospitalaria en 100 días. No elimina las EPS, las reforma.",
-          "stance_score": 3,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26"
-        },
-        {
-          "topic_id": "energy_environment",
-          "topic_label": "Energía y Medio Ambiente",
-          "summary": "Prioriza la soberanía energética y la seguridad de suministro bajo la premisa de 'no apagar Colombia': propone reactivar inmediatamente la exploración de gas y petróleo con énfasis en proyectos offshore en el Caribe, advirtiendo que frenar la exploración arriesga alzas tarifarias de hasta el 36%. En materia ambiental, rechaza el ambientalismo dogmático en favor de una 'transición responsable'; propone avanzar con pilotos de fracking bajo estricto rigor científico antes de cualquier decisión definitiva—un punto medio explícitamente tecnocrático.",
-          "plain_language_summary": "Quiere reactivar la exploración de petróleo y gas para no depender de importaciones costosas. En fracking, propone pilotos científicos antes de decidir. Transición energética responsable, no abrupta.",
-          "stance_score": 4,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26",
-          "merge_note": "Promedio de energy_oil (4) y environment (3), redondeado a 4. Ambos subcomponentes con confianza alta."
-        },
-        {
-          "topic_id": "fiscal",
-          "topic_label": "Política Fiscal",
-          "summary": "Propone un plan de estabilización financiera de 100 días, una reforma tributaria estructural y concertada ('todos ponemos') que reduce el impuesto corporativo del 35% al 30% con alivios para micro y pequeñas empresas, y eliminación del gasto burocrático superfluo. Prioriza la inversión regional y la confianza del mercado. Rechaza explícitamente el populismo.",
-          "plain_language_summary": "Reforma tributaria consensuada: bajar el impuesto corporativo al 30%, pero manteniendo progresividad. Eliminaría el gasto burocrático innecesario. Prioriza la confianza del mercado.",
-          "stance_score": 3,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26"
-        },
-        {
-          "topic_id": "foreign_policy",
-          "topic_label": "Política Exterior",
-          "summary": "Pragmatismo estratégico y cautela diplomática. Prioriza relaciones estables con EE.UU., que considera vitales para el 30% de las exportaciones, remesas e inversión extranjera. Planea buscar líneas de crédito del FMI para financiar urgencias del sistema de salud sin aumentar irresponsablemente la deuda pública. Evita confrontaciones ideológicas.",
-          "plain_language_summary": "Diplomacia pragmática. Mantener relaciones sólidas con EE.UU. (vital para exportaciones), buscar crédito del FMI y evitar confrontaciones ideológicas.",
-          "stance_score": 3,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26"
-        },
-        {
-          "topic_id": "anticorruption",
-          "topic_label": "Anticorrupción",
-          "summary": "Bandera central de gobernanza: propone liderar personalmente una nueva Agencia Nacional Anticorrupción, hacer públicos y vigilar los 30 contratos más grandes del país, y trabajar con el Congreso en un 'campo de juego transparente' que elimine la 'mermelada' institucional. Rechaza una Asamblea Constituyente como vector de riesgo de corrupción.",
-          "plain_language_summary": "Crearía una Agencia Nacional Anticorrupción que él mismo lideraría. Publicaría los 30 contratos públicos más grandes del país. Contra la Constituyente.",
-          "stance_score": 3,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26"
-        }
-      ],
-      "proposals": [
-        {
-          "id": "prop-fajardo-01",
-          "topic_id": "economy",
-          "title": "550.000 nuevos cupos en Jóvenes en Acción",
-          "summary": "Ampliar el programa Jóvenes en Acción con 550.000 nuevos cupos para transferencias condicionadas a jóvenes que estudian o se capacitan para el trabajo.",
-          "plain_language_summary": "Más apoyo económico para los jóvenes que estudian o se están capacitando.",
-          "status": "proposed",
-          "source_ids": [
-            "src-fajardo-programa-2026",
-            "src-fajardo-caracol-2026"
-          ]
-        },
-        {
-          "id": "prop-fajardo-02",
-          "topic_id": "economy",
-          "title": "440.000 empleos nuevos vía 4.000 proyectos públicos",
-          "summary": "Generar 440.000 empleos directos mediante 4.000 proyectos de infraestructura pública: vías terciarias, acueductos, hospitales y escuelas.",
-          "plain_language_summary": "Crear empleos construyendo obras públicas que el país necesita: vías, hospitales y escuelas.",
-          "status": "proposed",
-          "source_ids": [
-            "src-fajardo-programa-2026"
-          ]
-        },
-        {
-          "id": "prop-fajardo-03",
-          "topic_id": "energy_environment",
-          "title": "Transición energética: 30%+ de renovables al 2026",
-          "summary": "Impulsar que más del 30% de la energía eléctrica del país provenga de fuentes renovables para 2026, con énfasis en solar y eólica en la costa y los llanos.",
-          "plain_language_summary": "Que Colombia genere más energía del sol y el viento, reduciendo la dependencia del petróleo.",
-          "status": "proposed",
-          "source_ids": [
-            "src-fajardo-programa-2026",
-            "src-fajardo-caracol-2026"
-          ]
-        },
-        {
-          "id": "prop-fajardo-04",
-          "topic_id": "fiscal",
-          "title": "Reforma pensional con umbral de 2 salarios mínimos",
-          "summary": "Mantener la reforma pensional con ajustes: las pensiones de hasta 2 salarios mínimos irían al sistema público, las superiores al sistema privado.",
-          "plain_language_summary": "Un sistema de pensiones más equitativo donde los que ganan menos reciben más protección del Estado.",
-          "status": "proposed",
-          "source_ids": [
-            "src-fajardo-programa-2026"
-          ]
-        },
-        {
-          "id": "prop-fajardo-05",
-          "topic_id": "security",
-          "title": "Seguridad desde el primer día: comandante supremo activo",
-          "summary": "Asumir el mando operativo directo de las fuerzas militares y de policía, con una estrategia de seguridad diferenciada por región y tipo de actor armado.",
-          "plain_language_summary": "Tomar el control directo de la seguridad del país con una estrategia adaptada a cada región.",
-          "status": "proposed",
-          "source_ids": [
-            "src-fajardo-programa-2026",
-            "src-fajardo-caracol-2026"
-          ]
-        }
-      ],
-      "controversies": [
-        {
-          "id": "fajardo-controversy-01",
-          "title": "Contraloría — responsabilidad fiscal por Hidroituango",
-          "summary": "La Contraloría confirmó en segunda instancia (noviembre 2021) la responsabilidad fiscal de Fajardo por irregularidades en el proyecto Hidroituango durante su gobernación de Antioquia, con un daño patrimonial de 4,3 billones de pesos. La Procuraduría archivó por separado su propia investigación disciplinaria sobre un contrato en dólares de la gobernación en mayo de 2023, absolviéndolo en ese frente.",
-          "severity": "high",
-          "status": "resolved",
-          "date": "2021-11",
-          "source_ids": [
-            "src-fajardo-scandal-hidroituango",
-            "src-fajardo-procuraduria-01"
-          ],
-          "notes": "Fallo fiscal confirmado en segunda instancia. Investigación disciplinaria de Procuraduría archivada. Impactó la campaña presidencial de 2022."
-        },
-        {
-          "id": "fajardo-controversy-02",
-          "title": "Investigación Contraloría — contratos gobernación de Antioquia",
-          "summary": "Fajardo enfrentó investigación fiscal de la Contraloría relacionada con contratos durante su gobernación. Eventualmente fue absuelto pero el caso afectó su campaña de 2022. Requiere fuentes adicionales de El Espectador para documentación completa.",
-          "severity": "medium",
-          "status": "pending_research",
-          "date": null,
-          "source_ids": [],
-          "notes": "Marcado para investigación adicional. La controversia principal es la de Hidroituango (fajardo-controversy-01)."
-        },
-        {
-          "id": "cont-fajardo-01",
-          "title": "Proceso archivado por contrato en Gobernación de Antioquia",
-          "summary": "La Corte Suprema de Justicia archivó un proceso contra Fajardo por posibles irregularidades en un contrato de concesión minera durante su período como gobernador de Antioquia, al no encontrar pruebas suficientes de delito. El fallo fue a su favor, pero el proceso tuvo amplia cobertura pública.",
-          "severity": "low",
-          "status": "resolved",
-          "date": "2025-06-18",
-          "source_ids": [
-            "src-fajardo-infobae-corte-2025-06"
-          ],
-          "notes": "La Corte Suprema precluó el proceso. Fajardo lo tomó como un aval de su historial limpio. Fue su tercer intento presidencial luego de 2018 y 2022."
-        },
-        {
-          "id": "cont-fajardo-02",
-          "title": "Secretos de D'Arcy Quinn — señalamientos no confirmados",
-          "summary": "El programa periodístico Los Secretos de D'Arcy Quinn publicó en marzo de 2026 señalamientos sobre Sergio Fajardo. El candidato ha sostenido que no ha estado involucrado en ningún escándalo durante toda su trayectoria política.",
-          "severity": "low",
-          "status": "ongoing",
-          "date": "2026-03-11",
-          "source_ids": [
-            "src-fajardo-lafm-darcyquinn-2026-03"
-          ],
-          "notes": "Información en desarrollo al momento de la investigación. Fajardo no ha respondido públicamente en detalle a estos señalamientos. Pendiente de verificación adicional."
-        }
-      ],
-      "metadata": {
-        "procuraduria_status": "flagged",
-        "procuraduria_summary": "La Contraloría confirmó responsabilidad fiscal en segunda instancia (noviembre 2021) por irregularidades en Hidroituango, con daño de 4,3 billones de pesos. La Procuraduría archivó su investigación disciplinaria sobre un contrato en dólares de la gobernación en mayo de 2023.",
-        "procuraduria_source_id": "src-fajardo-procuraduria-01",
-        "party_history": "Dignidad y Compromiso es el movimiento político personal de Fajardo, de orientación centrista y tecnocrática. Anteriormente candidato a presidente en 2018 como parte de la coalición Colombia Humana–Dignidad, terminó tercero. Fue alcalde de Medellín (2004–2007) y gobernador de Antioquia (2012–2015).",
-        "spectrum_score": 3
-      },
-      "image_url": "/candidates/sergio-fajardo.jpg"
-    },
-    {
-      "id": "paloma-valencia",
-      "name": "Paloma Valencia",
-      "party": "Centro Democrático",
-      "coalition": null,
-      "spectrum": "center-right",
-      "spectrum_score": 4,
-      "short_bio": "Senadora del Centro Democrático, partido fundado por Álvaro Uribe Vélez en 2013. Conocida por su liderazgo en debates de control político y crítica fiscal al gobierno Petro. Previamente trabajó en la Procuraduría General.",
-      "profile_status": "curated_static",
-      "last_updated": "2026-03-26",
-      "topics": [
-        {
-          "topic_id": "security",
-          "topic_label": "Seguridad",
-          "summary": "Enfoque estricto de restauración del orden. Aplica su estrategia de las '4R': Reducir ingresos ilegales (narcotráfico/minería), Robustecer la fuerza pública con tecnología, Reencantar a las comunidades mediante acciones cívico-militares, y Restablecer la legalidad y la justicia. Propone erradicación de cultivos ilícitos con drones de IA, modificación de reglas de flagrancia y penas efectivas sin beneficios políticos.",
-          "plain_language_summary": "Estrategia '4R': reducir ingresos criminales, tecnificar la fuerza pública, acercarla a las comunidades y restablecer la ley. Erradicación con drones, cárceles efectivas.",
-          "stance_score": 4,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26"
-        },
-        {
-          "topic_id": "economy",
-          "topic_label": "Economía",
-          "summary": "Pro-mercado y anti-estatista. Propone reducir ministerios de 19 a 12, eliminar el impuesto al patrimonio y reducir la carga tributaria corporativa para reactivar la inversión. Su modelo de 'economía fraterna' fortalece el libre mercado y la iniciativa privada. Propone también una 'ley de escalera de formalidad' que elimine barreras regulatorias para pequeños emprendedores.",
-          "plain_language_summary": "Libre mercado: eliminar el impuesto al patrimonio, reducir impuestos corporativos y simplificar regulaciones. De 19 a 12 ministerios.",
-          "stance_score": 4,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26"
-        },
-        {
-          "topic_id": "health",
-          "topic_label": "Salud",
-          "summary": "Usa la crisis de salud como evidencia del daño de la intervención estatal. Propone un plan de choque financiero incluyendo titularización de la deuda del Estado con las EPS (convirtiendo deudas en títulos valores transables), UPC diferencial por riesgo para pacientes de alto costo, y una red de 'hospitales padrino' equipados con telemedicina para zonas rurales. Defiende el modelo de aseguramiento mixto.",
-          "plain_language_summary": "Propone titularizar la deuda del Estado con las EPS para inyectar liquidez inmediata. Red de 'hospitales padrino' con telemedicina rural. Defiende el modelo mixto con EPS privadas.",
-          "stance_score": 4,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26"
-        },
-        {
-          "topic_id": "energy_environment",
-          "topic_label": "Energía y Medio Ambiente",
-          "summary": "Denuncia la pérdida de soberanía energética y el alza de tarifas por la dependencia en importaciones de gas. Propone reactivar la exploración de petróleo y gas incluyendo proyectos de fracking; simultáneamente promueve renovables (eólica, solar, pequeñas hidroeléctricas) agilizando licencias ambientales mediante tecnología. El medio ambiente no es una agenda autónoma sino subordinada a las posiciones energéticas y económicas: argumenta que la pobreza es el mayor enemigo ecológico y defiende el fracking argumentando que las prohibiciones actuales paradójicamente causan mayor daño ambiental al encarecer el gas.",
-          "plain_language_summary": "Defiende tanto el fracking como las renovables. Argumenta que prohibir el fracking encarecer el gas y daña a los sectores vulnerables. Quiere recuperar la autosuficiencia energética.",
-          "stance_score": 4,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26",
-          "merge_note": "Promedio de energy_oil (4) y environment (4). Posiciones alineadas entre ambos subcomponentes."
-        },
-        {
-          "topic_id": "fiscal",
-          "topic_label": "Política Fiscal",
-          "summary": "Plan de choque de austeridad: reducir el 20% de los presupuestos operativos de todos los ministerios, fusionar ministerios de 19 a 12 ahorrando 30 billones de pesos anuales, eliminar el impuesto al patrimonio para reactivar la inversión privada. Alerta sobre un déficit histórico cercano al 7,5% del PIB y deuda pública que supera los 1.192 billones de pesos. Defiende el ahorro pensional de los ciudadanos frente al gasto corriente del gobierno.",
-          "plain_language_summary": "Austeridad fiscal: fusionar ministerios (19 a 12), recortar el 20% del gasto operativo y ahorrar 30 billones anuales. Eliminar el impuesto al patrimonio.",
-          "stance_score": 4,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26"
-        },
-        {
-          "topic_id": "foreign_policy",
-          "topic_label": "Política Exterior",
-          "summary": "Usa a Venezuela como advertencia constante de crisis institucional; rechaza cualquier dependencia energética o alineación con el régimen chavista. Busca reconstruir la cooperación en seguridad con EE.UU., proponiendo un nuevo 'Plan Colombia' enfocado en el micro-tráfico urbano. Planea transformar la Cancillería en un cuerpo enfocado en comercio donde los embajadores sean evaluados estrictamente por resultados en exportaciones y turismo, no activismo ideológico.",
-          "plain_language_summary": "Alianza con EE.UU. y un nuevo 'Plan Colombia'. Convertir la Cancillería en ministerio de comercio exterior. Rechaza cualquier alineación con Venezuela.",
-          "stance_score": 4,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26"
-        },
-        {
-          "topic_id": "anticorruption",
-          "topic_label": "Anticorrupción",
-          "summary": "Propone reformas estructurales para aislar la Contraloría y la Procuraduría de la influencia política, eligiéndolas mediante la academia y la ciudadanía en lugar de cuerpos políticos. Lideró debates de control político en el Congreso sobre casos como el UNGRD. Rechaza una Asamblea Constituyente fuera de los canales legislativos y se opone a gobernar por decreto.",
-          "plain_language_summary": "Propone que la Contraloría y la Procuraduría sean elegidas por la academia y la ciudadanía, no por políticos. Lideró control político en el Congreso.",
-          "stance_score": 3,
-          "confidence": 0.85,
-          "evidence_ids": [
-            "src-shared-llyc-2026"
-          ],
-          "updated_at": "2026-03-26"
-        }
-      ],
-      "proposals": [
-        {
-          "id": "prop-valencia-01",
-          "topic_id": "security",
-          "title": "Seguridad total: ofensiva con fuerza pública desde el 7 de agosto",
-          "summary": "Lanzar desde el primer día de gobierno una ofensiva integral con toda la fuerza pública contra grupos armados ilegales, narcotráfico y crimen organizado.",
-          "plain_language_summary": "Desde el primer día de gobierno, usar toda la fuerza del Estado contra el crimen organizado y los grupos armados.",
-          "status": "proposed",
-          "source_ids": [
-            "src-valencia-programa-2026"
-          ]
-        },
-        {
-          "id": "prop-valencia-02",
-          "topic_id": "fiscal",
-          "title": "Reducción de impuestos y eliminación del 4x1000",
-          "summary": "Eliminar el gravamen a los movimientos financieros (4x1000) y reducir la carga tributaria sobre empresas y ciudadanos para estimular la inversión y el ahorro.",
-          "plain_language_summary": "Eliminar el cobro en cada transacción bancaria y bajar impuestos para que la gente y las empresas tengan más plata.",
-          "status": "proposed",
-          "source_ids": [
-            "src-valencia-programa-2026"
-          ]
-        },
-        {
-          "id": "prop-valencia-03",
-          "topic_id": "anticorruption",
-          "title": "Estado austero: menos burocracia, más inversión social",
-          "summary": "Reducir el gasto burocrático del Estado, eliminar entidades redundantes y redirigir esos recursos a inversión social directa en educación, salud e infraestructura.",
-          "plain_language_summary": "Recortar el gasto en burocracia para invertir más en educación, salud e infraestructura.",
-          "status": "proposed",
-          "source_ids": [
-            "src-valencia-programa-2026"
-          ]
-        },
-        {
-          "id": "prop-valencia-04",
-          "topic_id": "health",
-          "title": "Recuperación del sistema de salud y cobertura total",
-          "summary": "Restablecer la sostenibilidad financiera del sistema de salud, garantizar cobertura universal real y poner fin a la deuda que el gobierno tiene con las EPS y hospitales.",
-          "plain_language_summary": "Que el sistema de salud funcione bien pagando las deudas que tiene el Estado con hospitales y clínicas.",
-          "status": "proposed",
-          "source_ids": [
-            "src-valencia-programa-2026"
-          ]
-        },
-        {
-          "id": "prop-valencia-05",
-          "topic_id": "economy",
-          "title": "Campo seguro: crédito barato para campesinos y transformación productiva",
-          "summary": "Garantizar seguridad en el campo colombiano y ofrecer crédito de bajo costo a campesinos para tecnificación, modernización productiva y acceso a mercados.",
-          "plain_language_summary": "Dar créditos baratos a los campesinos para modernizar sus cultivos y garantizar seguridad en las zonas rurales.",
-          "status": "proposed",
-          "source_ids": [
-            "src-valencia-programa-2026"
-          ]
-        }
-      ],
-      "controversies": [
-        {
-          "id": "cont-valencia-01",
-          "title": "Polémica por proponer a Álvaro Uribe como fórmula vicepresidencial",
-          "summary": "Valencia declaró públicamente que su 'mejor vicepresidente sería Álvaro Uribe'. La declaración generó tensiones dentro de la Gran Consulta por Colombia, con su rival Vicky Dávila respondiendo que Uribe ya había descartado públicamente ser fórmula vicepresidencial.",
-          "severity": "low",
-          "status": "past",
-          "date": "2026-02-25",
-          "source_ids": [
-            "src-valencia-publimetro-2026-02"
-          ],
-          "notes": "Uribe confirmó el 18 de julio de 2025 que no sería fórmula vicepresidencial de ningún candidato."
-        },
-        {
-          "id": "cont-valencia-02",
-          "title": "Denuncia por presunto uso de recursos públicos en campaña del Pacto",
-          "summary": "Valencia denunció ante la Contraloría y la Procuraduría que la tarima del Ministerio de Salud fue usada en el cierre de campaña del Pacto Histórico en la Plaza de Bolívar. Generó investigación formal de los entes de control pero también críticas de que la denuncia tenía motivación electoral.",
-          "severity": "medium",
-          "status": "ongoing",
-          "date": "2026-02-28",
-          "source_ids": [
-            "src-valencia-infobae-tarima-2026-02"
-          ],
-          "notes": "El gobierno negó la acusación. La Contraloría y Procuraduría abrieron indagación preliminar."
-        }
-      ],
-      "metadata": {
-        "procuraduria_status": "unknown",
-        "procuraduria_summary": "No se encontraron sanciones disciplinarias ni inhabilidades contra Valencia. Trabajó como empleada de la Procuraduría antes de ingresar a la política. La ausencia de hallazgos no confirma un registro limpio — se requiere consulta directa al registro.",
-        "procuraduria_source_id": "src-valencia-profile-01",
-        "party_history": "El Centro Democrático es el partido fundado por el ex presidente Álvaro Uribe Vélez en 2013. Es la principal fuerza de oposición de centroderecha a derecha de Colombia, construida sobre una plataforma de seguridad democrática, economía de libre mercado y orden institucional fuerte.",
-        "spectrum_score": 4
-      },
-      "image_url": "/candidates/paloma-valencia.jpg"
     },
     {
       "id": "roy-barreras",

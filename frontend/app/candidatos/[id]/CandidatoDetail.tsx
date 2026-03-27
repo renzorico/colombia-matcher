@@ -24,9 +24,9 @@ import PhotoLightbox from "@/components/PhotoLightbox";
 
 const CANDIDATE_ORDER = [
   { id: "ivan-cepeda",                name: "Iván Cepeda" },
-  { id: "abelardo-de-la-espriella",   name: "Abelardo de la Espriella" },
-  { id: "sergio-fajardo",             name: "Sergio Fajardo" },
   { id: "paloma-valencia",            name: "Paloma Valencia" },
+  { id: "sergio-fajardo",             name: "Sergio Fajardo" },
+  { id: "abelardo-de-la-espriella",   name: "Abelardo de la Espriella" },
   { id: "roy-barreras",               name: "Roy Barreras" },
   { id: "claudia-lopez",              name: "Claudia López" },
 ];
