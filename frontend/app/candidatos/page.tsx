@@ -6,10 +6,29 @@ import Image from "next/image";
 import { getCandidates, type CandidateSummary } from "@/lib/api";
 import { SpectrumBar } from "@/components/SpectrumBar";
 
+type SpectrumFilter = "all" | "left" | "center" | "right";
+
+const SPECTRUM_BUCKETS: Record<string, SpectrumFilter> = {
+  left: "left",
+  "center-left": "left",
+  center: "center",
+  "center-right": "right",
+  right: "right",
+  "far-right": "right",
+};
+
+const FILTER_LABELS: Record<SpectrumFilter, string> = {
+  all: "Todos",
+  left: "Izquierda",
+  center: "Centro",
+  right: "Derecha",
+};
+
 export default function CandidatosPage() {
   const [candidates, setCandidates] = useState<CandidateSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [filter, setFilter] = useState<SpectrumFilter>("all");
 
   useEffect(() => {
     getCandidates()
@@ -63,8 +82,30 @@ export default function CandidatosPage() {
           Haz clic en un candidato para ver fuentes y detalles por tema.
         </div>
 
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {candidates.map((c) => (
+        {/* ── Spectrum filter ─────────────────────────────────────────────── */}
+        <div className="mt-6 flex gap-2 flex-wrap">
+          {(["all", "left", "center", "right"] as SpectrumFilter[]).map((f) => (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className="rounded-full px-4 py-1.5 text-sm font-medium transition"
+              style={{
+                backgroundColor: filter === f ? "var(--secondary)" : "var(--surface)",
+                color: filter === f ? "#FFFFFF" : "var(--foreground)",
+                border: `1px solid ${filter === f ? "var(--secondary)" : "var(--border)"}`,
+              }}
+            >
+              {FILTER_LABELS[f]}
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {candidates.filter((c) => {
+            if (filter === "all") return true;
+            if (!c.spectrum) return false;
+            return SPECTRUM_BUCKETS[c.spectrum] === filter;
+          }).map((c) => (
             <Link
               key={c.id}
               href={`/candidatos/${c.id}`}

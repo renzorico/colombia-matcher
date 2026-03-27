@@ -22,11 +22,6 @@ export function SpectrumBar({ spectrum }: { spectrum: string }) {
 
   return (
     <div className="flex flex-col gap-1 w-full">
-      {/* Label */}
-      <span className="text-xs font-semibold" style={{ color: "var(--foreground)" }}>
-        {label}
-      </span>
-
       {/* Track + dot */}
       <div
         className="relative h-1 rounded-full"

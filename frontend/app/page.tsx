@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const STATS = [
-  { number: "25", label: "preguntas" },
-  { number: "6",  label: "candidatos" },
-  { number: "7",  label: "temas clave" },
+  { number: "25", label: "preguntas", icon: "❓" },
+  { number: "6",  label: "candidatos", icon: "👤" },
+  { number: "7",  label: "temas clave", icon: "📋" },
 ];
 
 const STEPS = [
@@ -51,11 +51,12 @@ export default function Home() {
 
       {/* ── Stat blocks ───────────────────────────────────────────────────── */}
       <section className="bg-surface border-b" style={{ borderColor: "var(--border)" }}>
-        <div className="mx-auto max-w-2xl px-4 py-8 grid grid-cols-3 gap-4 text-center">
+        <div className="mx-auto max-w-2xl px-4 py-8 grid grid-cols-3 divide-x divide-gray-100">
           {STATS.map((s) => (
-            <div key={s.number} className="flex flex-col items-center gap-1">
+            <div key={s.number} className="flex flex-col items-center gap-1 px-4 py-2">
+              <span className="text-2xl leading-none mb-1">{s.icon}</span>
               <span
-                className="text-4xl sm:text-5xl font-extrabold"
+                className="text-4xl sm:text-5xl font-extrabold tabular-nums"
                 style={{ color: "var(--secondary)" }}
               >
                 {s.number}

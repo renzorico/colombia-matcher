@@ -165,7 +165,7 @@ function ControversyCard({ c, sourceMap }: { c: Controversy; sourceMap: Map<stri
         <div className="px-4 pb-4 pt-0">
           <div className="flex items-center gap-2 flex-wrap mb-2">
             <span className="text-xs text-gray-400">
-              Gravedad {sev.label} · {status}
+              {status}
               {c.date ? ` · ${formatDateES(c.date)}` : ""}
             </span>
           </div>
@@ -207,6 +207,7 @@ export default function CandidatoDetail() {
   const [notFound, setNotFound] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showSources, setShowSources] = useState(false);
 
   useEffect(() => {
     getCandidatesFull()
@@ -379,14 +380,31 @@ export default function CandidatoDetail() {
           )}
         </section>
 
-        {/* ── Sources ─────────────────────────────────────────────────────── */}
+        {/* ── Sources (collapsible) ───────────────────────────────────────── */}
         <section className="mt-8">
-          <SectionHeading>Fuentes consultadas</SectionHeading>
-          <p className="text-xs text-gray-400 mb-3">
-            Las posturas, propuestas y antecedentes de este perfil se basan en las
-            siguientes fuentes públicas verificables.
-          </p>
-          <SourceList sources={candidate.sources ?? []} />
+          <button
+            onClick={() => setShowSources(!showSources)}
+            className="flex items-center gap-2 text-base font-bold pb-2 w-full text-left transition"
+            style={{ color: "var(--foreground)", borderBottom: "2px solid var(--primary)" }}
+          >
+            <span
+              className="text-gray-400 transition-transform duration-200"
+              style={{ transform: showSources ? "rotate(90deg)" : "rotate(0deg)" }}
+            >
+              ›
+            </span>
+            Ver fuentes consultadas ({candidate.sources?.length ?? 0})
+          </button>
+          <div
+            className="overflow-hidden transition-all duration-300"
+            style={{ maxHeight: showSources ? "2000px" : "0px", opacity: showSources ? 1 : 0 }}
+          >
+            <p className="text-xs text-gray-400 mt-3 mb-3">
+              Las posturas y antecedentes de este perfil se basan en las
+              siguientes fuentes públicas verificables.
+            </p>
+            <SourceList sources={candidate.sources ?? []} />
+          </div>
         </section>
 
         {/* ── Data provenance ─────────────────────────────────────────────── */}
@@ -437,7 +455,16 @@ export default function CandidatoDetail() {
                   <span className="text-xs" style={{ color: "var(--muted)" }}>Siguiente →</span>
                   <span className="font-medium">{next.name}</span>
                 </Link>
-              ) : <div />}
+              ) : (
+                <Link
+                  href="/candidatos"
+                  className="flex flex-col text-right text-sm transition"
+                  style={{ color: "var(--secondary)" }}
+                >
+                  <span className="text-xs" style={{ color: "var(--muted)" }}>Fin del listado</span>
+                  <span className="font-medium">Ver todos los candidatos →</span>
+                </Link>
+              )}
             </div>
           );
         })()}

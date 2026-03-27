@@ -17,6 +17,7 @@ import {
   Tooltip,
 } from "recharts";
 import type { Result } from "@/lib/api";
+import { TOPIC_IDS } from "@/lib/topics";
 
 // ---------------------------------------------------------------------------
 // Label maps (matches the 7 canonical topic IDs used by the backend)
@@ -47,8 +48,7 @@ const CANDIDATE_COLORS = [
 
 function buildRadarData(results: Result[]): Record<string, string | number>[] {
   const top = results.slice(0, 2);
-  const topics = Object.keys(top[0]?.breakdown ?? {});
-  return topics.map((t) => {
+  return TOPIC_IDS.map((t) => {
     const row: Record<string, string | number> = { topic: TOPIC_SHORT[t] ?? t };
     for (const r of top) {
       row[r.candidate] = r.breakdown[t] ?? 0;

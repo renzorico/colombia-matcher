@@ -11,7 +11,7 @@ import {
   type CandidateSummary,
 } from "@/lib/api";
 import { SpectrumBar } from "@/components/SpectrumBar";
-import { TOPIC_COLORS, AXIS_LABELS_ES as TOPIC_LABELS, TOPIC_IDS } from "@/lib/topics";
+import { TOPIC_COLORS, AXIS_LABELS_ES as TOPIC_LABELS } from "@/lib/topics";
 import ResultsCharts from "@/components/ResultsCharts";
 
 // ---------------------------------------------------------------------------
@@ -29,7 +29,11 @@ function KeyPoints({ breakdown }: { breakdown: Record<string, number> }) {
   const [open, setOpen] = useState(false);
   const entries = Object.entries(breakdown).sort((a, b) => b[1] - a[1]);
   const agreements = entries.slice(0, 2);
-  const disagreements = [...entries].sort((a, b) => a[1] - b[1]).slice(0, 2);
+  const agreementKeys = new Set(agreements.map(([id]) => id));
+  const disagreements = [...entries]
+    .sort((a, b) => a[1] - b[1])
+    .filter(([id]) => !agreementKeys.has(id))
+    .slice(0, 2);
 
   return (
     <div className="mt-3">
@@ -112,6 +116,8 @@ export default function ResultadosPage() {
   const [noQuizData, setNoQuizData] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [showExplainer, setShowExplainer] = useState(false);
+  const [confirmRestart, setConfirmRestart] = useState(false);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("quizAnswers");
@@ -239,6 +245,39 @@ export default function ResultadosPage() {
         <Link href="/metodologia" className="underline hover:opacity-80">Ver metodología</Link>
       </p>
 
+      {/* ── Score explainer ───────────────────────────────────────────────── */}
+      <div className="mt-4 w-full max-w-2xl">
+        <button
+          onClick={() => setShowExplainer(!showExplainer)}
+          className="flex items-center gap-1.5 text-xs font-medium transition-colors"
+          style={{ color: "var(--secondary)" }}
+        >
+          <span
+            className="inline-block transition-transform duration-200"
+            style={{ transform: showExplainer ? "rotate(90deg)" : "rotate(0deg)" }}
+          >
+            ›
+          </span>
+          ¿Cómo se interpretan estos porcentajes?
+        </button>
+        <div
+          className="overflow-hidden transition-all duration-200"
+          style={{ maxHeight: showExplainer ? "300px" : "0px", opacity: showExplainer ? 1 : 0 }}
+        >
+          <div
+            className="mt-2 rounded-xl px-4 py-3 text-xs leading-relaxed"
+            style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)", color: "var(--muted)" }}
+          >
+            <p><strong style={{ color: "var(--foreground)" }}>100%</strong> significa alineación perfecta en todos los temas. <strong style={{ color: "var(--foreground)" }}>50%</strong> es el punto neutro — ocurre cuando respondiste todo como &ldquo;Neutral&rdquo; o cuando tus posiciones son opuestas en igual medida.</p>
+            <p className="mt-1.5">El porcentaje total es un promedio ponderado: Seguridad (25%), Economía (20%), Salud (15%), Energía (15%), Fiscal (10%), Exterior (10%), Anticorrupción (5%).</p>
+            <p className="mt-1.5">Un resultado de 65%–75% ya indica afinidad alta. Por encima de 80% es muy alta.</p>
+            <Link href="/metodologia" className="mt-1.5 inline-block underline" style={{ color: "var(--secondary)" }}>
+              Ver metodología completa →
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* ── Winner hero ───────────────────────────────────────────────────── */}
       {top && (
         <div
@@ -308,12 +347,19 @@ export default function ResultadosPage() {
             />
           </div>
 
-          {/* Topic mini-bars — show all 7 topics, fill 0 for missing */}
-          <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {TOPIC_IDS.map((topicId) => (
-              <TopicMiniBar key={topicId} topicId={topicId} pct={top.breakdown[topicId] ?? 0} />
-            ))}
-          </div>
+          {/* Topic mini-bars — only topics in breakdown (candidates may lack data for some) */}
+          {Object.keys(top.breakdown).length > 0 && (
+            <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {Object.entries(top.breakdown).map(([topicId, pct]) => (
+                <TopicMiniBar key={topicId} topicId={topicId} pct={pct} />
+              ))}
+            </div>
+          )}
+
+          {/* Key points toggle — same as secondary cards */}
+          {Object.keys(top.breakdown).length > 0 && (
+            <KeyPoints breakdown={top.breakdown} />
+          )}
         </div>
       )}
 
@@ -447,8 +493,11 @@ export default function ResultadosPage() {
         className="mt-8 w-full max-w-2xl rounded-xl px-5 py-5"
         style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
       >
-        <p className="text-sm font-bold mb-4 text-center" style={{ color: "var(--foreground)" }}>
+        <p className="text-sm font-bold text-center" style={{ color: "var(--foreground)" }}>
           Comparte tus resultados
+        </p>
+        <p className="text-xs text-center mt-1 mb-4" style={{ color: "var(--muted)" }}>
+          Invita a tus amigos a descubrir su candidato
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
           {/* WhatsApp */}
@@ -513,13 +562,38 @@ export default function ResultadosPage() {
         >
           Explorar candidatos
         </Link>
-        <button
-          onClick={handleRestart}
-          className="rounded-full px-6 py-2 text-sm font-semibold transition"
-          style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
-        >
-          Volver a empezar
-        </button>
+        {confirmRestart ? (
+          <div
+            className="rounded-xl px-4 py-3 text-sm text-center"
+            style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
+          >
+            <p style={{ color: "var(--foreground)" }}>¿Seguro? Perderás tus resultados actuales.</p>
+            <div className="mt-2 flex gap-2 justify-center">
+              <button
+                onClick={handleRestart}
+                className="rounded-full px-4 py-1.5 text-xs font-bold transition"
+                style={{ backgroundColor: "var(--secondary)", color: "#FFFFFF" }}
+              >
+                Sí, empezar de nuevo
+              </button>
+              <button
+                onClick={() => setConfirmRestart(false)}
+                className="rounded-full px-4 py-1.5 text-xs font-semibold transition"
+                style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        ) : (
+          <button
+            onClick={() => setConfirmRestart(true)}
+            className="rounded-full px-6 py-2 text-sm font-semibold transition"
+            style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
+          >
+            Volver a empezar
+          </button>
+        )}
       </div>
     </main>
   );

@@ -91,7 +91,7 @@ export default function NavBar() {
             onClick={() => setOpen(false)}
             className="text-sm text-muted hover:text-foreground transition pt-1"
           >
-            ¿Cómo funciona?
+            Bajo el capó
           </Link>
         </div>
       )}

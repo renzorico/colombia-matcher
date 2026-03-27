@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getQuestions, type Question } from "@/lib/api";
 import { BUCKET_TO_TOPIC, TOPIC_COLORS } from "@/lib/topics";
@@ -79,6 +79,17 @@ export default function QuizPage() {
   const selected = answers[q.id] ?? null;
   const topicId = BUCKET_TO_TOPIC[q.bucket] ?? "security";
   const topicColor = TOPIC_COLORS[topicId] ?? "#4A6FA5";
+
+  // Topic-level progress
+  const topicOrder = useMemo(() => [...new Set(questions.map((qi) => qi.bucket))], [questions]);
+  const topicCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const qi of questions) counts[qi.bucket] = (counts[qi.bucket] ?? 0) + 1;
+    return counts;
+  }, [questions]);
+  const topicNum = topicOrder.indexOf(q.bucket) + 1;
+  const questionInTopic = questions.slice(0, index + 1).filter((qi) => qi.bucket === q.bucket).length;
+  const topicTotal = topicCounts[q.bucket] ?? 1;
 
   function doSubmit(finalAnswers: Record<string, number>) {
     setSubmitting(true);
@@ -159,13 +170,18 @@ export default function QuizPage() {
           </div>
         )}
 
-        {/* Topic chip */}
-        <span
-          className="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white"
-          style={{ backgroundColor: topicColor }}
-        >
-          {q.bucket}
-        </span>
+        {/* Topic chip + sub-label */}
+        <div className="flex items-center gap-3 flex-wrap">
+          <span
+            className="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white"
+            style={{ backgroundColor: topicColor }}
+          >
+            {q.bucket}
+          </span>
+          <span className="text-xs" style={{ color: "var(--muted)" }}>
+            Tema {topicNum} de {topicOrder.length} · Pregunta {questionInTopic} de {topicTotal} en este tema
+          </span>
+        </div>
 
         {/* Progress */}
         <p className="mt-3 text-sm" style={{ color: "var(--muted)" }}>

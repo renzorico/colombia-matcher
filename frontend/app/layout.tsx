@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -54,35 +55,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <NavBar />
         <div className="flex flex-1 flex-col">{children}</div>
-        <footer className="border-t border-gray-100 pt-5 pb-8 text-center text-xs text-gray-400">
-          <p>
-            Datos curados manualmente · Última actualización marzo 2026 ·{" "}
-            <span className="italic">
-              Herramienta informativa — consulta siempre los programas oficiales de cada candidato.
-            </span>
-          </p>
-          <p className="mt-3">
-            Construido por{" "}
-            <a
-              href="https://www.linkedin.com/in/renzorico"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium underline underline-offset-2 hover:text-gray-600 transition-colors"
-            >
-              Renzo Rico
-            </a>
-            {" "}— Data Scientist ·{" "}
-            <a
-              href="https://github.com/renzorico/colombia-matcher"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-gray-600 transition-colors"
-            >
-              GitHub
-            </a>
-            {" "}· Herramienta independiente sin afiliación política
-          </p>
-        </footer>
+        <Footer />
       </body>
     </html>
   );

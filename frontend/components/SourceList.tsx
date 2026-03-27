@@ -4,11 +4,14 @@ import EmptyState from "./EmptyState";
 const TYPE_LABELS: Record<string, string> = {
   official_program:   "Programa oficial",
   official_statement: "Declaración oficial",
+  program:            "Programa de gobierno",
+  official:           "Declaración oficial",
   interview:          "Entrevista",
   news:               "Noticia",
   analysis:           "Análisis",
   speech:             "Discurso",
   social_media:       "Redes sociales",
+  social:             "Redes sociales",
 };
 
 interface SourceListProps {
