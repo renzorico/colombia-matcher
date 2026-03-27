@@ -283,8 +283,13 @@ export default function BajoElCapoPage() {
           </div>
         </section>
 
+        {/* ── Attribution ─────────────────────────────────────────────────── */}
+        <p className="mt-10 text-xs" style={{ color: "var(--muted)" }}>
+          Fotos de candidatos: <a href="https://commons.wikimedia.org" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80">Wikimedia Commons</a> (CC BY-SA)
+        </p>
+
         {/* ── Footer ───────────────────────────────────────────────────────── */}
-        <section className="mt-10 border-t border-gray-200 pt-8 flex flex-col sm:flex-row items-start gap-4 justify-end">
+        <section className="mt-6 border-t border-gray-200 pt-8 flex flex-col sm:flex-row items-start gap-4 justify-end">
           <div className="flex flex-col gap-2 flex-shrink-0">
             <Link
               href="/metodologia"

@@ -26,11 +26,12 @@ export function generateStaticParams() {
 }
 
 const CANDIDATE_IMAGES: Record<string, string> = {
-  "ivan-cepeda": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Ivan_Cepeda_Castro.jpg/220px-Ivan_Cepeda_Castro.jpg",
-  "sergio-fajardo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sergio_Fajardo_Valderrama.jpg/220px-Sergio_Fajardo_Valderrama.jpg",
-  "paloma-valencia": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Paloma_Valencia_Laserna.jpg/220px-Paloma_Valencia_Laserna.jpg",
-  "roy-barreras": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Roy_Barreras.jpg/220px-Roy_Barreras.jpg",
-  "claudia-lopez": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Claudia_Lopez_Hernandez.jpg/220px-Claudia_Lopez_Hernandez.jpg",
+  "ivan-cepeda":              "/candidates/ivan-cepeda.jpg",
+  "abelardo-de-la-espriella": "/candidates/abelardo-de-la-espriella.jpg",
+  "sergio-fajardo":           "/candidates/sergio-fajardo.jpg",
+  "paloma-valencia":          "/candidates/paloma-valencia.jpg",
+  "roy-barreras":             "/candidates/roy-barreras.jpg",
+  "claudia-lopez":            "/candidates/claudia-lopez.jpg",
 };
 
 export async function generateMetadata({
@@ -50,7 +51,7 @@ export async function generateMetadata({
       description,
       type: "website",
       locale: "es_CO",
-      images: [{ url: image, width: 220, height: 220, alt: name }],
+      images: [{ url: image, width: 400, height: 530, alt: name }],
     },
     twitter: {
       card: "summary_large_image",

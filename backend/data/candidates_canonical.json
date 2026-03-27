@@ -1129,7 +1129,7 @@
         "party_history": "El Pacto Histórico es la coalición de izquierda que llevó a Gustavo Petro a la presidencia en 2022. Agrupa movimientos sociales, partidos progresistas y operadores políticos del antiguo brazo político de las FARC bajo una plataforma de transformación social estructural, reforma agraria y cambio económico liderado por el Estado.",
         "spectrum_score": 1
       },
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Ivan_Cepeda_Castro.jpg/220px-Ivan_Cepeda_Castro.jpg"
+      "image_url": "/candidates/ivan-cepeda.jpg"
     },
     {
       "id": "abelardo-de-la-espriella",
@@ -1367,7 +1367,7 @@
         "party_history": "El documento LLYC lista su partido como 'Salvación Nacional'. El movimiento es una plataforma de extrema derecha y socialmente conservadora construida en torno a De la Espriella personalmente, oponiéndose al gobierno Petro y abogando por una doctrina de seguridad punitiva y liberalización de mercado radical.",
         "spectrum_score": 5
       },
-      "image_url": null
+      "image_url": "/candidates/abelardo-de-la-espriella.jpg"
     },
     {
       "id": "sergio-fajardo",
@@ -1582,7 +1582,7 @@
         "party_history": "Dignidad y Compromiso es el movimiento político personal de Fajardo, de orientación centrista y tecnocrática. Anteriormente candidato a presidente en 2018 como parte de la coalición Colombia Humana–Dignidad, terminó tercero. Fue alcalde de Medellín (2004–2007) y gobernador de Antioquia (2012–2015).",
         "spectrum_score": 3
       },
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sergio_Fajardo_Valderrama.jpg/220px-Sergio_Fajardo_Valderrama.jpg"
+      "image_url": "/candidates/sergio-fajardo.jpg"
     },
     {
       "id": "paloma-valencia",
@@ -1771,7 +1771,7 @@
         "party_history": "El Centro Democrático es el partido fundado por el ex presidente Álvaro Uribe Vélez en 2013. Es la principal fuerza de oposición de centroderecha a derecha de Colombia, construida sobre una plataforma de seguridad democrática, economía de libre mercado y orden institucional fuerte.",
         "spectrum_score": 4
       },
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Paloma_Valencia_Laserna.jpg/220px-Paloma_Valencia_Laserna.jpg"
+      "image_url": "/candidates/paloma-valencia.jpg"
     },
     {
       "id": "roy-barreras",
@@ -1990,7 +1990,7 @@
         "party_history": "La coalición con la que Barreras ganó la primaria del 8 de marzo de 2026 es el Frente por la Vida; su partido registrado es Fuerza por la Paz. Barreras es médico, ex senador (2010–2023), dos veces presidente del Congreso y ex embajador ante el Reino Unido bajo Petro. Ha militado en Cambio Radical, el Partido de la U y la órbita del Pacto Histórico.",
         "spectrum_score": 2
       },
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Roy_Barreras.jpg/220px-Roy_Barreras.jpg"
+      "image_url": "/candidates/roy-barreras.jpg"
     },
     {
       "id": "claudia-lopez",
@@ -2199,7 +2199,7 @@
         "party_history": "Corre como independiente bajo el movimiento ciudadano 'Imparables'. Ganó la 'Consulta de las Soluciones: salud, seguridad y educación' el 8 de marzo de 2026 con 574.670 votos. Ex senadora (2014–2019), primera mujer elegida alcaldesa de Bogotá (2020–2023). PhD en Ciencia Política por Northwestern University. Conocida por sus investigaciones de parapolítica, la reforma constitucional de 1991 (Séptima Papeleta) y la Consulta Anticorrupción de 2018.",
         "spectrum_score": 3
       },
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Claudia_Lopez_Hernandez.jpg/220px-Claudia_Lopez_Hernandez.jpg"
+      "image_url": "/candidates/claudia-lopez.jpg"
     }
   ]
 }
