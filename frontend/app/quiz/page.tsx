@@ -66,6 +66,14 @@ export default function QuizPage() {
     } catch { /* ignore */ }
   }, [answers, index, loading, questions.length]);
 
+  // Topic-level progress — must be above early returns (Rules of Hooks)
+  const topicOrder = useMemo(() => [...new Set(questions.map((qi) => qi.bucket))], [questions]);
+  const topicCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const qi of questions) counts[qi.bucket] = (counts[qi.bucket] ?? 0) + 1;
+    return counts;
+  }, [questions]);
+
   if (loading) {
     return (
       <main className="flex flex-1 items-center justify-center">
@@ -79,14 +87,6 @@ export default function QuizPage() {
   const selected = answers[q.id] ?? null;
   const topicId = BUCKET_TO_TOPIC[q.bucket] ?? "security";
   const topicColor = TOPIC_COLORS[topicId] ?? "#4A6FA5";
-
-  // Topic-level progress
-  const topicOrder = useMemo(() => [...new Set(questions.map((qi) => qi.bucket))], [questions]);
-  const topicCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    for (const qi of questions) counts[qi.bucket] = (counts[qi.bucket] ?? 0) + 1;
-    return counts;
-  }, [questions]);
   const topicNum = topicOrder.indexOf(q.bucket) + 1;
   const questionInTopic = questions.slice(0, index + 1).filter((qi) => qi.bucket === q.bucket).length;
   const topicTotal = topicCounts[q.bucket] ?? 1;
