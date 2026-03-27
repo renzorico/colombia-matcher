@@ -14,6 +14,7 @@ import { SpectrumBar } from "@/components/SpectrumBar";
 import { TOPIC_COLORS, AXIS_LABELS_ES as TOPIC_LABELS } from "@/lib/topics";
 import { candidatePhoto } from "@/lib/photos";
 import ResultsCharts from "@/components/ResultsCharts";
+import PhotoLightbox from "@/components/PhotoLightbox";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -119,6 +120,7 @@ export default function ResultadosPage() {
   const [copied, setCopied] = useState(false);
   const [showExplainer, setShowExplainer] = useState(false);
   const [confirmRestart, setConfirmRestart] = useState(false);
+  const [lightbox, setLightbox] = useState<{ src: string; name: string } | null>(null);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("quizAnswers");
@@ -295,14 +297,21 @@ export default function ResultadosPage() {
           <div className="mt-3 flex items-center gap-4">
             {/* Photo */}
             {candidatePhoto(top.id) ? (
-              <Image
-                src={candidatePhoto(top.id)!}
-                alt={top.candidate}
-                width={64}
-                height={64}
-                className="w-16 h-16 rounded-full object-contain p-1 bg-white flex-shrink-0"
-                style={{ border: "2px solid var(--primary)" }}
-              />
+              <button
+                onClick={() => setLightbox({ src: candidatePhoto(top.id)!, name: top.candidate })}
+                className="flex-shrink-0 focus:outline-none"
+                style={{ cursor: "zoom-in" }}
+                aria-label={`Ver foto de ${top.candidate}`}
+              >
+                <Image
+                  src={candidatePhoto(top.id)!}
+                  alt={top.candidate}
+                  width={64}
+                  height={64}
+                  className="w-16 h-16 rounded-full object-contain p-1 bg-white"
+                  style={{ border: "2px solid var(--primary)" }}
+                />
+              </button>
             ) : (
               <div
                 className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white flex-shrink-0"
@@ -319,7 +328,7 @@ export default function ResultadosPage() {
               {topMeta && (
                 <div className="flex flex-col gap-1.5 mt-1">
                   <p className="text-sm" style={{ color: "var(--muted)" }}>{topMeta.party ?? "—"}</p>
-                  {topMeta.spectrum && <SpectrumBar spectrum={topMeta.spectrum} />}
+                  {topMeta.spectrum && <SpectrumBar spectrum={topMeta.spectrum} candidateId={top.id} />}
                 </div>
               )}
             </div>
@@ -381,14 +390,21 @@ export default function ResultadosPage() {
               <div className="flex items-center gap-3">
                 {/* Photo */}
                 {candidatePhoto(r.id) ? (
-                  <Image
-                    src={candidatePhoto(r.id)!}
-                    alt={r.candidate}
-                    width={48}
-                    height={48}
-                    className="w-12 h-12 rounded-full object-contain p-1 bg-white flex-shrink-0"
-                    style={{ border: "1px solid var(--border)" }}
-                  />
+                  <button
+                    onClick={() => setLightbox({ src: candidatePhoto(r.id)!, name: r.candidate })}
+                    className="flex-shrink-0 focus:outline-none"
+                    style={{ cursor: "zoom-in" }}
+                    aria-label={`Ver foto de ${r.candidate}`}
+                  >
+                    <Image
+                      src={candidatePhoto(r.id)!}
+                      alt={r.candidate}
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 rounded-full object-contain p-1 bg-white"
+                      style={{ border: "1px solid var(--border)" }}
+                    />
+                  </button>
                 ) : (
                   <div
                     className="w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0"
@@ -594,6 +610,14 @@ export default function ResultadosPage() {
           </button>
         )}
       </div>
+
+      {lightbox && (
+        <PhotoLightbox
+          src={lightbox.src}
+          name={lightbox.name}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </main>
   );
 }

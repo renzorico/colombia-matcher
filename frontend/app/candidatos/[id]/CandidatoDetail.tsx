@@ -16,6 +16,7 @@ import EmptyState from "@/components/EmptyState";
 import { SpectrumBar } from "@/components/SpectrumBar";
 import { TOPIC_COLORS } from "@/lib/topics";
 import { candidatePhoto } from "@/lib/photos";
+import PhotoLightbox from "@/components/PhotoLightbox";
 
 // ---------------------------------------------------------------------------
 // Candidate ordering for prev/next navigation
@@ -211,6 +212,7 @@ export default function CandidatoDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showSources, setShowSources] = useState(false);
+  const [lightbox, setLightbox] = useState<{ src: string; name: string } | null>(null);
 
   useEffect(() => {
     getCandidatesFull()
@@ -298,15 +300,22 @@ export default function CandidatoDetail() {
         <div className="mt-5 flex items-start gap-5">
           {/* Photo */}
           {candidatePhoto(candidate.id) ? (
-            <Image
-              src={candidatePhoto(candidate.id)!}
-              alt={candidate.name}
-              width={96}
-              height={96}
-              unoptimized
-              className="w-24 h-24 rounded-2xl object-contain p-1 bg-white flex-shrink-0"
-              style={{ border: "2px solid var(--border)" }}
-            />
+            <button
+              onClick={() => setLightbox({ src: candidatePhoto(candidate.id)!, name: candidate.name })}
+              className="flex-shrink-0 focus:outline-none"
+              style={{ cursor: "zoom-in" }}
+              aria-label={`Ver foto de ${candidate.name}`}
+            >
+              <Image
+                src={candidatePhoto(candidate.id)!}
+                alt={candidate.name}
+                width={96}
+                height={96}
+                unoptimized
+                className="w-24 h-24 rounded-2xl object-contain p-1 bg-white"
+                style={{ border: "2px solid var(--border)" }}
+              />
+            </button>
           ) : (
             <div
               className="w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-bold text-white flex-shrink-0"
@@ -327,7 +336,7 @@ export default function CandidatoDetail() {
             </p>
             {candidate.spectrum && (
               <div className="mt-2">
-                <SpectrumBar spectrum={candidate.spectrum} />
+                <SpectrumBar spectrum={candidate.spectrum} candidateId={candidate.id} />
               </div>
             )}
             {candidate.last_updated && (
@@ -484,6 +493,14 @@ export default function CandidatoDetail() {
         </div>
 
       </div>
+
+      {lightbox && (
+        <PhotoLightbox
+          src={lightbox.src}
+          name={lightbox.name}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </main>
   );
 }

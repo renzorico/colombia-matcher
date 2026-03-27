@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const STATS = [
-  { number: "25", label: "preguntas", icon: "❓" },
-  { number: "6",  label: "candidatos", icon: "👤" },
-  { number: "7",  label: "temas clave", icon: "📋" },
+  { number: "25", label: "preguntas" },
+  { number: "6",  label: "candidatos" },
+  { number: "7",  label: "temas clave" },
 ];
 
 const STEPS = [
@@ -54,7 +54,6 @@ export default function Home() {
         <div className="mx-auto max-w-2xl px-4 py-8 grid grid-cols-3 divide-x divide-gray-100">
           {STATS.map((s) => (
             <div key={s.number} className="flex flex-col items-center gap-1 px-4 py-2">
-              <span className="text-2xl leading-none mb-1">{s.icon}</span>
               <span
                 className="text-4xl sm:text-5xl font-extrabold tabular-nums"
                 style={{ color: "var(--secondary)" }}
@@ -102,10 +101,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Footer note ───────────────────────────────────────────────────── */}
-      <section className="text-center px-4 py-6 text-xs" style={{ color: "var(--muted)" }}>
-        Herramienta informativa independiente. No afiliada a ningún candidato, partido o entidad gubernamental.
-      </section>
 
     </main>
   );

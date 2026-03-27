@@ -11,10 +11,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-gray-100 pt-5 pb-8 text-center text-xs text-gray-400">
       <p>
-        Datos curados manualmente · Última actualización marzo 2026 ·{" "}
-        <span className="italic">
-          Herramienta informativa — consulta siempre los programas oficiales de cada candidato.
-        </span>
+        Herramienta independiente · Sin afiliación política · Datos curados manualmente · Actualizado marzo 2026
       </p>
       <p className="mt-3">
         Construido por{" "}
@@ -35,7 +32,6 @@ export default function Footer() {
         >
           GitHub
         </a>
-        {" "}· Herramienta independiente sin afiliación política
       </p>
     </footer>
   );

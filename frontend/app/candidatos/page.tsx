@@ -6,6 +6,7 @@ import Image from "next/image";
 import { getCandidates, type CandidateSummary } from "@/lib/api";
 import { SpectrumBar } from "@/components/SpectrumBar";
 import { candidatePhoto } from "@/lib/photos";
+import PhotoLightbox from "@/components/PhotoLightbox";
 
 type SpectrumFilter = "all" | "left" | "center" | "right";
 
@@ -30,6 +31,7 @@ export default function CandidatosPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<SpectrumFilter>("all");
+  const [lightbox, setLightbox] = useState<{ src: string; name: string } | null>(null);
 
   useEffect(() => {
     getCandidates()
@@ -124,17 +126,26 @@ export default function CandidatosPage() {
                 (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
               }}
             >
-              {/* Circular photo */}
+              {/* Circular photo — click opens lightbox without navigating */}
               {candidatePhoto(c.id) ? (
-                <Image
-                  src={candidatePhoto(c.id)!}
-                  alt={c.name}
-                  width={80}
-                  height={80}
-                  unoptimized
-                  className="w-20 h-20 rounded-full object-contain p-1 bg-white"
-                  style={{ border: "3px solid var(--border)" }}
-                />
+                <div
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setLightbox({ src: candidatePhoto(c.id)!, name: c.name });
+                  }}
+                  style={{ cursor: "zoom-in" }}
+                >
+                  <Image
+                    src={candidatePhoto(c.id)!}
+                    alt={c.name}
+                    width={80}
+                    height={80}
+                    unoptimized
+                    className="w-20 h-20 rounded-full object-contain p-1 bg-white"
+                    style={{ border: "3px solid var(--border)" }}
+                  />
+                </div>
               ) : (
                 <div
                   className="w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold text-white"
@@ -157,7 +168,7 @@ export default function CandidatosPage() {
               {/* Spectrum bar */}
               {c.spectrum && (
                 <div className="mt-3 w-full max-w-[160px]">
-                  <SpectrumBar spectrum={c.spectrum} />
+                  <SpectrumBar spectrum={c.spectrum} candidateId={c.id} />
                 </div>
               )}
             </Link>
@@ -174,6 +185,14 @@ export default function CandidatosPage() {
           </Link>
         </div>
       </div>
+
+      {lightbox && (
+        <PhotoLightbox
+          src={lightbox.src}
+          name={lightbox.name}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </main>
   );
 }
