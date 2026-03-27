@@ -12,6 +12,7 @@ import {
 } from "@/lib/api";
 import { SpectrumBar } from "@/components/SpectrumBar";
 import { TOPIC_COLORS, AXIS_LABELS_ES as TOPIC_LABELS } from "@/lib/topics";
+import { candidatePhoto } from "@/lib/photos";
 import ResultsCharts from "@/components/ResultsCharts";
 
 // ---------------------------------------------------------------------------
@@ -293,15 +294,14 @@ export default function ResultadosPage() {
 
           <div className="mt-3 flex items-center gap-4">
             {/* Photo */}
-            {topMeta?.image_url ? (
+            {candidatePhoto(top.id) ? (
               <Image
-                src={topMeta.image_url}
+                src={candidatePhoto(top.id)!}
                 alt={top.candidate}
                 width={64}
                 height={64}
                 className="w-16 h-16 rounded-full object-cover flex-shrink-0"
                 style={{ border: "2px solid var(--primary)" }}
-                onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(top.candidate)}&background=6B6B6B&color=fff&size=200`; }}
               />
             ) : (
               <div
@@ -380,15 +380,14 @@ export default function ResultadosPage() {
             >
               <div className="flex items-center gap-3">
                 {/* Photo */}
-                {meta?.image_url ? (
+                {candidatePhoto(r.id) ? (
                   <Image
-                    src={meta.image_url}
+                    src={candidatePhoto(r.id)!}
                     alt={r.candidate}
                     width={48}
                     height={48}
                     className="w-12 h-12 rounded-full object-cover flex-shrink-0"
                     style={{ border: "1px solid var(--border)" }}
-                    onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(r.candidate)}&background=6B6B6B&color=fff&size=200`; }}
                   />
                 ) : (
                   <div
