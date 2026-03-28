@@ -822,9 +822,9 @@
     {
       "id": "src-lopez-programa-2026",
       "type": "program",
-      "title": "Programa de gobierno Claudia López 2026–2030",
+      "title": "Candidata a la Presidencia — propuestas y agenda de Claudia López",
       "publisher": "claudia-lopez.com",
-      "url": "https://claudia-lopez.com/propuestas",
+      "url": "https://claudia-lopez.com/candidata-a-la-presidencia/",
       "published_at": "2026-02",
       "access_date": "2026-03-20",
       "reliability_notes": "Página oficial de campaña",
@@ -836,7 +836,7 @@
       "type": "program",
       "title": "Programa de gobierno Sergio Fajardo 2026–2030",
       "publisher": "sergiofajardo.com",
-      "url": "https://sergiofajardo.com/propuestas",
+      "url": "https://sergiofajardo.com/",
       "published_at": "2026-02",
       "access_date": "2026-03-20",
       "reliability_notes": "Página oficial de campaña — propuestas detalladas",
@@ -846,9 +846,9 @@
     {
       "id": "src-fajardo-caracol-2026",
       "type": "news",
-      "title": "Fajardo presenta su plan de gobierno: empleo, energía y anticorrupción",
+      "title": "Sergio Fajardo candidato presidencial explica sus propuestas — Noticias Caracol",
       "publisher": "Noticias Caracol",
-      "url": "https://noticias.caracoltv.com/colombia/politica/fajardo-plan-de-gobierno-2026",
+      "url": "https://www.youtube.com/watch?v=R_15CmG641E",
       "published_at": "2026-02",
       "access_date": "2026-03-20",
       "reliability_notes": null,
@@ -858,9 +858,9 @@
     {
       "id": "src-barreras-lafm-2026",
       "type": "news",
-      "title": "Roy Barreras presenta propuestas para la campaña presidencial",
+      "title": "Roy Barreras — perfil y carrera política — propuestas presidenciales 2026",
       "publisher": "La FM",
-      "url": "https://www.lafm.com.co/politica/roy-barreras-propuestas-presidenciales-2026",
+      "url": "https://www.lafm.com.co/politica/roy-barreras-perfil-carrera-politica-propuestas-presidenciales-2026-392386",
       "published_at": "2026-03",
       "access_date": "2026-03-20",
       "reliability_notes": null,
@@ -872,7 +872,7 @@
       "type": "program",
       "title": "Programa de gobierno Paloma Valencia 2026",
       "publisher": "palomapresidente.com.co",
-      "url": "https://palomapresidente.com.co/propuestas",
+      "url": "https://palomapresidente.com.co",
       "published_at": "2026-03",
       "access_date": "2026-03-20",
       "reliability_notes": "Página oficial de campaña",
@@ -908,10 +908,394 @@
       "type": "program",
       "title": "Programa Pacto Histórico — Colombia 2026–2030",
       "publisher": "Pacto Histórico",
-      "url": "https://www.movimientopactohistorico.co/programa-2026",
+      "url": "https://www.pactohistorico.co/",
       "published_at": "2026-02",
       "access_date": "2026-03-20",
       "reliability_notes": "Programa oficial del movimiento político",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-elpais-interview-2026-03",
+      "type": "interview",
+      "title": "Iván Cepeda: \"Nuestro enfrentamiento no es con Paloma ni Abelardo, es con Uribe\"",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/elecciones-presidenciales/2026-03-20/ivan-cepeda-nuestro-enfrentamiento-no-es-con-paloma-ni-abelardo-es-con-uribe.html",
+      "published_at": "2026-03-20",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Entrevista de largo aliento en El País sobre paz, salud, corrupción y relaciones con EE.UU. y Venezuela.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-elpais-alianza-cristo-2026-03",
+      "type": "news",
+      "title": "Iván Cepeda abre una nueva fase con su alianza con Juan Fernando Cristo, la primera por fuera del Pacto Histórico",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/elecciones-presidenciales/2026-03-24/ivan-cepeda-abre-una-nueva-fase-con-su-alianza-con-juan-fernando-cristo-la-primera-por-fuera-del-pacto-historico.html",
+      "published_at": "2026-03-24",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Documenta la estrategia de construcción de coaliciones más allá del Pacto Histórico hacia sectores de centroizquierda.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-elpais-acusacion-uribe-2026-03",
+      "type": "news",
+      "title": "Iván Cepeda exige a Álvaro Uribe llevar a la justicia su acusación sobre el asesinato de Miguel Uribe",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/elecciones-presidenciales/2026-03-23/el-camino-a-las-elecciones-presidenciales-colombia-2026-en-vivo.html",
+      "published_at": "2026-03-23",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Cubre una controversia activa de campaña ligada a acusaciones graves y retórica de seguridad.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-elpais-juzgado-2026-03",
+      "type": "news",
+      "title": "Un juzgado de Medellín concluye que el discurso de Iván Cepeda se sustentó en la realidad histórica de Antioquia",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/elecciones-presidenciales/2026-03-27/el-camino-a-las-elecciones-presidenciales-de-colombia-2026-en-vivo.html",
+      "published_at": "2026-03-27",
+      "access_date": "2026-03-28",
+      "reliability_notes": "Validación judicial de un señalamiento histórico polémico hecho por el candidato.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-ap-uribe-2025-02",
+      "type": "news",
+      "title": "Former Colombian President Uribe denies bribery and witness tampering charges in historic trial",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/49b18777e9db94e3af30f875e26a1ad6",
+      "published_at": "2025-02-10",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Resumen internacional del juicio a Uribe en el que Cepeda es figura central. Perspectiva neutra y externa.",
+      "quote": null,
+      "language": "en"
+    },
+    {
+      "id": "src-cepeda-comunicados-uribe-oficial",
+      "type": "official_statement",
+      "title": "Comunicados caso Álvaro Uribe Vélez — Iván Cepeda Castro",
+      "publisher": "Sitio oficial de Iván Cepeda Castro",
+      "url": "https://ivancepedacastro.com/comunicados-caso-alvaro-uribe/",
+      "published_at": "2026",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Archivo de fuente primaria con la documentación y el encuadre propio de Cepeda sobre el caso Uribe.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-elpais-renuncia-2025-04",
+      "type": "news",
+      "title": "Roy Barreras renuncia como embajador de Colombia en el Reino Unido",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/2025-04-29/roy-barreras-renuncia-como-embajador-de-colombia-en-el-reino-unido.html",
+      "published_at": "2025-04-29",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Transición clave desde la embajada de vuelta a la política presidencial, con antecedentes de su trayectoria.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-infobae-gabinete-2026-03",
+      "type": "interview",
+      "title": "Roy Barreras detalló cómo conformaría su gabinete y qué cargos ofrecería a Petro y Santos",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2026/03/01/roy-barreras-detallo-como-conformaria-su-gabinete-en-una-eventual-presidencia-y-que-cargos-ofreceria-a-gustavo-petro-y-juan-manuel-santos/",
+      "published_at": "2026-03-01",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Relevante para entender sus instintos de coalición y estilo de gobierno.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-infobae-corte-dian-2025-03",
+      "type": "news",
+      "title": "La Corte Suprema de Justicia abrió investigación a Roy Barreras por presunto tráfico de influencias en la Dian",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2025/03/25/la-corte-suprema-de-justicia-abrio-investigacion-a-roy-barreras-por-presunto-trafico-de-influencias-en-la-dian/",
+      "published_at": "2025-03-25",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Documenta la apertura de la investigación de la Corte Suprema sobre el escándalo de la DIAN.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-barreras-infobae-corte-dian-2025-08",
+      "type": "news",
+      "title": "Roy Barreras fue citado por la Corte Suprema a responder en caso de la Dian",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2025/08/13/roy-barreras-citado-por-la-corte-suprema-en-caso-de-la-dian/",
+      "published_at": "2025-08-13",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Seguimiento que confirma la controversia activa y relevante judicialmente.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-oficial-sitio",
+      "type": "official_program",
+      "title": "Sitio oficial de campaña — Sergio Fajardo 2026",
+      "publisher": "Sergio Fajardo — sitio oficial de campaña",
+      "url": "https://sergiofajardo.com/",
+      "published_at": "2026",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Fuente primaria — sitio oficial de campaña con secciones programáticas sobre seguridad, salud, economía y gobernanza.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-elpais-profile-2025-12",
+      "type": "interview",
+      "title": "Sergio Fajardo: \"He aprendido del pasado. Este es un nuevo Fajardo, uno que va a ganar\"",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/2025-12-14/sergio-fajardo-he-aprendido-del-pasado-este-es-un-nuevo-fajardo-uno-que-va-a-ganar.html",
+      "published_at": "2025-12-14",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Perfil de largo aliento sobre su narrativa de reinicio, lecciones de campañas anteriores y posicionamiento para 2026.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-eltiempo-2026-02",
+      "type": "interview",
+      "title": "Sergio Fajardo: \"Si seguimos el camino de los extremos vamos a una hecatombe social\"",
+      "publisher": "EL TIEMPO",
+      "url": "https://www.eltiempo.com/politica/elecciones-colombia-2026/sergio-fajardo-habla-sobre-su-campana-a-la-presidencia-si-seguimos-el-camino-de-los-extremos-vamos-a-una-hecatombe-social-3534383",
+      "published_at": "2026-02-22",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Entrevista sobre salud, seguridad, mujeres y mensaje anti-polarización. El Tiempo es uno de los diarios de referencia de Colombia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-elpais-consulta-2026-02",
+      "type": "news",
+      "title": "Sergio Fajardo le dice no a la consulta promovida por Claudia López",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/2026-02-05/sergio-fajardo-le-dice-no-a-la-consulta-promovida-por-claudia-lopez.html",
+      "published_at": "2026-02-05",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Importante para entender su comportamiento de coalición e independencia estratégica frente al centro.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-fajardo-espectador-2020-06",
+      "type": "interview",
+      "title": "Hasta el día de hoy yo no tengo confianza en la Fiscalía — Sergio Fajardo",
+      "publisher": "El Espectador",
+      "url": "https://www.elespectador.com/politica/hasta-el-dia-de-hoy-yo-no-tengo-confianza-en-la-fiscalia-sergio-fajardo-article/",
+      "published_at": "2020-06-09",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Fuente histórica ligada a la controversia fiscal de su período como gobernador y su defensa pública.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-elpais-candidatura-2025-11",
+      "type": "interview",
+      "title": "Claudia López: \"La candidatura y la Presidencia son solo un paso para construir la socialdemocracia colombiana\"",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/2025-11-29/claudia-lopez-la-candidatura-y-la-presidencia-son-solo-un-paso-para-construir-la-socialdemocracia-colombiana.html",
+      "published_at": "2025-11-29",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Entrevista de lanzamiento en la que expone ideología, electorado objetivo y críticas a Petro y Uribe.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-oficial-candidata",
+      "type": "official_program",
+      "title": "Candidata a la Presidencia — Claudia López",
+      "publisher": "Sitio oficial de Claudia López",
+      "url": "https://claudia-lopez.com/candidata-a-la-presidencia/",
+      "published_at": "2026",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Fuente primaria — sitio oficial con temas de campaña: seguridad, salud, economía del cuidado, vivienda, educación y disciplina fiscal.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-elpais-huerta-2026-03",
+      "type": "news",
+      "title": "Claudia López elige a Leonardo Huerta como su fórmula a la vicepresidencia",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/2026-03-13/claudia-lopez-elige-a-leonardo-huerta-como-su-formula-a-la-vicepresidencia.html",
+      "published_at": "2026-03-13",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Útil para entender la señalización de coalición y el perfil vicepresidencial que eligió.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-eltiempo-programa-2026-03",
+      "type": "news",
+      "title": "Claudia López presentó su plan de gobierno — seguridad con enfoque social y superar la polarización",
+      "publisher": "EL TIEMPO",
+      "url": "https://www.eltiempo.com/politica/elecciones-colombia-2026/claudia-lopez-presento-su-plan-de-gobierno-habla-de-seguridad-con-enfoque-social-y-apuesta-por-superar-la-polarizacion-3541157",
+      "published_at": "2026-03-18",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Artículo conciso sobre su agenda de gobierno y mensajes actuales de campaña.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-lopez-citypaper-metro-2023-01",
+      "type": "news",
+      "title": "Bogotá faces uncertain future over Metro Line 1",
+      "publisher": "The City Paper Bogotá",
+      "url": "https://thecitypaperbogota.com/bogota/bogota-faces-uncertain-future-over-metro-line-1/",
+      "published_at": "2023-01-24",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Documenta la disputa sobre el Metro de Bogotá durante su alcaldía, especialmente el conflicto con el gobierno Petro.",
+      "quote": null,
+      "language": "en"
+    },
+    {
+      "id": "src-valencia-elpais-interview-2026-01",
+      "type": "interview",
+      "title": "Paloma Valencia: \"Perder es muy duro para María Fernanda Cabal, pero el país exige unidad\"",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/2026-01-27/paloma-valencia-perder-es-muy-duro-para-maria-fernanda-cabal-pero-el-pais-exige-unidad.html",
+      "published_at": "2026-01-27",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Buen panorama de su posicionamiento uribista, ideas de seguridad, política exterior e identidad de campaña.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-valencia-eltiempo-2026-01",
+      "type": "interview",
+      "title": "Plan Colombia 2.0, reforma a la justicia y Ser Pilo Paga — Paloma Valencia candidata del Centro Democrático",
+      "publisher": "EL TIEMPO",
+      "url": "https://www.eltiempo.com/politica/elecciones-colombia-2026/nosotros-proponemos-hacer-de-colombia-una-potencia-energetica-paloma-valencia-candidata-del-centro-democratico-3527055",
+      "published_at": "2026-01-25",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Fuente útil sobre seguridad, economía, justicia, energía y propuestas sociales.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-valencia-efe-2026-03",
+      "type": "interview",
+      "title": "Paloma Valencia: \"Conmigo se acaba la 'paz total' y llega la 'seguridad total'\"",
+      "publisher": "EFE / Swissinfo",
+      "url": "https://www.swissinfo.ch/spa/paloma-valencia%3A-%22conmigo-se-acaba-la-%27paz-total%27-y-llega-la-%27seguridad-total%27%22-a-colombia/91051270",
+      "published_at": "2026-03-06",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Declaración clara de su doctrina de seguridad dura y rechazo del marco de paz de Petro.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-valencia-radionacional-adopcion-2026-03",
+      "type": "news",
+      "title": "Adopción gay en Colombia — polémica por declaraciones de Paloma Valencia",
+      "publisher": "Radio Nacional de Colombia",
+      "url": "https://www.radionacional.co/actualidad/politica/adopcion-gay-en-colombia-polemica-por-declaraciones-de-paloma-valencia-en",
+      "published_at": "2026-03-15",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Controversia mayor de política social con implicaciones directas para el perfil de derechos de la candidata.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-valencia-infobae-adopcion-2026-03",
+      "type": "news",
+      "title": "Paloma Valencia y Juan Daniel Oviedo mostraron fuertes diferencias: la adopción por parejas del mismo sexo",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2026/03/15/paloma-valencia-y-juan-daniel-oviedo-mostraron-fuertes-diferencias-entre-ellas-la-adopcion-por-parejas-del-mismo-sexo-soy-una-defensora-de-la-familia/",
+      "published_at": "2026-03-15",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Muestra la tensión entre ella y su fórmula vicepresidencial sobre asuntos LGBT y de familia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-valencia-elpais-metoo-2026-03",
+      "type": "news",
+      "title": "Paloma Valencia se sube a la ola del 'Me Too' en Colombia para capitalizarse sobre Cepeda y De la Espriella",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/2026-03-27/paloma-valencia-se-sube-a-la-ola-del-me-too-en-colombia-para-capitalizarse-sobre-ivan-cepeda-y-abelardo-de-la-espriella.html",
+      "published_at": "2026-03-27",
+      "access_date": "2026-03-28",
+      "reliability_notes": "Fuente reciente sobre cómo intenta ampliar su base e instrumentalizar escándalos de género de sus rivales.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-elpais-outsider-2026-03",
+      "type": "news",
+      "title": "Abelardo de la Espriella rechaza el apoyo de los partidos tradicionales para preservar su imagen de 'outsider'",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/2026-03-23/abelardo-de-la-espriella-rechaza-el-apoyo-de-los-partidos-tradicionales-para-preservar-su-imagen-de-outsider.html",
+      "published_at": "2026-03-23",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Documenta un marcador de identidad central de campaña: posicionamiento antiestablishment.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-elpais-restrepo-2026-03",
+      "type": "news",
+      "title": "Abelardo de la Espriella tiende una mano al uribismo con José Manuel Restrepo, un exministro de Iván Duque",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/elecciones-presidenciales/2026-03-10/abelardo-de-la-espriella-tiende-una-mano-al-uribismo-con-un-exministro-de-ivan-duque.html",
+      "published_at": "2026-03-10",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Muestra la tensión entre la marca outsider y los intentos de atraer a la derecha tradicional.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-caracol-restrepo-2026-03",
+      "type": "news",
+      "title": "Abelardo de la Espriella anuncia a José Manuel Restrepo como su fórmula vicepresidencial",
+      "publisher": "Caracol Radio",
+      "url": "https://caracol.com.co/2026/03/10/abelardo-de-la-espriella-anuncia-a-jose-manuel-restrepo-como-su-formula-vicepresidencial/",
+      "published_at": "2026-03-10",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Reporte primario sobre el anuncio de fórmula vicepresidencial y la justificación declarada.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-elpais-homofobia-2026-03",
+      "type": "news",
+      "title": "Una provocación homofóbica revela el nerviosismo en la derecha colombiana",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/elecciones-presidenciales/2026-03-05/una-provocacion-homofobica-revela-el-nerviosismo-en-la-derecha-colombiana.html",
+      "published_at": "2026-03-05",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Controversia central sobre presunta retórica homofóbica dirigida a Juan Daniel Oviedo.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-infobae-oviedo-2026-03",
+      "type": "news",
+      "title": "Abelardo de la Espriella aclaró polémica por comentarios sobre Juan Daniel Oviedo: \"Ni siquiera pensé en su condición sexual\"",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2026/03/10/abelardo-de-la-espriella-aclaro-polemica-por-comentarios-sobre-juan-daniel-oviedo-ni-siquiera-pense-en-su-condicion-sexual/",
+      "published_at": "2026-03-09",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Fuente complementaria con la defensa y respuesta propia del candidato a la controversia.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-elpais-patriamilagro-2026-01",
+      "type": "analysis",
+      "title": "La patria milagro",
+      "publisher": "EL PAÍS",
+      "url": "https://elpais.com/america-colombia/2026-01-29/la-patria-milagro.html",
+      "published_at": "2026-01-29",
+      "access_date": "2026-03-26",
+      "reliability_notes": "Columna de opinión/análisis que critica su agenda de seguridad dura; útil como fuente de comentario.",
       "quote": null,
       "language": "es"
     }
@@ -1449,6 +1833,19 @@
             "src-valencia-infobae-tarima-2026-02"
           ],
           "notes": "El gobierno negó la acusación. La Contraloría y Procuraduría abrieron indagación preliminar."
+        },
+        {
+          "id": "cont-valencia-03",
+          "title": "Declaración en contra de la adopción por parejas del mismo sexo",
+          "summary": "En una entrevista de campaña, Valencia afirmó que no está de acuerdo con la adopción gay, declarando ser 'una defensora de la familia'. La postura generó polémica y evidenció una diferencia abierta con su fórmula vicepresidencial Juan Daniel Oviedo, quien expresó una posición más matizada sobre los derechos de las parejas del mismo sexo.",
+          "severity": "medium",
+          "status": "past",
+          "date": "2026-03-15",
+          "source_ids": [
+            "src-valencia-radionacional-adopcion-2026-03",
+            "src-valencia-infobae-adopcion-2026-03"
+          ],
+          "notes": "Las declaraciones se produjeron durante una entrevista televisiva. Oviedo buscó matizar las diferencias públicamente pero el episodio reveló tensiones internas en la fórmula."
         }
       ],
       "metadata": {
@@ -2042,6 +2439,19 @@
             "src-espriella-tiktok-razones-2025-07"
           ],
           "notes": "Las acusaciones son de conocimiento público pero no han derivado en condenas penales. El candidato las considera ataques políticos."
+        },
+        {
+          "id": "cont-espriella-04",
+          "title": "Comentarios sobre Juan Daniel Oviedo calificados de homofóbicos",
+          "summary": "Una semana antes de las consultas del 9 de marzo, De la Espriella hizo comentarios sobre el candidato Juan Daniel Oviedo que múltiples medios y analistas calificaron de homofóbicos. El episodio generó condena pública y fue leído como señal del nerviosismo en la derecha ante la candidatura de Oviedo. De la Espriella rechazó la lectura sexual de sus palabras, afirmando que sus comentarios no tuvieron esa intención.",
+          "severity": "medium",
+          "status": "past",
+          "date": "2026-03-05",
+          "source_ids": [
+            "src-espriella-elpais-homofobia-2026-03",
+            "src-espriella-infobae-oviedo-2026-03"
+          ],
+          "notes": "De la Espriella emitió aclaración pública. El incidente fue ampliamente cubierto y dañó su imagen ante votantes de centro."
         }
       ],
       "metadata": {
@@ -2291,12 +2701,14 @@
         {
           "id": "cont-barreras-01",
           "title": "Investigación por presunto tráfico de influencias en la DIAN",
-          "summary": "El ministro de Comercio Luis Carlos Reyes reveló que Barreras, siendo embajador en el Reino Unido, le pidió nombrar personas en las aduanas de Cali y Buenaventura usando frases comparadas con amenazas: 'Imagínate lo feo que sería que a Messi le rompieran las piernas'. La Corte Suprema recibió solicitudes de investigación formal.",
+          "summary": "El ministro de Comercio Luis Carlos Reyes reveló que Barreras, siendo embajador en el Reino Unido, le pidió nombrar personas en las aduanas de Cali y Buenaventura usando frases comparadas con amenazas: 'Imagínate lo feo que sería que a Messi le rompieran las piernas'. La Corte Suprema abrió investigación formal en marzo de 2025 y lo citó a responder en agosto del mismo año.",
           "severity": "high",
           "status": "ongoing",
           "date": "2025-02-17",
           "source_ids": [
-            "src-barreras-semana-dian-2025-02"
+            "src-barreras-semana-dian-2025-02",
+            "src-barreras-infobae-corte-dian-2025-03",
+            "src-barreras-infobae-corte-dian-2025-08"
           ],
           "notes": "Barreras negó los hechos. El escándalo surgió en el contexto del caso Papá Pitufo, relacionado con narcofinanciación a la campaña de Petro."
         },
@@ -2562,13 +2974,14 @@
         {
           "id": "cont-lopez-01",
           "title": "Gestión cuestionada como alcaldesa de Bogotá",
-          "summary": "Críticos señalaron que su administración como alcaldesa estuvo marcada por incoherencia política, obras inconclusas, contratos inflados y haber puesto la maquinaria distrital al servicio de la campaña de Gustavo Petro en 2022. La revista Semana la calificó como una de las peores alcaldesas de la ciudad por sus constantes cambios de posición.",
+          "summary": "Críticos señalaron que su administración como alcaldesa estuvo marcada por incoherencia política, obras inconclusas (incluyendo la controversia sobre el Metro de Bogotá Línea 1), contratos inflados y haber puesto la maquinaria distrital al servicio de la campaña de Gustavo Petro en 2022. La revista Semana la calificó como una de las peores alcaldesas de la ciudad por sus constantes cambios de posición.",
           "severity": "medium",
           "status": "past",
           "date": "2023-12-16",
           "source_ids": [
             "src-lopez-semana-alcaldia-2023-12",
-            "src-lopez-infobae-criticas-2025-06"
+            "src-lopez-infobae-criticas-2025-06",
+            "src-lopez-citypaper-metro-2023-01"
           ],
           "notes": "López responde que su administración dejó avances reales en movilidad, medio ambiente y espacio público. Las críticas provienen principalmente de sectores opositores."
         },
