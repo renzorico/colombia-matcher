@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TOPIC_COLORS } from "@/lib/topics";
 
 // ---------------------------------------------------------------------------
 // Static data
@@ -15,30 +16,6 @@ const TOPICS = [
 ];
 
 const AGENTS = [
-  {
-    name: "Research Agent",
-    status: "future",
-    description:
-      "Busca en la web fuentes diversas sobre cada candidato: discursos, entrevistas, noticias, programas, redes sociales. Produce una lista estructurada de fuentes con metadatos (tipo, fecha, URL).",
-    inputs: "ID de candidato, temas, ventana de tiempo",
-    outputs: "Lista de Source[] con tipo, URL, fecha, extracto",
-  },
-  {
-    name: "Stance Extractor Agent",
-    status: "future",
-    description:
-      "Analiza cada fuente y extrae micro-posturas: qué dijo el candidato sobre cada tema, en qué dimensión (política, comportamiento, alianzas, retórica), y con qué evidencia.",
-    inputs: "Source[], candidato, tema",
-    outputs: "MicroStance[] con score [-1,1], label, cita, URL",
-  },
-  {
-    name: "Profile Aggregator Agent",
-    status: "future",
-    description:
-      "Consolida todas las micro-posturas en un perfil por candidato: promedia puntajes por tema y dimensión, calcula confianza según cantidad y coherencia de evidencia.",
-    inputs: "MicroStance[] de múltiples fuentes",
-    outputs: "CandidateProfile con topicScores y confidence",
-  },
   {
     name: "Review Agent",
     status: "active",
@@ -67,35 +44,30 @@ export default function BajoElCapoPage() {
       <div className="w-full max-w-3xl">
 
         {/* Header */}
-        <div className="mb-2 flex items-center gap-2">
-          <span className="rounded-full bg-gray-100 px-3 py-0.5 text-xs font-semibold text-gray-600">
-            Arquitectura técnica
-          </span>
-        </div>
-        <h1 className="text-3xl font-bold">Bajo el capó</h1>
-        <p className="mt-3 text-gray-500 leading-relaxed max-w-2xl">
-          Cómo está construida la infraestructura de datos y matching de Elecciones Colombia 2026.
+        <h1 className="text-3xl font-bold" style={{ color: "var(--foreground)" }}>Detrás de cámaras</h1>
+        <p className="mt-3 leading-relaxed max-w-2xl" style={{ color: "var(--muted)" }}>
+          Cómo está construida la infraestructura de datos y matching de Aclara tu voto.
           Esta sección es para desarrolladores e investigadores. Si buscas la explicación
           en lenguaje simple, ve a{" "}
-          <Link href="/metodologia" className="text-blue-600 hover:underline">
+          <Link href="/metodologia" className="underline hover:opacity-80" style={{ color: "var(--secondary)" }}>
             Metodología
           </Link>.
         </p>
 
         {/* ── Stack tecnológico ──────────────────────────────────────────────── */}
         <section className="mt-10">
-          <h2 className="text-xl font-bold mb-4">Stack tecnológico</h2>
+          <h2 className="text-xl font-bold mb-4" style={{ color: "var(--foreground)" }}>Stack tecnológico</h2>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 text-sm">
             {[
-              { layer: "Frontend", tech: "Next.js 15 (App Router) · Tailwind CSS · TypeScript", note: "Desplegado en Vercel. Build estático con SSG para páginas de candidatos." },
+              { layer: "Frontend", tech: "Next.js 16 (App Router) · Tailwind CSS · TypeScript", note: "Desplegado en Vercel. Build estático con SSG para páginas de candidatos." },
               { layer: "Backend",  tech: "FastAPI · Python 3.11 · Pydantic",                   note: "Desplegado en Railway. REST API con /questions, /quiz/submit, /candidates/full." },
               { layer: "Datos",    tech: "JSON canónico (candidates_canonical.json)",           note: "Single source of truth. Curado manualmente. Leído en startup por el backend." },
               { layer: "Proxy",    tech: "Next.js rewrites → /api/backend/:path*",             note: "El frontend proxea al backend. Elimina CORS en producción." },
             ].map((row) => (
-              <div key={row.layer} className="rounded-xl border border-gray-200 p-4">
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">{row.layer}</p>
-                <p className="mt-1 font-mono text-xs text-gray-800">{row.tech}</p>
-                <p className="mt-1.5 text-xs text-gray-500 leading-relaxed">{row.note}</p>
+              <div key={row.layer} className="rounded-xl p-4" style={{ border: "1px solid var(--border)" }}>
+                <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--muted)" }}>{row.layer}</p>
+                <p className="mt-1 font-mono text-xs" style={{ color: "var(--foreground)" }}>{row.tech}</p>
+                <p className="mt-1.5 text-xs leading-relaxed" style={{ color: "var(--muted)" }}>{row.note}</p>
               </div>
             ))}
           </div>
@@ -103,8 +75,8 @@ export default function BajoElCapoPage() {
 
         {/* ── Production flow ──────────────────────────────────────────────── */}
         <section className="mt-10">
-          <h2 className="text-xl font-bold mb-4">Flujo de producción actual</h2>
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-5 font-mono text-sm text-gray-700">
+          <h2 className="text-xl font-bold mb-4" style={{ color: "var(--foreground)" }}>Flujo de producción actual</h2>
+          <div className="rounded-xl p-5 font-mono text-sm" style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)", color: "var(--foreground)" }}>
             <div className="flex flex-col gap-1.5">
               {[
                 ["Usuario",          "responde 25 preguntas en el quiz"],
@@ -116,10 +88,10 @@ export default function BajoElCapoPage() {
                 ["/candidatos/[id]", "GET /candidates/full → perfil completo del candidato"],
               ].map(([actor, action], i) => (
                 <div key={i} className="flex gap-3">
-                  <span className="w-40 flex-shrink-0 font-semibold text-gray-500 truncate">
+                  <span className="w-40 flex-shrink-0 font-semibold truncate" style={{ color: "var(--muted)" }}>
                     {actor}
                   </span>
-                  <span className="text-gray-600">→ {action}</span>
+                  <span style={{ color: "var(--foreground)" }}>→ {action}</span>
                 </div>
               ))}
             </div>
@@ -128,8 +100,8 @@ export default function BajoElCapoPage() {
 
         {/* ── Scoring algorithm ────────────────────────────────────────────── */}
         <section className="mt-10">
-          <h2 className="text-xl font-bold mb-4">Algoritmo de afinidad</h2>
-          <div className="flex flex-col gap-4 text-sm text-gray-700 leading-relaxed">
+          <h2 className="text-xl font-bold mb-4" style={{ color: "var(--foreground)" }}>Algoritmo de afinidad</h2>
+          <div className="flex flex-col gap-4 text-sm leading-relaxed" style={{ color: "var(--foreground)" }}>
             <p>
               Cada pregunta está asociada a un <strong>eje temático</strong> y tiene un{" "}
               <strong>peso</strong> (1–3). Las respuestas se promedian ponderadamente por eje,
@@ -139,7 +111,7 @@ export default function BajoElCapoPage() {
               Cada candidato tiene un <strong>stance_score</strong> por tema (1–5).
               La afinidad en un tema se calcula como:
             </p>
-            <div className="rounded-lg bg-gray-100 px-5 py-3 font-mono text-gray-800">
+            <div className="rounded-lg px-5 py-3 font-mono" style={{ backgroundColor: "var(--surface)", border: "1px solid var(--border)", color: "var(--foreground)" }}>
               acuerdo = 1 − |puntaje_usuario − puntaje_candidato| / 4
             </div>
             <p>
@@ -150,27 +122,34 @@ export default function BajoElCapoPage() {
             <p>
               Las preguntas con <strong>dirección negativa</strong> tienen sus respuestas
               invertidas antes del cálculo:{" "}
-              <code className="bg-gray-100 px-1 rounded">6 − respuesta</code>.
+              <code className="px-1 rounded" style={{ backgroundColor: "var(--surface)", border: "1px solid var(--border)" }}>6 − respuesta</code>.
             </p>
           </div>
         </section>
 
         {/* ── Topics ───────────────────────────────────────────────────────── */}
         <section className="mt-10">
-          <h2 className="text-xl font-bold mb-2">Los 7 ejes temáticos</h2>
-          <p className="text-sm text-gray-500 mb-4">
+          <h2 className="text-xl font-bold mb-2" style={{ color: "var(--foreground)" }}>Los 7 ejes temáticos</h2>
+          <p className="text-sm mb-4" style={{ color: "var(--muted)" }}>
             Los pesos reflejan la importancia relativa de cada tema en el perfil político colombiano 2026.
           </p>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {TOPICS.map((t) => (
-              <div key={t.id} className="rounded-xl border border-gray-200 p-4">
+              <div
+                key={t.id}
+                className="rounded-xl p-4"
+                style={{
+                  border: "1px solid var(--border)",
+                  borderLeft: `4px solid ${TOPIC_COLORS[t.id] ?? "#4A4A4A"}`,
+                }}
+              >
                 <div className="flex items-start justify-between gap-2">
-                  <h3 className="font-semibold text-sm">{t.label}</h3>
-                  <span className="flex-shrink-0 rounded-full bg-blue-50 px-2 py-0.5 text-xs font-bold text-blue-600">
+                  <h3 className="font-semibold text-sm" style={{ color: "var(--foreground)" }}>{t.label}</h3>
+                  <span className="flex-shrink-0 rounded-full px-2 py-0.5 text-xs font-bold" style={{ backgroundColor: "color-mix(in srgb, var(--hero) 10%, transparent)", color: "var(--secondary)" }}>
                     {t.weight}
                   </span>
                 </div>
-                <p className="mt-1 text-xs text-gray-500 leading-relaxed">{t.desc}</p>
+                <p className="mt-1 text-xs leading-relaxed" style={{ color: "var(--muted)" }}>{t.desc}</p>
               </div>
             ))}
           </div>
@@ -178,38 +157,33 @@ export default function BajoElCapoPage() {
 
         {/* ── Agents ───────────────────────────────────────────────────────── */}
         <section className="mt-10">
-          <h2 className="text-xl font-bold mb-2">Arquitectura de agentes</h2>
-          <p className="text-sm text-gray-500 mb-4">
-            El sistema está diseñado como un pipeline de agentes especializados.
-            Los marcados como{" "}
-            <span className="font-semibold" style={{ color: "var(--hero)" }}>Activo</span> están en producción;
-            los <span className="font-semibold text-amber-700">Futuros</span> están diseñados
-            pero no habilitados.
+          <h2 className="text-xl font-bold mb-2" style={{ color: "var(--foreground)" }}>Arquitectura de agentes</h2>
+          <p className="text-sm mb-4" style={{ color: "var(--muted)" }}>
+            El sistema utiliza un pipeline de curación manual con dos agentes en producción.
+            Los perfiles de candidatos son revisados y aprobados por humanos antes de publicarse —
+            ningún cambio llega a los datos activos sin revisión explícita.
           </p>
           <div className="flex flex-col gap-4">
             {AGENTS.map((a) => (
-              <div key={a.name} className="rounded-xl border border-gray-200 p-5">
+              <div key={a.name} className="rounded-xl p-5" style={{ border: "1px solid var(--border)" }}>
                 <div className="flex items-center gap-3">
-                  <h3 className="font-semibold">{a.name}</h3>
+                  <h3 className="font-semibold" style={{ color: "var(--foreground)" }}>{a.name}</h3>
                   <span
-                    className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                      a.status === "active"
-                        ? "bg-blue-100 text-blue-800"
-                        : "bg-amber-100 text-amber-700"
-                    }`}
+                    className="rounded-full px-2.5 py-0.5 text-xs font-semibold"
+                    style={{ backgroundColor: "color-mix(in srgb, var(--hero) 15%, transparent)", color: "var(--secondary)" }}
                   >
-                    {a.status === "active" ? "Activo" : "Futuro"}
+                    Activo
                   </span>
                 </div>
-                <p className="mt-2 text-sm text-gray-600 leading-relaxed">{a.description}</p>
+                <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>{a.description}</p>
                 <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
-                  <div className="rounded-lg bg-gray-50 px-3 py-2">
-                    <span className="font-semibold text-gray-500">Inputs:</span>{" "}
-                    <span className="text-gray-600">{a.inputs}</span>
+                  <div className="rounded-lg px-3 py-2" style={{ backgroundColor: "var(--surface)", border: "1px solid var(--border)" }}>
+                    <span className="font-semibold" style={{ color: "var(--muted)" }}>Inputs:</span>{" "}
+                    <span style={{ color: "var(--foreground)" }}>{a.inputs}</span>
                   </div>
-                  <div className="rounded-lg bg-gray-50 px-3 py-2">
-                    <span className="font-semibold text-gray-500">Outputs:</span>{" "}
-                    <span className="text-gray-600">{a.outputs}</span>
+                  <div className="rounded-lg px-3 py-2" style={{ backgroundColor: "var(--surface)", border: "1px solid var(--border)" }}>
+                    <span className="font-semibold" style={{ color: "var(--muted)" }}>Outputs:</span>{" "}
+                    <span style={{ color: "var(--foreground)" }}>{a.outputs}</span>
                   </div>
                 </div>
               </div>
@@ -219,8 +193,8 @@ export default function BajoElCapoPage() {
 
         {/* ── Review workflow ──────────────────────────────────────────────── */}
         <section className="mt-10">
-          <h2 className="text-xl font-bold mb-4">Capa de revisión humana</h2>
-          <p className="text-sm text-gray-600 leading-relaxed mb-4">
+          <h2 className="text-xl font-bold mb-4" style={{ color: "var(--foreground)" }}>Capa de revisión humana</h2>
+          <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--muted)" }}>
             Antes de que cualquier cambio generado automáticamente llegue a los datos publicados,
             pasa por una etapa de revisión explícita. El modelo de datos separa claramente:
           </p>
@@ -256,26 +230,26 @@ export default function BajoElCapoPage() {
 
         {/* ── Why static-first ─────────────────────────────────────────────── */}
         <section className="mt-10">
-          <h2 className="text-xl font-bold mb-4">Por qué datos estáticos primero</h2>
-          <div className="flex flex-col gap-3 text-sm text-gray-600 leading-relaxed">
+          <h2 className="text-xl font-bold mb-4" style={{ color: "var(--foreground)" }}>Por qué datos estáticos primero</h2>
+          <div className="flex flex-col gap-3 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
             <p>
-              <strong className="text-gray-800">Confiabilidad ante todo.</strong> Un sistema
+              <strong style={{ color: "var(--foreground)" }}>Confiabilidad ante todo.</strong> Un sistema
               de scraping automatizado comete errores — extrae posturas equivocadas, cita
               fuentes de baja calidad, o malinterpreta contexto político. Preferimos comenzar
               con datos curados (aunque pocos) antes que datos abundantes pero ruidosos.
             </p>
             <p>
-              <strong className="text-gray-800">Cero costo.</strong> No se usan APIs de
+              <strong style={{ color: "var(--foreground)" }}>Cero costo.</strong> No se usan APIs de
               búsqueda de pago ni servicios cloud. Todo corre estáticamente. El equipo puede
               desplegar y operar sin presupuesto.
             </p>
             <p>
-              <strong className="text-gray-800">Transparencia auditora.</strong> Cada dato
+              <strong style={{ color: "var(--foreground)" }}>Transparencia auditora.</strong> Cada dato
               tiene su fuente documentada en el JSON canónico. Cualquier persona puede
               revisar, cuestionar y proponer correcciones.
             </p>
             <p>
-              <strong className="text-gray-800">Escalabilidad gradual.</strong> La arquitectura
+              <strong style={{ color: "var(--foreground)" }}>Escalabilidad gradual.</strong> La arquitectura
               está lista para agentes de investigación automáticos. Cuando el pipeline esté
               calibrado y validado, pasará a producción sin cambiar la capa de datos canónica
               ni el quiz.
@@ -289,18 +263,19 @@ export default function BajoElCapoPage() {
         </p>
 
         {/* ── Footer ───────────────────────────────────────────────────────── */}
-        <section className="mt-6 border-t border-gray-200 pt-8 flex flex-col sm:flex-row items-start gap-4 justify-end">
+        <section className="mt-6 pt-8 flex flex-col sm:flex-row items-start gap-4 justify-end" style={{ borderTop: "1px solid var(--border)" }}>
           <div className="flex flex-col gap-2 flex-shrink-0">
             <Link
               href="/metodologia"
-              className="rounded-full border border-gray-300 px-5 py-2 text-sm font-semibold text-gray-700 text-center hover:bg-gray-100 transition"
+              className="rounded-full px-5 py-2 text-sm font-semibold text-center transition hover:opacity-80"
+              style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
             >
               ← Metodología (lenguaje simple)
             </Link>
             <Link
               href="/quiz"
               className="rounded-full px-5 py-2 text-sm font-bold text-center shadow transition hover:opacity-90"
-            style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
+              style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
             >
               Hacer el quiz
             </Link>

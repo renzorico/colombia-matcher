@@ -268,9 +268,6 @@ export default function CandidatosPage() {
         <h1 className="text-3xl font-bold" style={{ color: "var(--foreground)" }}>
           Candidatos presidenciales
         </h1>
-        <p className="mt-2 text-sm" style={{ color: "var(--muted)" }}>
-          Colombia 2026 · Información curada manualmente a partir de fuentes públicas verificables
-        </p>
         <div
           className="mt-3 rounded-lg px-4 py-2.5 text-xs"
           style={{

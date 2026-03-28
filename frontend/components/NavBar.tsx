@@ -30,7 +30,7 @@ export default function NavBar() {
           href="/"
           className="text-sm font-bold tracking-tight text-foreground hover:text-hero transition"
         >
-          🇨🇴 ¿Por quién votarás?
+          🇨🇴 Aclara tu voto
         </Link>
 
         {/* Desktop links */}
@@ -53,7 +53,7 @@ export default function NavBar() {
             href="/bajo-el-capo"
             className="text-sm text-muted hover:text-foreground transition"
           >
-            ¿Cómo funciona?
+            ¿Cómo lo hicimos?
           </Link>
         </div>
 
@@ -92,7 +92,7 @@ export default function NavBar() {
             onClick={() => setOpen(false)}
             className="text-sm text-muted hover:text-foreground transition pt-1"
           >
-            Bajo el capó
+            Detrás de cámaras
           </Link>
         </div>
       )}

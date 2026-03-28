@@ -419,28 +419,6 @@ export default function CandidatoDetail() {
           </div>
         </section>
 
-        {/* ── Data provenance ─────────────────────────────────────────────── */}
-        <div className="mt-10 rounded-xl border border-gray-100 bg-gray-50 px-5 py-4 text-xs text-gray-500 flex flex-col gap-1.5">
-          <p className="font-semibold text-gray-600 text-sm">Nota de transparencia</p>
-          <p>
-            Estado del perfil:{" "}
-            <span className="font-medium">
-              {candidate.profile_status === "curated_static"
-                ? "Información curada manualmente"
-                : candidate.profile_status === "unknown"
-                ? "Desconocido"
-                : (candidate.profile_status ?? "—")}
-            </span>
-          </p>
-          {candidate.last_updated && (
-            <p>Última actualización: {formatDateES(candidate.last_updated)}</p>
-          )}
-          <p className="italic mt-1">
-            Esta herramienta es informativa. Consulta siempre los programas y declaraciones
-            oficiales de cada candidato antes de tomar decisiones electorales.
-          </p>
-        </div>
-
         {/* ── Prev / Next navigation ──────────────────────────────────────── */}
         {(() => {
           const idx = CANDIDATE_ORDER.findIndex((c) => c.id === params.id);

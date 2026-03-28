@@ -416,7 +416,7 @@ export default function RiesgosElectoralesPage() {
           <div className="relative">
             <div
               ref={navRef}
-              className="overflow-x-auto px-4 py-2"
+              className="overflow-x-auto px-4 py-2 flex justify-center"
               style={{ scrollbarWidth: "none" }}
             >
               <div className="flex gap-2 min-w-max">
@@ -510,12 +510,6 @@ export default function RiesgosElectoralesPage() {
 
         {/* ── Análisis / Hallazgo crítico (item 7: collapsible; item 8: stacked bar) */}
         <div id="analisis" style={SCROLL_MT}>
-          <div className="mb-2" style={{ borderTop: "1px solid var(--border)", paddingTop: "2rem" }}>
-            <p className="text-xs font-semibold uppercase tracking-wide mb-4" style={{ color: "var(--muted)" }}>
-              Análisis cruzado
-            </p>
-          </div>
-
           <h2
             className="text-lg font-bold pb-2 mb-4 text-center"
             style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}
@@ -631,8 +625,8 @@ export default function RiesgosElectoralesPage() {
                   <span
                     className="rounded-full px-2.5 py-0.5 text-xs font-bold self-start"
                     style={{
-                      backgroundColor: color === "#eab308" ? "#fde047" : `${color}18`,
-                      color: color === "#eab308" ? "#1a1a1a" : color,
+                      backgroundColor: color === "#eab308" ? "rgba(234,179,8,0.15)" : `${color}18`,
+                      color: color === "#eab308" ? "#92400e" : color,
                     }}
                   >
                     {inc.tipo}

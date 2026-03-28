@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -121,6 +121,8 @@ export default function ResultadosPage() {
   const [showExplainer, setShowExplainer] = useState(false);
   const [confirmRestart, setConfirmRestart] = useState(false);
   const [lightbox, setLightbox] = useState<{ src: string; name: string } | null>(null);
+  const [downloadingImg, setDownloadingImg] = useState(false);
+  const storyCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("quizAnswers");
@@ -152,19 +154,17 @@ export default function ResultadosPage() {
 
   const siteUrl = "https://colombia-matcher.vercel.app";
 
-  function shareText(top: Result) {
-    return `Hice el quiz de Elecciones Colombia 2026 y mi candidato más afín es ${top.candidate} (${top.score}%). ¿Y tú? ${siteUrl}`;
+  function shareTextTwitter(top: Result) {
+    return `Hice el quiz de Aclara tu voto y mi candidato más afín es ${top.candidate} con ${top.score}% de afinidad 🇨🇴 ¿Con quién votas tú? Descúbrelo en ${siteUrl}`;
+  }
+
+  function shareTextWhatsApp(top: Result) {
+    return `Hice el quiz de Aclara tu voto 🇨🇴 Mi candidato más afín resultó ser ${top.candidate} (${top.score}%). ¿Y tú? Descúbrelo aquí: ${siteUrl}`;
   }
 
   async function handleShare() {
-    const top = results[0];
-    if (!top) return;
-    const text = shareText(top);
-    if (typeof navigator.share === "function") {
-      try { await navigator.share({ text, url: siteUrl }); return; } catch { /* fall through */ }
-    }
     try {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(siteUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
     } catch {
@@ -176,15 +176,34 @@ export default function ResultadosPage() {
   function handleShareWhatsApp() {
     const top = results[0];
     if (!top) return;
-    const text = encodeURIComponent(shareText(top));
+    const text = encodeURIComponent(shareTextWhatsApp(top));
     window.open(`https://wa.me/?text=${text}`, "_blank", "noopener,noreferrer");
   }
 
   function handleShareTwitter() {
     const top = results[0];
     if (!top) return;
-    const text = encodeURIComponent(shareText(top));
+    const text = encodeURIComponent(shareTextTwitter(top));
     window.open(`https://twitter.com/intent/tweet?text=${text}`, "_blank", "noopener,noreferrer");
+  }
+
+  async function handleDownloadImage() {
+    if (!storyCardRef.current || downloadingImg) return;
+    setDownloadingImg(true);
+    try {
+      const html2canvas = (await import("html2canvas")).default;
+      const canvas = await html2canvas(storyCardRef.current, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: null,
+        logging: false,
+      });
+      const link = document.createElement("a");
+      link.download = "aclara-tu-voto-resultados.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    } catch { /* silently fail */ }
+    setDownloadingImg(false);
   }
 
   // ── No quiz data guard ────────────────────────────────────────────────────
@@ -243,10 +262,6 @@ export default function ResultadosPage() {
   return (
     <main className="flex flex-1 flex-col items-center px-4 py-8">
       <h1 className="text-3xl font-bold" style={{ color: "var(--foreground)" }}>Tus resultados</h1>
-      <p className="mt-1 text-xs" style={{ color: "var(--muted)" }}>
-        Información curada manualmente · Datos a marzo 2026 ·{" "}
-        <Link href="/metodologia" className="underline hover:opacity-80">Ver metodología</Link>
-      </p>
 
       {/* ── Score explainer ───────────────────────────────────────────────── */}
       <div className="mt-4 w-full max-w-2xl">
@@ -553,17 +568,18 @@ export default function ResultadosPage() {
             {copied ? "¡Copiado!" : "Copiar enlace"}
           </button>
 
-          {/* Download PDF */}
+          {/* Download image */}
           <button
-            onClick={() => window.print()}
-            className="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition hover:opacity-90"
+            onClick={handleDownloadImage}
+            disabled={downloadingImg}
+            className="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition hover:opacity-90 disabled:opacity-40"
             style={{ border: "1px solid var(--border)", color: "var(--foreground)", backgroundColor: "var(--surface)" }}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M12 16l-4-4h2.5V4h3v8H16l-4 4z"/>
               <path d="M4 18h16v2H4z"/>
             </svg>
-            Descargar PDF
+            {downloadingImg ? "Generando..." : "Descargar imagen"}
           </button>
         </div>
       </div>
@@ -609,6 +625,67 @@ export default function ResultadosPage() {
             Volver a empezar
           </button>
         )}
+      </div>
+
+      {/* ── Hidden story card for PNG download (9:16) ────────────────────── */}
+      <div
+        ref={storyCardRef}
+        style={{
+          position: "fixed",
+          left: "-9999px",
+          top: 0,
+          width: 540,
+          height: 960,
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "var(--font-geist-sans, system-ui, sans-serif)",
+          overflow: "hidden",
+        }}
+      >
+        {/* Header */}
+        <div style={{ backgroundColor: "#1d3a8a", padding: "32px 28px 24px", flexShrink: 0 }}>
+          <p style={{ color: "#eab308", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>
+            Aclara tu voto
+          </p>
+          <p style={{ color: "#FFFFFF", fontSize: 20, fontWeight: 800, lineHeight: 1.25 }}>
+            Mis resultados del quiz
+          </p>
+          <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 12, marginTop: 4 }}>
+            Colombia 2026 · colombia-matcher.vercel.app
+          </p>
+        </div>
+
+        {/* Middle — top 2 candidates */}
+        <div style={{ backgroundColor: "#FFFFFF", flex: 1, padding: "28px 28px 20px", display: "flex", flexDirection: "column", gap: 20 }}>
+          {results.slice(0, 2).map((r, i) => {
+            const colors = ["#1d3a8a", "#4A6FA5"];
+            const barColor = colors[i] ?? "#4A4A4A";
+            const meta = candidateMeta[r.id];
+            return (
+              <div key={r.id}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                  <div>
+                    <p style={{ fontSize: 11, color: "#6b7280", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 2 }}>
+                      {i === 0 ? "Mayor afinidad" : "Segunda afinidad"}
+                    </p>
+                    <p style={{ fontSize: 18, fontWeight: 800, color: "#111827" }}>{r.candidate}</p>
+                    {meta?.party && <p style={{ fontSize: 12, color: "#6b7280", marginTop: 2 }}>{meta.party}</p>}
+                  </div>
+                  <p style={{ fontSize: 36, fontWeight: 900, color: barColor }}>{r.score}%</p>
+                </div>
+                <div style={{ height: 10, borderRadius: 5, backgroundColor: "#E5E7EB" }}>
+                  <div style={{ height: 10, borderRadius: 5, width: `${r.score}%`, backgroundColor: barColor }} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Footer */}
+        <div style={{ backgroundColor: "#111827", padding: "20px 28px 28px", flexShrink: 0 }}>
+          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 11, marginBottom: 4 }}>Descubre tu candidato en</p>
+          <p style={{ color: "#eab308", fontSize: 13, fontWeight: 700 }}>colombia-matcher.vercel.app</p>
+        </div>
       </div>
 
       {lightbox && (

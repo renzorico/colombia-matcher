@@ -191,7 +191,7 @@ export default function MetodologiaPage() {
           {TOPICS.map((t) => {
             const color = TOPIC_COLORS[t.id] ?? "#4A4A4A";
             return (
-              <div key={t.id} className="flex items-center gap-3">
+              <div key={t.id} className="flex items-center gap-3" style={{ paddingLeft: 8, borderLeft: `4px solid ${color}` }}>
                 <span
                   className="w-44 flex-shrink-0 text-sm font-medium text-right"
                   style={{ color: "var(--foreground)" }}
@@ -214,13 +214,6 @@ export default function MetodologiaPage() {
             );
           })}
         </div>
-
-        {/* ── Disclaimer (de-emphasized) ─────────────────────────────────── */}
-        <p className="mt-8 text-xs leading-relaxed" style={{ color: "var(--muted)", opacity: 0.7 }}>
-          <span className="font-semibold uppercase tracking-wide">Aviso legal</span> · Herramienta
-          informativa independiente. No afiliada a ningún candidato, partido o entidad
-          gubernamental. Verifica siempre la información con otras fuentes.
-        </p>
 
         {/* ── CTAs ──────────────────────────────────────────────────────── */}
         <div className="mt-10 flex flex-col sm:flex-row items-center gap-3">

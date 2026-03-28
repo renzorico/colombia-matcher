@@ -15,6 +15,8 @@ const LABELS: Record<number, string> = {
 
 const STORAGE_KEY = "quizProgress";
 
+const TOPIC_ORDER = ["Seguridad", "Economía", "Salud", "Energía y Medio Ambiente", "Política Fiscal", "Política Exterior", "Anticorrupción"];
+
 function hexWithAlpha(hex: string, alpha: number): string {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
@@ -33,10 +35,18 @@ export default function QuizPage() {
   const [showResume, setShowResume] = useState(false);
   const [explicitAnswerIds, setExplicitAnswerIds] = useState<Set<string>>(new Set());
   const [showAllSkippedWarning, setShowAllSkippedWarning] = useState(false);
+  const [hoveredVal, setHoveredVal] = useState<number | null>(null);
 
   useEffect(() => {
     getQuestions().then((qs) => {
-      setQuestions(qs);
+      // Sort so all same-topic questions appear consecutively, preserving relative within-topic order
+      const sorted = [...qs].sort((a, b) => {
+        const ai = TOPIC_ORDER.indexOf(a.bucket);
+        const bi = TOPIC_ORDER.indexOf(b.bucket);
+        if (ai !== bi) return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+        return qs.indexOf(a) - qs.indexOf(b);
+      });
+      setQuestions(sorted);
 
       // Check for saved progress
       try {
@@ -148,7 +158,7 @@ export default function QuizPage() {
   }
 
   return (
-    <main className="flex flex-1 flex-col items-center justify-center px-4 py-8">
+    <main className="flex flex-1 flex-col items-center justify-center px-4 py-4">
       <div className="w-full max-w-lg">
 
         {/* Resume banner */}
@@ -198,23 +208,32 @@ export default function QuizPage() {
         </div>
 
         {/* Statement */}
-        <p className="mt-6 text-xl font-semibold leading-relaxed" style={{ color: "var(--foreground)" }}>
+        <p className="mt-6 text-lg font-semibold leading-relaxed" style={{ color: "var(--foreground)" }}>
           {q.statement}
         </p>
 
         {/* Answer buttons */}
-        <div className="mt-6 flex flex-col gap-2.5">
+        <div className="mt-6 flex flex-col gap-2">
           {([1, 2, 3, 4, 5] as const).map((val) => {
             const isSelected = selected === val;
+            const isHovered = hoveredVal === val;
             return (
               <button
                 key={val}
                 onClick={() => handleSelectAnswer(val)}
-                className="rounded-xl px-5 py-3.5 text-left text-sm font-medium transition"
+                onMouseEnter={() => setHoveredVal(val)}
+                onMouseLeave={() => setHoveredVal(null)}
+                className="rounded-xl px-5 py-2.5 text-left text-sm font-medium"
                 style={{
                   border: `1.5px solid ${isSelected ? topicColor : "var(--border)"}`,
-                  backgroundColor: isSelected ? hexWithAlpha(topicColor, 0.08) : "var(--surface)",
+                  backgroundColor: isSelected
+                    ? hexWithAlpha(topicColor, 0.08)
+                    : isHovered
+                    ? "#f3f4f6"
+                    : "var(--surface)",
                   color: isSelected ? topicColor : "var(--foreground)",
+                  transition: "background 150ms ease",
+                  cursor: "pointer",
                 }}
               >
                 {val} — {LABELS[val]}
@@ -253,7 +272,7 @@ export default function QuizPage() {
         )}
 
         {/* Actions */}
-        <div className="mt-6 flex items-center justify-between">
+        <div className="mt-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             {index > 0 && (
               <button

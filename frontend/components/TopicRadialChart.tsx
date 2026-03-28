@@ -52,7 +52,7 @@ export default function TopicRadialChart({ topics }: TopicRadialChartProps) {
 
   const activeEntry = activeIdx != null ? data[activeIdx] : null;
   const activeTopic = activeEntry?.topic ?? null;
-  const centerName = activeEntry?.name ?? "Temas";
+  const centerName = activeEntry?.name ?? "Toca un color";
   const centerScore =
     activeTopic?.stance_score != null
       ? STANCE_LABELS[activeTopic.stance_score] ?? `${activeTopic.stance_score}/5`

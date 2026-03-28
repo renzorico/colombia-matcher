@@ -1,9 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 
 const STATS = [
-  { number: "25", label: "preguntas" },
-  { number: "6",  label: "candidatos" },
-  { number: "7",  label: "temas clave" },
+  { number: "6",  label: "candidatos",  color: "#eab308" },
+  { number: "7",  label: "temas clave", color: "#1d4ed8" },
+  { number: "25", label: "preguntas",   color: "#dc2626" },
 ];
 
 const STEPS = [
@@ -11,6 +14,26 @@ const STEPS = [
   { emoji: "📊", title: "Comparamos",    desc: "Tus respuestas con las posiciones documentadas de cada candidato, tema por tema." },
   { emoji: "🏆", title: "Descubres",     desc: "Qué candidato está más alineado con tus ideas, con fuentes verificables." },
 ];
+
+function VerCandidatosButton() {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <Link
+      href="/candidatos"
+      className="rounded-full px-6 py-3 text-sm font-medium border transition"
+      style={{
+        borderColor: "rgba(255,255,255,0.4)",
+        color: "#eab308",
+        backgroundColor: hovered ? "#dc2626" : "transparent",
+        transition: "background 200ms ease",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      Ver candidatos
+    </Link>
+  );
+}
 
 export default function Home() {
   return (
@@ -25,7 +48,7 @@ export default function Home() {
           className="text-5xl sm:text-6xl font-extrabold tracking-tight leading-tight"
           style={{ color: "var(--primary)" }}
         >
-          ¿Por quién votarás?
+          Aclara tu voto
         </h1>
         <p className="mt-5 max-w-lg text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
           Descubre qué candidato presidencial está más alineado con tus ideas.
@@ -39,13 +62,7 @@ export default function Home() {
           >
             Comenzar quiz →
           </Link>
-          <Link
-            href="/candidatos"
-            className="rounded-full px-6 py-3 text-sm font-medium border transition hover:bg-white/10"
-            style={{ borderColor: "rgba(255,255,255,0.4)", color: "rgba(255,255,255,0.85)" }}
-          >
-            Ver candidatos
-          </Link>
+          <VerCandidatosButton />
         </div>
       </section>
 
@@ -56,7 +73,7 @@ export default function Home() {
             <div key={s.number} className="flex flex-col items-center gap-1 px-4 py-2">
               <span
                 className="text-4xl sm:text-5xl font-extrabold tabular-nums"
-                style={{ color: "var(--secondary)" }}
+                style={{ color: s.color }}
               >
                 {s.number}
               </span>

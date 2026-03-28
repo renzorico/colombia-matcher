@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "¿Cómo funciona?",
+  title: "Detrás de cámaras",
   description:
-    "Arquitectura técnica de Elecciones Colombia 2026: pipeline de datos, algoritmo de afinidad, agentes y stack tecnológico.",
+    "Cómo está construida la infraestructura de datos y matching de Aclara tu voto: pipeline de datos, algoritmo de afinidad, agentes y stack tecnológico.",
   openGraph: {
-    title: "¿Cómo funciona? — Elecciones Colombia 2026",
+    title: "Detrás de cámaras — Aclara tu voto",
     description:
-      "Arquitectura técnica de Elecciones Colombia 2026: pipeline de datos, algoritmo de afinidad, agentes y stack tecnológico.",
+      "Cómo está construida la infraestructura de datos y matching de Aclara tu voto: pipeline de datos, algoritmo de afinidad, agentes y stack tecnológico.",
     type: "website",
     locale: "es_CO",
   },

@@ -20,23 +20,23 @@ const DEFAULT_DESC = "Descubre qué candidato presidencial está más alineado c
 
 export const metadata: Metadata = {
   title: {
-    default: "Elecciones Colombia 2026 — ¿Con quién votas?",
-    template: "%s — Elecciones Colombia 2026",
+    default: "Aclara tu voto — Elecciones Colombia 2026",
+    template: "%s — Aclara tu voto",
   },
   description: DEFAULT_DESC,
   metadataBase: new URL(BASE_URL),
   openGraph: {
-    title: "Elecciones Colombia 2026 — ¿Con quién votas?",
+    title: "Aclara tu voto — Elecciones Colombia 2026",
     description: DEFAULT_DESC,
     url: BASE_URL,
-    siteName: "Elecciones Colombia 2026",
+    siteName: "Aclara tu voto",
     type: "website",
     locale: "es_CO",
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "¿Por quién votarás? Elecciones Colombia 2026" }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Aclara tu voto — Elecciones Colombia 2026" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Elecciones Colombia 2026 — ¿Con quién votas?",
+    title: "Aclara tu voto — Elecciones Colombia 2026",
     description: DEFAULT_DESC,
     images: [OG_IMAGE],
   },
