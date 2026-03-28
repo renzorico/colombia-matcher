@@ -70,23 +70,31 @@ function buildDeptMap(): Record<string, DeptInfo> {
 
 const DEPT_MAP = buildDeptMap();
 
+const RISK_COLORS = {
+  immHigh:  "rgba(220,38,38,0.55)",
+  immLow:   "rgba(234,88,12,0.55)",
+  urg:      "rgba(124,58,237,0.45)",
+  none:     "#E5E7EB",
+} as const;
+
+const RISK_COLORS_HOVER = {
+  "rgba(220,38,38,0.55)": "rgba(220,38,38,0.8)",
+  "rgba(234,88,12,0.55)": "rgba(234,88,12,0.8)",
+  "rgba(124,58,237,0.45)": "rgba(124,58,237,0.75)",
+  "#E5E7EB": "#D1D5DB",
+} as const;
+
 function getRiskColor(geoName: string): string {
   const data = DEPT_MAP[normalizeGeoName(geoName)];
-  if (!data) return "#E5E7EB";
-  if (data.nImm >= 5) return "#DC2626";
-  if (data.nImm >= 1) return "#EA580C";
-  if (data.nUrg >= 1) return "#CA8A04";
-  return "#E5E7EB";
+  if (!data) return RISK_COLORS.none;
+  if (data.nImm >= 5) return RISK_COLORS.immHigh;
+  if (data.nImm >= 1) return RISK_COLORS.immLow;
+  if (data.nUrg >= 1) return RISK_COLORS.urg;
+  return RISK_COLORS.none;
 }
 
 function getHoverColor(base: string): string {
-  const map: Record<string, string> = {
-    "#DC2626": "#B91C1C",
-    "#EA580C": "#C2410C",
-    "#CA8A04": "#A16207",
-    "#E5E7EB": "#D1D5DB",
-  };
-  return map[base] ?? base;
+  return (RISK_COLORS_HOVER as Record<string, string>)[base] ?? base;
 }
 
 // ── component ─────────────────────────────────────────────────────────────────
@@ -196,12 +204,12 @@ export default function ColombiaMap() {
       </ComposableMap>
 
       {/* Legend */}
-      <div className="flex flex-wrap gap-x-4 gap-y-1.5 mt-3">
+      <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 mt-3">
         {[
-          { color: "#DC2626", label: "≥5 municipios — riesgo crítico" },
-          { color: "#EA580C", label: "1-4 municipios — riesgo crítico" },
-          { color: "#CA8A04", label: "Solo riesgo alto" },
-          { color: "#E5E7EB", label: "Sin alerta" },
+          { color: RISK_COLORS.immHigh, label: "≥5 municipios — riesgo crítico" },
+          { color: RISK_COLORS.immLow,  label: "1-4 municipios — riesgo crítico" },
+          { color: RISK_COLORS.urg,     label: "Solo riesgo alto" },
+          { color: RISK_COLORS.none,    label: "Sin alerta" },
         ].map((item) => (
           <span key={item.color} className="inline-flex items-center gap-1.5 text-xs" style={{ color: "#6B6B6B" }}>
             <span
@@ -231,23 +239,33 @@ export default function ColombiaMap() {
           <p className="text-sm font-bold mb-2">{tooltip.name}</p>
 
           {tooltip.municipios.length > 0 ? (
-            <div className="flex flex-col gap-1.5 mb-2">
-              {tooltip.municipios.slice(0, 6).map((m) => (
-                <div key={m.nombre} className="flex items-center justify-between gap-2">
-                  <span className="text-xs" style={{ color: "#E5E7EB" }}>{m.nombre}</span>
-                  <span
-                    className="text-xs font-semibold rounded-full px-1.5 py-0.5 whitespace-nowrap flex-shrink-0"
-                    style={{ backgroundColor: `${NIVEL_COLORS[m.nivel]}22`, color: NIVEL_COLORS[m.nivel] }}
-                  >
-                    {NIVEL_LABELS[m.nivel]}
-                  </span>
-                </div>
-              ))}
-              {tooltip.municipios.length > 6 && (
-                <p className="text-xs" style={{ color: "#9CA3AF" }}>
-                  +{tooltip.municipios.length - 6} más
-                </p>
-              )}
+            <div className="flex flex-col gap-2 mb-2">
+              {(["accion_inmediata", "accion_urgente"] as const).map((nivel) => {
+                const group = tooltip.municipios.filter((m) => m.nivel === nivel);
+                if (group.length === 0) return null;
+                return (
+                  <div key={nivel}>
+                    <p
+                      className="text-xs font-semibold mb-1"
+                      style={{ color: NIVEL_COLORS[nivel] }}
+                    >
+                      {NIVEL_LABELS[nivel]}
+                    </p>
+                    <div className="flex flex-col gap-0.5">
+                      {group.slice(0, 5).map((m) => (
+                        <span key={m.nombre} className="text-xs" style={{ color: "#E5E7EB" }}>
+                          {m.nombre}
+                        </span>
+                      ))}
+                      {group.length > 5 && (
+                        <span className="text-xs" style={{ color: "#9CA3AF" }}>
+                          +{group.length - 5} más
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           ) : (
             <p className="text-xs mb-2" style={{ color: "#9CA3AF" }}>Sin municipios en alerta</p>

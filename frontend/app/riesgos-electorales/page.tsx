@@ -216,7 +216,7 @@ function StackedProportionalBar() {
       )}
 
       {/* Legend */}
-      <div className="flex flex-wrap gap-x-4 gap-y-1.5 mt-3">
+      <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 mt-3">
         {PARTIDOS_DISTRIBUCION.map((d) => (
           <span key={d.partido} className="inline-flex items-center gap-1.5 text-xs" style={{ color: "#6B6B6B" }}>
             <span className="w-3 h-3 rounded-sm flex-shrink-0" style={{ backgroundColor: d.color }} />
@@ -373,22 +373,19 @@ export default function RiesgosElectoralesPage() {
 
         {/* ── Hero (item 3: no outer card, left-bordered nota) ───────────── */}
         <div className="mb-8">
-          <div className="flex items-start gap-3 mb-4">
-            <span className="text-3xl flex-shrink-0">🗳️</span>
-            <div>
-              <h1 className="text-2xl font-bold leading-tight" style={{ color: "var(--foreground)" }}>
-                Riesgos Electorales 2026
-              </h1>
-              <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-                Datos oficiales de la{" "}
-                <span className="font-semibold" style={{ color: "var(--foreground)" }}>Defensoría del Pueblo</span>{" "}
-                y la{" "}
-                <span className="font-semibold" style={{ color: "var(--foreground)" }}>Misión de Observación Electoral (MOE)</span>{" "}
-                sobre los municipios con riesgo crítico de seguridad electoral para las elecciones presidenciales de mayo 2026.{" "}
-                Los datos de riesgo se basan en alertas emitidas antes de las legislativas del 8 de marzo de 2026
-                y aplican igualmente a la primera vuelta presidencial de mayo 2026.
-              </p>
-            </div>
+          <div className="mb-4">
+            <h1 className="text-3xl font-bold leading-tight" style={{ color: "var(--foreground)" }}>
+              Riesgos Electorales 2026
+            </h1>
+            <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+              Datos oficiales de la{" "}
+              <span className="font-semibold" style={{ color: "var(--foreground)" }}>Defensoría del Pueblo</span>{" "}
+              y la{" "}
+              <span className="font-semibold" style={{ color: "var(--foreground)" }}>Misión de Observación Electoral (MOE)</span>{" "}
+              sobre los municipios con riesgo crítico de seguridad electoral para las elecciones presidenciales de mayo 2026.{" "}
+              Los datos se basan en alertas emitidas antes de las legislativas del 8 de marzo de 2026
+              y aplican igualmente a la primera vuelta presidencial de mayo 2026.
+            </p>
           </div>
           {/* Nota editorial — left-bordered callout */}
           <div
@@ -458,7 +455,7 @@ export default function RiesgosElectoralesPage() {
         {/* ── ¿Cómo operan los riesgos? (item 5: no emoji, colored badges, justified) */}
         <div id="como-operan" style={SCROLL_MT}>
           <h2
-            className="text-lg font-bold pb-2 mb-4"
+            className="text-lg font-bold pb-2 mb-4 text-center"
             style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}
           >
             ¿Cómo operan los riesgos?
@@ -503,7 +500,7 @@ export default function RiesgosElectoralesPage() {
         {/* ── Mapa ───────────────────────────────────────────────────────── */}
         <div id="mapa" style={SCROLL_MT} className="mb-10">
           <h2
-            className="text-lg font-bold pb-2 mb-4"
+            className="text-lg font-bold pb-2 mb-4 text-center"
             style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}
           >
             Mapa de riesgo por departamento
@@ -525,7 +522,7 @@ export default function RiesgosElectoralesPage() {
           </div>
 
           <h2
-            className="text-lg font-bold pb-2 mb-4"
+            className="text-lg font-bold pb-2 mb-4 text-center"
             style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}
           >
             Hallazgo crítico — Suroccidente colombiano
@@ -538,10 +535,9 @@ export default function RiesgosElectoralesPage() {
               className="w-full flex items-start gap-3 px-6 py-5 text-left"
               onClick={() => setHallazgoExpanded((e) => !e)}
             >
-              <span className="text-2xl flex-shrink-0">🚩</span>
               <div className="flex-1 min-w-0">
                 <h3 className="text-base font-extrabold mb-1" style={{ color: "#991B1B" }}>
-                  10 municipios de Nariño y Cauca con &gt;50% para un solo partido
+                  10 municipios de Nariño y Cauca con +50% para un solo partido
                 </h3>
                 <span className="text-xs font-semibold" style={{ color: "#DC2626" }}>
                   {hallazgoExpanded ? "▲ Ocultar análisis" : "▼ Ver análisis"}
@@ -563,7 +559,7 @@ export default function RiesgosElectoralesPage() {
                   Un análisis cruzado de los resultados del escrutinio oficial de la Registraduría Nacional
                   (99.8% de precisión histórica) con las alertas de la Defensoría del Pueblo (ATE 013-2025)
                   identificó 10 municipios del Suroccidente en los que el partido ganador superó el{" "}
-                  <strong>50% de los votos al Senado</strong>, coincidiendo todos con alerta máxima de
+                  <strong>+50% de los votos al Senado</strong>, coincidiendo todos con alerta máxima de
                   seguridad electoral.
                 </p>
                 <p className="text-sm leading-relaxed mb-3" style={{ color: "#7F1D1D" }}>
@@ -586,17 +582,17 @@ export default function RiesgosElectoralesPage() {
             <h3 className="text-sm font-bold mb-1" style={{ color: "var(--foreground)" }}>
               Distribución de 1er lugar al Senado en los 69 municipios de riesgo crítico
             </h3>
-            <p className="text-xs mb-1" style={{ color: "var(--muted)" }}>
+            <p className="text-xs mb-4" style={{ color: "var(--muted)" }}>
               Partido con más votos al Senado en cada municipio de riesgo crítico (legislativas 8 mar 2026)
             </p>
-            <p className="text-xs mb-4" style={{ color: "var(--muted)", opacity: 0.7 }}>
+            <StackedProportionalBar />
+            <p className="text-xs mt-3" style={{ color: "var(--muted)", opacity: 0.7 }}>
               Fuente: Registraduría Nacional (escrutinio oficial) / Defensoría ATE 013-2025
             </p>
-            <StackedProportionalBar />
             <p className="text-xs mt-4" style={{ color: "var(--muted)", opacity: 0.8 }}>
               Nota metodológica: ganar en más municipios de riesgo no prueba coerción — el Pacto Histórico
               tiene base electoral real en estas regiones. El indicador relevante es el subconjunto de 10
-              municipios con &gt;50%, estadísticamente atípico en condiciones de pluralismo libre.
+              municipios con +50%, estadísticamente atípico en condiciones de pluralismo libre.
             </p>
           </div>
         </div>
@@ -604,7 +600,7 @@ export default function RiesgosElectoralesPage() {
         {/* ── Candidatos (item 11: before jornada) ───────────────────────── */}
         <div id="candidatos" style={SCROLL_MT}>
           <h2
-            className="text-lg font-bold pb-2 mb-2"
+            className="text-lg font-bold pb-2 mb-2 text-center"
             style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}
           >
             ¿Qué proponen los candidatos?
@@ -623,7 +619,7 @@ export default function RiesgosElectoralesPage() {
         {/* ── Jornada electoral (item 12: renamed, card grid) ────────────── */}
         <div id="jornada" style={SCROLL_MT}>
           <h2
-            className="text-lg font-bold pb-2 mb-4"
+            className="text-lg font-bold pb-2 mb-4 text-center"
             style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}
           >
             Incidentes documentados — Legislativas 8 mar 2026
@@ -661,7 +657,7 @@ export default function RiesgosElectoralesPage() {
         {/* ── Fuentes (item 14: horizontal scroll card row) ──────────────── */}
         <div id="fuentes" style={SCROLL_MT}>
           <h2
-            className="text-lg font-bold pb-2 mb-4"
+            className="text-lg font-bold pb-2 mb-4 text-center"
             style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}
           >
             Fuentes primarias
