@@ -49,8 +49,8 @@ const INCIDENT_SEVERITY: Record<string, string> = {
   "Ataque con explosivos":            "#DC2626",
   "Trashumancia electoral":           "#EA580C",
   "Traslado de puestos":              "#EA580C",
-  "Operaciones preventivas":          "#2563EB",
-  "Capturas por delitos electorales": "#2563EB",
+  "Operaciones preventivas":          "#eab308",
+  "Capturas por delitos electorales": "#eab308",
   "Incidentes totales":               "#6B7280",
 };
 
@@ -238,7 +238,7 @@ function FlipCard({ c }: FlipCardProps) {
   return (
     <div
       className="relative w-full overflow-hidden"
-      style={{ perspective: "1000px", height: 285, minHeight: 285 }}
+      style={{ perspective: "1000px", height: 310, minHeight: 310 }}
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
       onClick={() => setFlipped((f) => !f)}
@@ -265,14 +265,14 @@ function FlipCard({ c }: FlipCardProps) {
             overflow: "hidden",
           }}
         >
-          {/* Photo: 200px, showing upper body not just face */}
-          <div className="relative overflow-hidden bg-gray-100" style={{ flexShrink: 0, height: 200 }}>
+          {/* Photo: 220px, zoomed out to avoid clipping heads */}
+          <div className="relative overflow-hidden bg-gray-100" style={{ flexShrink: 0, height: 220 }}>
             <Image
               src={c.foto}
               alt={c.nombre}
               fill
               className="object-cover"
-              style={{ objectPosition: "center 15%" }}
+              style={{ objectPosition: "center 10%" }}
               sizes="(max-width: 640px) 50vw, 33vw"
             />
           </div>
@@ -280,15 +280,9 @@ function FlipCard({ c }: FlipCardProps) {
             <p className="text-sm font-bold leading-tight" style={{ color: "var(--foreground)" }}>
               {c.nombre}
             </p>
-            <div className="flex items-center gap-1.5 mt-1 flex-wrap">
-              <span
-                className="rounded-full px-2 py-0.5 text-xs font-semibold"
-                style={{ backgroundColor: `${c.espectroColor}18`, color: c.espectroColor }}
-              >
-                {c.espectro}
-              </span>
-            </div>
-            <p className="mt-1 text-xs" style={{ color: "var(--muted)" }}>Ver posiciones →</p>
+            <p className="mt-1 text-xs" style={{ color: "#6b7280" }}>
+              {c.espectro}
+            </p>
           </div>
         </div>
 
@@ -329,9 +323,10 @@ function FlipCard({ c }: FlipCardProps) {
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function RiesgosElectoralesPage() {
-  const [activeSection, setActiveSection]   = useState("cifras");
-  const [showBackToTop, setShowBackToTop]   = useState(false);
+  const [activeSection, setActiveSection]     = useState("cifras");
+  const [showBackToTop, setShowBackToTop]     = useState(false);
   const [hallazgoExpanded, setHallazgoExpanded] = useState(false);
+  const [hoveredVerPerfiles, setHoveredVerPerfiles] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
   // Back-to-top tracking
@@ -635,7 +630,10 @@ export default function RiesgosElectoralesPage() {
                 >
                   <span
                     className="rounded-full px-2.5 py-0.5 text-xs font-bold self-start"
-                    style={{ backgroundColor: `${color}18`, color }}
+                    style={{
+                      backgroundColor: color === "#eab308" ? "#fde047" : `${color}18`,
+                      color: color === "#eab308" ? "#1a1a1a" : color,
+                    }}
                   >
                     {inc.tipo}
                   </span>
@@ -681,7 +679,6 @@ export default function RiesgosElectoralesPage() {
                     border: "1px solid var(--border)",
                   }}
                 >
-                  <span className="text-lg">📄</span>
                   <p
                     className="text-sm font-semibold leading-snug overflow-hidden"
                     style={{
@@ -719,14 +716,6 @@ export default function RiesgosElectoralesPage() {
           </div>
         </div>
 
-        {/* ── Aviso legal ────────────────────────────────────────────────── */}
-        <p className="text-xs leading-relaxed mb-8" style={{ color: "var(--muted)", opacity: 0.7 }}>
-          <span className="font-semibold uppercase tracking-wide">Aviso legal</span> · Herramienta informativa
-          independiente. No afiliada a ningún candidato, partido o entidad gubernamental. Los datos
-          provienen de fuentes institucionales públicas del Estado colombiano. Verifica siempre con
-          las fuentes originales enlazadas arriba.
-        </p>
-
         {/* ── CTAs (item 15: centered) ────────────────────────────────────── */}
         <div className="flex justify-center gap-4 flex-wrap">
           <Link
@@ -738,8 +727,16 @@ export default function RiesgosElectoralesPage() {
           </Link>
           <Link
             href="/candidatos"
-            className="rounded-full px-6 py-2.5 text-sm font-semibold border transition hover:opacity-80"
-            style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
+            className="rounded-full px-6 py-2.5 text-sm font-semibold"
+            style={{
+              border: "1px solid var(--border)",
+              color: hoveredVerPerfiles ? "#1a1a1a" : "var(--foreground)",
+              backgroundColor: hoveredVerPerfiles ? "#eab308" : "transparent",
+              transition: "background 200ms ease, color 200ms ease",
+              cursor: "pointer",
+            }}
+            onMouseEnter={() => setHoveredVerPerfiles(true)}
+            onMouseLeave={() => setHoveredVerPerfiles(false)}
           >
             Ver perfiles de candidatos
           </Link>

@@ -26,16 +26,121 @@ const FILTER_LABELS: Record<SpectrumFilter, string> = {
   right: "Derecha",
 };
 
-// Order for the Derecha tab: Paloma before Abelardo
+// Explicit order for the "Todos" horizontal scroll
+const TODOS_ORDER = [
+  "ivan-cepeda",
+  "roy-barreras",
+  "sergio-fajardo",
+  "claudia-lopez",
+  "paloma-valencia",
+  "abelardo-de-la-espriella",
+];
+
+// Explicit order for the "Derecha" tab
 const RIGHT_ORDER = ["paloma-valencia", "abelardo-de-la-espriella"];
+
+// ── Filter tab — yellow hover/active ─────────────────────────────────────────
+
+function FilterTab({
+  active, label, onClick,
+}: { active: boolean; label: string; onClick: () => void }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="rounded-full px-4 py-1.5 text-sm font-medium"
+      style={{
+        backgroundColor: active ? "#eab308" : hovered ? "#fde047" : "var(--surface)",
+        color: active || hovered ? "#1a1a1a" : "var(--foreground)",
+        border: `1px solid ${active ? "#eab308" : "var(--border)"}`,
+        transition: "background 150ms ease, color 150ms ease",
+        cursor: "pointer",
+      }}
+    >
+      {label}
+    </button>
+  );
+}
+
+// ── Candidate card ────────────────────────────────────────────────────────────
+// scrollMode: rectangular 280×320 card with 180px photo area
+// grid mode: circular photo, centered layout (unchanged)
 
 interface CandidateCardProps {
   c: CandidateSummary;
   onLightbox: (src: string, name: string) => void;
-  extraStyle?: React.CSSProperties;
+  scrollMode?: boolean;
 }
 
-function CandidateCard({ c, onLightbox, extraStyle }: CandidateCardProps) {
+function CandidateCard({ c, onLightbox, scrollMode }: CandidateCardProps) {
+  const [hovered, setHovered] = useState(false);
+  const photo = candidatePhoto(c.id);
+
+  if (scrollMode) {
+    return (
+      <Link
+        href={`/candidatos/${c.id}`}
+        className="flex flex-col rounded-2xl overflow-hidden"
+        style={{
+          width: 280,
+          flexShrink: 0,
+          scrollSnapAlign: "start",
+          minHeight: 320,
+          backgroundColor: "var(--surface)",
+          border: `1px solid ${hovered ? "var(--primary)" : "var(--border)"}`,
+          boxShadow: hovered ? "0 8px 24px rgba(0,0,0,0.12)" : "0 1px 3px rgba(0,0,0,0.06)",
+          transform: hovered ? "translateY(-4px)" : "translateY(0)",
+          transition: "box-shadow 200ms ease, transform 200ms ease, border-color 200ms ease",
+        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        {/* Rectangular photo area */}
+        {photo ? (
+          <div
+            className="relative overflow-hidden"
+            style={{ height: 180, flexShrink: 0, backgroundColor: "#f3f4f6", cursor: "zoom-in" }}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); onLightbox(photo, c.name); }}
+          >
+            <Image
+              src={photo}
+              alt={c.name}
+              fill
+              className="object-cover"
+              style={{ objectPosition: "center 15%" }}
+              unoptimized
+              sizes="280px"
+            />
+          </div>
+        ) : (
+          <div
+            className="flex items-center justify-center text-2xl font-bold text-white"
+            style={{ height: 180, flexShrink: 0, backgroundColor: "var(--secondary)" }}
+          >
+            {c.name.charAt(0)}
+          </div>
+        )}
+        {/* Content */}
+        <div className="flex flex-col flex-1" style={{ padding: 20 }}>
+          <h2 className="text-base font-bold leading-tight" style={{ color: "var(--foreground)" }}>
+            {c.name}
+          </h2>
+          <p className="mt-0.5 text-xs" style={{ color: "var(--muted)" }}>
+            {c.party ?? "Sin partido registrado"}
+          </p>
+          {c.spectrum && (
+            <div className="mt-3 w-full max-w-[160px]">
+              <SpectrumBar spectrum={c.spectrum} candidateId={c.id} />
+            </div>
+          )}
+        </div>
+      </Link>
+    );
+  }
+
+  // Grid mode — circular photo, centered layout
   return (
     <Link
       href={`/candidatos/${c.id}`}
@@ -43,7 +148,6 @@ function CandidateCard({ c, onLightbox, extraStyle }: CandidateCardProps) {
       style={{
         border: "1px solid var(--border)",
         boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
-        ...extraStyle,
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 24px rgba(0,0,0,0.12)";
@@ -54,18 +158,13 @@ function CandidateCard({ c, onLightbox, extraStyle }: CandidateCardProps) {
         (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
       }}
     >
-      {/* Circular photo — click opens lightbox without navigating */}
-      {candidatePhoto(c.id) ? (
+      {photo ? (
         <div
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onLightbox(candidatePhoto(c.id)!, c.name);
-          }}
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); onLightbox(photo, c.name); }}
           style={{ cursor: "zoom-in" }}
         >
           <Image
-            src={candidatePhoto(c.id)!}
+            src={photo}
             alt={c.name}
             width={80}
             height={80}
@@ -82,18 +181,12 @@ function CandidateCard({ c, onLightbox, extraStyle }: CandidateCardProps) {
           {c.name.charAt(0)}
         </div>
       )}
-
-      {/* Name */}
       <h2 className="mt-3 text-base font-bold leading-tight" style={{ color: "var(--foreground)" }}>
         {c.name}
       </h2>
-
-      {/* Party */}
       <p className="mt-0.5 text-xs" style={{ color: "var(--muted)" }}>
         {c.party ?? "Sin partido registrado"}
       </p>
-
-      {/* Spectrum bar */}
       {c.spectrum && (
         <div className="mt-3 w-full max-w-[160px]">
           <SpectrumBar spectrum={c.spectrum} candidateId={c.id} />
@@ -148,13 +241,23 @@ export default function CandidatosPage() {
       return SPECTRUM_BUCKETS[c.spectrum] === filter;
     })
     .sort((a, b) => {
-      if (filter !== "right") return 0;
-      const ai = RIGHT_ORDER.indexOf(a.id);
-      const bi = RIGHT_ORDER.indexOf(b.id);
-      if (ai === -1 && bi === -1) return 0;
-      if (ai === -1) return 1;
-      if (bi === -1) return -1;
-      return ai - bi;
+      if (filter === "all") {
+        const ai = TODOS_ORDER.indexOf(a.id);
+        const bi = TODOS_ORDER.indexOf(b.id);
+        if (ai === -1 && bi === -1) return 0;
+        if (ai === -1) return 1;
+        if (bi === -1) return -1;
+        return ai - bi;
+      }
+      if (filter === "right") {
+        const ai = RIGHT_ORDER.indexOf(a.id);
+        const bi = RIGHT_ORDER.indexOf(b.id);
+        if (ai === -1 && bi === -1) return 0;
+        if (ai === -1) return 1;
+        if (bi === -1) return -1;
+        return ai - bi;
+      }
+      return 0;
     });
 
   const handleLightbox = (src: string, name: string) => setLightbox({ src, name });
@@ -180,43 +283,43 @@ export default function CandidatosPage() {
           Haz clic en un candidato para ver fuentes y detalles por tema.
         </div>
 
-        {/* ── Spectrum filter ─────────────────────────────────────────────── */}
-        <div className="mt-6 flex gap-2 flex-wrap">
+        {/* ── Spectrum filter — centered, yellow hover/active ──────────────── */}
+        <div className="mt-6 flex justify-center gap-2 flex-wrap">
           {(["all", "left", "center", "right"] as SpectrumFilter[]).map((f) => (
-            <button
+            <FilterTab
               key={f}
+              active={filter === f}
+              label={FILTER_LABELS[f]}
               onClick={() => setFilter(f)}
-              className="rounded-full px-4 py-1.5 text-sm font-medium transition"
-              style={{
-                backgroundColor: filter === f ? "var(--secondary)" : "var(--surface)",
-                color: filter === f ? "#FFFFFF" : "var(--foreground)",
-                border: `1px solid ${filter === f ? "var(--secondary)" : "var(--border)"}`,
-              }}
-            >
-              {FILTER_LABELS[f]}
-            </button>
+            />
           ))}
         </div>
 
         {/* ── Candidate list ───────────────────────────────────────────────── */}
         {filter === "all" ? (
-          <div className="relative mt-6">
+          <div className="relative mt-6" style={{ overflow: "visible" }}>
             <div
-              className="flex gap-5 overflow-x-auto pb-3"
-              style={{ scrollSnapType: "x mandatory", scrollbarWidth: "thin" }}
+              className="flex gap-5"
+              style={{
+                overflowX: "auto",
+                scrollSnapType: "x mandatory",
+                scrollbarWidth: "thin",
+                paddingTop: 16,
+                paddingBottom: 20,
+              }}
             >
               {filteredCandidates.map((c) => (
                 <CandidateCard
                   key={c.id}
                   c={c}
                   onLightbox={handleLightbox}
-                  extraStyle={{ width: 220, flexShrink: 0, scrollSnapAlign: "start" }}
+                  scrollMode
                 />
               ))}
             </div>
             {/* Right gradient fade hint */}
             <div
-              className="absolute right-0 top-0 bottom-3 w-16 pointer-events-none"
+              className="absolute right-0 top-0 bottom-0 w-16 pointer-events-none"
               style={{ background: "linear-gradient(to right, transparent, var(--background))" }}
             />
           </div>
