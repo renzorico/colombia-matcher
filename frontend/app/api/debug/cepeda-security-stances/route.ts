@@ -18,6 +18,10 @@ import { getCandidateProfile } from "@/services/profiles";
 const EVIDENCE_QUOTE_LEN = 120;
 
 export async function GET(): Promise<Response> {
+  if (process.env.NODE_ENV === "production") {
+    return Response.json({ error: "Not found" }, { status: 404 });
+  }
+
   // Detect whether the Opus branch had a chance to fire.
   // extractStances falls back silently, so we report based on key presence.
   const hasApiKey = Boolean(process.env.ANTHROPIC_API_KEY);

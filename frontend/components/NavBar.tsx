@@ -5,9 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const MAIN_LINKS = [
-  { href: "/candidatos",    label: "Candidatos" },
-  { href: "/quiz",          label: "Quiz" },
-  { href: "/metodologia",   label: "Metodología" },
+  { href: "/candidatos",          label: "Candidatos" },
+  { href: "/quiz",                label: "Quiz" },
+  { href: "/riesgos-electorales", label: "Riesgos Electorales" },
+  { href: "/metodologia",         label: "Metodología" },
 ];
 
 export default function NavBar() {
