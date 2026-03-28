@@ -146,16 +146,19 @@ export const STATS = [
 export const MECANISMOS = [
   {
     numero: "1",
+    icono: "🏛️",
     titulo: "Suplantan al Estado",
     desc: "Los grupos armados ejercen funciones de gobierno en territorios donde el Estado tiene presencia débil: controlan precios, resuelven disputas, regulan la vida cotidiana.",
   },
   {
     numero: "2",
+    icono: "🚫",
     titulo: "Regulan campañas",
     desc: "Imponen restricciones a las campañas políticas: prohíben mítines, controlan cuáles candidatos pueden hacer proselitismo, extorsionan a aspirantes y financiadores.",
   },
   {
     numero: "3",
+    icono: "⚠️",
     titulo: "Vetan candidaturas",
     desc: "Amenazan o eliminan físicamente a candidatos que no cuenten con su aval. En algunos municipios, solo se presentan candidatos previamente aprobados por el grupo dominante.",
   },
@@ -201,20 +204,22 @@ export const INCIDENTES = [
 ];
 
 export const PARTIDOS_DISTRIBUCION = [
-  { partido: "Pacto Histórico",       municipios: 38, pct: 55.1, color: "#DC2626" },
-  { partido: "Alianza por Colombia",  municipios: 8,  pct: 11.6, color: "#2563EB" },
-  { partido: "Partido de la U",       municipios: 8,  pct: 11.6, color: "#F59E0B" },
-  { partido: "Frente Amplio Unitario",municipios: 6,  pct: 8.7,  color: "#7C3AED" },
-  { partido: "Partido Liberal",       municipios: 6,  pct: 8.7,  color: "#BE123C" },
-  { partido: "Partido Conservador",   municipios: 2,  pct: 2.9,  color: "#1D4ED8" },
-  { partido: "Centro Democrático",    municipios: 1,  pct: 1.4,  color: "#1E3A5F" },
+  { partido: "Pacto Histórico",       municipios: 38, pct: 55.1, color: "#c026d3" },
+  { partido: "Alianza por Colombia",  municipios: 8,  pct: 11.6, color: "#2563eb" },
+  { partido: "Partido de la U",       municipios: 8,  pct: 11.6, color: "#ca8a04" },
+  { partido: "Frente Amplio Unitario",municipios: 6,  pct: 8.7,  color: "#16a34a" },
+  { partido: "Partido Liberal",       municipios: 6,  pct: 8.7,  color: "#dc2626" },
+  { partido: "Partido Conservador",   municipios: 2,  pct: 2.9,  color: "#1e40af" },
+  { partido: "Centro Democrático",    municipios: 1,  pct: 1.4,  color: "#7c3aed" },
 ];
 
 export interface CandidatoPosicion {
+  id: string;
   nombre: string;
   partido: string;
   espectro: string;
   espectroColor: string;
+  foto: string;
   postura: string;
   pazTotal: string;
   propuestaClave: string;
@@ -222,55 +227,67 @@ export interface CandidatoPosicion {
 
 export const CANDIDATOS_POSICIONES: CandidatoPosicion[] = [
   {
+    id: "ivan-cepeda",
     nombre: "Iván Cepeda",
     partido: "Pacto Histórico",
     espectro: "Izquierda",
     espectroColor: "#DC2626",
+    foto: "/candidates/ivan-cepeda.jpg",
     postura: "Negociación puntual con resultados concretos",
     pazTotal: "Reforma, no abandono — \"mucho más puntual y con resultados concretos\"",
     propuestaClave: "Paz territorial con transformación económica. Oro ilegal y narcotráfico como raíz del crecimiento armado.",
   },
   {
+    id: "roy-barreras",
     nombre: "Roy Barreras",
     partido: "Frente por la Vida",
     espectro: "Centro-izquierda",
     espectroColor: "#EA580C",
+    foto: "/candidates/roy-barreras.jpg",
     postura: "Diálogos con mayor exigencia de resultados",
     pazTotal: "Continuidad reformada con garantías reales",
     propuestaClave: "Paz negociada con garantías para líderes sociales y firmantes del Acuerdo 2016.",
   },
   {
+    id: "sergio-fajardo",
     nombre: "Sergio Fajardo",
     partido: "Dignidad y Compromiso",
     espectro: "Centro",
     espectroColor: "#CA8A04",
+    foto: "/candidates/sergio-fajardo.jpg",
     postura: "Rechazo a la ilegalidad + justicia social",
     pazTotal: "Ni continuidad ni ruptura explícita",
     propuestaClave: "Justicia social como base estructural de la seguridad. \"Sin justicia social no hay desarrollo.\"",
   },
   {
+    id: "claudia-lopez",
     nombre: "Claudia López",
     partido: "Independiente",
     espectro: "Centro",
     espectroColor: "#CA8A04",
+    foto: "/candidates/claudia-lopez.jpg",
     postura: "Sin postura pública detallada en 2026",
     pazTotal: "Distancia crítica al gobierno Petro",
     propuestaClave: "Anticorrupción, transparencia institucional y garantías democráticas.",
   },
   {
+    id: "paloma-valencia",
     nombre: "Paloma Valencia",
     partido: "Centro Democrático",
     espectro: "Centro-derecha",
     espectroColor: "#2563EB",
+    foto: "/candidates/paloma-valencia.jpg",
     postura: "Fuerza pública — sin negociaciones",
     pazTotal: "Rechazo total — propone \"Seguridad Total\"",
     propuestaClave: "Las 4R: Robustecer FF.PP., Reducir ingresos ilegales, Re-enamorar comunidades, Restablecer la legalidad. Plan Colombia 2.0.",
   },
   {
+    id: "abelardo-de-la-espriella",
     nombre: "Abelardo de la Espriella",
     partido: "Defensores de la Patria",
     espectro: "Derecha",
     espectroColor: "#1E3A5F",
+    foto: "/candidates/abelardo-de-la-espriella.jpg",
     postura: "Ofensiva militar — sin negociación",
     pazTotal: "Rechazo total",
     propuestaClave: "Seguridad democrática estilo Uribe. Restaurar autoridad del Estado. Libre empresa y orden público.",
