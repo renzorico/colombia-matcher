@@ -59,13 +59,14 @@ const NIVEL_STYLE = {
   accion_urgente:   { label: "Acción Urgente",   color: "#EA580C", bg: "#FFF7ED" },
 };
 
+// Semantic colors: red = security, orange = electoral irregularity, blue = institutional, gray = aggregate
 const INCIDENT_SEVERITY: Record<string, string> = {
-  "Ataque con explosivos":       "#DC2626",
-  "Trashumancia electoral":      "#EA580C",
-  "Traslado de puestos":         "#CA8A04",
-  "Operaciones preventivas":     "#2563EB",
-  "Capturas por delitos electorales": "#7C3AED",
-  "Incidentes totales":          "#6B7280",
+  "Ataque con explosivos":            "#DC2626",
+  "Trashumancia electoral":           "#EA580C",
+  "Traslado de puestos":              "#EA580C",
+  "Operaciones preventivas":          "#2563EB",
+  "Capturas por delitos electorales": "#2563EB",
+  "Incidentes totales":               "#6B7280",
 };
 
 const SECTION_BORDER = "2px solid var(--primary)";
@@ -80,9 +81,13 @@ function useCountUp(target: number, triggered: boolean, duration = 1200): number
     const start = performance.now();
     const tick = (now: number) => {
       const t = Math.min((now - start) / duration, 1);
+      if (t >= 1) {
+        setCount(target);
+        return;
+      }
       const eased = 1 - Math.pow(1 - t, 3);
       setCount(Math.round(eased * target));
-      if (t < 1) frame = requestAnimationFrame(tick);
+      frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
@@ -112,15 +117,14 @@ function StatCard({ value, label, sub, color }: StatCardProps) {
     return () => obs.disconnect();
   }, []);
 
-  // Try to extract a numeric value for count-up
   const numMatch = value.replace(/[+%M]/g, "").match(/^(\d+(?:\.\d+)?)$/);
   const numericTarget = numMatch ? parseFloat(numMatch[1]) : null;
   const isCountable = numericTarget !== null && !value.includes(".");
   const counted = useCountUp(isCountable ? (numericTarget ?? 0) : 0, visible);
 
   const displayValue = () => {
-    if (!visible) return value;
     if (!isCountable) return value;
+    if (!visible || counted === 0) return value;
     const prefix = value.startsWith("+") ? "+" : "";
     const suffix = value.endsWith("%") ? "%" : value.endsWith("M") ? "M" : "";
     return `${prefix}${counted}${suffix}`;
@@ -161,8 +165,8 @@ function FlipCard({ c }: FlipCardProps) {
 
   return (
     <div
-      className="relative"
-      style={{ perspective: "1000px", height: 260 }}
+      className="relative w-full overflow-hidden"
+      style={{ perspective: "1000px", height: 260, minHeight: 260 }}
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
       onClick={() => setFlipped((f) => !f)}
@@ -179,46 +183,49 @@ function FlipCard({ c }: FlipCardProps) {
       >
         {/* ── Front ── */}
         <div
-          className="absolute inset-0 rounded-xl overflow-hidden flex flex-col"
+          className="absolute inset-0 rounded-xl flex flex-col"
           style={{
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             backgroundColor: "var(--surface)",
             border: "1px solid var(--border)",
             borderTop: `3px solid ${c.espectroColor}`,
+            overflow: "hidden",
           }}
         >
-          <div className="relative flex-1 overflow-hidden bg-gray-100">
+          <div
+            className="relative overflow-hidden bg-gray-100"
+            style={{ flexShrink: 0, height: 160 }}
+          >
             <Image
               src={c.foto}
               alt={c.nombre}
               fill
               className="object-cover object-top"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              sizes="(max-width: 640px) 50vw, 33vw"
             />
           </div>
-          <div className="px-3 py-3">
+          <div className="px-3 py-2 flex flex-col justify-center flex-1">
             <p className="text-sm font-bold leading-tight" style={{ color: "var(--foreground)" }}>
               {c.nombre}
             </p>
-            <div className="flex items-center gap-2 mt-1 flex-wrap">
+            <div className="flex items-center gap-1.5 mt-1 flex-wrap">
               <span
                 className="rounded-full px-2 py-0.5 text-xs font-semibold"
                 style={{ backgroundColor: `${c.espectroColor}18`, color: c.espectroColor }}
               >
                 {c.espectro}
               </span>
-              <span className="text-xs" style={{ color: "var(--muted)" }}>{c.partido}</span>
             </div>
             <p className="mt-1.5 text-xs" style={{ color: "var(--muted)" }}>
-              Toca para ver posiciones →
+              Ver posiciones →
             </p>
           </div>
         </div>
 
         {/* ── Back ── */}
         <div
-          className="absolute inset-0 rounded-xl overflow-auto flex flex-col px-4 py-4 gap-3"
+          className="absolute inset-0 rounded-xl overflow-auto flex flex-col px-4 py-4 gap-2.5"
           style={{
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
@@ -229,9 +236,10 @@ function FlipCard({ c }: FlipCardProps) {
           }}
         >
           <div>
-            <p className="text-xs font-bold mb-0.5" style={{ color: c.espectroColor }}>
+            <p className="text-xs font-bold" style={{ color: c.espectroColor }}>
               {c.nombre}
             </p>
+            <p className="text-xs" style={{ color: "var(--muted)" }}>{c.partido}</p>
           </div>
           <div>
             <p className="text-xs font-semibold mb-0.5" style={{ color: "var(--muted)" }}>
@@ -266,20 +274,34 @@ function FlipCard({ c }: FlipCardProps) {
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function RiesgosElectoralesPage() {
-  const [openDepto, setOpenDepto]   = useState<string | null>(null);
-  const [search, setSearch]         = useState("");
-  const [activeSection, setActiveSection] = useState("cifras");
+  const [openDepto, setOpenDepto]           = useState<string | null>(null);
+  const [search, setSearch]                 = useState("");
+  const [activeSection, setActiveSection]   = useState("cifras");
+  const [showBackToTop, setShowBackToTop]   = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const grouped = groupByDepto(MUNICIPIOS);
 
-  // ── Scroll-spy ──────────────────────────────────────────────────────────────
+  // ── Back-to-top scroll tracking ─────────────────────────────────────────────
   useEffect(() => {
+    const handler = () => setShowBackToTop(window.scrollY > 500);
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  // ── Scroll-spy (topmost-wins) ────────────────────────────────────────────────
+  useEffect(() => {
+    const intersecting = new Set<string>();
     const observers: IntersectionObserver[] = [];
     NAV_SECTIONS.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (!el) return;
       const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
+        ([entry]) => {
+          if (entry.isIntersecting) intersecting.add(id);
+          else intersecting.delete(id);
+          const first = NAV_SECTIONS.find((s) => intersecting.has(s.id));
+          if (first) setActiveSection(first.id);
+        },
         { rootMargin: "-15% 0px -75% 0px" }
       );
       obs.observe(el);
@@ -327,7 +349,11 @@ export default function RiesgosElectoralesPage() {
                 <span className="font-semibold" style={{ color: "var(--foreground)" }}>Defensoría del Pueblo</span>{" "}
                 y la{" "}
                 <span className="font-semibold" style={{ color: "var(--foreground)" }}>Misión de Observación Electoral (MOE)</span>{" "}
-                sobre los municipios con riesgo crítico de seguridad electoral para las elecciones presidenciales de mayo 2026.
+                sobre los municipios con riesgo crítico de seguridad electoral para las elecciones presidenciales de mayo 2026.{" "}
+                <span style={{ color: "var(--muted)" }}>
+                  Los datos de riesgo se basan en alertas emitidas antes de las legislativas del 8 de marzo de 2026
+                  y aplican igualmente a la primera vuelta presidencial de mayo 2026.
+                </span>
               </p>
             </div>
           </div>
@@ -344,33 +370,46 @@ export default function RiesgosElectoralesPage() {
 
         {/* ── Sticky in-page nav ──────────────────────────────────────────── */}
         <div
-          ref={navRef}
-          className="sticky z-20 -mx-4 px-4 py-2 mb-8 overflow-x-auto"
+          className="sticky z-20 -mx-4 mb-8"
           style={{
             top: 0,
             backgroundColor: "var(--background)",
             borderBottom: "1px solid var(--border)",
-            scrollbarWidth: "none",
           }}
         >
-          <div className="flex gap-2 min-w-max">
-            {NAV_SECTIONS.map(({ id, label }) => {
-              const isActive = activeSection === id;
-              return (
-                <button
-                  key={id}
-                  onClick={() => scrollTo(id)}
-                  className="rounded-full px-3 py-1.5 text-xs font-semibold whitespace-nowrap transition-all"
-                  style={{
-                    backgroundColor: isActive ? "var(--primary)" : "var(--surface)",
-                    color: isActive ? "#1A1A1A" : "var(--muted)",
-                    border: `1px solid ${isActive ? "var(--primary)" : "var(--border)"}`,
-                  }}
-                >
-                  {label}
-                </button>
-              );
-            })}
+          <div className="relative">
+            <div
+              ref={navRef}
+              className="overflow-x-auto px-4 py-2"
+              style={{ scrollbarWidth: "none" }}
+            >
+              <div className="flex gap-2 min-w-max">
+                {NAV_SECTIONS.map(({ id, label }) => {
+                  const isActive = activeSection === id;
+                  return (
+                    <button
+                      key={id}
+                      onClick={() => scrollTo(id)}
+                      className="rounded-full px-3 py-1.5 text-xs font-semibold whitespace-nowrap transition-all"
+                      style={{
+                        backgroundColor: isActive ? "var(--primary)" : "var(--surface)",
+                        color: isActive ? "#1A1A1A" : "var(--muted)",
+                        border: `1px solid ${isActive ? "var(--primary)" : "var(--border)"}`,
+                      }}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+            {/* Right-side gradient fade to hint at more items */}
+            <div
+              className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none"
+              style={{
+                background: "linear-gradient(to right, transparent, var(--background))",
+              }}
+            />
           </div>
         </div>
 
@@ -436,126 +475,13 @@ export default function RiesgosElectoralesPage() {
           </div>
         </div>
 
-        {/* ── Municipios ─────────────────────────────────────────────────── */}
-        <div id="municipios" className="scroll-mt-20">
-          <h2 className="text-lg font-bold pb-2 mb-1" style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}>
-            Municipios por departamento
-          </h2>
-          <p className="text-xs mb-3" style={{ color: "var(--muted)" }}>
-            Fuente: Defensoría ATE 013-2025 + IS 003-2026 y Mapa de Riesgo 2026 (MOE).
-            Ordenados por número de municipios en acción inmediata.
+        {/* ── Hallazgo crítico ───────────────────────────────────────────── */}
+        <div className="mb-2" style={{ borderTop: "1px solid var(--border)", paddingTop: "2rem" }}>
+          <p className="text-xs font-semibold uppercase tracking-wide mb-4" style={{ color: "var(--muted)" }}>
+            Análisis cruzado
           </p>
-
-          {/* Search */}
-          <input
-            type="text"
-            placeholder="Buscar departamento o municipio…"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-xl px-4 py-2.5 text-sm mb-3 outline-none focus:ring-2"
-            style={{
-              backgroundColor: "var(--surface)",
-              border: "1px solid var(--border)",
-              color: "var(--foreground)",
-            }}
-          />
-
-          {/* Legend */}
-          <div className="flex flex-wrap gap-3 mb-4">
-            {Object.entries(NIVEL_STYLE).map(([k, v]) => (
-              <span
-                key={k}
-                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold"
-                style={{ backgroundColor: v.bg, color: v.color, border: `1px solid ${v.color}30` }}
-              >
-                <span className="w-2 h-2 rounded-full inline-block" style={{ backgroundColor: v.color }} />
-                {v.label}
-              </span>
-            ))}
-          </div>
-
-          <div className="flex flex-col gap-2 mb-10">
-            {filteredGrouped.length === 0 && (
-              <p className="text-sm text-center py-6" style={{ color: "var(--muted)" }}>
-                No se encontraron resultados para &ldquo;{search}&rdquo;
-              </p>
-            )}
-            {filteredGrouped.map(([depto, muns]) => {
-              const isOpen = openDepto === depto || !!q;
-              const nImm = muns.filter((m) => m.nivel_defensoria === "accion_inmediata").length;
-              return (
-                <div
-                  key={depto}
-                  className="rounded-xl overflow-hidden"
-                  style={{
-                    border: `1px solid ${isOpen ? "#DC2626" : "var(--border)"}`,
-                    backgroundColor: "var(--surface)",
-                  }}
-                >
-                  <button
-                    onClick={() => !q && setOpenDepto((p) => p === depto ? null : depto)}
-                    className="w-full flex items-center justify-between gap-3 px-5 py-3.5 text-left transition hover:-translate-y-0.5"
-                    style={{
-                      backgroundColor: isOpen ? "color-mix(in srgb, #DC2626 5%, transparent)" : "transparent",
-                      cursor: q ? "default" : "pointer",
-                    }}
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      <span className="text-sm font-semibold truncate" style={{ color: isOpen ? "#DC2626" : "var(--foreground)" }}>
-                        {depto}
-                      </span>
-                      <span className="flex-shrink-0 rounded-full px-2 py-0.5 text-xs font-bold" style={{ backgroundColor: "#FEF2F2", color: "#DC2626" }}>
-                        {muns.length} municipio{muns.length !== 1 ? "s" : ""}
-                      </span>
-                      {nImm > 0 && (
-                        <span className="flex-shrink-0 hidden sm:inline rounded-full px-2 py-0.5 text-xs font-semibold" style={{ backgroundColor: "#FEF2F2", color: "#DC2626", border: "1px solid #DC262630" }}>
-                          {nImm} acción inmediata
-                        </span>
-                      )}
-                    </div>
-                    {!q && (
-                      <span
-                        className="text-base font-bold flex-shrink-0 transition-transform duration-200"
-                        style={{ color: "var(--muted)", transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}
-                      >
-                        +
-                      </span>
-                    )}
-                  </button>
-
-                  <div
-                    className="overflow-hidden transition-all duration-200"
-                    style={{ maxHeight: isOpen ? "1200px" : "0px", opacity: isOpen ? 1 : 0 }}
-                  >
-                    <div className="px-5 pb-4 flex flex-col gap-2">
-                      {muns.map((m) => {
-                        const ns = NIVEL_STYLE[m.nivel_defensoria];
-                        return (
-                          <div key={m.municipio} className="rounded-lg px-3 py-2.5" style={{ backgroundColor: ns.bg, border: `1px solid ${ns.color}20` }}>
-                            <div className="flex flex-wrap items-center gap-2">
-                              <span className="text-sm font-semibold" style={{ color: "var(--foreground)" }}>{m.municipio}</span>
-                              <span className="rounded-full px-2 py-0.5 text-xs font-semibold" style={{ backgroundColor: "white", color: ns.color, border: `1px solid ${ns.color}40` }}>
-                                {ns.label}
-                              </span>
-                              {m.grupos_armados.map((g) => (
-                                <span key={g} className="rounded-full px-2 py-0.5 text-xs" style={{ backgroundColor: "#F3F4F6", color: "#374151" }}>
-                                  {g}
-                                </span>
-                              ))}
-                            </div>
-                            {m.nota && <p className="mt-1 text-xs" style={{ color: "var(--muted)" }}>{m.nota}</p>}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
         </div>
 
-        {/* ── Hallazgo crítico ───────────────────────────────────────────── */}
         <h2 className="text-lg font-bold pb-2 mb-4" style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}>
           Hallazgo crítico — Suroccidente colombiano
         </h2>
@@ -564,7 +490,7 @@ export default function RiesgosElectoralesPage() {
           <div className="flex items-start gap-3">
             <span className="text-2xl flex-shrink-0">🚩</span>
             <div>
-              <h3 className="text-base font-bold mb-2" style={{ color: "#991B1B" }}>
+              <h3 className="text-base font-extrabold mb-2" style={{ color: "#991B1B" }}>
                 10 municipios de Nariño y Cauca con &gt;50% para un solo partido
               </h3>
               <p className="text-sm leading-relaxed mb-3" style={{ color: "#7F1D1D" }}>
@@ -594,11 +520,14 @@ export default function RiesgosElectoralesPage() {
           <h3 className="text-sm font-bold mb-1" style={{ color: "var(--foreground)" }}>
             Distribución de 1er lugar al Senado en los 69 municipios de riesgo crítico
           </h3>
-          <p className="text-xs mb-4" style={{ color: "var(--muted)" }}>
+          <p className="text-xs mb-1" style={{ color: "var(--muted)" }}>
+            Partido que obtuvo más votos al Senado en cada municipio de riesgo crítico (legislativas 8 mar 2026)
+          </p>
+          <p className="text-xs mb-4" style={{ color: "var(--muted)", opacity: 0.7 }}>
             Fuente: Registraduría Nacional (escrutinio oficial) / Defensoría ATE 013-2025
           </p>
           <ResponsiveContainer width="100%" height={230}>
-            <BarChart data={PARTIDOS_DISTRIBUCION} layout="vertical" margin={{ top: 0, right: 44, left: 0, bottom: 0 }}>
+            <BarChart data={PARTIDOS_DISTRIBUCION} layout="vertical" margin={{ top: 0, right: 64, left: 0, bottom: 0 }}>
               <XAxis type="number" hide />
               <YAxis
                 type="category"
@@ -609,7 +538,10 @@ export default function RiesgosElectoralesPage() {
                 axisLine={false}
               />
               <Tooltip
-                formatter={(v) => [`${v} municipios`]}
+                formatter={(v, _name, props) => {
+                  const pct = (props as { payload?: { pct?: number } }).payload?.pct;
+                  return [`${v} municipios${pct !== undefined ? ` (${pct}%)` : ""}`];
+                }}
                 contentStyle={{ fontSize: 12, border: "1px solid var(--border)", borderRadius: 8, backgroundColor: "var(--surface)" }}
               />
               <Bar dataKey="municipios" radius={[0, 4, 4, 0]} label={{ position: "right", fontSize: 11, fill: "#6B6B6B" }}>
@@ -624,6 +556,144 @@ export default function RiesgosElectoralesPage() {
             tiene base electoral real en estas regiones. El indicador relevante es el subconjunto de 10
             municipios con &gt;50%, estadísticamente atípico en condiciones de pluralismo libre.
           </p>
+        </div>
+
+        {/* ── Municipios ─────────────────────────────────────────────────── */}
+        <div id="municipios" className="scroll-mt-20">
+          <h2 className="text-lg font-bold pb-2 mb-1" style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}>
+            Municipios por departamento
+          </h2>
+          <p className="text-xs mb-3" style={{ color: "var(--muted)" }}>
+            Fuente: Defensoría ATE 013-2025 + IS 003-2026 y Mapa de Riesgo 2026 (MOE).
+            Ordenados por número de municipios en acción inmediata.
+          </p>
+
+          {/* Search */}
+          <input
+            type="text"
+            placeholder="Buscar departamento o municipio…"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full rounded-xl px-4 py-2.5 text-sm mb-3 outline-none focus:ring-2"
+            style={{
+              backgroundColor: "var(--surface)",
+              border: "1px solid var(--border)",
+              color: "var(--foreground)",
+            }}
+          />
+
+          {/* Legend */}
+          <div className="flex flex-wrap gap-3 mb-4">
+            {Object.entries(NIVEL_STYLE).map(([k, v]) => (
+              <span
+                key={k}
+                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap"
+                style={{ backgroundColor: v.bg, color: v.color, border: `1px solid ${v.color}30` }}
+              >
+                <span className="w-2 h-2 rounded-full inline-block flex-shrink-0" style={{ backgroundColor: v.color }} />
+                {v.label}
+              </span>
+            ))}
+            <span
+              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap"
+              style={{ backgroundColor: "#F5F3FF", color: "#7C3AED", border: "1px solid #7C3AED30" }}
+            >
+              <span className="w-2 h-2 rounded-full inline-block flex-shrink-0" style={{ backgroundColor: "#7C3AED" }} />
+              Riesgo extremo MOE
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-2 mb-10">
+            {filteredGrouped.length === 0 && (
+              <p className="text-sm text-center py-6" style={{ color: "var(--muted)" }}>
+                No se encontraron resultados para &ldquo;{search}&rdquo;
+              </p>
+            )}
+            {filteredGrouped.map(([depto, muns]) => {
+              const isOpen = openDepto === depto || !!q;
+              const nImm = muns.filter((m) => m.nivel_defensoria === "accion_inmediata").length;
+              const nUrg = muns.filter((m) => m.nivel_defensoria === "accion_urgente").length;
+              return (
+                <div
+                  key={depto}
+                  className="rounded-xl overflow-hidden"
+                  style={{
+                    border: `1px solid ${isOpen ? "#DC2626" : "var(--border)"}`,
+                    backgroundColor: "var(--surface)",
+                  }}
+                >
+                  <button
+                    onClick={() => !q && setOpenDepto((p) => p === depto ? null : depto)}
+                    className="w-full flex items-center justify-between gap-3 px-5 py-3.5 text-left transition hover:-translate-y-0.5"
+                    style={{
+                      backgroundColor: isOpen ? "color-mix(in srgb, #DC2626 5%, transparent)" : "transparent",
+                      cursor: q ? "default" : "pointer",
+                    }}
+                  >
+                    <div className="flex items-center gap-2 min-w-0 flex-wrap">
+                      <span className="text-sm font-semibold truncate" style={{ color: isOpen ? "#DC2626" : "var(--foreground)" }}>
+                        {depto}
+                      </span>
+                      <span className="flex-shrink-0 rounded-full px-2 py-0.5 text-xs font-bold whitespace-nowrap" style={{ backgroundColor: "#FEF2F2", color: "#DC2626" }}>
+                        {muns.length} municipio{muns.length !== 1 ? "s" : ""}
+                      </span>
+                      {nImm > 0 && (
+                        <span className="flex-shrink-0 hidden sm:inline rounded-full px-2 py-0.5 text-xs font-semibold whitespace-nowrap" style={{ backgroundColor: "#FEF2F2", color: "#DC2626", border: "1px solid #DC262630" }}>
+                          {nImm} acción inmediata
+                        </span>
+                      )}
+                      {nUrg > 0 && nImm === 0 && (
+                        <span className="flex-shrink-0 hidden sm:inline rounded-full px-2 py-0.5 text-xs font-semibold whitespace-nowrap" style={{ backgroundColor: "#FFF7ED", color: "#EA580C", border: "1px solid #EA580C30" }}>
+                          {nUrg} acción urgente
+                        </span>
+                      )}
+                    </div>
+                    {!q && (
+                      <span
+                        className="text-base font-bold flex-shrink-0 transition-transform duration-200"
+                        style={{ color: "var(--muted)", transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}
+                      >
+                        +
+                      </span>
+                    )}
+                  </button>
+
+                  <div
+                    className="overflow-hidden transition-all duration-200"
+                    style={{ maxHeight: isOpen ? "1200px" : "0px", opacity: isOpen ? 1 : 0 }}
+                  >
+                    <div className="px-5 pb-4 flex flex-col gap-2">
+                      {muns.map((m) => {
+                        const ns = NIVEL_STYLE[m.nivel_defensoria];
+                        const isMoeExtreme = m.nivel_moe === "extremo" || m.nivel_moe === "extremo_violencia";
+                        return (
+                          <div key={m.municipio} className="rounded-lg px-3 py-2.5" style={{ backgroundColor: ns.bg, border: `1px solid ${ns.color}20` }}>
+                            <div className="flex flex-wrap items-center gap-2">
+                              <span className="text-sm font-semibold" style={{ color: "var(--foreground)" }}>{m.municipio}</span>
+                              <span className="rounded-full px-2 py-0.5 text-xs font-semibold whitespace-nowrap" style={{ backgroundColor: "white", color: ns.color, border: `1px solid ${ns.color}40` }}>
+                                {ns.label}
+                              </span>
+                              {isMoeExtreme && (
+                                <span className="rounded-full px-2 py-0.5 text-xs font-semibold whitespace-nowrap" style={{ backgroundColor: "#F5F3FF", color: "#7C3AED", border: "1px solid #7C3AED40" }}>
+                                  Extremo MOE
+                                </span>
+                              )}
+                              {m.grupos_armados.map((g) => (
+                                <span key={g} className="rounded-full px-2 py-0.5 text-xs whitespace-nowrap" style={{ backgroundColor: "#F3F4F6", color: "#374151" }}>
+                                  {g}
+                                </span>
+                              ))}
+                            </div>
+                            {m.nota && <p className="mt-1 text-xs" style={{ color: "var(--muted)" }}>{m.nota}</p>}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* ── Jornada 8 marzo — timeline ─────────────────────────────────── */}
@@ -686,10 +756,10 @@ export default function RiesgosElectoralesPage() {
           </h2>
           <p className="text-sm mb-5" style={{ color: "var(--muted)" }}>
             Posiciones sobre grupos armados, paz total y seguridad en territorios en conflicto.
-            Pasa el cursor (o toca) para ver la postura de cada candidato.
+            Pasa el cursor (o toca en móvil) para ver la postura de cada candidato.
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10" style={{ alignItems: "start" }}>
             {CANDIDATOS_POSICIONES.map((c) => (
               <FlipCard key={c.id} c={c} />
             ))}
@@ -697,7 +767,7 @@ export default function RiesgosElectoralesPage() {
         </div>
 
         {/* ── Fuentes ────────────────────────────────────────────────────── */}
-        <div id="fuentes" className="scroll-mt-20">
+        <div id="fuentes" className="scroll-mt-28">
           <h2 className="text-lg font-bold pb-2 mb-4" style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}>
             Fuentes primarias
           </h2>
@@ -762,6 +832,21 @@ export default function RiesgosElectoralesPage() {
         </div>
 
       </div>
+
+      {/* ── Back to top ────────────────────────────────────────────────────── */}
+      {showBackToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-6 right-6 z-50 rounded-full px-4 py-2.5 text-xs font-semibold shadow-lg transition hover:opacity-90"
+          style={{
+            backgroundColor: "var(--surface)",
+            border: "1px solid var(--border)",
+            color: "var(--foreground)",
+          }}
+        >
+          ↑ Volver arriba
+        </button>
+      )}
     </main>
   );
 }

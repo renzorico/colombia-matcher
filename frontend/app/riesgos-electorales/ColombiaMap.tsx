@@ -111,7 +111,7 @@ export default function ColombiaMap() {
       <ComposableMap
         projection="geoMercator"
         projectionConfig={{ center: [-74, 4.5], scale: 1750 }}
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: "100%", height: "450px", display: "block" }}
         height={450}
       >
         <Geographies geography={GEO_URL}>
