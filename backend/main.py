@@ -175,6 +175,22 @@ def health_check() -> dict[str, str]:
     return {"status": "ok"}
 
 
+@app.get("/debug/runtime", tags=["Meta"])
+def debug_runtime() -> dict[str, Any]:
+    """Runtime diagnostics for deployment/version mismatch debugging."""
+    publimetro_url = None
+    src = app.state.sources.get("src-valencia-publimetro-2026-02")
+    if src:
+        publimetro_url = src.get("url")
+
+    return {
+        "status": "ok",
+        "git_commit": os.getenv("RAILWAY_GIT_COMMIT_SHA") or os.getenv("GIT_COMMIT_SHA"),
+        "git_branch": os.getenv("RAILWAY_GIT_BRANCH") or os.getenv("GIT_BRANCH"),
+        "publimetro_url": publimetro_url,
+    }
+
+
 @app.get("/candidates", response_model=list[CandidateSummary], tags=["Data"])
 def get_candidates() -> list[dict]:
     """
