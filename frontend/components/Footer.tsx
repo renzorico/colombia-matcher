@@ -1,20 +1,20 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useLanguage } from "@/lib/i18n";
 
 const HIDE_ON = ["/quiz"];
 
 export default function Footer() {
   const pathname = usePathname();
+  const { t } = useLanguage();
   if (HIDE_ON.includes(pathname)) return null;
 
   return (
     <footer className="border-t border-gray-100 pt-5 pb-8 text-center text-xs text-gray-400">
-      <p>
-        Herramienta independiente · Sin afiliación política · Datos curados manualmente · Actualizado marzo 2026
-      </p>
+      <p>{t.footer.tagline}</p>
       <p className="mt-3">
-        Construido por{" "}
+        {t.footer.builtBy}{" "}
         <a
           href="https://www.linkedin.com/in/renzorico"
           target="_blank"
@@ -23,7 +23,7 @@ export default function Footer() {
         >
           Renzo Rico
         </a>
-        {" "}— Data Scientist
+        {" "}— {t.footer.role}
       </p>
     </footer>
   );

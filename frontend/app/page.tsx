@@ -2,20 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useLanguage } from "@/lib/i18n";
 
-const STATS = [
-  { number: "6",  label: "candidatos",  color: "#eab308" },
-  { number: "7",  label: "temas clave", color: "#1d4ed8" },
-  { number: "25", label: "preguntas",   color: "#dc2626" },
-];
+const STAT_COLORS = ["#eab308", "#1d4ed8", "#dc2626"];
 
-const STEPS = [
-  { emoji: "🗳️", title: "Respondes",     desc: "25 preguntas sobre los temas que más importan para Colombia en 2026." },
-  { emoji: "📊", title: "Comparamos",    desc: "Tus respuestas con las posiciones documentadas de cada candidato, tema por tema." },
-  { emoji: "🏆", title: "Descubres",     desc: "Qué candidato está más alineado con tus ideas, con fuentes verificables." },
-];
-
-function VerCandidatosButton() {
+function VerCandidatosButton({ label }: { label: string }) {
   const [hovered, setHovered] = useState(false);
   return (
     <Link
@@ -30,12 +21,22 @@ function VerCandidatosButton() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      Ver candidatos
+      {label}
     </Link>
   );
 }
 
 export default function Home() {
+  const { t } = useLanguage();
+
+  const STATS = [
+    { number: "6",  label: t.home.statsCandidates, color: STAT_COLORS[0] },
+    { number: "7",  label: t.home.statsTopics,      color: STAT_COLORS[1] },
+    { number: "25", label: t.home.statsQuestions,   color: STAT_COLORS[2] },
+  ];
+
+  const STEP_EMOJIS = ["🗳️", "📊", "🏆"];
+
   return (
     <main className="flex flex-1 flex-col">
 
@@ -48,11 +49,10 @@ export default function Home() {
           className="text-5xl sm:text-6xl font-extrabold tracking-tight leading-tight"
           style={{ color: "var(--primary)" }}
         >
-          Aclara tu voto
+          {t.home.title}
         </h1>
         <p className="mt-5 max-w-lg text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
-          Descubre qué candidato presidencial está más alineado con tus ideas.
-          25 preguntas. Sin sesgos. Sin política.
+          {t.home.subtitle}
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center gap-3">
           <Link
@@ -60,9 +60,9 @@ export default function Home() {
             className="rounded-full px-8 py-3 text-base font-bold shadow-lg transition hover:opacity-90"
             style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
           >
-            Comenzar quiz →
+            {t.home.startQuiz}
           </Link>
-          <VerCandidatosButton />
+          <VerCandidatosButton label={t.home.viewCandidates} />
         </div>
       </section>
 
@@ -70,7 +70,7 @@ export default function Home() {
       <section className="bg-surface border-b" style={{ borderColor: "var(--border)" }}>
         <div className="mx-auto max-w-2xl px-4 py-8 grid grid-cols-3 divide-x divide-gray-100">
           {STATS.map((s) => (
-            <div key={s.number} className="flex flex-col items-center gap-1 px-4 py-2">
+            <div key={s.label} className="flex flex-col items-center gap-1 px-4 py-2">
               <span
                 className="text-4xl sm:text-5xl font-extrabold tabular-nums"
                 style={{ color: s.color }}
@@ -88,16 +88,16 @@ export default function Home() {
       {/* ── How it works ──────────────────────────────────────────────────── */}
       <section className="flex flex-col items-center px-4 py-16">
         <h2 className="text-2xl font-bold text-center" style={{ color: "var(--foreground)" }}>
-          ¿Cómo funciona?
+          {t.home.howItWorks}
         </h2>
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-2xl">
-          {STEPS.map((step, i) => (
+          {t.home.steps.map((step, i) => (
             <div
               key={i}
               className="flex flex-col items-center text-center bg-surface rounded-2xl p-6 shadow-sm"
               style={{ border: "1px solid var(--border)" }}
             >
-              <span className="text-5xl mb-4">{step.emoji}</span>
+              <span className="text-5xl mb-4">{STEP_EMOJIS[i]}</span>
               <h3 className="text-xl font-bold" style={{ color: "var(--secondary)" }}>
                 {step.title}
               </h3>
@@ -113,11 +113,10 @@ export default function Home() {
             className="rounded-full px-8 py-3 text-base font-bold shadow transition hover:opacity-90"
             style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
           >
-            Comenzar →
+            {t.home.start}
           </Link>
         </div>
       </section>
-
 
     </main>
   );

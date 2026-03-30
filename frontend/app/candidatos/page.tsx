@@ -7,6 +7,7 @@ import { getCandidates, type CandidateSummary } from "@/lib/api";
 import { SpectrumBar } from "@/components/SpectrumBar";
 import { candidatePhoto } from "@/lib/photos";
 import PhotoLightbox from "@/components/PhotoLightbox";
+import { useLanguage } from "@/lib/i18n";
 
 type SpectrumFilter = "all" | "left" | "center" | "right";
 
@@ -19,14 +20,6 @@ const SPECTRUM_BUCKETS: Record<string, SpectrumFilter> = {
   "far-right": "right",
 };
 
-const FILTER_LABELS: Record<SpectrumFilter, string> = {
-  all: "Todos",
-  left: "Izquierda",
-  center: "Centro",
-  right: "Derecha",
-};
-
-// Explicit order for the "Todos" horizontal scroll
 const TODOS_ORDER = [
   "ivan-cepeda",
   "roy-barreras",
@@ -36,10 +29,7 @@ const TODOS_ORDER = [
   "abelardo-de-la-espriella",
 ];
 
-// Explicit order for the "Derecha" tab
 const RIGHT_ORDER = ["paloma-valencia", "abelardo-de-la-espriella"];
-
-// ── Filter tab — yellow hover/active ─────────────────────────────────────────
 
 function FilterTab({
   active, label, onClick,
@@ -64,17 +54,14 @@ function FilterTab({
   );
 }
 
-// ── Candidate card ────────────────────────────────────────────────────────────
-// scrollMode: rectangular 280×320 card with 180px photo area
-// grid mode: circular photo, centered layout (unchanged)
-
 interface CandidateCardProps {
   c: CandidateSummary;
   onLightbox: (src: string, name: string) => void;
   scrollMode?: boolean;
+  noPartyLabel: string;
 }
 
-function CandidateCard({ c, onLightbox, scrollMode }: CandidateCardProps) {
+function CandidateCard({ c, onLightbox, scrollMode, noPartyLabel }: CandidateCardProps) {
   const [hovered, setHovered] = useState(false);
   const photo = candidatePhoto(c.id);
 
@@ -97,7 +84,6 @@ function CandidateCard({ c, onLightbox, scrollMode }: CandidateCardProps) {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        {/* Rectangular photo area */}
         {photo ? (
           <div
             className="relative overflow-hidden"
@@ -122,13 +108,12 @@ function CandidateCard({ c, onLightbox, scrollMode }: CandidateCardProps) {
             {c.name.charAt(0)}
           </div>
         )}
-        {/* Content */}
         <div className="flex flex-col flex-1" style={{ padding: 20 }}>
           <h2 className="text-base font-bold leading-tight" style={{ color: "var(--foreground)" }}>
             {c.name}
           </h2>
           <p className="mt-0.5 text-xs" style={{ color: "var(--muted)" }}>
-            {c.party ?? "Sin partido registrado"}
+            {c.party ?? noPartyLabel}
           </p>
           {c.spectrum && (
             <div className="mt-3 w-full max-w-[160px]">
@@ -140,15 +125,11 @@ function CandidateCard({ c, onLightbox, scrollMode }: CandidateCardProps) {
     );
   }
 
-  // Grid mode — circular photo, centered layout
   return (
     <Link
       href={`/candidatos/${c.id}`}
       className="group flex flex-col items-center text-center bg-surface rounded-2xl p-6 transition-all hover:-translate-y-1"
-      style={{
-        border: "1px solid var(--border)",
-        boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
-      }}
+      style={{ border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 24px rgba(0,0,0,0.12)";
         (e.currentTarget as HTMLElement).style.borderColor = "var(--primary)";
@@ -185,7 +166,7 @@ function CandidateCard({ c, onLightbox, scrollMode }: CandidateCardProps) {
         {c.name}
       </h2>
       <p className="mt-0.5 text-xs" style={{ color: "var(--muted)" }}>
-        {c.party ?? "Sin partido registrado"}
+        {c.party ?? noPartyLabel}
       </p>
       {c.spectrum && (
         <div className="mt-3 w-full max-w-[160px]">
@@ -197,28 +178,33 @@ function CandidateCard({ c, onLightbox, scrollMode }: CandidateCardProps) {
 }
 
 export default function CandidatosPage() {
+  const { t } = useLanguage();
   const [candidates, setCandidates] = useState<CandidateSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<SpectrumFilter>("all");
   const [lightbox, setLightbox] = useState<{ src: string; name: string } | null>(null);
 
+  const FILTER_LABELS: Record<SpectrumFilter, string> = {
+    all: t.candidates.filterAll,
+    left: t.candidates.filterLeft,
+    center: t.candidates.filterCenter,
+    right: t.candidates.filterRight,
+  };
+
   useEffect(() => {
     getCandidates()
-      .then((data) => {
-        setCandidates(data);
-        setLoading(false);
-      })
+      .then((data) => { setCandidates(data); setLoading(false); })
       .catch((err: unknown) => {
-        setError(err instanceof Error ? err.message : "Error al cargar candidatos.");
+        setError(err instanceof Error ? err.message : t.candidates.errorPrefix);
         setLoading(false);
       });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) {
     return (
       <main className="flex flex-1 items-center justify-center">
-        <p style={{ color: "var(--muted)" }}>Cargando candidatos...</p>
+        <p style={{ color: "var(--muted)" }}>{t.candidates.loading}</p>
       </main>
     );
   }
@@ -228,7 +214,7 @@ export default function CandidatosPage() {
       <main className="flex flex-1 flex-col items-center justify-center gap-3 px-4">
         <p className="text-red-600">{error}</p>
         <Link href="/" className="text-sm text-blue-600 hover:underline">
-          Volver al inicio
+          {t.candidates.backToHome}
         </Link>
       </main>
     );
@@ -266,7 +252,7 @@ export default function CandidatosPage() {
     <main className="flex flex-1 flex-col items-center px-4 py-10">
       <div className="w-full max-w-2xl">
         <h1 className="text-3xl font-bold" style={{ color: "var(--foreground)" }}>
-          Candidatos presidenciales
+          {t.candidates.title}
         </h1>
         <div
           className="mt-3 rounded-lg px-4 py-2.5 text-xs"
@@ -276,11 +262,9 @@ export default function CandidatosPage() {
             color: "var(--secondary)",
           }}
         >
-          Los perfiles muestran posturas documentadas en discursos, programas e entrevistas.
-          Haz clic en un candidato para ver fuentes y detalles por tema.
+          {t.candidates.info}
         </div>
 
-        {/* ── Spectrum filter — centered, yellow hover/active ──────────────── */}
         <div className="mt-6 flex justify-center gap-2 flex-wrap">
           {(["all", "left", "center", "right"] as SpectrumFilter[]).map((f) => (
             <FilterTab
@@ -292,7 +276,6 @@ export default function CandidatosPage() {
           ))}
         </div>
 
-        {/* ── Candidate list ───────────────────────────────────────────────── */}
         {filter === "all" ? (
           <div className="relative mt-6" style={{ overflow: "visible" }}>
             <div
@@ -311,10 +294,10 @@ export default function CandidatosPage() {
                   c={c}
                   onLightbox={handleLightbox}
                   scrollMode
+                  noPartyLabel={t.candidates.noParty}
                 />
               ))}
             </div>
-            {/* Right gradient fade hint */}
             <div
               className="absolute right-0 top-0 bottom-0 w-16 pointer-events-none"
               style={{ background: "linear-gradient(to right, transparent, var(--background))" }}
@@ -323,7 +306,12 @@ export default function CandidatosPage() {
         ) : (
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {filteredCandidates.map((c) => (
-              <CandidateCard key={c.id} c={c} onLightbox={handleLightbox} />
+              <CandidateCard
+                key={c.id}
+                c={c}
+                onLightbox={handleLightbox}
+                noPartyLabel={t.candidates.noParty}
+              />
             ))}
           </div>
         )}
@@ -334,7 +322,7 @@ export default function CandidatosPage() {
             className="rounded-full px-6 py-2.5 text-sm font-bold shadow transition hover:opacity-90"
             style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
           >
-            Hacer el quiz
+            {t.candidates.takeQuiz}
           </Link>
         </div>
       </div>

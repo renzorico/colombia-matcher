@@ -17,10 +17,7 @@ import { SpectrumBar } from "@/components/SpectrumBar";
 import { TOPIC_COLORS } from "@/lib/topics";
 import { candidatePhoto } from "@/lib/photos";
 import PhotoLightbox from "@/components/PhotoLightbox";
-
-// ---------------------------------------------------------------------------
-// Candidate ordering for prev/next navigation
-// ---------------------------------------------------------------------------
+import { useLanguage } from "@/lib/i18n";
 
 const CANDIDATE_ORDER = [
   { id: "ivan-cepeda",                name: "Iván Cepeda" },
@@ -31,81 +28,31 @@ const CANDIDATE_ORDER = [
   { id: "claudia-lopez",              name: "Claudia López" },
 ];
 
-// ---------------------------------------------------------------------------
-// Label maps
-// ---------------------------------------------------------------------------
-
-const SPECTRUM_LABELS: Record<string, string> = {
-  left: "Izquierda",
-  "center-left": "Centro-izquierda",
-  center: "Centro",
-  "center-right": "Centro-derecha",
-  right: "Derecha",
-  "far-right": "Derecha radical",
-};
-
-const TOPIC_LABELS: Record<string, string> = {
-  security:           "Seguridad",
-  economy:            "Economía",
-  health:             "Salud",
-  energy_environment: "Energía y Medio Ambiente",
-  fiscal:             "Política Fiscal",
-  foreign_policy:     "Política Exterior",
-  anticorruption:     "Anticorrupción",
-};
-
-const SEVERITY_LABELS: Record<string, { label: string; cls: string; borderColor: string }> = {
-  low:    { label: "Baja",  cls: "bg-gray-50 text-gray-600 border-gray-200",    borderColor: "#6B6B6B" },
-  medium: { label: "Media", cls: "bg-orange-50 text-orange-700 border-orange-200", borderColor: "#D4813A" },
-  high:   { label: "Alta",  cls: "bg-red-50 text-red-700 border-red-200",       borderColor: "#C4622D" },
-};
-
-const CONTROVERSY_STATUS_LABELS: Record<string, string> = {
-  acquitted: "Absuelto/a",
-  pending:   "Pendiente",
-  ongoing:   "En curso",
-  closed:    "Cerrado",
-  convicted: "Condenado/a",
-  active:    "Activo",
-  resolved:  "Resuelto",
-  past:      "Pasado",
-  unknown:   "Desconocido",
-};
-
-const PROCURADURIA_LABELS: Record<string, { label: string; cls: string }> = {
-  clean:       { label: "Sin sanciones activas", cls: "text-green-700 bg-green-50 border-green-200" },
-  flagged:     { label: "⚠ Con anotaciones", cls: "text-amber-700 bg-amber-50 border-amber-200" },
-  investigated: { label: "Investigado/a", cls: "text-orange-700 bg-orange-50 border-orange-200" },
-  under_investigation: { label: "Bajo investigación", cls: "text-orange-700 bg-orange-50 border-orange-200" },
-  sanctioned:  { label: "Sancionado/a", cls: "text-red-700 bg-red-50 border-red-200" },
-  unknown:     { label: "Desconocido", cls: "text-gray-700 bg-gray-50 border-gray-200" },
-};
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-function formatDateES(iso: string): string {
-  const months = [
+function formatDate(iso: string, lang: string): string {
+  const months_es = [
     "enero", "febrero", "marzo", "abril", "mayo", "junio",
     "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
   ];
-  // Handle partial dates like "2026-03" or "2026"
+  const months_en = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+  ];
+  const months = lang === "en" ? months_en : months_es;
   const parts = iso.split("-");
   if (parts.length === 3) {
     const [y, m, day] = parts;
-    return `${parseInt(day)} de ${months[parseInt(m) - 1]} de ${y}`;
+    return lang === "en"
+      ? `${months[parseInt(m) - 1]} ${parseInt(day)}, ${y}`
+      : `${parseInt(day)} de ${months[parseInt(m) - 1]} de ${y}`;
   }
   if (parts.length === 2) {
     const [y, m] = parts;
-    return `${months[parseInt(m) - 1]} de ${y}`;
+    return lang === "en"
+      ? `${months[parseInt(m) - 1]} ${y}`
+      : `${months[parseInt(m) - 1]} de ${y}`;
   }
   return iso;
 }
-
-// ---------------------------------------------------------------------------
-// Sub-components
-// ---------------------------------------------------------------------------
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -120,12 +67,20 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 function ControversyCard({ c, sourceMap }: { c: Controversy; sourceMap: Map<string, Source> }) {
   const [open, setOpen] = useState(false);
+  const { t, lang } = useLanguage();
+
+  const SEVERITY_LABELS = {
+    low:    { label: t.candidate.severityLabels["low"],    cls: "bg-gray-50 text-gray-600 border-gray-200",    borderColor: "#6B6B6B" },
+    medium: { label: t.candidate.severityLabels["medium"], cls: "bg-orange-50 text-orange-700 border-orange-200", borderColor: "#D4813A" },
+    high:   { label: t.candidate.severityLabels["high"],   cls: "bg-red-50 text-red-700 border-red-200",       borderColor: "#C4622D" },
+  } as Record<string, { label: string; cls: string; borderColor: string }>;
+
   const sev = SEVERITY_LABELS[c.severity] ?? {
     label: c.severity,
     cls: "bg-gray-100 text-gray-600 border-gray-200",
     borderColor: "#6B6B6B",
   };
-  const status = CONTROVERSY_STATUS_LABELS[c.status] ?? c.status;
+  const status = t.candidate.controversyStatusLabels[c.status] ?? c.status;
   const contSources = (c.source_ids ?? [])
     .map((id) => sourceMap.get(id))
     .filter((s): s is Source => s !== undefined);
@@ -139,7 +94,6 @@ function ControversyCard({ c, sourceMap }: { c: Controversy; sourceMap: Map<stri
         backgroundColor: "var(--surface)",
       }}
     >
-      {/* Collapsed header — always visible */}
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center gap-2 p-4 text-left"
@@ -156,12 +110,11 @@ function ControversyCard({ c, sourceMap }: { c: Controversy; sourceMap: Map<stri
         </span>
         {c.date && (
           <span className="text-xs text-gray-400 flex-shrink-0 hidden sm:inline">
-            {formatDateES(c.date)}
+            {formatDate(c.date, lang)}
           </span>
         )}
       </button>
 
-      {/* Expanded content */}
       <div
         className="overflow-hidden transition-all duration-200"
         style={{ maxHeight: open ? "600px" : "0px", opacity: open ? 1 : 0 }}
@@ -170,16 +123,13 @@ function ControversyCard({ c, sourceMap }: { c: Controversy; sourceMap: Map<stri
           <div className="flex items-center gap-2 flex-wrap mb-2">
             <span className="text-xs text-gray-400">
               {status}
-              {c.date ? ` · ${formatDateES(c.date)}` : ""}
+              {c.date ? ` · ${formatDate(c.date, lang)}` : ""}
             </span>
           </div>
-
           <p className="text-sm text-gray-600 leading-relaxed">{c.summary}</p>
-
           {c.notes && (
             <p className="mt-2 text-xs text-gray-400 italic leading-relaxed">{c.notes}</p>
           )}
-
           {contSources.length > 0 && (
             <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
               {contSources.map((s) => (
@@ -201,12 +151,9 @@ function ControversyCard({ c, sourceMap }: { c: Controversy; sourceMap: Map<stri
   );
 }
 
-// ---------------------------------------------------------------------------
-// Page component
-// ---------------------------------------------------------------------------
-
 export default function CandidatoDetail() {
   const params = useParams<{ id: string }>();
+  const { t, lang } = useLanguage();
   const [candidate, setCandidate] = useState<CandidateFull | null>(null);
   const [notFound, setNotFound] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -218,24 +165,20 @@ export default function CandidatoDetail() {
     getCandidatesFull()
       .then((all) => {
         const found = all.find((c) => c.id === params.id) ?? null;
-        if (!found) {
-          setNotFound(true);
-          setLoading(false);
-          return;
-        }
+        if (!found) { setNotFound(true); setLoading(false); return; }
         setCandidate(found);
         setLoading(false);
       })
       .catch((err: unknown) => {
-        setError(err instanceof Error ? err.message : "Error al cargar candidato.");
+        setError(err instanceof Error ? err.message : t.candidate.errorPrefix);
         setLoading(false);
       });
-  }, [params.id]);
+  }, [params.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) {
     return (
       <main className="flex flex-1 items-center justify-center">
-        <p className="text-gray-400">Cargando perfil...</p>
+        <p className="text-gray-400">{t.candidate.loading}</p>
       </main>
     );
   }
@@ -244,17 +187,17 @@ export default function CandidatoDetail() {
     return (
       <main className="flex flex-1 flex-col items-center justify-center gap-4 px-4 text-center">
         <p className="text-2xl font-bold" style={{ color: "var(--foreground)" }}>
-          Candidato no encontrado
+          {t.candidate.notFoundTitle}
         </p>
         <p className="text-sm" style={{ color: "var(--muted)" }}>
-          El perfil que buscas no existe o la URL es incorrecta.
+          {t.candidate.notFoundDesc}
         </p>
         <Link
           href="/candidatos"
           className="rounded-full px-6 py-2 text-sm font-bold shadow transition hover:opacity-90"
           style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
         >
-          Ver todos los candidatos
+          {t.candidate.notFoundCta}
         </Link>
       </main>
     );
@@ -263,18 +206,26 @@ export default function CandidatoDetail() {
   if (error || !candidate) {
     return (
       <main className="flex flex-1 flex-col items-center justify-center gap-3 px-4">
-        <p className="text-red-600">{error ?? "Error al cargar el candidato."}</p>
+        <p className="text-red-600">{error ?? t.candidate.errorPrefix}</p>
         <Link href="/candidatos" className="text-sm hover:underline" style={{ color: "var(--secondary)" }}>
-          Ver todos los candidatos
+          {t.candidate.notFoundCta}
         </Link>
       </main>
     );
   }
 
-  // Build a fast source lookup map for resolving source_ids in proposals/controversies
   const sourceMap = new Map<string, Source>(
     candidate.sources.map((s) => [s.id, s])
   );
+
+  const PROCURADURIA_LABELS = {
+    clean:       { label: t.candidate.procuraduriaLabels["clean"],              cls: "text-green-700 bg-green-50 border-green-200" },
+    flagged:     { label: t.candidate.procuraduriaLabels["flagged"],            cls: "text-amber-700 bg-amber-50 border-amber-200" },
+    investigated: { label: t.candidate.procuraduriaLabels["investigated"],      cls: "text-orange-700 bg-orange-50 border-orange-200" },
+    under_investigation: { label: t.candidate.procuraduriaLabels["under_investigation"], cls: "text-orange-700 bg-orange-50 border-orange-200" },
+    sanctioned:  { label: t.candidate.procuraduriaLabels["sanctioned"],         cls: "text-red-700 bg-red-50 border-red-200" },
+    unknown:     { label: t.candidate.procuraduriaLabels["unknown"],            cls: "text-gray-700 bg-gray-50 border-gray-200" },
+  } as Record<string, { label: string; cls: string }>;
 
   const procLabel = candidate.procuraduria_status
     ? (PROCURADURIA_LABELS[candidate.procuraduria_status] ?? {
@@ -287,24 +238,19 @@ export default function CandidatoDetail() {
     <main className="flex flex-1 flex-col items-center px-4 py-10">
       <div className="w-full max-w-2xl">
 
-        {/* ── Breadcrumb ──────────────────────────────────────────────────── */}
-        <Link
-          href="/candidatos"
-          className="text-sm transition"
-          style={{ color: "var(--secondary)" }}
-        >
-          ← Todos los candidatos
+        {/* Breadcrumb */}
+        <Link href="/candidatos" className="text-sm transition" style={{ color: "var(--secondary)" }}>
+          {t.candidate.breadcrumb}
         </Link>
 
-        {/* ── Header ──────────────────────────────────────────────────────── */}
+        {/* Header */}
         <div className="mt-5 flex items-start gap-5">
-          {/* Photo */}
           {candidatePhoto(candidate.id) ? (
             <button
               onClick={() => setLightbox({ src: candidatePhoto(candidate.id)!, name: candidate.name })}
               className="flex-shrink-0 focus:outline-none"
               style={{ cursor: "zoom-in" }}
-              aria-label={`Ver foto de ${candidate.name}`}
+              aria-label={`${t.candidate.photoAlt} ${candidate.name}`}
             >
               <Image
                 src={candidatePhoto(candidate.id)!}
@@ -325,14 +271,13 @@ export default function CandidatoDetail() {
             </div>
           )}
 
-          {/* Name + meta */}
           <div className="min-w-0 flex-1">
             <h1 className="text-2xl sm:text-3xl font-bold leading-tight" style={{ color: "var(--foreground)" }}>
               {candidate.name}
             </h1>
             <p className="mt-1 text-sm" style={{ color: "var(--muted)" }}>
-              {candidate.party ?? "Sin partido registrado"}
-              {candidate.coalition ? ` · Coalición: ${candidate.coalition}` : ""}
+              {candidate.party ?? t.candidates.noParty}
+              {candidate.coalition ? ` · ${t.candidate.coalition}: ${candidate.coalition}` : ""}
             </p>
             {candidate.spectrum && (
               <div className="mt-2">
@@ -341,7 +286,7 @@ export default function CandidatoDetail() {
             )}
             {candidate.last_updated && (
               <p className="mt-1.5 text-xs" style={{ color: "var(--muted)" }}>
-                Actualizado al {formatDateES(candidate.last_updated)}
+                {t.candidate.updatedAt} {formatDate(candidate.last_updated, lang)}
               </p>
             )}
           </div>
@@ -353,11 +298,11 @@ export default function CandidatoDetail() {
           </p>
         )}
 
-        {/* ── Procuraduria ────────────────────────────────────────────────── */}
+        {/* Procuraduria */}
         {procLabel && (
           <div className={`mt-5 rounded-xl border px-4 py-3 ${procLabel.cls}`}>
             <p className="text-xs font-semibold uppercase tracking-wide opacity-60">
-              Estado Procuraduría
+              {t.candidate.procuraduria}
             </p>
             <p className="mt-0.5 text-sm font-semibold">{procLabel.label}</p>
             {candidate.procuraduria_summary && (
@@ -368,21 +313,20 @@ export default function CandidatoDetail() {
           </div>
         )}
 
-        {/* ── Topics ──────────────────────────────────────────────────────── */}
+        {/* Topics */}
         <section className="mt-8">
-          <SectionHeading>Posiciones por tema</SectionHeading>
+          <SectionHeading>{t.candidate.topicPositions}</SectionHeading>
           <TopicRadialChart topics={candidate.topics} />
         </section>
 
-        {/* ── Controversies ───────────────────────────────────────────────── */}
+        {/* Controversies */}
         <section className="mt-8">
-          <SectionHeading>Controversias y antecedentes</SectionHeading>
+          <SectionHeading>{t.candidate.controversiesTitle}</SectionHeading>
           <p className="text-xs text-gray-400 mb-3 leading-relaxed">
-            Esta sección recoge hechos documentados y cubiertos por medios de comunicación.
-            No constituye un juicio de culpabilidad.
+            {t.candidate.controversiesDisclaimer}
           </p>
           {candidate.controversies.length === 0 ? (
-            <EmptyState message="No se han documentado controversias relevantes para este candidato en las fuentes consultadas." />
+            <EmptyState message={t.candidate.controversiesEmpty} />
           ) : (
             <div className="flex flex-col gap-3">
               {candidate.controversies.map((c) => (
@@ -392,7 +336,7 @@ export default function CandidatoDetail() {
           )}
         </section>
 
-        {/* ── Sources (collapsible) ───────────────────────────────────────── */}
+        {/* Sources */}
         <section className="mt-8">
           <button
             onClick={() => setShowSources(!showSources)}
@@ -405,21 +349,20 @@ export default function CandidatoDetail() {
             >
               ›
             </span>
-            Ver fuentes consultadas ({candidate.sources?.length ?? 0})
+            {t.candidate.sourcesToggle} ({candidate.sources?.length ?? 0})
           </button>
           <div
             className="overflow-hidden transition-all duration-300"
             style={{ maxHeight: showSources ? "2000px" : "0px", opacity: showSources ? 1 : 0 }}
           >
             <p className="text-xs text-gray-400 mt-3 mb-3">
-              Las posturas y antecedentes de este perfil se basan en las
-              siguientes fuentes públicas verificables.
+              {t.candidate.sourcesDisclaimer}
             </p>
             <SourceList sources={candidate.sources ?? []} />
           </div>
         </section>
 
-        {/* ── Prev / Next navigation ──────────────────────────────────────── */}
+        {/* Prev / Next navigation */}
         {(() => {
           const idx = CANDIDATE_ORDER.findIndex((c) => c.id === params.id);
           const prev = idx > 0 ? CANDIDATE_ORDER[idx - 1] : null;
@@ -432,7 +375,7 @@ export default function CandidatoDetail() {
                   className="flex flex-col text-sm transition"
                   style={{ color: "var(--secondary)" }}
                 >
-                  <span className="text-xs" style={{ color: "var(--muted)" }}>← Anterior</span>
+                  <span className="text-xs" style={{ color: "var(--muted)" }}>{t.candidate.prev}</span>
                   <span className="font-medium">{prev.name}</span>
                 </Link>
               ) : <div />}
@@ -442,7 +385,7 @@ export default function CandidatoDetail() {
                   className="flex flex-col text-right text-sm transition"
                   style={{ color: "var(--secondary)" }}
                 >
-                  <span className="text-xs" style={{ color: "var(--muted)" }}>Siguiente →</span>
+                  <span className="text-xs" style={{ color: "var(--muted)" }}>{t.candidate.next}</span>
                   <span className="font-medium">{next.name}</span>
                 </Link>
               ) : (
@@ -451,22 +394,22 @@ export default function CandidatoDetail() {
                   className="flex flex-col text-right text-sm transition"
                   style={{ color: "var(--secondary)" }}
                 >
-                  <span className="text-xs" style={{ color: "var(--muted)" }}>Fin del listado</span>
-                  <span className="font-medium">Ver todos los candidatos →</span>
+                  <span className="text-xs" style={{ color: "var(--muted)" }}>{t.candidate.endOfList}</span>
+                  <span className="font-medium">{t.candidate.viewAll}</span>
                 </Link>
               )}
             </div>
           );
         })()}
 
-        {/* ── CTA ─────────────────────────────────────────────────────────── */}
+        {/* CTA */}
         <div className="mt-8 flex justify-center">
           <Link
             href="/quiz"
             className="rounded-full px-6 py-2 text-sm font-bold shadow transition hover:opacity-90"
             style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
           >
-            Ver tu afinidad con este candidato
+            {t.candidate.quizCta}
           </Link>
         </div>
 

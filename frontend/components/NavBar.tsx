@@ -3,17 +3,20 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const MAIN_LINKS = [
-  { href: "/candidatos",          label: "Candidatos" },
-  { href: "/quiz",                label: "Quiz" },
-  { href: "/riesgos-electorales", label: "Riesgos Electorales" },
-  { href: "/metodologia",         label: "Metodología" },
-];
+import { useLanguage } from "@/lib/i18n";
+import LanguageToggle from "./LanguageToggle";
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  const MAIN_LINKS = [
+    { href: "/candidatos",          label: t.nav.candidates },
+    { href: "/quiz",                label: t.nav.quiz },
+    { href: "/riesgos-electorales", label: t.nav.electoralRisks },
+    { href: "/metodologia",         label: t.nav.methodology },
+  ];
 
   function isActive(href: string) {
     return pathname === href || pathname.startsWith(href + "/");
@@ -30,7 +33,7 @@ export default function NavBar() {
           href="/"
           className="text-sm font-bold tracking-tight text-foreground hover:text-hero transition"
         >
-          🇨🇴 Aclara tu voto
+          🇨🇴 {t.nav.wordmark}
         </Link>
 
         {/* Desktop links */}
@@ -53,18 +56,22 @@ export default function NavBar() {
             href="/bajo-el-capo"
             className="text-sm text-muted hover:text-foreground transition"
           >
-            ¿Cómo lo hicimos?
+            {t.nav.howWeMadeIt}
           </Link>
+          <LanguageToggle />
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden p-2 text-muted hover:text-foreground transition"
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
-        >
-          <span className="text-lg leading-none">{open ? "✕" : "☰"}</span>
-        </button>
+        {/* Mobile: hamburger + toggle */}
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageToggle />
+          <button
+            onClick={() => setOpen(!open)}
+            className="p-2 text-muted hover:text-foreground transition"
+            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
+          >
+            <span className="text-lg leading-none">{open ? "✕" : "☰"}</span>
+          </button>
+        </div>
       </nav>
 
       {/* Mobile dropdown */}
@@ -92,7 +99,7 @@ export default function NavBar() {
             onClick={() => setOpen(false)}
             className="text-sm text-muted hover:text-foreground transition pt-1"
           >
-            Detrás de cámaras
+            {t.nav.behindScenes}
           </Link>
         </div>
       )}

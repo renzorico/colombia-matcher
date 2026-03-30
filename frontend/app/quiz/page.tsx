@@ -5,14 +5,7 @@ import { useRouter } from "next/navigation";
 import { getQuestions, type Question } from "@/lib/api";
 import { BUCKET_TO_TOPIC, TOPIC_COLORS } from "@/lib/topics";
 import { explanacionesSimples } from "@/lib/explanaciones-simples";
-
-const LABELS: Record<number, string> = {
-  1: "Totalmente en desacuerdo",
-  2: "En desacuerdo",
-  3: "Neutral",
-  4: "De acuerdo",
-  5: "Totalmente de acuerdo",
-};
+import { useLanguage } from "@/lib/i18n";
 
 const STORAGE_KEY = "quizProgress";
 
@@ -27,6 +20,7 @@ function hexWithAlpha(hex: string, alpha: number): string {
 
 export default function QuizPage() {
   const router = useRouter();
+  const { t, lang } = useLanguage();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
@@ -41,7 +35,6 @@ export default function QuizPage() {
 
   useEffect(() => {
     getQuestions().then((qs) => {
-      // Sort so all same-topic questions appear consecutively, preserving relative within-topic order
       const sorted = [...qs].sort((a, b) => {
         const ai = TOPIC_ORDER.indexOf(a.bucket);
         const bi = TOPIC_ORDER.indexOf(b.bucket);
@@ -50,7 +43,6 @@ export default function QuizPage() {
       });
       setQuestions(sorted);
 
-      // Check for saved progress
       try {
         const saved = localStorage.getItem(STORAGE_KEY);
         if (saved) {
@@ -70,7 +62,6 @@ export default function QuizPage() {
     });
   }, []);
 
-  // Persist progress to localStorage on every change
   useEffect(() => {
     if (loading || questions.length === 0) return;
     try {
@@ -78,7 +69,6 @@ export default function QuizPage() {
     } catch { /* ignore */ }
   }, [answers, index, loading, questions.length]);
 
-  // Topic-level progress — must be above early returns (Rules of Hooks)
   const topicOrder = useMemo(() => [...new Set(questions.map((qi) => qi.bucket))], [questions]);
   const topicCounts = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -86,7 +76,6 @@ export default function QuizPage() {
     return counts;
   }, [questions]);
 
-  // Reset explanation bubble when question changes
   useEffect(() => {
     setShowExplanacion(false);
   }, [index]);
@@ -94,7 +83,7 @@ export default function QuizPage() {
   if (loading) {
     return (
       <main className="flex flex-1 items-center justify-center">
-        <p className="text-lg" style={{ color: "var(--muted)" }}>Cargando preguntas...</p>
+        <p className="text-lg" style={{ color: "var(--muted)" }}>{t.quiz.loading}</p>
       </main>
     );
   }
@@ -107,7 +96,9 @@ export default function QuizPage() {
   const topicNum = topicOrder.indexOf(q.bucket) + 1;
   const questionInTopic = questions.slice(0, index + 1).filter((qi) => qi.bucket === q.bucket).length;
   const topicTotal = topicCounts[q.bucket] ?? 1;
-  const explicacion = explanacionesSimples[q.id] ?? null;
+  const explicacion = lang === "en"
+    ? (explanacionesSimples[`${q.id}_en`] ?? null)
+    : (explanacionesSimples[q.id] ?? null);
 
   function doSubmit(finalAnswers: Record<string, number>) {
     setSubmitting(true);
@@ -126,7 +117,6 @@ export default function QuizPage() {
     if (index < total - 1) {
       setIndex(index + 1);
     } else {
-      // On last question: warn if nothing was ever explicitly answered
       if (explicitAnswerIds.size === 0) {
         setShowAllSkippedWarning(true);
         return;
@@ -176,14 +166,14 @@ export default function QuizPage() {
             style={{ backgroundColor: "var(--surface)", border: "1px solid var(--border)" }}
           >
             <span style={{ color: "var(--foreground)" }}>
-              Tienes progreso guardado en la pregunta {index + 1}.
+              {t.quiz.resumeMessage} {index + 1}.
             </span>
             <button
               onClick={handleRestart}
               className="text-xs font-medium underline flex-shrink-0"
               style={{ color: "var(--muted)" }}
             >
-              Empezar de cero
+              {t.quiz.resumeRestart}
             </button>
           </div>
         )}
@@ -197,13 +187,13 @@ export default function QuizPage() {
             {q.bucket}
           </span>
           <span className="text-xs" style={{ color: "var(--muted)" }}>
-            Tema {topicNum} de {topicOrder.length} · Pregunta {questionInTopic} de {topicTotal} en este tema
+            {t.quiz.topicLabel} {topicNum} {t.quiz.of} {topicOrder.length} · {t.quiz.questionLabel} {questionInTopic} {t.quiz.of} {topicTotal} {t.quiz.inThisTopic}
           </span>
         </div>
 
         {/* Progress */}
         <p className="mt-3 text-sm" style={{ color: "var(--muted)" }}>
-          Pregunta {index + 1} de {total}
+          {t.quiz.questionLabel} {index + 1} {t.quiz.of} {total}
         </p>
         <div className="mt-1 h-2 w-full rounded-full" style={{ backgroundColor: "var(--border)" }}>
           <div
@@ -227,14 +217,14 @@ export default function QuizPage() {
               onClick={() => setShowExplanacion((prev) => !prev)}
               className="text-sm text-gray-400 hover:text-gray-600 hover:underline mt-2 mb-1 flex items-center gap-1 transition-colors cursor-pointer"
             >
-              🧒 ¿No entiendes la pregunta? Explícamelo fácil
+              {t.quiz.explainButton}
             </button>
             {showExplanacion && (
               <div className="relative mt-1 mb-4 bg-yellow-50 border-2 border-yellow-300 rounded-xl p-4 text-sm text-gray-700 leading-relaxed">
                 <button
                   onClick={() => setShowExplanacion(false)}
                   className="absolute top-2 right-3 text-gray-400 hover:text-gray-600 text-lg leading-none cursor-pointer"
-                  aria-label="Cerrar explicación"
+                  aria-label={t.quiz.explainClose}
                 >✕</button>
                 <p className="pr-6">{explicacion}</p>
               </div>
@@ -266,7 +256,7 @@ export default function QuizPage() {
                   cursor: "pointer",
                 }}
               >
-                {val} — {LABELS[val]}
+                {val} — {t.quiz.answers[val]}
               </button>
             );
           })}
@@ -275,7 +265,7 @@ export default function QuizPage() {
         {/* Validation message */}
         {showValidation && (
           <p className="mt-3 text-sm font-medium" style={{ color: "var(--accent)" }}>
-            Selecciona una opción o usa &ldquo;Sin opinión&rdquo; para continuar.
+            {t.quiz.validation}
           </p>
         )}
 
@@ -286,17 +276,17 @@ export default function QuizPage() {
             style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
           >
             <p className="font-medium" style={{ color: "var(--foreground)" }}>
-              Respondiste todo con &ldquo;Sin opinión&rdquo;.
+              {t.quiz.allSkippedTitle}
             </p>
             <p className="mt-0.5 text-xs" style={{ color: "var(--muted)" }}>
-              Los resultados podrían no ser representativos. ¿Quieres continuar de todas formas?
+              {t.quiz.allSkippedDesc}
             </p>
             <button
               onClick={() => doSubmit(answers)}
               className="mt-2 text-xs font-semibold underline"
               style={{ color: "var(--secondary)" }}
             >
-              Continuar de todas formas
+              {t.quiz.allSkippedConfirm}
             </button>
           </div>
         )}
@@ -312,7 +302,7 @@ export default function QuizPage() {
                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--foreground)")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
               >
-                ← Anterior
+                {t.quiz.prev}
               </button>
             )}
             <div className="flex flex-col">
@@ -323,7 +313,7 @@ export default function QuizPage() {
                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--foreground)")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
               >
-                Sin opinión
+                {t.quiz.skip}
               </button>
             </div>
           </div>
@@ -334,10 +324,10 @@ export default function QuizPage() {
             style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
           >
             {submitting
-              ? "Enviando..."
+              ? t.quiz.submitting
               : index < total - 1
-                ? "Siguiente →"
-                : "Ver resultados →"}
+                ? t.quiz.next
+                : t.quiz.viewResults}
           </button>
         </div>
 

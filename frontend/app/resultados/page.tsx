@@ -11,24 +11,25 @@ import {
   type CandidateSummary,
 } from "@/lib/api";
 import { SpectrumBar } from "@/components/SpectrumBar";
-import { TOPIC_COLORS, AXIS_LABELS_ES as TOPIC_LABELS } from "@/lib/topics";
+import { TOPIC_COLORS } from "@/lib/topics";
 import { candidatePhoto } from "@/lib/photos";
 import ResultsCharts from "@/components/ResultsCharts";
 import PhotoLightbox from "@/components/PhotoLightbox";
+import { useLanguage } from "@/lib/i18n";
 
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
-function rankLabel(rank: number): string {
-  if (rank === 2) return "Segunda mayor afinidad";
-  if (rank === 3) return "Tercera mayor afinidad";
-  return `#${rank}`;
+function rankLabel(rank: number, t: ReturnType<typeof useLanguage>["t"]): string {
+  if (rank === 2) return t.results.rank2;
+  if (rank === 3) return t.results.rank3;
+  return `${t.results.rankN}${rank}`;
 }
 
-// Key points: top agreements + disagreements derived from breakdown
 function KeyPoints({ breakdown }: { breakdown: Record<string, number> }) {
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
   const entries = Object.entries(breakdown).sort((a, b) => b[1] - a[1]);
   const agreements = entries.slice(0, 2);
   const agreementKeys = new Set(agreements.map(([id]) => id));
@@ -36,6 +37,8 @@ function KeyPoints({ breakdown }: { breakdown: Record<string, number> }) {
     .sort((a, b) => a[1] - b[1])
     .filter(([id]) => !agreementKeys.has(id))
     .slice(0, 2);
+
+  const TOPIC_LABELS = t.candidate.topicLabels;
 
   return (
     <div className="mt-3">
@@ -50,7 +53,7 @@ function KeyPoints({ breakdown }: { breakdown: Record<string, number> }) {
         >
           ›
         </span>
-        {open ? "Ocultar puntos clave" : "Ver puntos clave"}
+        {open ? t.results.keyPointsHide : t.results.keyPointsShow}
       </button>
 
       <div
@@ -60,7 +63,7 @@ function KeyPoints({ breakdown }: { breakdown: Record<string, number> }) {
         <div className="mt-2 flex flex-col gap-2">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-wide mb-1" style={{ color: "var(--muted)" }}>
-              Mayor acuerdo
+              {t.results.keyPointsAgreement}
             </p>
             {agreements.map(([topicId, pct]) => (
               <div key={topicId} className="flex items-center justify-between text-xs mb-0.5">
@@ -71,7 +74,7 @@ function KeyPoints({ breakdown }: { breakdown: Record<string, number> }) {
           </div>
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-wide mb-1" style={{ color: "var(--muted)" }}>
-              Mayor diferencia
+              {t.results.keyPointsDifference}
             </p>
             {disagreements.map(([topicId, pct]) => (
               <div key={topicId} className="flex items-center justify-between text-xs mb-0.5">
@@ -86,10 +89,10 @@ function KeyPoints({ breakdown }: { breakdown: Record<string, number> }) {
   );
 }
 
-// Mini topic bar used in result cards
 function TopicMiniBar({ topicId, pct }: { topicId: string; pct: number }) {
+  const { t } = useLanguage();
   const color = TOPIC_COLORS[topicId] ?? "#4A4A4A";
-  const label = TOPIC_LABELS[topicId] ?? topicId;
+  const label = t.candidate.topicLabels[topicId] ?? topicId;
   return (
     <div className="flex flex-col gap-0.5">
       <div className="flex items-center justify-between">
@@ -112,6 +115,7 @@ function TopicMiniBar({ topicId, pct }: { topicId: string; pct: number }) {
 
 export default function ResultadosPage() {
   const router = useRouter();
+  const { t, lang } = useLanguage();
   const [results, setResults] = useState<Result[]>([]);
   const [candidateMeta, setCandidateMeta] = useState<Record<string, CandidateSummary>>({});
   const [loading, setLoading] = useState(true);
@@ -142,10 +146,10 @@ export default function ResultadosPage() {
         setLoading(false);
       })
       .catch((err: unknown) => {
-        setError(err instanceof Error ? err.message : "No se pudieron cargar los resultados.");
+        setError(err instanceof Error ? err.message : t.results.errorServer);
         setLoading(false);
       });
-  }, [router]);
+  }, [router]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleRestart() {
     sessionStorage.removeItem("quizAnswers");
@@ -155,10 +159,16 @@ export default function ResultadosPage() {
   const siteUrl = "https://colombia-matcher.vercel.app";
 
   function shareTextTwitter(top: Result) {
+    if (lang === "en") {
+      return `I took the Clarify Your Vote quiz and my best match is ${top.candidate} with ${top.score}% affinity 🇨🇴 Who do you vote for? Find out at ${siteUrl}`;
+    }
     return `Hice el quiz de Aclara tu voto y mi candidato más afín es ${top.candidate} con ${top.score}% de afinidad 🇨🇴 ¿Con quién votas tú? Descúbrelo en ${siteUrl}`;
   }
 
   function shareTextWhatsApp(top: Result) {
+    if (lang === "en") {
+      return `I took the Clarify Your Vote quiz 🇨🇴 My best match is ${top.candidate} (${top.score}%). What about you? Find out here: ${siteUrl}`;
+    }
     return `Hice el quiz de Aclara tu voto 🇨🇴 Mi candidato más afín resultó ser ${top.candidate} (${top.score}%). ¿Y tú? Descúbrelo aquí: ${siteUrl}`;
   }
 
@@ -206,50 +216,47 @@ export default function ResultadosPage() {
     setDownloadingImg(false);
   }
 
-  // ── No quiz data guard ────────────────────────────────────────────────────
   if (noQuizData) {
     return (
       <main className="flex flex-1 flex-col items-center justify-center gap-4 px-4 text-center">
         <p className="text-lg font-semibold" style={{ color: "var(--foreground)" }}>
-          Completa el quiz primero para ver tus resultados.
+          {t.results.noDataTitle}
         </p>
         <p className="text-sm" style={{ color: "var(--muted)" }}>
-          Responde 25 preguntas para descubrir con qué candidato tienes más afinidad.
+          {t.results.noDataDesc}
         </p>
         <Link
           href="/quiz"
           className="rounded-full px-6 py-2.5 text-sm font-bold shadow transition hover:opacity-90"
           style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
         >
-          Hacer el quiz →
+          {t.results.noDataCta}
         </Link>
       </main>
     );
   }
 
-  // ── Loading ───────────────────────────────────────────────────────────────
   if (loading) {
     return (
       <main className="flex flex-1 items-center justify-center">
-        <p className="text-lg" style={{ color: "var(--muted)" }}>Calculando afinidad...</p>
+        <p className="text-lg" style={{ color: "var(--muted)" }}>{t.results.loading}</p>
       </main>
     );
   }
 
-  // ── Error ─────────────────────────────────────────────────────────────────
   if (error) {
     return (
       <main className="flex flex-1 flex-col items-center justify-center gap-4 px-4">
         <p className="text-red-600">{error}</p>
         <p className="text-sm" style={{ color: "var(--muted)" }}>
-          El servidor de datos no está disponible. Intenta más tarde.
+          {t.results.errorServer}
         </p>
         <button
           onClick={handleRestart}
           className="rounded-full px-6 py-2 text-sm font-semibold transition"
           style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
         >
-          Volver a empezar
+          {t.results.errorRestart}
         </button>
       </main>
     );
@@ -258,10 +265,9 @@ export default function ResultadosPage() {
   const top = results[0];
   const topMeta = top ? candidateMeta[top.id] : null;
 
-  // ── Results ───────────────────────────────────────────────────────────────
   return (
     <main className="flex flex-1 flex-col items-center px-4 py-8">
-      <h1 className="text-3xl font-bold" style={{ color: "var(--foreground)" }}>Tus resultados</h1>
+      <h1 className="text-3xl font-bold" style={{ color: "var(--foreground)" }}>{t.results.title}</h1>
 
       {/* ── Score explainer ───────────────────────────────────────────────── */}
       <div className="mt-4 w-full max-w-2xl">
@@ -276,7 +282,7 @@ export default function ResultadosPage() {
           >
             ›
           </span>
-          ¿Cómo se interpretan estos porcentajes?
+          {t.results.explainerToggle}
         </button>
         <div
           className="overflow-hidden transition-all duration-200"
@@ -286,11 +292,11 @@ export default function ResultadosPage() {
             className="mt-2 rounded-xl px-4 py-3 text-xs leading-relaxed"
             style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)", color: "var(--muted)" }}
           >
-            <p><strong style={{ color: "var(--foreground)" }}>100%</strong> significa alineación perfecta en todos los temas. <strong style={{ color: "var(--foreground)" }}>50%</strong> es el punto neutro — ocurre cuando respondiste todo como &ldquo;Neutral&rdquo; o cuando tus posiciones son opuestas en igual medida.</p>
-            <p className="mt-1.5">El porcentaje total es un promedio ponderado: Seguridad (25%), Economía (20%), Salud (15%), Energía (15%), Fiscal (10%), Exterior (10%), Anticorrupción (5%).</p>
-            <p className="mt-1.5">Un resultado de 65%–75% ya indica afinidad alta. Por encima de 80% es muy alta.</p>
+            <p dangerouslySetInnerHTML={{ __html: t.results.explainerBody }} />
+            <p className="mt-1.5">{t.results.explainerBody2}</p>
+            <p className="mt-1.5">{t.results.explainerBody3}</p>
             <Link href="/metodologia" className="mt-1.5 inline-block underline" style={{ color: "var(--secondary)" }}>
-              Ver metodología completa →
+              {t.results.explainerMethodLink}
             </Link>
           </div>
         </div>
@@ -306,17 +312,16 @@ export default function ResultadosPage() {
             className="text-xs font-bold uppercase tracking-widest"
             style={{ color: "var(--secondary)" }}
           >
-            Tu mejor afinidad
+            {t.results.topAffinity}
           </p>
 
           <div className="mt-3 flex items-center gap-4">
-            {/* Photo */}
             {candidatePhoto(top.id) ? (
               <button
                 onClick={() => setLightbox({ src: candidatePhoto(top.id)!, name: top.candidate })}
                 className="flex-shrink-0 focus:outline-none"
                 style={{ cursor: "zoom-in" }}
-                aria-label={`Ver foto de ${top.candidate}`}
+                aria-label={`${t.results.photoAlt} ${top.candidate}`}
               >
                 <Image
                   src={candidatePhoto(top.id)!}
@@ -351,16 +356,12 @@ export default function ResultadosPage() {
             <Link
               href={`/candidatos/${top.id}`}
               className="flex-shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition"
-              style={{
-                border: "1px solid var(--secondary)",
-                color: "var(--secondary)",
-              }}
+              style={{ border: "1px solid var(--secondary)", color: "var(--secondary)" }}
             >
-              Ver perfil
+              {t.results.viewProfile}
             </Link>
           </div>
 
-          {/* Score */}
           <p className="mt-5 text-5xl font-extrabold" style={{ color: "var(--secondary)" }}>
             {top.score}%
           </p>
@@ -371,7 +372,6 @@ export default function ResultadosPage() {
             />
           </div>
 
-          {/* Topic mini-bars — only topics in breakdown (candidates may lack data for some) */}
           {Object.keys(top.breakdown).length > 0 && (
             <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2">
               {Object.entries(top.breakdown).map(([topicId, pct]) => (
@@ -380,16 +380,15 @@ export default function ResultadosPage() {
             </div>
           )}
 
-          {/* Key points toggle — same as secondary cards */}
           {Object.keys(top.breakdown).length > 0 && (
             <KeyPoints breakdown={top.breakdown} />
           )}
         </div>
       )}
 
-      {/* ── Ranked list (starting at #2) ──────────────────────────────────── */}
+      {/* ── Ranked list ───────────────────────────────────────────────────── */}
       <p className="mt-8 w-full max-w-2xl text-sm text-center" style={{ color: "var(--muted)" }}>
-        Estos son los candidatos ordenados de mayor a menor afinidad con tus respuestas
+        {t.results.rankedSubtitle}
       </p>
 
       <div className="mt-3 flex w-full max-w-2xl flex-col gap-4">
@@ -403,13 +402,12 @@ export default function ResultadosPage() {
               style={{ border: "1px solid var(--border)" }}
             >
               <div className="flex items-center gap-3">
-                {/* Photo */}
                 {candidatePhoto(r.id) ? (
                   <button
                     onClick={() => setLightbox({ src: candidatePhoto(r.id)!, name: r.candidate })}
                     className="flex-shrink-0 focus:outline-none"
                     style={{ cursor: "zoom-in" }}
-                    aria-label={`Ver foto de ${r.candidate}`}
+                    aria-label={`${t.results.photoAlt} ${r.candidate}`}
                   >
                     <Image
                       src={candidatePhoto(r.id)!}
@@ -431,7 +429,7 @@ export default function ResultadosPage() {
 
                 <div className="min-w-0 flex-1">
                   <p className="text-xs mb-0.5" style={{ color: "var(--muted)" }}>
-                    {rankLabel(rank)}
+                    {rankLabel(rank, t)}
                   </p>
                   <h3 className="font-semibold truncate" style={{ color: "var(--foreground)" }}>
                     {r.candidate}
@@ -452,12 +450,11 @@ export default function ResultadosPage() {
                     className="text-xs hover:underline"
                     style={{ color: "var(--secondary)" }}
                   >
-                    Ver perfil →
+                    {t.results.viewProfileArrow}
                   </Link>
                 </div>
               </div>
 
-              {/* Score bar */}
               <div className="mt-3 h-2 w-full rounded-full" style={{ backgroundColor: "var(--border)" }}>
                 <div
                   className="h-2 rounded-full transition-all"
@@ -465,7 +462,6 @@ export default function ResultadosPage() {
                 />
               </div>
 
-              {/* Topic mini-bars */}
               {Object.keys(r.breakdown).length > 0 && (
                 <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                   {Object.entries(r.breakdown).map(([topicId, pct]) => (
@@ -474,7 +470,6 @@ export default function ResultadosPage() {
                 </div>
               )}
 
-              {/* Key agreement/disagreement points */}
               {Object.keys(r.breakdown).length > 0 && (
                 <KeyPoints breakdown={r.breakdown} />
               )}
@@ -492,7 +487,7 @@ export default function ResultadosPage() {
         style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
       >
         <p className="text-sm font-medium mb-3" style={{ color: "var(--foreground)" }}>
-          ¿Quieres saber más? Revisa las propuestas y el perfil completo de cada candidato.
+          {t.results.profilesSectionTitle}
         </p>
         <div className="flex flex-wrap gap-2">
           {results.map((r) => (
@@ -524,13 +519,12 @@ export default function ResultadosPage() {
         style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
       >
         <p className="text-sm font-bold text-center" style={{ color: "var(--foreground)" }}>
-          Comparte tus resultados
+          {t.results.shareSectionTitle}
         </p>
         <p className="text-xs text-center mt-1 mb-4" style={{ color: "var(--muted)" }}>
-          Invita a tus amigos a descubrir su candidato
+          {t.results.shareSectionSubtitle}
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
-          {/* WhatsApp */}
           <button
             onClick={handleShareWhatsApp}
             className="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition hover:opacity-90"
@@ -543,7 +537,6 @@ export default function ResultadosPage() {
             WhatsApp
           </button>
 
-          {/* Twitter/X */}
           <button
             onClick={handleShareTwitter}
             className="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition hover:opacity-90"
@@ -555,7 +548,6 @@ export default function ResultadosPage() {
             Twitter / X
           </button>
 
-          {/* Copy link */}
           <button
             onClick={handleShare}
             className="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition hover:opacity-90"
@@ -565,10 +557,9 @@ export default function ResultadosPage() {
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
             </svg>
-            {copied ? "¡Copiado!" : "Copiar enlace"}
+            {copied ? t.results.shareCopied : t.results.shareCopy}
           </button>
 
-          {/* Download image */}
           <button
             onClick={handleDownloadImage}
             disabled={downloadingImg}
@@ -579,7 +570,7 @@ export default function ResultadosPage() {
               <path d="M12 16l-4-4h2.5V4h3v8H16l-4 4z"/>
               <path d="M4 18h16v2H4z"/>
             </svg>
-            {downloadingImg ? "Generando..." : "Descargar imagen"}
+            {downloadingImg ? t.results.shareGenerating : t.results.shareDownload}
           </button>
         </div>
       </div>
@@ -591,28 +582,28 @@ export default function ResultadosPage() {
           className="rounded-full px-6 py-2 text-sm font-bold shadow transition hover:opacity-90"
           style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
         >
-          Explorar candidatos
+          {t.results.exploreCandidates}
         </Link>
         {confirmRestart ? (
           <div
             className="rounded-xl px-4 py-3 text-sm text-center"
             style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
           >
-            <p style={{ color: "var(--foreground)" }}>¿Seguro? Perderás tus resultados actuales.</p>
+            <p style={{ color: "var(--foreground)" }}>{t.results.confirmRestart}</p>
             <div className="mt-2 flex gap-2 justify-center">
               <button
                 onClick={handleRestart}
                 className="rounded-full px-4 py-1.5 text-xs font-bold transition"
                 style={{ backgroundColor: "var(--secondary)", color: "#FFFFFF" }}
               >
-                Sí, empezar de nuevo
+                {t.results.confirmYes}
               </button>
               <button
                 onClick={() => setConfirmRestart(false)}
                 className="rounded-full px-4 py-1.5 text-xs font-semibold transition"
                 style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
               >
-                Cancelar
+                {t.results.cancel}
               </button>
             </div>
           </div>
@@ -622,12 +613,12 @@ export default function ResultadosPage() {
             className="rounded-full px-6 py-2 text-sm font-semibold transition"
             style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
           >
-            Volver a empezar
+            {t.results.restart}
           </button>
         )}
       </div>
 
-      {/* ── Hidden story card for PNG download (9:16) ────────────────────── */}
+      {/* ── Hidden story card for PNG download ────────────────────────────── */}
       <div
         ref={storyCardRef}
         style={{
@@ -642,20 +633,18 @@ export default function ResultadosPage() {
           overflow: "hidden",
         }}
       >
-        {/* Header */}
         <div style={{ backgroundColor: "#1d3a8a", padding: "32px 28px 24px", flexShrink: 0 }}>
           <p style={{ color: "#eab308", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>
-            Aclara tu voto
+            {t.nav.wordmark}
           </p>
           <p style={{ color: "#FFFFFF", fontSize: 20, fontWeight: 800, lineHeight: 1.25 }}>
-            Mis resultados del quiz
+            {t.results.storyMyResults}
           </p>
           <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 12, marginTop: 4 }}>
-            Colombia 2026 · colombia-matcher.vercel.app
+            {t.results.storyCountry} · colombia-matcher.vercel.app
           </p>
         </div>
 
-        {/* Middle — top 2 candidates */}
         <div style={{ backgroundColor: "#FFFFFF", flex: 1, padding: "28px 28px 20px", display: "flex", flexDirection: "column", gap: 20 }}>
           {results.slice(0, 2).map((r, i) => {
             const colors = ["#1d3a8a", "#4A6FA5"];
@@ -666,7 +655,7 @@ export default function ResultadosPage() {
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
                   <div>
                     <p style={{ fontSize: 11, color: "#6b7280", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 2 }}>
-                      {i === 0 ? "Mayor afinidad" : "Segunda afinidad"}
+                      {i === 0 ? t.results.storyHighestAffinity : t.results.storySecondAffinity}
                     </p>
                     <p style={{ fontSize: 18, fontWeight: 800, color: "#111827" }}>{r.candidate}</p>
                     {meta?.party && <p style={{ fontSize: 12, color: "#6b7280", marginTop: 2 }}>{meta.party}</p>}
@@ -681,9 +670,8 @@ export default function ResultadosPage() {
           })}
         </div>
 
-        {/* Footer */}
         <div style={{ backgroundColor: "#111827", padding: "20px 28px 28px", flexShrink: 0 }}>
-          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 11, marginBottom: 4 }}>Descubre tu candidato en</p>
+          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 11, marginBottom: 4 }}>{t.results.storyDiscover}</p>
           <p style={{ color: "#eab308", fontSize: 13, fontWeight: 700 }}>colombia-matcher.vercel.app</p>
         </div>
       </div>
