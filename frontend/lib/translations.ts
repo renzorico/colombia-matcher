@@ -431,6 +431,12 @@ const es = {
     ctaQuiz: "Haz el quiz — ¿con quién votas?",
     ctaCandidates: "Ver perfiles de candidatos",
     backToTop: "↑ Volver arriba",
+    statsLabels: [
+      { label: "Municipios en acción inmediata",     sub: "Riesgo crítico — Defensoría del Pueblo" },
+      { label: "Municipios en algún nivel de riesgo", sub: "Alerta Temprana Electoral 013-2025" },
+      { label: "Electores en riesgo extremo",         sub: "11% del censo electoral nacional" },
+      { label: "Aumento municipios riesgo extremo",   sub: "vs elecciones 2022 (49 → 81 municipios)" },
+    ],
   },
   charts: {
     radarTitle: "Afinidad por tema",
@@ -461,7 +467,7 @@ const en: typeof es = {
     behindScenes: "Behind the Scenes",
     openMenu: "Open menu",
     closeMenu: "Close menu",
-    wordmark: "Clarify Your Vote",
+    wordmark: "Find Your Vote",
   },
   footer: {
     tagline: "Independent tool · No political affiliation · Manually curated data · Updated March 2026",
@@ -472,7 +478,7 @@ const en: typeof es = {
     photoLicense: "(CC BY-SA)",
   },
   home: {
-    title: "Clarify Your Vote",
+    title: "Find Your Vote",
     subtitle: "Discover which presidential candidate aligns most with your views. 25 questions. No bias. No politics.",
     statsCandidates: "candidates",
     statsTopics: "key topics",
@@ -879,6 +885,12 @@ const en: typeof es = {
     ctaQuiz: "Take the quiz — who do you vote for?",
     ctaCandidates: "View candidate profiles",
     backToTop: "↑ Back to top",
+    statsLabels: [
+      { label: "Municipalities under immediate action",  sub: "Critical risk — People's Ombudsman" },
+      { label: "Municipalities at some level of risk",   sub: "Early Electoral Warning 013-2025" },
+      { label: "Voters at extreme risk",                 sub: "11% of national electoral roll" },
+      { label: "Increase in extreme-risk municipalities", sub: "vs 2022 elections (49 → 81 municipalities)" },
+    ],
   },
   charts: {
     radarTitle: "Affinity by topic",

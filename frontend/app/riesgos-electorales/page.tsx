@@ -432,9 +432,12 @@ export default function RiesgosElectoralesPage() {
         {/* ── Cifras clave ───────────────────────────────────────────────── */}
         <div id="cifras" style={SCROLL_MT}>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 mb-10">
-            {STATS.map((s) => (
-              <StatCard key={s.label} value={s.value} label={s.label} sub={s.sub} color={s.color} />
-            ))}
+            {STATS.map((s, i) => {
+              const tl = t.risks.statsLabels[i];
+              return (
+                <StatCard key={s.label} value={s.value} label={tl?.label ?? s.label} sub={tl?.sub ?? s.sub} color={s.color} />
+              );
+            })}
           </div>
         </div>
 

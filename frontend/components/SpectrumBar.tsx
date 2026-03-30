@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { SPECTRUM_TOOLTIPS } from "@/lib/spectrumTooltips";
+import { useLanguage } from "@/lib/i18n";
 
 const SPECTRUM_POSITIONS: Record<string, number> = {
   left: 0,
@@ -12,6 +13,7 @@ const SPECTRUM_POSITIONS: Record<string, number> = {
   "far-right": 100,
 };
 
+// Kept for any external consumers still importing this
 export const SPECTRUM_LABELS: Record<string, string> = {
   left:           "Izquierda",
   "center-left":  "Centro-izquierda",
@@ -28,8 +30,10 @@ export function SpectrumBar({
   spectrum: string;
   candidateId?: string;
 }) {
+  const { t } = useLanguage();
+  const spectrumLabels = t.candidate.spectrumLabels;
   const pct   = SPECTRUM_POSITIONS[spectrum] ?? 50;
-  const label = SPECTRUM_LABELS[spectrum]    ?? spectrum;
+  const label = spectrumLabels[spectrum]     ?? SPECTRUM_LABELS[spectrum] ?? spectrum;
   const tip   = candidateId ? SPECTRUM_TOOLTIPS[candidateId] : undefined;
 
   const [showTooltip, setShowTooltip] = useState(false);
@@ -91,9 +95,9 @@ export function SpectrumBar({
 
       {/* 3 tick labels */}
       <div className="flex justify-between text-[9px]" style={{ color: "var(--muted)" }}>
-        <span>Izquierda</span>
-        <span>Centro</span>
-        <span>Derecha</span>
+        <span>{spectrumLabels["left"]  ?? "Izquierda"}</span>
+        <span>{spectrumLabels["center"] ?? "Centro"}</span>
+        <span>{spectrumLabels["right"] ?? "Derecha"}</span>
       </div>
     </div>
   );

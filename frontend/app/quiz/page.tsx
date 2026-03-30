@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { getQuestions, type Question } from "@/lib/api";
 import { BUCKET_TO_TOPIC, TOPIC_COLORS } from "@/lib/topics";
 import { explanacionesSimples } from "@/lib/explanaciones-simples";
+import { questionsEn } from "@/lib/questions-en";
 import { useLanguage } from "@/lib/i18n";
 
 const STORAGE_KEY = "quizProgress";
@@ -207,7 +208,7 @@ export default function QuizPage() {
 
         {/* Statement */}
         <p className="mt-6 text-lg font-semibold leading-relaxed" style={{ color: "var(--foreground)" }}>
-          {q.statement}
+          {lang === "en" ? (questionsEn[q.id] ?? q.statement) : q.statement}
         </p>
 
         {/* Simple explanation bubble */}
