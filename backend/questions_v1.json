@@ -2,26 +2,34 @@
   {"id": "q01", "axis": "security", "bucket": "Seguridad", "statement": "El gobierno debe priorizar el aumento del pie de fuerza militar para combatir los grupos armados.", "weight": 2},
   {"id": "q02", "axis": "security", "bucket": "Seguridad", "statement": "La negociación con grupos armados ilegales es preferible a la solución militar.", "weight": 3},
   {"id": "q03", "axis": "security", "bucket": "Seguridad", "statement": "Se debe permitir el porte de armas a civiles en zonas rurales con alta criminalidad.", "weight": 1},
-  {"id": "q04", "axis": "security", "bucket": "Seguridad", "statement": "La erradicación forzada de cultivos ilícitos es la mejor estrategia antidrogas.", "weight": 2},
+  {"id": "q04", "axis": "security", "bucket": "Seguridad", "statement": "La erradicación forzada de cultivos ilícitos debería ser la principal herramienta de la política antidrogas.", "weight": 2},
+
   {"id": "q05", "axis": "economy", "bucket": "Economía", "statement": "El Estado debe intervenir activamente en la economía para reducir la desigualdad.", "weight": 3},
-  {"id": "q06", "axis": "economy", "bucket": "Economía", "statement": "Los TLC han beneficiado más a las multinacionales que a los productores colombianos.", "weight": 1},
-  {"id": "q07", "axis": "economy", "bucket": "Economía", "statement": "Se deben reducir los impuestos a las empresas para generar más empleo.", "weight": 2},
+  {"id": "q06", "axis": "economy", "bucket": "Economía", "statement": "Colombia debería priorizar la protección de sus productores nacionales aunque eso implique limitar o renegociar algunos tratados de libre comercio.", "weight": 1},
+  {"id": "q07", "axis": "economy", "bucket": "Economía", "statement": "Se deberían reducir los impuestos a las empresas para favorecer la inversión y la creación de empleo.", "weight": 2},
   {"id": "q08", "axis": "economy", "bucket": "Economía", "statement": "La reforma agraria con redistribución de tierras es urgente en Colombia.", "weight": 3},
+
   {"id": "q09", "axis": "health", "bucket": "Salud", "statement": "El sistema de salud debe ser completamente público y universal.", "weight": 1},
-  {"id": "q10", "axis": "health", "bucket": "Salud", "statement": "Las EPS privadas deben seguir operando como intermediarias del sistema de salud.", "weight": 2},
+  {"id": "q10", "axis": "health", "bucket": "Salud", "statement": "Las EPS privadas deberían seguir operando como intermediarias del sistema de salud en lugar de que el Estado asuma directamente toda la gestión.", "weight": 2},
   {"id": "q11", "axis": "health", "bucket": "Salud", "statement": "La salud mental debe tener la misma prioridad presupuestal que la salud física.", "weight": 3},
-  {"id": "q12", "axis": "energy_environment", "bucket": "Energía y Medio Ambiente", "statement": "Colombia debe prohibir el fracking y la minería a cielo abierto.", "weight": 1},
+
+  {"id": "q12", "axis": "energy_environment", "bucket": "Energía y Medio Ambiente", "statement": "Colombia debería prohibir el fracking y solo permitir minería a cielo abierto bajo condiciones ambientales muy estrictas.", "weight": 1},
   {"id": "q13", "axis": "energy_environment", "bucket": "Energía y Medio Ambiente", "statement": "La transición energética debe acelerarse aunque implique costos económicos a corto plazo.", "weight": 2},
   {"id": "q14", "axis": "energy_environment", "bucket": "Energía y Medio Ambiente", "statement": "La exploración petrolera es necesaria para financiar el desarrollo del país.", "weight": 3},
+
   {"id": "q15", "axis": "fiscal", "bucket": "Política Fiscal", "statement": "Los impuestos a las grandes fortunas son necesarios para financiar programas sociales.", "weight": 1},
-  {"id": "q16", "axis": "fiscal", "bucket": "Política Fiscal", "statement": "El gasto público en Colombia es excesivo y debe reducirse.", "weight": 2},
-  {"id": "q17", "axis": "fiscal", "bucket": "Política Fiscal", "statement": "Las pensiones deben seguir siendo administradas por fondos privados.", "weight": 3},
-  {"id": "q18", "axis": "foreign_policy", "bucket": "Política Exterior", "statement": "Colombia debe restablecer relaciones diplomáticas plenas con Venezuela.", "weight": 1},
-  {"id": "q19", "axis": "foreign_policy", "bucket": "Política Exterior", "statement": "La alianza con Estados Unidos debe ser la prioridad de la política exterior.", "weight": 2},
-  {"id": "q20", "axis": "foreign_policy", "bucket": "Política Exterior", "statement": "Colombia debe fortalecer la integración con países latinoamericanos antes que con potencias globales.", "weight": 3},
+  {"id": "q16", "axis": "fiscal", "bucket": "Política Fiscal", "statement": "El gasto público en Colombia es excesivo en muchos rubros y debería reducirse para mejorar la eficiencia del Estado.", "weight": 2},
+  {"id": "q17", "axis": "fiscal", "bucket": "Política Fiscal", "statement": "El sistema pensional debería mantener un papel central de los fondos privados en la administración de las pensiones.", "weight": 3},
+
+  {"id": "q18", "axis": "foreign_policy", "bucket": "Política Exterior", "statement": "Colombia debería mantener relaciones diplomáticas plenas con Venezuela para manejar mejor temas como comercio, seguridad y migración.", "weight": 1},
+  {"id": "q19", "axis": "foreign_policy", "bucket": "Política Exterior", "statement": "La alianza con Estados Unidos debería ser una de las principales prioridades de la política exterior de Colombia.", "weight": 2},
+  {"id": "q20", "axis": "foreign_policy", "bucket": "Política Exterior", "statement": "Colombia debería fortalecer su integración política y económica con los países latinoamericanos, incluso si eso implica restarle prioridad a acuerdos con potencias globales.", "weight": 3},
+
   {"id": "q21", "axis": "anticorruption", "bucket": "Anticorrupción", "statement": "Los funcionarios públicos condenados por corrupción deben recibir cadena perpetua.", "weight": 1},
   {"id": "q22", "axis": "anticorruption", "bucket": "Anticorrupción", "statement": "La financiación de campañas políticas debe ser exclusivamente pública.", "weight": 2},
-  {"id": "q23", "axis": "security", "bucket": "Seguridad", "statement": "La Policía Nacional debe ser reformada estructuralmente y desmilitarizada.", "weight": 3},
-  {"id": "q24", "axis": "economy", "bucket": "Economía", "statement": "El salario mínimo en Colombia debería aumentarse significativamente cada año.", "weight": 1},
+
+  {"id": "q23", "axis": "security", "bucket": "Seguridad", "statement": "La Policía Nacional debe ser reformada de manera profunda para que actúe menos como una fuerza militar y más como un servicio civil de seguridad ciudadana.", "weight": 3},
+
+  {"id": "q24", "axis": "economy", "bucket": "Economía", "statement": "El salario mínimo en Colombia debería aumentar por encima de la inflación siempre que la economía lo permita.", "weight": 1},
   {"id": "q25", "axis": "health", "bucket": "Salud", "statement": "El acceso a medicamentos genéricos debe priorizarse sobre las patentes farmacéuticas.", "weight": 2}
 ]
