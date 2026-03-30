@@ -18,20 +18,7 @@ import {
 } from "recharts";
 import type { Result } from "@/lib/api";
 import { TOPIC_IDS } from "@/lib/topics";
-
-// ---------------------------------------------------------------------------
-// Label maps (matches the 7 canonical topic IDs used by the backend)
-// ---------------------------------------------------------------------------
-
-const TOPIC_SHORT: Record<string, string> = {
-  security:           "Seguridad",
-  economy:            "Economía",
-  health:             "Salud",
-  energy_environment: "Medio Amb.",
-  fiscal:             "Fiscal",
-  foreign_policy:     "Ext.",
-  anticorruption:     "Anticor.",
-};
+import { useLanguage } from "@/lib/i18n";
 
 const CANDIDATE_COLORS = [
   "#F5C400", // primary yellow — top candidate
@@ -46,10 +33,10 @@ const CANDIDATE_COLORS = [
 // Radar — compares top 2 candidates across topics
 // ---------------------------------------------------------------------------
 
-function buildRadarData(results: Result[]): Record<string, string | number>[] {
+function buildRadarData(results: Result[], topicShort: Record<string, string>): Record<string, string | number>[] {
   const top = results.slice(0, 2);
   return TOPIC_IDS.map((t) => {
-    const row: Record<string, string | number> = { topic: TOPIC_SHORT[t] ?? t };
+    const row: Record<string, string | number> = { topic: topicShort[t] ?? t };
     for (const r of top) {
       row[r.candidate] = r.breakdown[t] ?? 0;
     }
@@ -74,9 +61,10 @@ interface Props {
 }
 
 export default function ResultsCharts({ results }: Props) {
+  const { t } = useLanguage();
   if (results.length === 0) return null;
 
-  const radarData = buildRadarData(results);
+  const radarData = buildRadarData(results, t.charts.topicShort);
   const barData   = buildBarData(results);
   const top2      = results.slice(0, 2);
 
@@ -89,10 +77,10 @@ export default function ResultsCharts({ results }: Props) {
         style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
       >
         <h3 className="text-sm font-bold mb-1" style={{ color: "var(--foreground)" }}>
-          Afinidad por tema — {top2.length > 1 ? "comparación" : "tu candidato top"}
+          {t.charts.radarTitle} — {top2.length > 1 ? t.charts.radarComparison : t.charts.radarTopCandidate}
         </h3>
         <p className="text-xs mb-4" style={{ color: "var(--muted)" }}>
-          Comparación entre tus dos candidatos más afines
+          {t.charts.radarSubtitle}
         </p>
         <ResponsiveContainer width="100%" height={320}>
           <RadarChart data={radarData} margin={{ top: 35, right: 80, bottom: 25, left: 80 }}>
@@ -141,7 +129,7 @@ export default function ResultsCharts({ results }: Props) {
         style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
       >
         <h3 className="text-sm font-bold mb-4" style={{ color: "var(--foreground)" }}>
-          Afinidad total — todos los candidatos
+          {t.charts.barTitle}
         </h3>
         <ResponsiveContainer width="100%" height={barData.length * 52}>
           <BarChart
@@ -163,7 +151,7 @@ export default function ResultsCharts({ results }: Props) {
               width={140}
             />
             <Tooltip
-              formatter={(value) => [`${value}%`, "Afinidad"]}
+              formatter={(value) => [`${value}%`, t.charts.tooltipAffinity]}
               contentStyle={{
                 backgroundColor: "var(--surface)",
                 border: "1px solid var(--border)",

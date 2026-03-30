@@ -12,6 +12,7 @@ import {
   CANDIDATOS_POSICIONES,
   FUENTES,
 } from "@/lib/riesgo-electoral";
+import { useLanguage } from "@/lib/i18n";
 
 // ── Dynamic map import (SSR: false — react-simple-maps uses browser APIs) ─────
 const ColombiaMap = dynamic(() => import("./ColombiaMap"), {
@@ -30,16 +31,7 @@ const ColombiaMap = dynamic(() => import("./ColombiaMap"), {
   ),
 });
 
-// ── In-page nav (item 9: "Municipios" removed; item 11: new order) ────────────
-const NAV_SECTIONS = [
-  { id: "cifras",       label: "Cifras clave" },
-  { id: "como-operan", label: "¿Cómo operan?" },
-  { id: "mapa",        label: "Mapa" },
-  { id: "analisis",    label: "Análisis" },
-  { id: "candidatos",  label: "Candidatos" },
-  { id: "jornada",     label: "Jornada" },
-  { id: "fuentes",     label: "Fuentes" },
-];
+// NAV_SECTIONS is now derived from translations (see inside the component)
 
 // Items 5: colored badges per mechanism number
 const MECANISMO_COLORS = ["#dc2626", "#ea580c", "#7c3aed"];
@@ -172,6 +164,7 @@ function NavPill({
 interface BarTooltip { idx: number; x: number; y: number }
 
 function StackedProportionalBar() {
+  const { t } = useLanguage();
   const [tt, setTt] = useState<BarTooltip | null>(null);
   const total = PARTIDOS_DISTRIBUCION.reduce((s, d) => s + d.municipios, 0);
 
@@ -210,7 +203,7 @@ function StackedProportionalBar() {
         >
           <p className="font-bold mb-0.5">{PARTIDOS_DISTRIBUCION[tt.idx].partido}</p>
           <p style={{ color: "#D1D5DB" }}>
-            {PARTIDOS_DISTRIBUCION[tt.idx].municipios} municipios · {PARTIDOS_DISTRIBUCION[tt.idx].pct}%
+            {PARTIDOS_DISTRIBUCION[tt.idx].municipios} {t.risks.barTooltipMunicipios} · {PARTIDOS_DISTRIBUCION[tt.idx].pct}%
           </p>
         </div>
       )}
@@ -233,6 +226,7 @@ function StackedProportionalBar() {
 interface FlipCardProps { c: (typeof CANDIDATOS_POSICIONES)[number] }
 
 function FlipCard({ c }: FlipCardProps) {
+  const { t } = useLanguage();
   const [flipped, setFlipped] = useState(false);
 
   return (
@@ -303,15 +297,15 @@ function FlipCard({ c }: FlipCardProps) {
             <p className="text-xs" style={{ color: "var(--muted)" }}>{c.partido}</p>
           </div>
           <div>
-            <p className="text-xs font-semibold mb-0.5" style={{ color: "var(--muted)" }}>Grupos armados</p>
+            <p className="text-xs font-semibold mb-0.5" style={{ color: "var(--muted)" }}>{t.risks.cardArmedGroups}</p>
             <p className="text-xs leading-relaxed" style={{ color: "var(--foreground)" }}>{c.postura}</p>
           </div>
           <div>
-            <p className="text-xs font-semibold mb-0.5" style={{ color: "var(--muted)" }}>Paz total</p>
+            <p className="text-xs font-semibold mb-0.5" style={{ color: "var(--muted)" }}>{t.risks.cardTotalPeace}</p>
             <p className="text-xs leading-relaxed" style={{ color: "var(--foreground)" }}>{c.pazTotal}</p>
           </div>
           <div>
-            <p className="text-xs font-semibold mb-0.5" style={{ color: "var(--muted)" }}>Propuesta clave</p>
+            <p className="text-xs font-semibold mb-0.5" style={{ color: "var(--muted)" }}>{t.risks.cardKeyProposal}</p>
             <p className="text-xs leading-relaxed" style={{ color: "var(--foreground)" }}>{c.propuestaClave}</p>
           </div>
         </div>
@@ -323,6 +317,8 @@ function FlipCard({ c }: FlipCardProps) {
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function RiesgosElectoralesPage() {
+  const { t } = useLanguage();
+  const NAV_SECTIONS = t.risks.navSections;
   const [activeSection, setActiveSection]     = useState("cifras");
   const [showBackToTop, setShowBackToTop]     = useState(false);
   const [hallazgoExpanded, setHallazgoExpanded] = useState(false);
@@ -370,16 +366,13 @@ export default function RiesgosElectoralesPage() {
         <div className="mb-8">
           <div className="mb-4">
             <h1 className="text-3xl font-bold leading-tight" style={{ color: "var(--foreground)" }}>
-              Riesgos Electorales 2026
+              {t.risks.title}
             </h1>
             <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-              Datos oficiales de la{" "}
-              <span className="font-semibold" style={{ color: "var(--foreground)" }}>Defensoría del Pueblo</span>{" "}
-              y la{" "}
-              <span className="font-semibold" style={{ color: "var(--foreground)" }}>Misión de Observación Electoral (MOE)</span>{" "}
-              sobre los municipios con riesgo crítico de seguridad electoral para las elecciones presidenciales de mayo 2026.{" "}
-              Los datos se basan en alertas emitidas antes de las legislativas del 8 de marzo de 2026
-              y aplican igualmente a la primera vuelta presidencial de mayo 2026.
+              <span className="font-semibold" style={{ color: "var(--foreground)" }}>{t.risks.subtitleDefensoria}</span>{" "}
+              {/* no conjunction needed — subtitle body starts with "on municipalities…" */}
+              <span className="font-semibold" style={{ color: "var(--foreground)" }}>{t.risks.subtitleMoe}</span>{" "}
+              {t.risks.subtitleBody}
             </p>
           </div>
           {/* Nota editorial — left-bordered callout */}
@@ -394,12 +387,10 @@ export default function RiesgosElectoralesPage() {
             }}
           >
             <p className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: "#92400e" }}>
-              NOTA EDITORIAL
+              {t.risks.editorialLabel}
             </p>
             <p className="text-xs leading-relaxed" style={{ color: "#92400e" }}>
-              Esta página presenta información de fuentes institucionales del Estado colombiano. La correlación entre
-              presencia de grupos armados y resultados electorales no equivale a fraude en el escrutinio — documenta
-              condiciones estructurales que limitan el pluralismo político y la libre competencia electoral.
+              {t.risks.editorialBody}
             </p>
           </div>
         </div>
@@ -453,11 +444,10 @@ export default function RiesgosElectoralesPage() {
             className="text-lg font-bold pb-2 mb-4 text-center"
             style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}
           >
-            ¿Cómo operan los riesgos?
+            {t.risks.howOperate}
           </h2>
           <p className="text-sm mb-4" style={{ color: "var(--muted)" }}>
-            La Defensoría documenta tres mecanismos mediante los cuales grupos armados ilegales distorsionan
-            la competencia electoral en los municipios bajo alerta:
+            {t.risks.howOperateDesc}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
             {MECANISMOS.map((m, i) => {
@@ -498,7 +488,7 @@ export default function RiesgosElectoralesPage() {
             className="text-lg font-bold pb-2 mb-4 text-center"
             style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}
           >
-            Mapa de riesgo por departamento
+            {t.risks.mapTitle}
           </h2>
           <div
             className="rounded-xl px-4 pt-4 pb-5"
@@ -514,7 +504,7 @@ export default function RiesgosElectoralesPage() {
             className="text-lg font-bold pb-2 mb-4 text-center"
             style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}
           >
-            Hallazgo crítico — Suroccidente colombiano
+            {t.risks.analysisTitle}
           </h2>
 
           {/* Collapsible card */}
@@ -526,10 +516,10 @@ export default function RiesgosElectoralesPage() {
             >
               <div className="flex-1 min-w-0">
                 <h3 className="text-base font-extrabold mb-1" style={{ color: "#991B1B" }}>
-                  10 municipios de Nariño y Cauca con +50% para un solo partido
+                  {t.risks.analysisH3}
                 </h3>
                 <span className="text-xs font-semibold" style={{ color: "#DC2626" }}>
-                  {hallazgoExpanded ? "▲ Ocultar análisis" : "▼ Ver análisis"}
+                  {hallazgoExpanded ? t.risks.analysisToggleHide : t.risks.analysisToggleShow}
                 </span>
               </div>
             </button>
@@ -545,22 +535,13 @@ export default function RiesgosElectoralesPage() {
             >
               <div className="px-6 pb-5">
                 <p className="text-sm leading-relaxed mb-3" style={{ color: "#7F1D1D" }}>
-                  Un análisis cruzado de los resultados del escrutinio oficial de la Registraduría Nacional
-                  (99.8% de precisión histórica) con las alertas de la Defensoría del Pueblo (ATE 013-2025)
-                  identificó 10 municipios del Suroccidente en los que el partido ganador superó el{" "}
-                  <strong>+50% de los votos al Senado</strong>, coincidiendo todos con alerta máxima de
-                  seguridad electoral.
+                  {t.risks.analysisP1}
                 </p>
                 <p className="text-sm leading-relaxed mb-3" style={{ color: "#7F1D1D" }}>
-                  En democracias competitivas, mayorías absolutas para un solo partido son estadísticamente
-                  inusuales. Cuando ocurren en zonas donde grupos armados vetan candidaturas y regulan
-                  campañas, sugieren que{" "}
-                  <strong>el pluralismo político ha sido efectivamente suprimido</strong> — no
-                  necesariamente a través del escrutinio, sino en las condiciones previas al voto.
+                  {t.risks.analysisP2}
                 </p>
                 <p className="text-xs" style={{ color: "#991B1B", opacity: 0.8 }}>
-                  Los 10 municipios se presentan como zona del Suroccidente hasta confirmar la lista oficial
-                  publicada en fuente abierta verificable (Registraduría / Defensoría).
+                  {t.risks.analysisNote}
                 </p>
               </div>
             </div>
@@ -569,19 +550,17 @@ export default function RiesgosElectoralesPage() {
           {/* Stacked bar chart — always visible */}
           <div className="rounded-xl px-5 py-5 mb-10" style={{ backgroundColor: "var(--surface)", border: "1px solid var(--border)" }}>
             <h3 className="text-sm font-bold mb-1" style={{ color: "var(--foreground)" }}>
-              Distribución de 1er lugar al Senado en los 69 municipios de riesgo crítico
+              {t.risks.barTitle}
             </h3>
             <p className="text-xs mb-4" style={{ color: "var(--muted)" }}>
-              Partido con más votos al Senado en cada municipio de riesgo crítico (legislativas 8 mar 2026)
+              {t.risks.barDesc}
             </p>
             <StackedProportionalBar />
             <p className="text-xs mt-3" style={{ color: "var(--muted)", opacity: 0.7 }}>
-              Fuente: Registraduría Nacional (escrutinio oficial) / Defensoría ATE 013-2025
+              {t.risks.barSource}
             </p>
             <p className="text-xs mt-4" style={{ color: "var(--muted)", opacity: 0.8 }}>
-              Nota metodológica: ganar en más municipios de riesgo no prueba coerción — el Pacto Histórico
-              tiene base electoral real en estas regiones. El indicador relevante es el subconjunto de 10
-              municipios con +50%, estadísticamente atípico en condiciones de pluralismo libre.
+              {t.risks.barNote}
             </p>
           </div>
         </div>
@@ -592,11 +571,10 @@ export default function RiesgosElectoralesPage() {
             className="text-lg font-bold pb-2 mb-2 text-center"
             style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}
           >
-            ¿Qué proponen los candidatos?
+            {t.risks.candidatesTitle}
           </h2>
           <p className="text-sm mb-5" style={{ color: "var(--muted)" }}>
-            Posiciones sobre grupos armados, paz total y seguridad en territorios en conflicto.
-            Pasa el cursor (o toca en móvil) para ver la postura de cada candidato.
+            {t.risks.candidatesDesc}
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10" style={{ alignItems: "start" }}>
             {CANDIDATOS_POSICIONES.map((c) => (
@@ -611,7 +589,7 @@ export default function RiesgosElectoralesPage() {
             className="text-lg font-bold pb-2 mb-4 text-center"
             style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}
           >
-            Incidentes documentados — Legislativas 8 mar 2026
+            {t.risks.incidentsTitle}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
             {INCIDENTES.map((inc) => {
@@ -652,7 +630,7 @@ export default function RiesgosElectoralesPage() {
             className="text-lg font-bold pb-2 mb-4 text-center"
             style={{ color: "var(--foreground)", borderBottom: SECTION_BORDER }}
           >
-            Fuentes primarias
+            {t.risks.sourcesTitle}
           </h2>
 
           <div className="relative mb-10">
@@ -691,7 +669,7 @@ export default function RiesgosElectoralesPage() {
                       className="rounded-full px-2 py-0.5 text-xs font-semibold"
                       style={{ backgroundColor: "#F0FDF4", color: "#16A34A", border: "1px solid #BBFCCB" }}
                     >
-                      Fuente oficial
+                      {t.risks.sourcesOfficialBadge}
                     </span>
                     <span className="text-xs ml-auto" style={{ color: "var(--muted)" }}>↗</span>
                   </div>
@@ -717,7 +695,7 @@ export default function RiesgosElectoralesPage() {
             className="rounded-full px-8 py-3 text-sm font-bold shadow transition hover:opacity-90"
             style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
           >
-            Haz el quiz — ¿con quién votas?
+            {t.risks.ctaQuiz}
           </Link>
           <Link
             href="/candidatos"
@@ -732,7 +710,7 @@ export default function RiesgosElectoralesPage() {
             onMouseEnter={() => setHoveredVerPerfiles(true)}
             onMouseLeave={() => setHoveredVerPerfiles(false)}
           >
-            Ver perfiles de candidatos
+            {t.risks.ctaCandidates}
           </Link>
         </div>
 
@@ -749,7 +727,7 @@ export default function RiesgosElectoralesPage() {
             color: "var(--foreground)",
           }}
         >
-          ↑ Volver arriba
+          {t.risks.backToTop}
         </button>
       )}
     </main>

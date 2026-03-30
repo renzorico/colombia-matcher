@@ -3,79 +3,29 @@
 import { useState } from "react";
 import Link from "next/link";
 import { TOPIC_COLORS } from "@/lib/topics";
-
-const TOPICS = [
-  { id: "security",           label: "Seguridad",                weight: 25 },
-  { id: "economy",            label: "Economía",                 weight: 20 },
-  { id: "health",             label: "Salud",                    weight: 15 },
-  { id: "energy_environment", label: "Energía y Medio Ambiente", weight: 15 },
-  { id: "fiscal",             label: "Política Fiscal",          weight: 10 },
-  { id: "foreign_policy",     label: "Política Exterior",        weight: 10 },
-  { id: "anticorruption",     label: "Anticorrupción",           weight: 5 },
-];
-
-const STEPS = [
-  {
-    number: "1",
-    title: "Respondes",
-    desc: "25 preguntas sobre los temas que más importan para Colombia en 2026. Sin respuestas correctas — solo tus opiniones.",
-  },
-  {
-    number: "2",
-    title: "Comparamos",
-    desc: "Tus respuestas con las posiciones documentadas de cada candidato, tema por tema, usando fuentes verificables.",
-  },
-  {
-    number: "3",
-    title: "Descubres",
-    desc: "Qué candidato está más alineado con tus ideas, con un desglose por tema y acceso a las fuentes.",
-  },
-];
-
-const SECTIONS = [
-  {
-    id: "que-es",
-    title: "¿Qué es esto?",
-    body: "Una herramienta informativa que compara tus opiniones con las posiciones documentadas de cada candidato presidencial para 2026. Sin sesgos, sin publicidad, sin afiliación política.",
-  },
-  {
-    id: "como-funciona",
-    title: "¿Cómo funciona el quiz?",
-    body: "Respondes 25 preguntas en escala 1–5. Cada pregunta corresponde a un eje temático. No hay respuestas correctas — solo tus opiniones. Tarda 5–10 minutos.",
-  },
-  {
-    id: "fuentes",
-    title: "¿De dónde viene la información?",
-    body: "Revisamos discursos, entrevistas, programas de gobierno y noticias. Cada posición tiene una fuente verificable. Si un candidato no tiene posición clara sobre un tema, no le asignamos puntaje.",
-  },
-  {
-    id: "afinidad",
-    title: "¿Cómo se calcula la afinidad?",
-    body: "Comparamos tus respuestas con las de cada candidato tema por tema. El resultado es un promedio ponderado — los temas más relevantes pesan más. Un resultado entre 65% y 75% ya es afinidad alta.",
-  },
-  {
-    id: "imparcial",
-    title: "¿Es imparcial?",
-    body: "No apoyamos a ningún candidato. Los datos son curados por personas y cada posición tiene fuente citada. Úsalo como punto de partida, no como última palabra.",
-  },
-];
+import { useLanguage } from "@/lib/i18n";
 
 export default function MetodologiaPage() {
+  const { t } = useLanguage();
   const [openSection, setOpenSection] = useState<string | null>(null);
 
   function toggle(id: string) {
     setOpenSection((prev) => (prev === id ? null : id));
   }
 
+  const TOPICS = t.methodology.topics;
+  const STEPS = t.methodology.steps;
+  const SECTIONS = t.methodology.sections;
+
   return (
     <main className="flex flex-1 flex-col items-center px-4 py-12">
       <div className="w-full max-w-2xl">
 
         <h1 className="text-3xl font-bold" style={{ color: "var(--foreground)" }}>
-          Metodología
+          {t.methodology.title}
         </h1>
         <p className="mt-2 text-sm" style={{ color: "var(--muted)" }}>
-          Cómo funciona Elecciones Colombia 2026, en lenguaje claro.
+          {t.methodology.subtitle}
         </p>
 
         {/* ── 3-step flow ───────────────────────────────────────────────── */}
@@ -119,7 +69,7 @@ export default function MetodologiaPage() {
           className="mt-10 text-lg font-bold pb-2"
           style={{ color: "var(--foreground)", borderBottom: "2px solid var(--primary)" }}
         >
-          Preguntas frecuentes
+          {t.methodology.faqTitle}
         </h2>
 
         <div className="mt-4 flex flex-col gap-2">
@@ -181,34 +131,34 @@ export default function MetodologiaPage() {
           className="mt-10 text-lg font-bold pb-2"
           style={{ color: "var(--foreground)", borderBottom: "2px solid var(--primary)" }}
         >
-          Peso por tema
+          {t.methodology.topicsTitle}
         </h2>
         <p className="mt-2 text-xs" style={{ color: "var(--muted)" }}>
-          Los temas más relevantes para la agenda colombiana 2026 tienen mayor peso en el cálculo.
+          {t.methodology.topicsDesc}
         </p>
 
         <div className="mt-4 flex flex-col gap-3">
-          {TOPICS.map((t) => {
-            const color = TOPIC_COLORS[t.id] ?? "#4A4A4A";
+          {TOPICS.map((topic) => {
+            const color = TOPIC_COLORS[topic.id] ?? "#4A4A4A";
             return (
-              <div key={t.id} className="flex items-center gap-3" style={{ paddingLeft: 8, borderLeft: `4px solid ${color}` }}>
+              <div key={topic.id} className="flex items-center gap-3" style={{ paddingLeft: 8, borderLeft: `4px solid ${color}` }}>
                 <span
                   className="w-44 flex-shrink-0 text-sm font-medium text-right"
                   style={{ color: "var(--foreground)" }}
                 >
-                  {t.label}
+                  {topic.label}
                 </span>
                 <div className="flex-1 h-2 rounded-full" style={{ backgroundColor: "var(--border)" }}>
                   <div
                     className="h-2 rounded-full transition-all"
-                    style={{ width: `${t.weight}%`, backgroundColor: color }}
+                    style={{ width: `${topic.weight}%`, backgroundColor: color }}
                   />
                 </div>
                 <span
                   className="w-8 flex-shrink-0 text-sm font-bold tabular-nums"
                   style={{ color }}
                 >
-                  {t.weight}%
+                  {topic.weight}%
                 </span>
               </div>
             );
@@ -222,14 +172,14 @@ export default function MetodologiaPage() {
             className="rounded-full px-8 py-3 text-sm font-bold shadow transition hover:opacity-90"
             style={{ backgroundColor: "var(--primary)", color: "#1A1A1A" }}
           >
-            Haz el quiz ahora
+            {t.methodology.ctaQuiz}
           </Link>
           <Link
             href="/bajo-el-capo"
             className="rounded-full px-6 py-2.5 text-sm font-semibold border transition hover:opacity-80"
             style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
           >
-            Ver arquitectura técnica
+            {t.methodology.ctaTechnical}
           </Link>
         </div>
 
