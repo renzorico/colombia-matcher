@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getQuestions, type Question } from "@/lib/api";
 import { BUCKET_TO_TOPIC, TOPIC_COLORS } from "@/lib/topics";
+import { explanacionesSimples } from "@/lib/explanaciones-simples";
 
 const LABELS: Record<number, string> = {
   1: "Totalmente en desacuerdo",
@@ -36,6 +37,7 @@ export default function QuizPage() {
   const [explicitAnswerIds, setExplicitAnswerIds] = useState<Set<string>>(new Set());
   const [showAllSkippedWarning, setShowAllSkippedWarning] = useState(false);
   const [hoveredVal, setHoveredVal] = useState<number | null>(null);
+  const [showExplanacion, setShowExplanacion] = useState(false);
 
   useEffect(() => {
     getQuestions().then((qs) => {
@@ -84,6 +86,11 @@ export default function QuizPage() {
     return counts;
   }, [questions]);
 
+  // Reset explanation bubble when question changes
+  useEffect(() => {
+    setShowExplanacion(false);
+  }, [index]);
+
   if (loading) {
     return (
       <main className="flex flex-1 items-center justify-center">
@@ -100,6 +107,7 @@ export default function QuizPage() {
   const topicNum = topicOrder.indexOf(q.bucket) + 1;
   const questionInTopic = questions.slice(0, index + 1).filter((qi) => qi.bucket === q.bucket).length;
   const topicTotal = topicCounts[q.bucket] ?? 1;
+  const explicacion = explanacionesSimples[q.id] ?? null;
 
   function doSubmit(finalAnswers: Record<string, number>) {
     setSubmitting(true);
@@ -211,6 +219,28 @@ export default function QuizPage() {
         <p className="mt-6 text-lg font-semibold leading-relaxed" style={{ color: "var(--foreground)" }}>
           {q.statement}
         </p>
+
+        {/* Simple explanation bubble */}
+        {explicacion && (
+          <>
+            <button
+              onClick={() => setShowExplanacion((prev) => !prev)}
+              className="text-sm text-gray-400 hover:text-gray-600 hover:underline mt-2 mb-1 flex items-center gap-1 transition-colors cursor-pointer"
+            >
+              🧒 ¿No entiendes la pregunta? Explícamelo fácil
+            </button>
+            {showExplanacion && (
+              <div className="relative mt-1 mb-4 bg-yellow-50 border-2 border-yellow-300 rounded-xl p-4 text-sm text-gray-700 leading-relaxed">
+                <button
+                  onClick={() => setShowExplanacion(false)}
+                  className="absolute top-2 right-3 text-gray-400 hover:text-gray-600 text-lg leading-none cursor-pointer"
+                  aria-label="Cerrar explicación"
+                >✕</button>
+                <p className="pr-6">{explicacion}</p>
+              </div>
+            )}
+          </>
+        )}
 
         {/* Answer buttons */}
         <div className="mt-6 flex flex-col gap-2">
