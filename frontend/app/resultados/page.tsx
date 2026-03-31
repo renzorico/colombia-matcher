@@ -17,7 +17,7 @@ import ResultsCharts from "@/components/ResultsCharts";
 import PhotoLightbox from "@/components/PhotoLightbox";
 import { useLanguage } from "@/lib/i18n";
 
-const LINKEDIN_URL = "LINKEDIN_PROFILE_URL_HERE";
+const LINKEDIN_URL = "https://www.linkedin.com/in/renzorico/";
 
 // ---------------------------------------------------------------------------
 // Helpers
