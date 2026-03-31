@@ -467,7 +467,7 @@ const en: typeof es = {
     behindScenes: "Behind the Scenes",
     openMenu: "Open menu",
     closeMenu: "Close menu",
-    wordmark: "Find Your Vote",
+    wordmark: "Find your Vote",
   },
   footer: {
     tagline: "Independent tool · No political affiliation · Manually curated data · Updated March 2026",
@@ -478,7 +478,7 @@ const en: typeof es = {
     photoLicense: "(CC BY-SA)",
   },
   home: {
-    title: "Find Your Vote",
+    title: "Find your Vote",
     subtitle: "Discover which presidential candidate aligns most with your views. 25 questions. No bias. No politics.",
     statsCandidates: "candidates",
     statsTopics: "key topics",
