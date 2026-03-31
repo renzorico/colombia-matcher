@@ -59,7 +59,7 @@ Esta guía explica cómo desplegar el proyecto completo de forma gratuita:
 
 6. Una vez desplegado, Vercel te dará tu URL pública. Ejemplo:
    ```
-   https://colombia-matcher.vercel.app
+   https://nobotestuvoto.vercel.app
    ```
 
 7. Vuelve a Railway y actualiza la variable `CORS_ORIGINS` con la URL real de Vercel.
@@ -148,6 +148,6 @@ No es necesario configurar variables de entorno para desarrollo local. El proxy 
 
 ## Post-despliegue: actualizar el README
 
-El README ya apunta a la demo en vivo: https://colombia-matcher.vercel.app
+El README ya apunta a la demo en vivo: https://nobotestuvoto.vercel.app
 
 Recuerda actualizar `CORS_ORIGINS` en Railway si cambias la URL de Vercel.

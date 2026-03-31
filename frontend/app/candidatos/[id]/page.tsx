@@ -42,7 +42,7 @@ export async function generateMetadata({
   const { id } = await params;
   const name = CANDIDATE_NAMES[id] ?? id;
   const description = `Propuestas, posiciones y controversias de ${name} para las elecciones presidenciales de Colombia 2026.`;
-  const image = CANDIDATE_IMAGES[id] ?? "https://colombia-matcher.vercel.app/og-default.svg";
+  const image = CANDIDATE_IMAGES[id] ?? "https://nobotestuvoto.vercel.app/og-default.svg";
   return {
     title: name,
     description,

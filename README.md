@@ -2,7 +2,7 @@
 
 Herramienta cívica para las elecciones presidenciales Colombia 2026 — quiz de afinidad política, perfiles de candidatos con propuestas, controversias y fuentes verificadas. Arquitectura multi-agente, estática primero.
 
-> 🌐 **Demo en vivo:** https://colombia-matcher.vercel.app
+> 🌐 **Demo en vivo:** https://nobotestuvoto.vercel.app
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/renzorico/colombia-matcher&root=frontend)
 
@@ -210,7 +210,7 @@ El dashboard de revisión está disponible en `/admin/review` durante desarrollo
 | Variable | Dónde | Descripción |
 |---|---|---|
 | `NEXT_PUBLIC_API_URL` | Vercel (build-time) | URL completa del backend desplegado, sin trailing slash. Ej: `https://colombia-matcher.up.railway.app`. **Debe estar seteada antes del primer build.** |
-| `CORS_ORIGINS` | Railway / Render | Orígenes permitidos, separados por comas. Ej: `https://colombia-matcher.vercel.app`. En dev, `localhost:3000` siempre está permitido. |
+| `CORS_ORIGINS` | Railway / Render | Orígenes permitidos, separados por comas. Ej: `https://nobotestuvoto.vercel.app`. En dev, `localhost:3000` siempre está permitido. |
 | `PORT` | Railway / Render | Inyectada automáticamente por la plataforma. No setear manualmente. |
 
 ---

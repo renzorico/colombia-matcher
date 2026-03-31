@@ -156,7 +156,7 @@ export default function ResultadosPage() {
     router.push("/");
   }
 
-  const siteUrl = "https://colombia-matcher.vercel.app";
+  const siteUrl = "https://nobotestuvoto.vercel.app";
 
   function shareTextTwitter(top: Result) {
     if (lang === "en") {
@@ -641,7 +641,7 @@ export default function ResultadosPage() {
             {t.results.storyMyResults}
           </p>
           <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 12, marginTop: 4 }}>
-            {t.results.storyCountry} · colombia-matcher.vercel.app
+            {t.results.storyCountry} · nobotestuvoto.vercel.app
           </p>
         </div>
 
@@ -672,7 +672,7 @@ export default function ResultadosPage() {
 
         <div style={{ backgroundColor: "#111827", padding: "20px 28px 28px", flexShrink: 0 }}>
           <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 11, marginBottom: 4 }}>{t.results.storyDiscover}</p>
-          <p style={{ color: "#eab308", fontSize: 13, fontWeight: 700 }}>colombia-matcher.vercel.app</p>
+          <p style={{ color: "#eab308", fontSize: 13, fontWeight: 700 }}>nobotestuvoto.vercel.app</p>
         </div>
       </div>
 

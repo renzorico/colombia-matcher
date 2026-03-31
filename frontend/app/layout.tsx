@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const BASE_URL = "https://colombia-matcher.vercel.app";
+const BASE_URL = "https://nobotestuvoto.vercel.app";
 const OG_IMAGE = `${BASE_URL}/og-default.svg`;
 const DEFAULT_DESC = "Descubre qué candidato presidencial está más alineado con tus ideas. 25 preguntas. Datos verificados.";
 
