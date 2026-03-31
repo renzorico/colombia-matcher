@@ -6,7 +6,7 @@
     "statement": "El gobierno debe priorizar el aumento del pie de fuerza militar para combatir los grupos armados.",
     "weight": 2,
     "direction": "positive",
-    "note": "Alta puntuación = más apoyo a solución militar."
+    "note": "Alta puntuación = más apoyo al aumento de fuerza militar."
   },
   {
     "id": "q02",
@@ -15,7 +15,7 @@
     "statement": "La negociación con grupos armados ilegales es preferible a la solución militar.",
     "weight": 3,
     "direction": "negative",
-    "note": "Alta puntuación = preferencia por diálogo sobre fuerza."
+    "note": "Alta puntuación = preferencia por negociación sobre solución militar."
   },
   {
     "id": "q03",
@@ -30,10 +30,10 @@
     "id": "q04",
     "topic_id": "security",
     "topic_label": "Seguridad",
-    "statement": "La erradicación forzada de cultivos ilícitos es la mejor estrategia antidrogas.",
+    "statement": "La erradicación forzada de cultivos ilícitos debería ser la principal herramienta de la política antidrogas.",
     "weight": 2,
     "direction": "positive",
-    "note": "Alta puntuación = más apoyo a erradicación forzada."
+    "note": "Alta puntuación = más apoyo a la erradicación forzada como herramienta principal."
   },
   {
     "id": "q05",
@@ -48,19 +48,19 @@
     "id": "q06",
     "topic_id": "economy",
     "topic_label": "Economía",
-    "statement": "Los TLC han beneficiado más a las multinacionales que a los productores colombianos.",
+    "statement": "Colombia debería priorizar la protección de sus productores nacionales aunque eso implique limitar o renegociar algunos tratados de libre comercio.",
     "weight": 1,
     "direction": "negative",
-    "note": "Alta puntuación = crítico de los TLC."
+    "note": "Alta puntuación = más apoyo a proteger productores nacionales aunque se limiten o renegocien TLC."
   },
   {
     "id": "q07",
     "topic_id": "economy",
     "topic_label": "Economía",
-    "statement": "Se deben reducir los impuestos a las empresas para generar más empleo.",
+    "statement": "Se deberían reducir los impuestos a las empresas para favorecer la inversión y la creación de empleo.",
     "weight": 2,
     "direction": "positive",
-    "note": "Alta puntuación = más apoyo a reducción de impuestos empresariales."
+    "note": "Alta puntuación = más apoyo a reducir impuestos a empresas."
   },
   {
     "id": "q08",
@@ -84,10 +84,10 @@
     "id": "q10",
     "topic_id": "health",
     "topic_label": "Salud",
-    "statement": "Las EPS privadas deben seguir operando como intermediarias del sistema de salud.",
+    "statement": "Las EPS privadas deberían seguir operando como intermediarias del sistema de salud en lugar de que el Estado asuma directamente toda la gestión.",
     "weight": 2,
     "direction": "positive",
-    "note": "Alta puntuación = defensa del modelo mixto con EPS privadas."
+    "note": "Alta puntuación = defensa del modelo con EPS privadas como intermediarias."
   },
   {
     "id": "q11",
@@ -102,10 +102,10 @@
     "id": "q12",
     "topic_id": "energy_environment",
     "topic_label": "Energía y Medio Ambiente",
-    "statement": "Colombia debe prohibir el fracking y la minería a cielo abierto.",
+    "statement": "Colombia debería prohibir el fracking y solo permitir minería a cielo abierto bajo condiciones ambientales muy estrictas.",
     "weight": 1,
     "direction": "negative",
-    "note": "Alta puntuación = posición anti-fracking y anti-minería a cielo abierto."
+    "note": "Alta puntuación = posición más restrictiva frente al fracking y la minería a cielo abierto."
   },
   {
     "id": "q13",
@@ -132,52 +132,52 @@
     "statement": "Los impuestos a las grandes fortunas son necesarios para financiar programas sociales.",
     "weight": 1,
     "direction": "negative",
-    "note": "Alta puntuación = apoyo a impuestos al patrimonio."
+    "note": "Alta puntuación = apoyo a impuestos a grandes fortunas."
   },
   {
     "id": "q16",
     "topic_id": "fiscal",
     "topic_label": "Política Fiscal",
-    "statement": "El gasto público en Colombia es excesivo y debe reducirse.",
+    "statement": "El gasto público en Colombia es excesivo en muchos rubros y debería reducirse para mejorar la eficiencia del Estado.",
     "weight": 2,
     "direction": "positive",
-    "note": "Alta puntuación = apoyo a la austeridad fiscal."
+    "note": "Alta puntuación = apoyo a reducir gasto público por eficiencia."
   },
   {
     "id": "q17",
     "topic_id": "fiscal",
     "topic_label": "Política Fiscal",
-    "statement": "Las pensiones deben seguir siendo administradas por fondos privados.",
+    "statement": "El sistema pensional debería mantener un papel central de los fondos privados en la administración de las pensiones.",
     "weight": 3,
     "direction": "positive",
-    "note": "Alta puntuación = defensa de fondos de pensión privados."
+    "note": "Alta puntuación = defensa de fondos privados en pensiones."
   },
   {
     "id": "q18",
     "topic_id": "foreign_policy",
     "topic_label": "Política Exterior",
-    "statement": "Colombia debe restablecer relaciones diplomáticas plenas con Venezuela.",
+    "statement": "Colombia debería mantener relaciones diplomáticas plenas con Venezuela para manejar mejor temas como comercio, seguridad y migración.",
     "weight": 1,
     "direction": "negative",
-    "note": "Alta puntuación = apoyo a relaciones con Venezuela."
+    "note": "Alta puntuación = apoyo a relaciones diplomáticas plenas con Venezuela."
   },
   {
     "id": "q19",
     "topic_id": "foreign_policy",
     "topic_label": "Política Exterior",
-    "statement": "La alianza con Estados Unidos debe ser la prioridad de la política exterior.",
+    "statement": "La alianza con Estados Unidos debería ser una de las principales prioridades de la política exterior de Colombia.",
     "weight": 2,
     "direction": "positive",
-    "note": "Alta puntuación = prioridad a la alianza con EE.UU."
+    "note": "Alta puntuación = mayor prioridad a la alianza con Estados Unidos."
   },
   {
     "id": "q20",
     "topic_id": "foreign_policy",
     "topic_label": "Política Exterior",
-    "statement": "Colombia debe fortalecer la integración con países latinoamericanos antes que con potencias globales.",
+    "statement": "Colombia debería fortalecer su integración política y económica con los países latinoamericanos, incluso si eso implica restarle prioridad a acuerdos con potencias globales.",
     "weight": 3,
     "direction": "negative",
-    "note": "Alta puntuación = prioridad a integración regional latinoamericana."
+    "note": "Alta puntuación = prioridad a la integración latinoamericana sobre acuerdos con potencias globales."
   },
   {
     "id": "q21",
@@ -201,19 +201,19 @@
     "id": "q23",
     "topic_id": "security",
     "topic_label": "Seguridad",
-    "statement": "La Policía Nacional debe ser reformada estructuralmente y desmilitarizada.",
+    "statement": "La Policía Nacional debe ser reformada de manera profunda para que actúe menos como una fuerza militar y más como un servicio civil de seguridad ciudadana.",
     "weight": 3,
     "direction": "negative",
-    "note": "Alta puntuación = apoyo a desmilitarización de la policía."
+    "note": "Alta puntuación = apoyo a una reforma profunda y desmilitarización de la Policía."
   },
   {
     "id": "q24",
     "topic_id": "economy",
     "topic_label": "Economía",
-    "statement": "El salario mínimo en Colombia debería aumentarse significativamente cada año.",
+    "statement": "El salario mínimo en Colombia debería aumentar por encima de la inflación siempre que la economía lo permita.",
     "weight": 1,
     "direction": "negative",
-    "note": "Alta puntuación = apoyo a aumentos significativos del salario mínimo."
+    "note": "Alta puntuación = apoyo a subir el salario mínimo por encima de la inflación cuando sea viable."
   },
   {
     "id": "q25",
