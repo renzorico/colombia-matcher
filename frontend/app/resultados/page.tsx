@@ -17,6 +17,8 @@ import ResultsCharts from "@/components/ResultsCharts";
 import PhotoLightbox from "@/components/PhotoLightbox";
 import { useLanguage } from "@/lib/i18n";
 
+const LINKEDIN_URL = "LINKEDIN_PROFILE_URL_HERE";
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -616,6 +618,31 @@ export default function ResultadosPage() {
             {t.results.restart}
           </button>
         )}
+      </div>
+
+      {/* ── Feedback CTA ──────────────────────────────────────────────────── */}
+      <div
+        className="mt-4 mb-8 w-full max-w-2xl rounded-xl px-5 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+        style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
+      >
+        <div className="min-w-0">
+          <p className="text-sm font-semibold" style={{ color: "var(--foreground)" }}>
+            {t.results.feedbackTitle}
+          </p>
+          <p className="mt-0.5 text-xs leading-relaxed" style={{ color: "var(--muted)" }}>
+            {t.results.feedbackBody}
+          </p>
+        </div>
+        <a
+          href={LINKEDIN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t.results.feedbackCta}
+          className="flex-shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition hover:opacity-80 text-center"
+          style={{ border: "1px solid var(--border)", color: "var(--foreground)", backgroundColor: "transparent" }}
+        >
+          {t.results.feedbackCta} ↗
+        </a>
       </div>
 
       {/* ── Hidden story card for PNG download ────────────────────────────── */}

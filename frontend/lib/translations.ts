@@ -119,6 +119,9 @@ const es = {
     storySecondAffinity: "Segunda afinidad",
     storyDiscover: "Descubre tu candidato en",
     photoAlt: "Ver foto de",
+    feedbackTitle: "¿Te fue útil?",
+    feedbackBody: "Si algo te pareció útil, confuso o incompleto, me encantaría saberlo.",
+    feedbackCta: "Escríbeme en LinkedIn",
   },
   candidates: {
     title: "Candidatos presidenciales",
@@ -573,6 +576,9 @@ const en: typeof es = {
     storySecondAffinity: "Second match",
     storyDiscover: "Discover your candidate at",
     photoAlt: "View photo of",
+    feedbackTitle: "Did this help?",
+    feedbackBody: "I'd love to hear what was clear, confusing, or missing.",
+    feedbackCta: "Message me on LinkedIn",
   },
   candidates: {
     title: "Presidential Candidates",
