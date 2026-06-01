@@ -8,6 +8,7 @@ import {
   getCandidatesFull,
   type CandidateFull,
   type Controversy,
+  type Proposal,
   type Source,
 } from "@/lib/api";
 import TopicRadialChart from "@/components/TopicRadialChart";
@@ -19,11 +20,13 @@ import { candidatePhoto } from "@/lib/photos";
 import PhotoLightbox from "@/components/PhotoLightbox";
 import { useLanguage } from "@/lib/i18n";
 
+const SEGUNDA_VUELTA = new Set(["ivan-cepeda", "abelardo-de-la-espriella"]);
+
 const CANDIDATE_ORDER = [
+  { id: "abelardo-de-la-espriella",   name: "Abelardo de la Espriella" },
   { id: "ivan-cepeda",                name: "Iván Cepeda" },
   { id: "paloma-valencia",            name: "Paloma Valencia" },
   { id: "sergio-fajardo",             name: "Sergio Fajardo" },
-  { id: "abelardo-de-la-espriella",   name: "Abelardo de la Espriella" },
   { id: "roy-barreras",               name: "Roy Barreras" },
   { id: "claudia-lopez",              name: "Claudia López" },
 ];
@@ -147,6 +150,34 @@ function ControversyCard({ c, sourceMap }: { c: Controversy; sourceMap: Map<stri
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+function ProposalCard({ p }: { p: Proposal }) {
+  const { t } = useLanguage();
+  const TOPIC_LABELS = t.candidate.topicLabels;
+  const topicColor = TOPIC_COLORS[p.topic_id] ?? "#6b7280";
+
+  return (
+    <div
+      className="rounded-xl p-4"
+      style={{
+        border: "1px solid var(--border)",
+        borderLeft: `4px solid ${topicColor}`,
+        backgroundColor: "var(--surface)",
+      }}
+    >
+      <div className="flex items-center gap-2 mb-1.5">
+        <span
+          className="rounded-full px-2 py-0.5 text-[10px] font-medium"
+          style={{ backgroundColor: `${topicColor}20`, color: topicColor }}
+        >
+          {TOPIC_LABELS[p.topic_id] ?? p.topic_id}
+        </span>
+      </div>
+      <h4 className="text-sm font-semibold text-gray-800">{p.title}</h4>
+      <p className="mt-1 text-sm text-gray-600 leading-relaxed">{p.plain_language_summary}</p>
     </div>
   );
 }
@@ -298,6 +329,23 @@ export default function CandidatoDetail() {
           </p>
         )}
 
+        {/* Segunda vuelta / eliminated tag */}
+        {SEGUNDA_VUELTA.has(candidate.id) ? (
+          <span
+            className="mt-3 inline-block rounded-full px-3 py-1 text-xs font-semibold"
+            style={{ backgroundColor: "#fef9c3", color: "#854d0e" }}
+          >
+            {t.candidate.secondRoundTag}
+          </span>
+        ) : (
+          <span
+            className="mt-3 inline-block rounded-full px-3 py-1 text-xs font-semibold"
+            style={{ backgroundColor: "#f3f4f6", color: "#6b7280" }}
+          >
+            {t.candidate.eliminatedTag}
+          </span>
+        )}
+
         {/* Procuraduria */}
         {procLabel && (
           <div className={`mt-5 rounded-xl border px-4 py-3 ${procLabel.cls}`}>
@@ -317,6 +365,20 @@ export default function CandidatoDetail() {
         <section className="mt-8">
           <SectionHeading>{t.candidate.topicPositions}</SectionHeading>
           <TopicRadialChart topics={candidate.topics} />
+        </section>
+
+        {/* Proposals */}
+        <section className="mt-8">
+          <SectionHeading>{t.candidate.proposalsTitle}</SectionHeading>
+          {candidate.proposals.length === 0 ? (
+            <EmptyState message={t.candidate.proposalsEmpty} />
+          ) : (
+            <div className="flex flex-col gap-3">
+              {candidate.proposals.map((p) => (
+                <ProposalCard key={p.id} p={p} />
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Controversies */}

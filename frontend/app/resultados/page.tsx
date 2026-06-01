@@ -271,6 +271,18 @@ export default function ResultadosPage() {
     <main className="flex flex-1 flex-col items-center px-4 py-8">
       <h1 className="text-3xl font-bold" style={{ color: "var(--foreground)" }}>{t.results.title}</h1>
 
+      {/* ── Segunda vuelta note ───────────────────────────────────────────── */}
+      <div
+        className="mt-4 w-full max-w-2xl rounded-lg px-4 py-2.5 text-xs"
+        style={{
+          backgroundColor: "rgba(234, 179, 8, 0.1)",
+          border: "1px solid rgba(234, 179, 8, 0.3)",
+          color: "var(--secondary)",
+        }}
+      >
+        {t.results.secondRoundNote}
+      </div>
+
       {/* ── Score explainer ───────────────────────────────────────────────── */}
       <div className="mt-4 w-full max-w-2xl">
         <button

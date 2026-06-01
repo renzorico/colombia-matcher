@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-03-27",
+  "generated_at": "2026-06-01",
   "notes": "Static curated data with manually curated key_quotes. Do not fabricate. Missing fields use null or []. See schema_notes.md.",
   "sources": [
     {
@@ -1298,6 +1298,162 @@
       "reliability_notes": "Columna de opinión/análisis que critica su agenda de seguridad dura; útil como fuente de comentario.",
       "quote": null,
       "language": "es"
+    },
+    {
+      "id": "src-primera-vuelta-infobae-2026-05",
+      "type": "news",
+      "title": "Sorpresa en las elecciones de Colombia: Abelardo de la Espriella gana la primera vuelta y disputará la presidencia con Iván Cepeda",
+      "publisher": "Infobae Colombia",
+      "url": "https://www.infobae.com/colombia/2026/05/31/sorpresa-en-las-elecciones-de-colombia-abelardo-de-la-espriella-gana-la-primera-vuelta-y-disputara-la-presidencia-con-ivan-cepeda/",
+      "published_at": "2026-05-31",
+      "access_date": "2026-06-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-primera-vuelta-aljazeera-2026-05",
+      "type": "news",
+      "title": "Cepeda, de la Espriella advance in Colombia's presidential election",
+      "publisher": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/5/31/cepeda-de-la-espriella-advance-in-colombias-presidential-election",
+      "published_at": "2026-05-31",
+      "access_date": "2026-06-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "en"
+    },
+    {
+      "id": "src-primera-vuelta-cnn-2026-05",
+      "type": "news",
+      "title": "Colombian presidency goes to runoff as Espriella and Cepeda advance",
+      "publisher": "CNN",
+      "url": "https://www.cnn.com/2026/05/31/americas/colombia-runoff-espriella-cepeda-latam-intl",
+      "published_at": "2026-05-31",
+      "access_date": "2026-06-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "en"
+    },
+    {
+      "id": "src-primera-vuelta-france24-2026-05",
+      "type": "news",
+      "title": "Colombia's presidential race goes to a runoff",
+      "publisher": "France 24",
+      "url": "https://www.france24.com/en/americas/20260531-colombia-presidential-election-live-follow-the-first-round",
+      "published_at": "2026-05-31",
+      "access_date": "2026-06-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "en"
+    },
+    {
+      "id": "src-cepeda-programa-gobierno-2026",
+      "type": "program",
+      "title": "Programa de gobierno 'El Poder de la Verdad' — Iván Cepeda 2026",
+      "publisher": "Movimiento Pacto Histórico",
+      "url": "https://www.movimientopactohistorico.co/programa-gobierno",
+      "published_at": "2026-03",
+      "access_date": "2026-06-01",
+      "reliability_notes": "Fuente primaria — programa oficial de gobierno, 433 páginas.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-elespectador-propuestas-2026",
+      "type": "news",
+      "title": "Propuestas de Iván Cepeda: este es su plan de gobierno",
+      "publisher": "El Espectador",
+      "url": "https://www.elespectador.com/politica/elecciones-colombia-2026/propuestas-de-ivan-cepeda-este-es-su-plan-de-gobierno/",
+      "published_at": "2026-05",
+      "access_date": "2026-06-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-semana-5puntos-2026",
+      "type": "news",
+      "title": "Las propuestas de Iván Cepeda explicadas en 5 puntos",
+      "publisher": "Semana",
+      "url": "https://www.semana.com/politica/articulo/las-propuestas-de-ivan-cepeda-explicadas-en-5-puntos/202659/",
+      "published_at": "2026-05",
+      "access_date": "2026-06-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-drogas-elespectador-2026",
+      "type": "news",
+      "title": "Política de drogas: propuestas de Iván Cepeda, Paloma Valencia y Abelardo de la Espriella",
+      "publisher": "El Espectador",
+      "url": "https://www.elespectador.com/colombia-20/paz-y-memoria/politica-de-drogas-propuestas-de-ivan-cepeda-paloma-valencia-y-abelardo-de-la-espriella-en-la-lucha-contra-el-narcotrafico/",
+      "published_at": "2026-05",
+      "access_date": "2026-06-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-cepeda-elcolombiano-silencios-2026",
+      "type": "news",
+      "title": "Los 10 silencios y evasivas de Iván Cepeda ante escándalos de corrupción del gobierno Petro",
+      "publisher": "El Colombiano",
+      "url": "https://www.elcolombiano.com/especiales/elecciones-2026/los-10-silencios-evasivas-ivan-cepeda-escandalos-corrupcion-gobierno-petro-JG36308098",
+      "published_at": "2026-05",
+      "access_date": "2026-06-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-petro-rechaza-preconteo-2026-05",
+      "type": "news",
+      "title": "Petro dice que no acepta resultados del preconteo de primera vuelta",
+      "publisher": "El Tiempo",
+      "url": "https://www.eltiempo.com/politica/elecciones-colombia-2026/petro-dice-no-acepta-resultados-preconteo-primera-vuelta-3560985",
+      "published_at": "2026-05-31",
+      "access_date": "2026-06-01",
+      "reliability_notes": null,
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-fipaz-corte-2011",
+      "type": "news",
+      "title": "Corte Suprema señaló que FIPAZ operó cuando las autodefensas masacraron, desaparecieron y torturaron",
+      "publisher": "Archivos judiciales / medios colombianos",
+      "url": null,
+      "published_at": "2011",
+      "access_date": "2026-06-01",
+      "reliability_notes": "Fallo de la Corte Suprema de Justicia de Colombia, 2011. Referencia documental.",
+      "quote": "La Corte Suprema de Justicia determinó que FIPAZ operó 'cuando los grupos de autodefensas masacraron, desaparecieron, asesinaron y torturaron' y ayudó a los paramilitares a 'proyectarse políticamente'.",
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-iapa-libertad-prensa-2026",
+      "type": "news",
+      "title": "IAPA y FLIP expresan preocupación por demandas de De la Espriella contra periodistas",
+      "publisher": "Fundación para la Libertad de Prensa (FLIP) / IAPA",
+      "url": null,
+      "published_at": "2026",
+      "access_date": "2026-06-01",
+      "reliability_notes": "Comunicados de organizaciones de libertad de prensa. 109 denuncias por injuria y calumnia entre 2008-2019.",
+      "quote": null,
+      "language": "es"
+    },
+    {
+      "id": "src-espriella-wikipedia-2026",
+      "type": "news",
+      "title": "Abelardo de la Espriella — Wikipedia",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Abelardo_de_la_Espriella",
+      "published_at": "2026",
+      "access_date": "2026-06-01",
+      "reliability_notes": "Fuente secundaria. Útil como índice de controversias documentadas con citas.",
+      "quote": null,
+      "language": "en"
     }
   ],
   "candidates": [
@@ -1308,9 +1464,15 @@
       "coalition": null,
       "spectrum": "left",
       "spectrum_score": 1,
-      "short_bio": "Senador del Pacto Histórico, abogado de derechos humanos e investigador del paramilitarismo. Conocido por liderar el caso contra Álvaro Uribe en el Senado y por su trabajo en derechos de las víctimas.",
+      "short_bio": "Candidato a la segunda vuelta presidencial por el Pacto Histórico (40.90% en primera vuelta). Senador, abogado de derechos humanos e investigador del paramilitarismo. Fórmula vicepresidencial: Aída Marina Quilcué, lideresa indígena Nasa. Programa de gobierno: 'El Poder de la Verdad', basado en cuatro revoluciones democráticas.",
       "profile_status": "curated_static",
-      "last_updated": "2026-03-26",
+      "last_updated": "2026-06-01",
+      "eliminated_first_round": false,
+      "first_round_result": {
+        "votes": 9688361,
+        "percentage": 40.90,
+        "position": 2
+      },
       "topics": [
         {
           "topic_id": "security",
@@ -1523,6 +1685,54 @@
           "source_ids": [
             "src-cepeda-pactohistorico-2026"
           ]
+        },
+        {
+          "id": "prop-cepeda-06",
+          "topic_id": "economy",
+          "title": "Banco del Pueblo: acceso financiero directo para comunidades marginadas",
+          "summary": "Crear el Banco del Pueblo para dar acceso financiero directo a comunidades históricamente excluidas del sistema bancario, con microcréditos y servicios financieros adaptados.",
+          "plain_language_summary": "Un banco público para que los más pobres puedan acceder a créditos y servicios financieros sin depender de la banca privada.",
+          "status": "proposed",
+          "source_ids": [
+            "src-cepeda-programa-gobierno-2026",
+            "src-cepeda-semana-5puntos-2026"
+          ]
+        },
+        {
+          "id": "prop-cepeda-07",
+          "topic_id": "economy",
+          "title": "Ampliar Colombia Mayor de 3 a 5 millones de beneficiarios",
+          "summary": "Expandir el programa Colombia Mayor (transferencias para adultos mayores) de 3 a 5 millones de beneficiarios y extender los programas Renta Joven y Renta Ciudadana.",
+          "plain_language_summary": "Dos millones más de adultos mayores recibirían apoyo económico del Estado.",
+          "status": "proposed",
+          "source_ids": [
+            "src-cepeda-programa-gobierno-2026",
+            "src-cepeda-elespectador-propuestas-2026"
+          ]
+        },
+        {
+          "id": "prop-cepeda-08",
+          "topic_id": "security",
+          "title": "Legalización regulada del cannabis industrial y la hoja de coca",
+          "summary": "Promover ante el Congreso la legalización regulada del cannabis industrial y la hoja de coca, con sustitución voluntaria de cultivos ilícitos y transformación de la coca en productos industriales (fertilizantes, alimentos, farmacéuticos).",
+          "plain_language_summary": "Regular legalmente el cannabis y la coca para que el control pase de las mafias al Estado, generando industria legal.",
+          "status": "proposed",
+          "source_ids": [
+            "src-cepeda-drogas-elespectador-2026",
+            "src-cepeda-programa-gobierno-2026"
+          ]
+        },
+        {
+          "id": "prop-cepeda-09",
+          "topic_id": "economy",
+          "title": "Revolución agraria: 1 millón de hectáreas redistribuidas",
+          "summary": "Redistribuir y formalizar un millón de hectáreas de tierra a través de la Agencia Nacional de Tierras. Construir 30.000 km de vías terciarias ('Vías para la Paz') y transformar a Colombia en potencia agroalimentaria.",
+          "plain_language_summary": "Repartir un millón de hectáreas a campesinos y construir 30.000 km de carreteras rurales para conectar el campo con los mercados.",
+          "status": "proposed",
+          "source_ids": [
+            "src-cepeda-programa-gobierno-2026",
+            "src-cepeda-elespectador-propuestas-2026"
+          ]
         }
       ],
       "controversies": [
@@ -1574,6 +1784,43 @@
             "src-cepeda-infobae-duque-2026-03"
           ],
           "notes": "Cepeda reconoció sentirse 'avergonzado' por hechos de corrupción del gobierno actual pero defendió su programa como una continuación de los logros sociales."
+        },
+        {
+          "id": "cont-cepeda-04",
+          "title": "Investigación del CNE por financiación irregular del Pacto Histórico",
+          "summary": "El Consejo Nacional Electoral investiga al Pacto Histórico por posible fraude relacionado con donaciones que excederían los límites legales de financiación de campañas. La investigación cubre la coalición en general, pero como abanderado del partido, Cepeda es señalado como beneficiario indirecto.",
+          "severity": "medium",
+          "status": "ongoing",
+          "date": "2026-04",
+          "source_ids": [
+            "src-cepeda-elcolombiano-silencios-2026"
+          ],
+          "notes": "Cepeda no ha sido imputado personalmente. La investigación es sobre el partido."
+        },
+        {
+          "id": "cont-cepeda-05",
+          "title": "Silencio ante escándalos de corrupción del gobierno Petro (UNGRD)",
+          "summary": "Críticos señalan que Cepeda actuó como 'escudo' del gobierno Petro y guardó silencio ante los escándalos de corrupción dentro de la coalición gobernante, particularmente el escándalo UNGRD (carrotanques para La Guajira, manipulación de contratos). Medios documentaron al menos 10 silencios o evasivas de Cepeda ante preguntas sobre estos escándalos.",
+          "severity": "medium",
+          "status": "ongoing",
+          "date": "2026-05",
+          "source_ids": [
+            "src-cepeda-elcolombiano-silencios-2026"
+          ],
+          "notes": "Cepeda argumenta que su rol como senador investigador del paramilitarismo no le obliga a pronunciarse sobre todos los escándalos del ejecutivo."
+        },
+        {
+          "id": "cont-cepeda-06",
+          "title": "Petro rechaza resultados del preconteo de primera vuelta",
+          "summary": "Tras los resultados de primera vuelta (mayo 31), el presidente Petro declaró públicamente que 'no acepta los resultados del preconteo' y alegó irregularidades. Cepeda dijo que esperaría la revisión de las comisiones de escrutinio. El episodio genera incertidumbre institucional de cara a la segunda vuelta.",
+          "severity": "medium",
+          "status": "ongoing",
+          "date": "2026-05-31",
+          "source_ids": [
+            "src-petro-rechaza-preconteo-2026-05",
+            "src-primera-vuelta-infobae-2026-05"
+          ],
+          "notes": "El preconteo históricamente tiene 99.8% de precisión en Colombia. Las declaraciones de Petro fueron criticadas por analistas como un factor desestabilizador."
         }
       ],
       "metadata": {
@@ -1592,9 +1839,15 @@
       "coalition": null,
       "spectrum": "center-right",
       "spectrum_score": 4,
-      "short_bio": "Senadora del Centro Democrático, partido fundado por Álvaro Uribe Vélez en 2013. Conocida por su liderazgo en debates de control político y crítica fiscal al gobierno Petro. Previamente trabajó en la Procuraduría General.",
+      "short_bio": "Senadora del Centro Democrático, partido fundado por Álvaro Uribe Vélez en 2013. Conocida por su liderazgo en debates de control político y crítica fiscal al gobierno Petro. Eliminada en primera vuelta con el 6.92% de los votos.",
       "profile_status": "curated_static",
-      "last_updated": "2026-03-26",
+      "last_updated": "2026-06-01",
+      "eliminated_first_round": true,
+      "first_round_result": {
+        "votes": 1639685,
+        "percentage": 6.92,
+        "position": 3
+      },
       "topics": [
         {
           "topic_id": "security",
@@ -1864,9 +2117,15 @@
       "coalition": null,
       "spectrum": "center",
       "spectrum_score": 3,
-      "short_bio": "Matemático, ex alcalde de Medellín (2004–2007) y ex gobernador de Antioquia (2012–2015). Tecnocrático centrista, reconocido por la transformación urbana de Medellín a través de la inversión en educación. Candidato presidencial en 2018 (tercer lugar).",
+      "short_bio": "Matemático, ex alcalde de Medellín (2004–2007) y ex gobernador de Antioquia (2012–2015). Tecnocrático centrista, reconocido por la transformación urbana de Medellín. Eliminado en primera vuelta con el 4.26% de los votos.",
       "profile_status": "curated_static",
-      "last_updated": "2026-03-26",
+      "last_updated": "2026-06-01",
+      "eliminated_first_round": true,
+      "first_round_result": {
+        "votes": 1009073,
+        "percentage": 4.26,
+        "position": 4
+      },
       "topics": [
         {
           "topic_id": "security",
@@ -2149,9 +2408,15 @@
       "coalition": null,
       "spectrum": "far-right",
       "spectrum_score": 5,
-      "short_bio": "Abogado penalista y candidato político. Fundador del movimiento de extrema derecha 'Firmes por la Patria' (también registrado como 'Salvación Nacional'), reconocido por haber defendido figuras de alto perfil vinculadas al crimen organizado y el paramilitarismo.",
+      "short_bio": "Ganador de la primera vuelta presidencial (43.74%, 10.3 millones de votos). Abogado penalista, fundador de 'Firmes por la Patria' (Salvación Nacional). Fórmula vicepresidencial: José Manuel Restrepo, exministro de Hacienda. Plataforma de extrema derecha: mano dura en seguridad, reducción radical del Estado y alianza exclusiva con EE.UU. e Israel.",
       "profile_status": "curated_static",
-      "last_updated": "2026-03-26",
+      "last_updated": "2026-06-01",
+      "eliminated_first_round": false,
+      "first_round_result": {
+        "votes": 10361499,
+        "percentage": 43.74,
+        "position": 1
+      },
       "topics": [
         {
           "topic_id": "security",
@@ -2269,8 +2534,8 @@
         {
           "topic_id": "foreign_policy",
           "topic_label": "Política Exterior",
-          "summary": "Política exterior ideologizada y centrada en la seguridad. Prioriza una alianza exclusiva de seguridad con EE.UU. e Israel contra el narcoterrorismo. Celebra rutas militares para derrocar al gobierno de Venezuela. Ha solicitado formalmente a EE.UU. revocar la visa del presidente colombiano y vetar compras de aeronaves militares, cruzando líneas diplomáticas tradicionales.",
-          "plain_language_summary": "Alianza total con EE.UU. e Israel. Pide acción militar contra Venezuela. Ha solicitado sanciones estadounidenses contra el gobierno colombiano.",
+          "summary": "Política exterior ideologizada y centrada en la seguridad. Prioriza una alianza exclusiva de seguridad con EE.UU. e Israel contra el narcoterrorismo. Celebra rutas militares para derrocar al gobierno de Venezuela. Ha solicitado formalmente a EE.UU. revocar la visa del presidente colombiano y vetar compras de aeronaves militares. Propone retirar a Colombia de la ONU, la OEA y la Corte Interamericana de Derechos Humanos.",
+          "plain_language_summary": "Alianza total con EE.UU. e Israel. Retirarse de ONU, OEA y Corte Interamericana. Pide acción militar contra Venezuela.",
           "stance_score": 5,
           "confidence": 0.85,
           "evidence_ids": [
@@ -2366,6 +2631,40 @@
             "src-espriella-eluniversal-2025",
             "src-espriella-facebook-2026"
           ]
+        },
+        {
+          "id": "prop-espriella-06",
+          "topic_id": "foreign_policy",
+          "title": "Retirar a Colombia de la ONU, OEA y Corte Interamericana de DDHH",
+          "summary": "Propone retirar a Colombia de organismos multilaterales como la ONU, la OEA y la Corte Interamericana de Derechos Humanos, argumentando que limitan la soberanía nacional.",
+          "plain_language_summary": "Sacar a Colombia de la ONU, la OEA y la Corte Interamericana. Dice que estos organismos limitan la soberanía.",
+          "status": "proposed",
+          "source_ids": [
+            "src-espriella-wikipedia-2026"
+          ]
+        },
+        {
+          "id": "prop-espriella-07",
+          "topic_id": "security",
+          "title": "Cerrar la JEP y terminar todos los procesos de paz",
+          "summary": "Cerrar la Jurisdicción Especial para la Paz (JEP) y terminar todos los procesos de negociación con grupos armados. Reemplazar con enfoque punitivo y acción militar directa.",
+          "plain_language_summary": "Acabar con la justicia transicional y las negociaciones de paz. Solo mano dura contra los grupos armados.",
+          "status": "proposed",
+          "source_ids": [
+            "src-espriella-wikipedia-2026",
+            "src-primera-vuelta-aljazeera-2026-05"
+          ]
+        },
+        {
+          "id": "prop-espriella-08",
+          "topic_id": "security",
+          "title": "Legalizar la tenencia civil de armas de fuego",
+          "summary": "Propone legalizar la tenencia civil de armas de fuego como derecho de autodefensa, eliminando las restricciones actuales.",
+          "plain_language_summary": "Permitir que cualquier ciudadano pueda tener armas de fuego legalmente.",
+          "status": "proposed",
+          "source_ids": [
+            "src-espriella-wikipedia-2026"
+          ]
         }
       ],
       "controversies": [
@@ -2452,6 +2751,44 @@
             "src-espriella-infobae-oviedo-2026-03"
           ],
           "notes": "De la Espriella emitió aclaración pública. El incidente fue ampliamente cubierto y dañó su imagen ante votantes de centro."
+        },
+        {
+          "id": "cont-espriella-05",
+          "title": "Fundación FIPAZ y foros con comandantes paramilitares",
+          "summary": "En 2005, De la Espriella fundó la 'Fundación Iniciativas por la Paz' (FIPAZ) que organizó foros universitarios con comandantes paramilitares como Iván Roberto Duque ('Ernesto Báez', jefe del Bloque Central Bolívar de las AUC) y Salvatore Mancuso. La Corte Suprema de Justicia determinó en 2011 que FIPAZ operó 'cuando los grupos de autodefensas masacraron, desaparecieron, asesinaron y torturaron' y ayudó a los paramilitares a 'proyectarse políticamente'. La investigación fue cerrada en 2009 por el Fiscal General Mario Iguarán.",
+          "severity": "high",
+          "status": "past",
+          "date": "2011",
+          "source_ids": [
+            "src-espriella-fipaz-corte-2011",
+            "src-espriella-wikipedia-2026"
+          ],
+          "notes": "No hubo condena penal directa contra De la Espriella. La investigación fue cerrada por el entonces Fiscal General, quien según reportes tenía cercanía con Mancuso."
+        },
+        {
+          "id": "cont-espriella-06",
+          "title": "109 denuncias por injuria/calumnia contra periodistas (2008-2019)",
+          "summary": "Entre 2008 y 2019, De la Espriella presentó 109 denuncias por injuria y calumnia contra periodistas y columnistas. En 2026, la Sociedad Interamericana de Prensa (SIP/IAPA) y la Fundación para la Libertad de Prensa (FLIP) expresaron preocupación por el patrón, clasificándolas como posibles demandas estratégicas contra la participación pública (SLAPP).",
+          "severity": "medium",
+          "status": "past",
+          "date": "2026",
+          "source_ids": [
+            "src-espriella-iapa-libertad-prensa-2026",
+            "src-espriella-wikipedia-2026"
+          ],
+          "notes": "Muchas de las 109 denuncias fueron desestimadas por falta de mérito."
+        },
+        {
+          "id": "cont-espriella-07",
+          "title": "Triple ciudadanía: colombiana, estadounidense e italiana",
+          "summary": "De la Espriella adquirió ciudadanía estadounidense en 2023 y ciudadanía italiana en 2024, además de la colombiana. Críticos señalan que esto genera dudas sobre su compromiso exclusivo con Colombia como posible presidente.",
+          "severity": "low",
+          "status": "past",
+          "date": "2024",
+          "source_ids": [
+            "src-espriella-wikipedia-2026"
+          ],
+          "notes": "No existe impedimento legal en Colombia para que un ciudadano con múltiples nacionalidades sea presidente."
         }
       ],
       "metadata": {
@@ -2470,9 +2807,15 @@
       "coalition": "Frente por la Vida",
       "spectrum": "center-left",
       "spectrum_score": 2,
-      "short_bio": "Médico, ex senador (2010–2023), dos veces presidente del Congreso y ex embajador de Colombia ante el Reino Unido bajo el gobierno Petro. Progresista moderado que se posiciona entre el petrismo y la derecha. Ganó la primaria del Frente por la Vida el 8 de marzo de 2026.",
+      "short_bio": "Médico, ex senador (2010–2023), dos veces presidente del Congreso y ex embajador de Colombia ante el Reino Unido bajo el gobierno Petro. Progresista moderado. Eliminado en primera vuelta presidencial.",
       "profile_status": "curated_static",
-      "last_updated": "2026-03-26",
+      "last_updated": "2026-06-01",
+      "eliminated_first_round": true,
+      "first_round_result": {
+        "votes": null,
+        "percentage": null,
+        "position": null
+      },
       "topics": [
         {
           "topic_id": "security",
@@ -2754,9 +3097,15 @@
       "coalition": null,
       "spectrum": "center",
       "spectrum_score": 3,
-      "short_bio": "Ex senadora, primera mujer elegida alcaldesa de Bogotá (2020–2023). PhD en Ciencia Política por Northwestern University. Candidata independiente bajo el movimiento ciudadano 'Imparables'. Ganó la 'Consulta de las Soluciones' el 8 de marzo de 2026 con 574.670 votos. Conocida por liderar la Consulta Anticorrupción de 2018.",
+      "short_bio": "Ex senadora, primera mujer elegida alcaldesa de Bogotá (2020–2023). PhD en Ciencia Política por Northwestern University. Candidata independiente bajo el movimiento 'Imparables'. Eliminada en primera vuelta presidencial.",
       "profile_status": "curated_static",
-      "last_updated": "2026-03-26",
+      "last_updated": "2026-06-01",
+      "eliminated_first_round": true,
+      "first_round_result": {
+        "votes": null,
+        "percentage": null,
+        "position": null
+      },
       "topics": [
         {
           "topic_id": "security",

@@ -20,13 +20,15 @@ const SPECTRUM_BUCKETS: Record<string, SpectrumFilter> = {
   "far-right": "right",
 };
 
+const SEGUNDA_VUELTA = new Set(["ivan-cepeda", "abelardo-de-la-espriella"]);
+
 const TODOS_ORDER = [
-  "ivan-cepeda",
-  "roy-barreras",
-  "sergio-fajardo",
-  "claudia-lopez",
-  "paloma-valencia",
   "abelardo-de-la-espriella",
+  "ivan-cepeda",
+  "paloma-valencia",
+  "sergio-fajardo",
+  "roy-barreras",
+  "claudia-lopez",
 ];
 
 const RIGHT_ORDER = ["paloma-valencia", "abelardo-de-la-espriella"];
@@ -59,9 +61,10 @@ interface CandidateCardProps {
   onLightbox: (src: string, name: string) => void;
   scrollMode?: boolean;
   noPartyLabel: string;
+  badge?: { label: string; color: string; bg: string } | null;
 }
 
-function CandidateCard({ c, onLightbox, scrollMode, noPartyLabel }: CandidateCardProps) {
+function CandidateCard({ c, onLightbox, scrollMode, noPartyLabel, badge }: CandidateCardProps) {
   const [hovered, setHovered] = useState(false);
   const photo = candidatePhoto(c.id);
 
@@ -115,6 +118,14 @@ function CandidateCard({ c, onLightbox, scrollMode, noPartyLabel }: CandidateCar
           <p className="mt-0.5 text-xs" style={{ color: "var(--muted)" }}>
             {c.party ?? noPartyLabel}
           </p>
+          {badge && (
+            <span
+              className="mt-1.5 inline-block self-start rounded-full px-2.5 py-0.5 text-[10px] font-semibold"
+              style={{ backgroundColor: badge.bg, color: badge.color }}
+            >
+              {badge.label}
+            </span>
+          )}
           {c.spectrum && (
             <div className="mt-3 w-full max-w-[160px]">
               <SpectrumBar spectrum={c.spectrum} candidateId={c.id} />
@@ -168,6 +179,14 @@ function CandidateCard({ c, onLightbox, scrollMode, noPartyLabel }: CandidateCar
       <p className="mt-0.5 text-xs" style={{ color: "var(--muted)" }}>
         {c.party ?? noPartyLabel}
       </p>
+      {badge && (
+        <span
+          className="mt-1.5 inline-block rounded-full px-2.5 py-0.5 text-[10px] font-semibold"
+          style={{ backgroundColor: badge.bg, color: badge.color }}
+        >
+          {badge.label}
+        </span>
+      )}
       {c.spectrum && (
         <div className="mt-3 w-full max-w-[160px]">
           <SpectrumBar spectrum={c.spectrum} candidateId={c.id} />
@@ -248,6 +267,13 @@ export default function CandidatosPage() {
 
   const handleLightbox = (src: string, name: string) => setLightbox({ src, name });
 
+  function badgeFor(id: string) {
+    if (SEGUNDA_VUELTA.has(id)) {
+      return { label: t.candidates.secondRoundBadge, color: "#854d0e", bg: "#fef9c3" };
+    }
+    return { label: t.candidates.eliminatedBadge, color: "#6b7280", bg: "#f3f4f6" };
+  }
+
   return (
     <main className="flex flex-1 flex-col items-center px-4 py-10">
       <div className="w-full max-w-2xl">
@@ -295,6 +321,7 @@ export default function CandidatosPage() {
                   onLightbox={handleLightbox}
                   scrollMode
                   noPartyLabel={t.candidates.noParty}
+                  badge={badgeFor(c.id)}
                 />
               ))}
             </div>
@@ -311,6 +338,7 @@ export default function CandidatosPage() {
                 c={c}
                 onLightbox={handleLightbox}
                 noPartyLabel={t.candidates.noParty}
+                badge={badgeFor(c.id)}
               />
             ))}
           </div>

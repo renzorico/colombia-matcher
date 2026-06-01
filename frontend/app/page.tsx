@@ -30,7 +30,7 @@ export default function Home() {
   const { t } = useLanguage();
 
   const STATS = [
-    { number: "6",  label: t.home.statsCandidates, color: STAT_COLORS[0] },
+    { number: "2",  label: t.home.statsCandidates, color: STAT_COLORS[0] },
     { number: "7",  label: t.home.statsTopics,      color: STAT_COLORS[1] },
     { number: "25", label: t.home.statsQuestions,   color: STAT_COLORS[2] },
   ];
@@ -64,6 +64,22 @@ export default function Home() {
           </Link>
           <VerCandidatosButton label={t.home.viewCandidates} />
         </div>
+      </section>
+
+      {/* ── Segunda vuelta banner ────────────────────────────────────────── */}
+      <section
+        className="flex flex-col items-center px-4 py-4 text-center"
+        style={{
+          backgroundColor: "rgba(234, 179, 8, 0.1)",
+          borderBottom: "2px solid var(--primary)",
+        }}
+      >
+        <p className="text-sm font-bold tracking-wide uppercase" style={{ color: "var(--primary)" }}>
+          {t.home.secondRoundBanner}
+        </p>
+        <p className="mt-1 text-xs" style={{ color: "var(--muted)" }}>
+          {t.home.secondRoundBannerSub}
+        </p>
       </section>
 
       {/* ── Stat blocks ───────────────────────────────────────────────────── */}
