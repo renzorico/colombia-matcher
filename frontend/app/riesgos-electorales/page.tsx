@@ -352,7 +352,7 @@ export default function RiesgosElectoralesPage() {
       observers.push(obs);
     });
     return () => observers.forEach((o) => o.disconnect());
-  }, []);
+  }, [NAV_SECTIONS]);
 
   const scrollTo = useCallback((id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });

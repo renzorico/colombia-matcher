@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useSyncExternalStore } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { MUNICIPIOS } from "@/lib/riesgo-electoral";
 
@@ -109,12 +109,13 @@ interface TooltipState {
   y: number;
 }
 
+const subscribeNoop = () => () => undefined;
+
 export default function ColombiaMap() {
-  const [mounted, setMounted] = useState(false);
+  // true only in the browser; the map needs window-sized SVG layout.
+  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
-
-  useEffect(() => setMounted(true), []);
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent) => {

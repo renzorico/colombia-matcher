@@ -70,16 +70,18 @@ export default function QuizPage() {
     } catch { /* ignore */ }
   }, [answers, index, loading, questions.length]);
 
+  /** Moves to another question and closes its explanation bubble. */
+  function goToQuestion(next: number) {
+    setIndex(next);
+    setShowExplanacion(false);
+  }
+
   const topicOrder = useMemo(() => [...new Set(questions.map((qi) => qi.bucket))], [questions]);
   const topicCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     for (const qi of questions) counts[qi.bucket] = (counts[qi.bucket] ?? 0) + 1;
     return counts;
   }, [questions]);
-
-  useEffect(() => {
-    setShowExplanacion(false);
-  }, [index]);
 
   if (loading) {
     return (
@@ -116,7 +118,7 @@ export default function QuizPage() {
     setShowValidation(false);
     setShowAllSkippedWarning(false);
     if (index < total - 1) {
-      setIndex(index + 1);
+      goToQuestion(index + 1);
     } else {
       if (explicitAnswerIds.size === 0) {
         setShowAllSkippedWarning(true);
@@ -132,7 +134,7 @@ export default function QuizPage() {
     const updated = { ...answers, [q.id]: 3 };
     setAnswers(updated);
     if (index < total - 1) {
-      setIndex(index + 1);
+      goToQuestion(index + 1);
     } else {
       if (explicitAnswerIds.size === 0) {
         setShowAllSkippedWarning(true);
@@ -152,7 +154,7 @@ export default function QuizPage() {
   function handleRestart() {
     localStorage.removeItem(STORAGE_KEY);
     setAnswers({});
-    setIndex(0);
+    goToQuestion(0);
     setShowResume(false);
   }
 
@@ -185,7 +187,7 @@ export default function QuizPage() {
             className="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white"
             style={{ backgroundColor: topicColor }}
           >
-            {q.bucket}
+            {t.candidate.topicLabels[topicId] ?? q.bucket}
           </span>
           <span className="text-xs" style={{ color: "var(--muted)" }}>
             {t.quiz.topicLabel} {topicNum} {t.quiz.of} {topicOrder.length} · {t.quiz.questionLabel} {questionInTopic} {t.quiz.of} {topicTotal} {t.quiz.inThisTopic}
@@ -297,7 +299,7 @@ export default function QuizPage() {
           <div className="flex items-center gap-4">
             {index > 0 && (
               <button
-                onClick={() => { setShowValidation(false); setIndex(index - 1); }}
+                onClick={() => { setShowValidation(false); goToQuestion(index - 1); }}
                 className="text-sm transition"
                 style={{ color: "var(--muted)" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--foreground)")}

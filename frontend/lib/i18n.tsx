@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useSyncExternalStore } from "react";
 import { translations, type Lang } from "./translations";
 
 const STORAGE_KEY = "lang";
@@ -18,33 +18,51 @@ const LanguageContext = createContext<LanguageContextValue>({
   t: translations[DEFAULT_LANG],
 });
 
+/** Fallback when localStorage is blocked, so the toggle still works. */
+let memoryLang: Lang | null = null;
+
+/** Subscribers notified when the language changes in this tab. */
+const listeners = new Set<() => void>();
+
+function readStoredLang(): Lang {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored === "es" || stored === "en" ? stored : DEFAULT_LANG;
+  } catch {
+    return memoryLang ?? DEFAULT_LANG;
+  }
+}
+
+function writeStoredLang(next: Lang): void {
+  try {
+    localStorage.setItem(STORAGE_KEY, next);
+  } catch { /* storage unavailable — language still changes for this session */ }
+  memoryLang = next;
+  listeners.forEach((notify) => notify());
+}
+
+function subscribe(notify: () => void): () => void {
+  listeners.add(notify);
+  window.addEventListener("storage", notify);
+  return () => {
+    listeners.delete(notify);
+    window.removeEventListener("storage", notify);
+  };
+}
+
+const getSnapshot = (): Lang => readStoredLang();
+const getServerSnapshot = (): Lang => DEFAULT_LANG;
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(DEFAULT_LANG);
+  const lang = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  // Read from localStorage on mount (client only)
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY) as Lang | null;
-      if (stored === "es" || stored === "en") {
-        setLangState(stored);
-      }
-    } catch { /* ignore */ }
-  }, []);
-
-  // Update <html lang> and persist on change
+  // Keep <html lang> in sync for screen readers and search engines.
   useEffect(() => {
     document.documentElement.lang = lang;
-    try {
-      localStorage.setItem(STORAGE_KEY, lang);
-    } catch { /* ignore */ }
   }, [lang]);
 
-  function setLang(next: Lang) {
-    setLangState(next);
-  }
-
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t: translations[lang] }}>
+    <LanguageContext.Provider value={{ lang, setLang: writeStoredLang, t: translations[lang] }}>
       {children}
     </LanguageContext.Provider>
   );
