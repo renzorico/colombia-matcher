@@ -4,6 +4,16 @@ A human-readable history of the major phases of **nobotestuvoto** (originally *c
 
 ---
 
+## Phase 7 — Archive & static rebuild · October 2026
+
+After the election the project became a portfolio archive. The FastAPI backend (Railway) was retired: scoring now runs in the browser from a TypeScript port of the Python scorer, verified by parity tests against fixtures generated from the original. The site is a single static Vercel project with no environment variables.
+
+- Site-wide archive banner and the June 21 runoff result (De la Espriella 49.66%, Cepeda 48.70%)
+- Canonical data moved to `frontend/data/`, shared with the offline Python research pipeline
+- Removed the unused TypeScript research pipeline, debug routes, review admin page, and Railway/Render/Docker configs
+
+---
+
 ## Phase 6 — Bilingual support (EN/ES) · March 30–31, 2026
 
 The app became fully bilingual. A language toggle (ES | EN) was added to the navbar and persists across sessions via `localStorage`. All UI strings were centralized into a single `translations.ts` file to make future maintenance simple.
