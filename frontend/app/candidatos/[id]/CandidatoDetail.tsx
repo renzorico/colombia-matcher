@@ -16,7 +16,7 @@ import SourceList from "@/components/SourceList";
 import EmptyState from "@/components/EmptyState";
 import { SpectrumBar } from "@/components/SpectrumBar";
 import { TOPIC_COLORS } from "@/lib/topics";
-import { candidatePhoto } from "@/lib/photos";
+import { candidatePhoto, PHOTO_FOCUS } from "@/lib/photos";
 import PhotoLightbox from "@/components/PhotoLightbox";
 import { useLanguage } from "@/lib/i18n";
 
@@ -289,8 +289,8 @@ export default function CandidatoDetail() {
                 width={96}
                 height={96}
                 unoptimized
-                className="w-24 h-24 rounded-2xl object-contain p-1 bg-white"
-                style={{ border: "2px solid var(--border)" }}
+                className="w-24 h-24 rounded-2xl object-cover"
+                style={{ border: "2px solid var(--border)", objectPosition: PHOTO_FOCUS }}
               />
             </button>
           ) : (

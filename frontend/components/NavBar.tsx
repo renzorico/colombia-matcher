@@ -31,9 +31,10 @@ export default function NavBar() {
         {/* Wordmark */}
         <Link
           href="/"
-          className="text-sm font-bold tracking-tight text-foreground hover:text-hero transition"
+          className="flex items-center gap-2 text-sm font-bold tracking-tight text-foreground hover:text-hero transition"
         >
-          🇨🇴 {t.nav.wordmark}
+          <ColombiaFlag />
+          {t.nav.wordmark}
         </Link>
 
         {/* Desktop links */}
@@ -104,5 +105,16 @@ export default function NavBar() {
         </div>
       )}
     </header>
+  );
+}
+
+/** Colombian tricolour (yellow 1/2, blue 1/4, red 1/4); flag emoji renders as "CO" on Windows. */
+function ColombiaFlag() {
+  return (
+    <span
+      aria-hidden="true"
+      className="inline-block h-3 w-[18px] rounded-[2px]"
+      style={{ background: "linear-gradient(to bottom, #FCD116 0 50%, #003893 50% 75%, #CE1126 75% 100%)" }}
+    />
   );
 }

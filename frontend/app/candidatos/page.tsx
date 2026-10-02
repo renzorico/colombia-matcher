@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getCandidates, type CandidateSummary } from "@/lib/api";
 import { SpectrumBar } from "@/components/SpectrumBar";
-import { candidatePhoto } from "@/lib/photos";
+import { candidatePhoto, PHOTO_FOCUS } from "@/lib/photos";
 import PhotoLightbox from "@/components/PhotoLightbox";
 import { useLanguage } from "@/lib/i18n";
 
@@ -32,6 +32,10 @@ const TODOS_ORDER = [
 ];
 
 const RIGHT_ORDER = ["paloma-valencia", "abelardo-de-la-espriella"];
+
+/** Card width in the horizontal carousel; photos are portrait 4:5. */
+const SCROLL_CARD_WIDTH = 240;
+const SCROLL_GAP = 20;
 
 function FilterTab({
   active, label, onClick,
@@ -74,10 +78,9 @@ function CandidateCard({ c, onLightbox, scrollMode, noPartyLabel, badge }: Candi
         href={`/candidatos/${c.id}`}
         className="flex flex-col rounded-2xl overflow-hidden"
         style={{
-          width: 280,
+          width: SCROLL_CARD_WIDTH,
           flexShrink: 0,
           scrollSnapAlign: "start",
-          minHeight: 320,
           backgroundColor: "var(--surface)",
           border: `1px solid ${hovered ? "var(--primary)" : "var(--border)"}`,
           boxShadow: hovered ? "0 8px 24px rgba(0,0,0,0.12)" : "0 1px 3px rgba(0,0,0,0.06)",
@@ -89,8 +92,8 @@ function CandidateCard({ c, onLightbox, scrollMode, noPartyLabel, badge }: Candi
       >
         {photo ? (
           <div
-            className="relative overflow-hidden"
-            style={{ height: 180, flexShrink: 0, backgroundColor: "#f3f4f6", cursor: "zoom-in" }}
+            className="relative overflow-hidden aspect-[4/5]"
+            style={{ flexShrink: 0, backgroundColor: "#f3f4f6", cursor: "zoom-in" }}
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); onLightbox(photo, c.name); }}
           >
             <Image
@@ -98,20 +101,20 @@ function CandidateCard({ c, onLightbox, scrollMode, noPartyLabel, badge }: Candi
               alt={c.name}
               fill
               className="object-cover"
-              style={{ objectPosition: "center 15%" }}
+              style={{ objectPosition: PHOTO_FOCUS }}
               unoptimized
-              sizes="280px"
+              sizes={`${SCROLL_CARD_WIDTH}px`}
             />
           </div>
         ) : (
           <div
-            className="flex items-center justify-center text-2xl font-bold text-white"
-            style={{ height: 180, flexShrink: 0, backgroundColor: "var(--secondary)" }}
+            className="flex items-center justify-center text-2xl font-bold text-white aspect-[4/5]"
+            style={{ flexShrink: 0, backgroundColor: "var(--secondary)" }}
           >
             {c.name.charAt(0)}
           </div>
         )}
-        <div className="flex flex-col flex-1" style={{ padding: 20 }}>
+        <div className="flex flex-col flex-1" style={{ padding: 18 }}>
           <h2 className="text-base font-bold leading-tight" style={{ color: "var(--foreground)" }}>
             {c.name}
           </h2>
@@ -161,8 +164,8 @@ function CandidateCard({ c, onLightbox, scrollMode, noPartyLabel, badge }: Candi
             width={80}
             height={80}
             unoptimized
-            className="w-20 h-20 rounded-full object-contain p-1 bg-white"
-            style={{ border: "3px solid var(--border)" }}
+            className="w-20 h-20 rounded-full object-cover"
+            style={{ border: "3px solid var(--border)", objectPosition: PHOTO_FOCUS }}
           />
         </div>
       ) : (
@@ -193,6 +196,111 @@ function CandidateCard({ c, onLightbox, scrollMode, noPartyLabel, badge }: Candi
         </div>
       )}
     </Link>
+  );
+}
+
+interface CandidateCarouselProps {
+  candidates: CandidateSummary[];
+  onLightbox: (src: string, name: string) => void;
+  noPartyLabel: string;
+  badgeFor: (id: string) => CandidateCardProps["badge"];
+  prevLabel: string;
+  nextLabel: string;
+}
+
+/** Horizontal, snap-scrolling row of candidate cards with arrow controls. */
+function CandidateCarousel({
+  candidates, onLightbox, noPartyLabel, badgeFor, prevLabel, nextLabel,
+}: CandidateCarouselProps) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  function updateEdges() {
+    const track = trackRef.current;
+    if (!track) return;
+    setCanScrollLeft(track.scrollLeft > 4);
+    setCanScrollRight(track.scrollLeft + track.clientWidth < track.scrollWidth - 4);
+  }
+
+  function scrollByCard(direction: 1 | -1) {
+    trackRef.current?.scrollBy({
+      left: direction * (SCROLL_CARD_WIDTH + SCROLL_GAP),
+      behavior: "smooth",
+    });
+  }
+
+  return (
+    <div className="relative mt-6">
+      <div
+        ref={trackRef}
+        onScroll={updateEdges}
+        className="flex"
+        style={{
+          gap: SCROLL_GAP,
+          overflowX: "auto",
+          scrollSnapType: "x mandatory",
+          // Arrow buttons replace the scrollbar; swipe and trackpad still scroll.
+          scrollbarWidth: "none",
+          paddingTop: 12,
+          paddingBottom: 16,
+        }}
+      >
+        {candidates.map((c) => (
+          <CandidateCard
+            key={c.id}
+            c={c}
+            onLightbox={onLightbox}
+            scrollMode
+            noPartyLabel={noPartyLabel}
+            badge={badgeFor(c.id)}
+          />
+        ))}
+      </div>
+
+      {canScrollLeft && (
+        <div
+          className="absolute left-0 top-0 bottom-0 w-10 pointer-events-none"
+          style={{ background: "linear-gradient(to left, transparent, var(--background))" }}
+        />
+      )}
+      {canScrollRight && (
+        <div
+          className="absolute right-0 top-0 bottom-0 w-10 pointer-events-none"
+          style={{ background: "linear-gradient(to right, transparent, var(--background))" }}
+        />
+      )}
+
+      <div className="mt-2 flex justify-end gap-2">
+        <CarouselArrow direction={-1} disabled={!canScrollLeft} label={prevLabel} onClick={() => scrollByCard(-1)} />
+        <CarouselArrow direction={1} disabled={!canScrollRight} label={nextLabel} onClick={() => scrollByCard(1)} />
+      </div>
+    </div>
+  );
+}
+
+function CarouselArrow({
+  direction, disabled, label, onClick,
+}: { direction: 1 | -1; disabled: boolean; label: string; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={label}
+      className="flex h-9 w-9 items-center justify-center rounded-full bg-surface transition hover:border-[var(--foreground)] disabled:opacity-30 disabled:cursor-default"
+      style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path
+          d={direction === 1 ? "M6 3l5 5-5 5" : "M10 3L5 8l5 5"}
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
   );
 }
 
@@ -276,7 +384,7 @@ export default function CandidatosPage() {
 
   return (
     <main className="flex flex-1 flex-col items-center px-4 py-10">
-      <div className="w-full max-w-2xl">
+      <div className="w-full max-w-3xl">
         <h1 className="text-3xl font-bold" style={{ color: "var(--foreground)" }}>
           {t.candidates.title}
         </h1>
@@ -303,33 +411,14 @@ export default function CandidatosPage() {
         </div>
 
         {filter === "all" ? (
-          <div className="relative mt-6" style={{ overflow: "visible" }}>
-            <div
-              className="flex gap-5"
-              style={{
-                overflowX: "auto",
-                scrollSnapType: "x mandatory",
-                scrollbarWidth: "thin",
-                paddingTop: 16,
-                paddingBottom: 20,
-              }}
-            >
-              {filteredCandidates.map((c) => (
-                <CandidateCard
-                  key={c.id}
-                  c={c}
-                  onLightbox={handleLightbox}
-                  scrollMode
-                  noPartyLabel={t.candidates.noParty}
-                  badge={badgeFor(c.id)}
-                />
-              ))}
-            </div>
-            <div
-              className="absolute right-0 top-0 bottom-0 w-16 pointer-events-none"
-              style={{ background: "linear-gradient(to right, transparent, var(--background))" }}
-            />
-          </div>
+          <CandidateCarousel
+            candidates={filteredCandidates}
+            onLightbox={handleLightbox}
+            noPartyLabel={t.candidates.noParty}
+            badgeFor={badgeFor}
+            prevLabel={t.candidates.scrollPrev}
+            nextLabel={t.candidates.scrollNext}
+          />
         ) : (
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {filteredCandidates.map((c) => (

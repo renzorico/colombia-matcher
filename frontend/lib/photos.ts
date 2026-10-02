@@ -15,6 +15,12 @@ export const CANDIDATE_PHOTOS: Readonly<Record<string, string>> = {
   "claudia-lopez":            "/candidates/claudia-lopez.jpg",
 };
 
+/**
+ * object-position for cropping portraits into cards and avatars.
+ * Source photos are head-and-shoulders shots with the face in the top third.
+ */
+export const PHOTO_FOCUS = "center 20%";
+
 /** Returns the local photo path for a candidate, or null if not available. */
 export function candidatePhoto(id: string): string | null {
   return CANDIDATE_PHOTOS[id] ?? null;

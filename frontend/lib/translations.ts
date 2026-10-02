@@ -6,6 +6,7 @@ export type Lang = "es" | "en";
 const es = {
   archive: {
     banner: "Archivo · Construido para las elecciones presidenciales de Colombia 2026. Los datos no se actualizan desde junio de 2026.",
+    bannerShort: "Archivo · Elecciones presidenciales Colombia 2026",
   },
   nav: {
     candidates: "Candidatos",
@@ -136,6 +137,8 @@ const es = {
     backToHome: "Volver al inicio",
     info: "Archivo de la elección 2026. Los perfiles muestran posturas documentadas en discursos, programas y entrevistas hasta el 1 de junio de 2026. Los candidatos eliminados en primera vuelta se mantienen como referencia.",
     secondRoundBadge: "Segunda vuelta",
+    scrollPrev: "Candidatos anteriores",
+    scrollNext: "Más candidatos",
     eliminatedBadge: "Eliminado en 1a vuelta",
     filterAll: "Todos",
     filterLeft: "Izquierda",
@@ -478,6 +481,7 @@ const es = {
 const en: typeof es = {
   archive: {
     banner: "Archive · Built for Colombia's 2026 presidential election. Data has not been updated since June 2026.",
+    bannerShort: "Archive · Colombia 2026 presidential election",
   },
   nav: {
     candidates: "Candidates",
@@ -608,6 +612,8 @@ const en: typeof es = {
     backToHome: "Back to home",
     info: "Archive of the 2026 election. Profiles show documented stances from speeches, government programs, and interviews up to June 1, 2026. Candidates eliminated in the first round are kept as reference.",
     secondRoundBadge: "Runoff",
+    scrollPrev: "Previous candidates",
+    scrollNext: "More candidates",
     eliminatedBadge: "Eliminated in 1st round",
     filterAll: "All",
     filterLeft: "Left",

@@ -14,8 +14,8 @@ function VerCandidatosButton({ label }: { label: string }) {
       className="rounded-full px-6 py-3 text-sm font-medium border transition"
       style={{
         borderColor: "rgba(255,255,255,0.4)",
-        color: "#eab308",
-        backgroundColor: hovered ? "#dc2626" : "transparent",
+        color: "#ffffff",
+        backgroundColor: hovered ? "rgba(255,255,255,0.12)" : "transparent",
         transition: "background 200ms ease",
       }}
       onMouseEnter={() => setHovered(true)}
@@ -34,8 +34,6 @@ export default function Home() {
     { number: "7",  label: t.home.statsTopics,      color: STAT_COLORS[1] },
     { number: "25", label: t.home.statsQuestions,   color: STAT_COLORS[2] },
   ];
-
-  const STEP_EMOJIS = ["🗳️", "📊", "🏆"];
 
   return (
     <main className="flex flex-1 flex-col">
@@ -74,10 +72,10 @@ export default function Home() {
           borderBottom: "2px solid var(--primary)",
         }}
       >
-        <p className="text-sm font-bold tracking-wide uppercase" style={{ color: "var(--primary)" }}>
+        <p className="text-xs font-semibold tracking-wider uppercase" style={{ color: "var(--secondary)" }}>
           {t.home.secondRoundBanner}
         </p>
-        <p className="mt-1 text-xs" style={{ color: "var(--muted)" }}>
+        <p className="mt-1 text-sm" style={{ color: "var(--foreground)" }}>
           {t.home.secondRoundBannerSub}
         </p>
       </section>
@@ -113,8 +111,14 @@ export default function Home() {
               className="flex flex-col items-center text-center bg-surface rounded-2xl p-6 shadow-sm"
               style={{ border: "1px solid var(--border)" }}
             >
-              <span className="text-5xl mb-4">{STEP_EMOJIS[i]}</span>
-              <h3 className="text-xl font-bold" style={{ color: "var(--secondary)" }}>
+              <span
+                className="mb-4 flex h-10 w-10 items-center justify-center rounded-full text-base font-bold tabular-nums"
+                style={{ backgroundColor: "var(--hero)", color: "var(--primary)" }}
+                aria-hidden="true"
+              >
+                {i + 1}
+              </span>
+              <h3 className="text-lg font-bold" style={{ color: "var(--secondary)" }}>
                 {step.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>

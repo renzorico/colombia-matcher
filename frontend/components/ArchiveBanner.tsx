@@ -10,7 +10,8 @@ export default function ArchiveBanner() {
       role="note"
       className="bg-secondary px-4 py-2 text-center text-xs text-white"
     >
-      {t.archive.banner}
+      <span className="hidden sm:inline">{t.archive.banner}</span>
+      <span className="sm:hidden">{t.archive.bannerShort}</span>
     </div>
   );
 }

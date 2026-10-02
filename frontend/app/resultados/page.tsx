@@ -12,7 +12,7 @@ import {
 } from "@/lib/api";
 import { SpectrumBar } from "@/components/SpectrumBar";
 import { TOPIC_COLORS } from "@/lib/topics";
-import { candidatePhoto } from "@/lib/photos";
+import { candidatePhoto, PHOTO_FOCUS } from "@/lib/photos";
 import ResultsCharts from "@/components/ResultsCharts";
 import PhotoLightbox from "@/components/PhotoLightbox";
 import { useLanguage } from "@/lib/i18n";
@@ -162,14 +162,14 @@ export default function ResultadosPage() {
 
   function shareTextTwitter(top: Result) {
     if (lang === "en") {
-      return `I took the Clarify Your Vote quiz and my best match is ${top.candidate} with ${top.score}% affinity 🇨🇴 Who do you vote for? Find out at ${siteUrl}`;
+      return `I took the Find your Vote quiz and my best match is ${top.candidate} with ${top.score}% affinity 🇨🇴 Who do you vote for? Find out at ${siteUrl}`;
     }
     return `Hice el quiz de Aclara tu voto y mi candidato más afín es ${top.candidate} con ${top.score}% de afinidad 🇨🇴 ¿Con quién votas tú? Descúbrelo en ${siteUrl}`;
   }
 
   function shareTextWhatsApp(top: Result) {
     if (lang === "en") {
-      return `I took the Clarify Your Vote quiz 🇨🇴 My best match is ${top.candidate} (${top.score}%). What about you? Find out here: ${siteUrl}`;
+      return `I took the Find your Vote quiz 🇨🇴 My best match is ${top.candidate} (${top.score}%). What about you? Find out here: ${siteUrl}`;
     }
     return `Hice el quiz de Aclara tu voto 🇨🇴 Mi candidato más afín resultó ser ${top.candidate} (${top.score}%). ¿Y tú? Descúbrelo aquí: ${siteUrl}`;
   }
@@ -342,8 +342,9 @@ export default function ResultadosPage() {
                   alt={top.candidate}
                   width={64}
                   height={64}
-                  className="w-16 h-16 rounded-full object-contain p-1 bg-white"
-                  style={{ border: "2px solid var(--primary)" }}
+                  loading="eager"
+                  className="w-16 h-16 rounded-full object-cover"
+                  style={{ border: "2px solid var(--primary)", objectPosition: PHOTO_FOCUS }}
                 />
               </button>
             ) : (
@@ -428,8 +429,8 @@ export default function ResultadosPage() {
                       alt={r.candidate}
                       width={48}
                       height={48}
-                      className="w-12 h-12 rounded-full object-contain p-1 bg-white"
-                      style={{ border: "1px solid var(--border)" }}
+                      className="w-12 h-12 rounded-full object-cover"
+                      style={{ border: "1px solid var(--border)", objectPosition: PHOTO_FOCUS }}
                     />
                   </button>
                 ) : (
