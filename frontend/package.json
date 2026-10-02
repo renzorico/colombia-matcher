@@ -14,8 +14,6 @@
     "dev:preview:profile": "vite-node scripts/dev_preview_profile.ts"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.80.0",
-    "axios": "^1.13.6",
     "html2canvas": "^1.4.1",
     "next": "16.2.0",
     "react": "19.2.4",
