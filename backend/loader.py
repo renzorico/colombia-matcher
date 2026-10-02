@@ -1,8 +1,8 @@
 """
 loader.py — Canonical data loaders for Colombia Matcher.
 
-Reads backend/data/candidates_canonical.json and
-backend/data/questions_canonical.json, then normalises each record
+Reads frontend/data/candidates_canonical.json and
+frontend/data/questions_canonical.json (the frontend ships them), then normalises each record
 into the flat shape that scorer.py and main.py expect.
 
 Design rules
@@ -25,9 +25,9 @@ from topics import resolve_topic_id
 # Canonical file paths (relative to this file)
 # ---------------------------------------------------------------------------
 
-_HERE = Path(__file__).parent
-CANDIDATES_PATH = _HERE / "data" / "candidates_canonical.json"
-QUESTIONS_PATH  = _HERE / "data" / "questions_canonical.json"
+_DATA_DIR = Path(__file__).parent.parent / "frontend" / "data"
+CANDIDATES_PATH = _DATA_DIR / "candidates_canonical.json"
+QUESTIONS_PATH  = _DATA_DIR / "questions_canonical.json"
 
 
 # ---------------------------------------------------------------------------

@@ -1,28 +1,23 @@
 /**
- * api.ts — typed client for the canonical Python backend.
+ * api.ts — typed data access for candidates, questions and quiz scoring.
  *
- * All requests go through the Next.js rewrite proxy at /api/backend/*.
- * The proxy forwards to the backend URL configured in next.config.ts via
- * NEXT_PUBLIC_API_URL (set in Vercel env vars before the first deploy).
- * In local dev the proxy forwards to http://localhost:8000 by default.
+ * Everything runs in the browser from the bundled canonical JSON in
+ * frontend/data/ (no backend). The functions stay async so pages can treat
+ * them like any other data source.
+ *
+ * Projections mirror the former FastAPI endpoints (backend/main.py):
+ * internal fields such as stance direction and question notes are not exposed.
  */
 
-const BASE_URL = "/api/backend";
+import candidatesData from "@/data/candidates_canonical.json";
+import questionsData from "@/data/questions_canonical.json";
+import { computeAffinity, type Answers, type Result, type ScoringCandidate, type ScoringQuestion } from "@/lib/scorer";
+import { resolveTopicId } from "@/lib/topics";
 
-async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(`${BASE_URL}${path}`, {
-    ...init,
-    headers: { "Content-Type": "application/json", ...init?.headers },
-  });
-  if (!res.ok) {
-    const detail = await res.text().catch(() => "");
-    throw new Error(`Backend error ${res.status} on ${path}: ${detail}`);
-  }
-  return res.json() as Promise<T>;
-}
+export type { Result } from "@/lib/scorer";
 
 // ---------------------------------------------------------------------------
-// Types
+// Public types
 // ---------------------------------------------------------------------------
 
 export interface Question {
@@ -30,18 +25,6 @@ export interface Question {
   bucket: string;
   statement: string;
   weight: number;
-}
-
-/** One candidate in the ranked quiz result. */
-export interface Result {
-  /** Slug ID (e.g. "paloma-valencia") — use for /candidatos/[id] links. */
-  id: string;
-  /** Full display name (e.g. "Paloma Valencia"). */
-  candidate: string;
-  /** Affinity percentage 0–100. */
-  score: number;
-  /** Per-topic affinity percentage, keyed by canonical topic ID. */
-  breakdown: Record<string, number>;
 }
 
 /** Lightweight candidate for the /candidatos listing. */
@@ -108,89 +91,155 @@ export interface CandidateFull extends CandidateSummary {
 }
 
 // ---------------------------------------------------------------------------
-// Review workflow types (used by admin/review page)
+// Raw canonical shapes (only the fields read here)
 // ---------------------------------------------------------------------------
 
-export interface ProposalEvidence {
-  url: string | null;
-  title: string | null;
-  publisher: string | null;
-  quote: string | null;
-  date: string | null;
+interface RawTopic extends CandidateTopic {
+  evidence_ids?: string[];
 }
 
-export interface ProposedUpdate {
+interface RawCandidate extends CandidateSummary {
+  topics: RawTopic[];
+  proposals: Proposal[];
+  controversies: Controversy[];
+  metadata?: { procuraduria_status?: string | null; procuraduria_summary?: string | null };
+  profile_status: string | null;
+  last_updated: string | null;
+}
+
+interface RawSource extends Partial<Source> {
   id: string;
-  candidate_id: string;
+  url: string;
+}
+
+interface RawQuestion extends Question {
   topic_id: string;
-  field: string;
-  current_value: unknown;
-  proposed_value: unknown;
-  proposed_summary: string | null;
-  proposed_plain_language_summary: string | null;
-  evidence: ProposalEvidence;
-  proposed_by: string;
-  proposed_at: string;
-  status: "pending" | "approved" | "rejected";
-  agent_confidence: number;
-  agent_notes: string | null;
+  topic_label: string;
+  direction: string;
 }
 
-export interface ReviewDecision {
-  id: string;
-  proposal_id: string;
-  decision: "approved" | "rejected";
-  reviewer: string | null;
-  reviewed_at: string | null;
-  notes: string | null;
-  will_publish: boolean;
+const QUESTION_COUNT = 25;
+const LIKERT_MIN = 1;
+const LIKERT_MAX = 5;
+
+const rawCandidates = candidatesData.candidates as unknown as RawCandidate[];
+const rawSources = candidatesData.sources as unknown as RawSource[];
+const rawQuestions = questionsData as unknown as RawQuestion[];
+
+const sourcesById = new Map(rawSources.map((s) => [s.id, s]));
+
+const canonicalTopic = (id: string): string => resolveTopicId(id) ?? id;
+
+const scoringCandidates: ScoringCandidate[] = rawCandidates.map((c) => ({
+  id: c.id,
+  name: c.name,
+  stances: Object.fromEntries(c.topics.map((t) => [canonicalTopic(t.topic_id), t.stance_score])),
+}));
+
+const scoringQuestions: ScoringQuestion[] = rawQuestions.map((q) => ({
+  id: q.id,
+  axis: canonicalTopic(q.topic_id),
+  weight: q.weight,
+  direction: q.direction,
+}));
+
+// ---------------------------------------------------------------------------
+// Projections
+// ---------------------------------------------------------------------------
+
+function toSummary(c: RawCandidate): CandidateSummary {
+  return {
+    id: c.id,
+    name: c.name,
+    party: c.party ?? null,
+    coalition: c.coalition ?? null,
+    spectrum: c.spectrum ?? null,
+    short_bio: c.short_bio ?? null,
+    image_url: c.image_url ?? null,
+  };
+}
+
+/** Sources cited by any topic, proposal or controversy, sorted by ID. */
+function citedSources(c: RawCandidate): Source[] {
+  const ids = new Set<string>([
+    ...c.topics.flatMap((t) => t.evidence_ids ?? []),
+    ...c.proposals.flatMap((p) => p.source_ids ?? []),
+    ...c.controversies.flatMap((x) => x.source_ids ?? []),
+  ]);
+  return [...ids]
+    .sort()
+    .map((id) => sourcesById.get(id))
+    .filter((s): s is RawSource => Boolean(s?.url))
+    .map((s) => ({
+      id: s.id,
+      type: s.type ?? null,
+      title: s.title ?? null,
+      publisher: s.publisher ?? null,
+      url: s.url,
+      published_at: s.published_at ?? null,
+      reliability_notes: s.reliability_notes ?? null,
+    }));
+}
+
+function toFull(c: RawCandidate): CandidateFull {
+  return {
+    ...toSummary(c),
+    topics: c.topics.map((t) => ({
+      topic_id: t.topic_id,
+      topic_label: t.topic_label,
+      summary: t.summary ?? null,
+      plain_language_summary: t.plain_language_summary ?? null,
+      confidence: t.confidence ?? null,
+      stance_score: t.stance_score ?? null,
+    })),
+    proposals: c.proposals ?? [],
+    controversies: c.controversies ?? [],
+    sources: citedSources(c),
+    procuraduria_status: c.metadata?.procuraduria_status ?? null,
+    procuraduria_summary: c.metadata?.procuraduria_summary ?? null,
+    profile_status: c.profile_status ?? null,
+    last_updated: c.last_updated ?? null,
+  };
+}
+
+function validateAnswers(answers: Answers): void {
+  const entries = Object.entries(answers);
+  if (entries.length !== QUESTION_COUNT) {
+    throw new Error(`Expected ${QUESTION_COUNT} answers, got ${entries.length}.`);
+  }
+  for (const [qid, score] of entries) {
+    if (!Number.isInteger(score) || score < LIKERT_MIN || score > LIKERT_MAX) {
+      throw new Error(`Answer for '${qid}' must be an integer ${LIKERT_MIN}–${LIKERT_MAX}, got ${score}.`);
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
-// API calls
+// Data access
 // ---------------------------------------------------------------------------
 
 export async function getQuestions(): Promise<Question[]> {
-  return apiFetch<Question[]>("/questions");
+  return rawQuestions.map((q) => ({
+    id: q.id,
+    bucket: q.topic_label ?? canonicalTopic(q.topic_id),
+    statement: q.statement,
+    weight: q.weight,
+  }));
 }
 
 export async function getCandidates(): Promise<CandidateSummary[]> {
-  return apiFetch<CandidateSummary[]>("/candidates");
+  return rawCandidates.map(toSummary);
 }
 
 export async function getCandidatesFull(): Promise<CandidateFull[]> {
-  return apiFetch<CandidateFull[]>("/candidates/full");
+  return rawCandidates.map(toFull);
 }
 
-export async function submitQuiz(
-  answers: Record<string, number>,
-): Promise<Result[]> {
-  const data = await apiFetch<{ results: Result[] }>("/quiz/submit", {
-    method: "POST",
-    body: JSON.stringify({ answers }),
-  });
-  return data.results;
+/** Rank candidates by affinity with 25 Likert answers (1–5). */
+export async function submitQuiz(answers: Answers): Promise<Result[]> {
+  validateAnswers(answers);
+  return computeAffinity(answers, scoringCandidates, scoringQuestions);
 }
 
-export async function getPendingProposals(): Promise<ProposedUpdate[]> {
-  return apiFetch<ProposedUpdate[]>("/review/pending");
-}
-
-export async function getAllProposals(): Promise<ProposedUpdate[]> {
-  return apiFetch<ProposedUpdate[]>("/review/all");
-}
-
-export async function getReviewLog(): Promise<ReviewDecision[]> {
-  return apiFetch<ReviewDecision[]>("/review/log");
-}
-
-export async function explainCandidate(
-  name: string,
-  answers: Record<string, number>,
-): Promise<string> {
-  const params = new URLSearchParams({ answers: JSON.stringify(answers) });
-  const data = await apiFetch<{ candidate: string; explanation: string }>(
-    `/explain/${encodeURIComponent(name)}?${params}`,
-  );
-  return data.explanation;
-}
+/** Exposed for parity tests against the Python reference scorer. */
+export const _scoringInputs = { candidates: scoringCandidates, questions: scoringQuestions };

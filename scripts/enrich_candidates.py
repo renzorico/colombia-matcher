@@ -20,7 +20,7 @@ REVIEW & APPLY
   After the script finishes, review the diff summary it prints.
   Inspect candidates_canonical_enriched.json manually.
   When satisfied, rename/overwrite to apply:
-    cp backend/data/candidates_canonical_enriched.json backend/data/candidates_canonical.json
+    cp backend/data/candidates_canonical_enriched.json frontend/data/candidates_canonical.json
 
 WHAT IT DOES
 ------------
@@ -67,7 +67,7 @@ except ImportError:
 # ── Paths ────────────────────────────────────────────────────────────────────
 
 ROOT = Path(__file__).parent.parent
-CANONICAL_PATH = ROOT / "backend" / "data" / "candidates_canonical.json"
+CANONICAL_PATH = ROOT / "frontend" / "data" / "candidates_canonical.json"
 OUTPUT_PATH    = ROOT / "backend" / "data" / "candidates_canonical_enriched.json"
 
 # ── Topic keyword dictionaries ───────────────────────────────────────────────

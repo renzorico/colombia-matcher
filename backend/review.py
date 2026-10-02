@@ -2,7 +2,7 @@
 review.py — Pydantic models for the candidate-update review workflow.
 
 Separates three kinds of data clearly:
-  1. Published canonical data  → backend/data/candidates_canonical.json
+  1. Published canonical data  → frontend/data/candidates_canonical.json
   2. Proposed edits (pending)  → backend/data/proposed_updates.json
   3. Review decisions          → backend/data/review_log.json
 

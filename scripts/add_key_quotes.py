@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
-INPUT = ROOT / "backend" / "data" / "candidates_canonical.json"
+INPUT = ROOT / "frontend" / "data" / "candidates_canonical.json"
 OUTPUT = ROOT / "backend" / "data" / "candidates_canonical_enriched.json"
 
 # Manually curated key quotes per candidate per topic.

@@ -1,0 +1,1612 @@
+[
+  {
+    "name": "uniform_1",
+    "answers": {
+      "q01": 1,
+      "q02": 1,
+      "q03": 1,
+      "q04": 1,
+      "q05": 1,
+      "q06": 1,
+      "q07": 1,
+      "q08": 1,
+      "q09": 1,
+      "q10": 1,
+      "q11": 1,
+      "q12": 1,
+      "q13": 1,
+      "q14": 1,
+      "q15": 1,
+      "q16": 1,
+      "q17": 1,
+      "q18": 1,
+      "q19": 1,
+      "q20": 1,
+      "q21": 1,
+      "q22": 1,
+      "q23": 1,
+      "q24": 1,
+      "q25": 1
+    },
+    "expected": [
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 84.0,
+        "breakdown": {
+          "security": 95,
+          "economy": 70,
+          "health": 88,
+          "energy_environment": 100,
+          "fiscal": 67,
+          "anticorruption": 58
+        }
+      },
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 81.4,
+        "breakdown": {
+          "security": 95,
+          "economy": 70,
+          "health": 88,
+          "energy_environment": 75,
+          "fiscal": 67,
+          "foreign_policy": 83,
+          "anticorruption": 83
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 77.0,
+        "breakdown": {
+          "security": 80,
+          "economy": 95,
+          "health": 62,
+          "energy_environment": 75,
+          "fiscal": 42,
+          "foreign_policy": 92,
+          "anticorruption": 83
+        }
+      },
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 68.9,
+        "breakdown": {
+          "security": 70,
+          "economy": 45,
+          "health": 88,
+          "energy_environment": 75,
+          "fiscal": 92,
+          "foreign_policy": 58,
+          "anticorruption": 58
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 59.4,
+        "breakdown": {
+          "security": 55,
+          "economy": 80,
+          "health": 62,
+          "energy_environment": 50,
+          "fiscal": 17,
+          "foreign_policy": 67,
+          "anticorruption": 92
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 51.4,
+        "breakdown": {
+          "security": 45,
+          "economy": 20,
+          "health": 88,
+          "energy_environment": 50,
+          "fiscal": 92,
+          "foreign_policy": 33,
+          "anticorruption": 58
+        }
+      }
+    ]
+  },
+  {
+    "name": "uniform_2",
+    "answers": {
+      "q01": 2,
+      "q02": 2,
+      "q03": 2,
+      "q04": 2,
+      "q05": 2,
+      "q06": 2,
+      "q07": 2,
+      "q08": 2,
+      "q09": 2,
+      "q10": 2,
+      "q11": 2,
+      "q12": 2,
+      "q13": 2,
+      "q14": 2,
+      "q15": 2,
+      "q16": 2,
+      "q17": 2,
+      "q18": 2,
+      "q19": 2,
+      "q20": 2,
+      "q21": 2,
+      "q22": 2,
+      "q23": 2,
+      "q24": 2,
+      "q25": 2
+    },
+    "expected": [
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 91.3,
+        "breakdown": {
+          "security": 98,
+          "economy": 85,
+          "health": 94,
+          "energy_environment": 100,
+          "fiscal": 83,
+          "anticorruption": 67
+        }
+      },
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 88.8,
+        "breakdown": {
+          "security": 98,
+          "economy": 85,
+          "health": 94,
+          "energy_environment": 75,
+          "fiscal": 83,
+          "foreign_policy": 92,
+          "anticorruption": 92
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 77.6,
+        "breakdown": {
+          "security": 77,
+          "economy": 90,
+          "health": 69,
+          "energy_environment": 75,
+          "fiscal": 58,
+          "foreign_policy": 83,
+          "anticorruption": 92
+        }
+      },
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 72.8,
+        "breakdown": {
+          "security": 73,
+          "economy": 60,
+          "health": 81,
+          "energy_environment": 75,
+          "fiscal": 92,
+          "foreign_policy": 67,
+          "anticorruption": 67
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 57.2,
+        "breakdown": {
+          "security": 52,
+          "economy": 65,
+          "health": 69,
+          "energy_environment": 50,
+          "fiscal": 33,
+          "foreign_policy": 58,
+          "anticorruption": 83
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 55.3,
+        "breakdown": {
+          "security": 48,
+          "economy": 35,
+          "health": 81,
+          "energy_environment": 50,
+          "fiscal": 92,
+          "foreign_policy": 42,
+          "anticorruption": 67
+        }
+      }
+    ]
+  },
+  {
+    "name": "uniform_3",
+    "answers": {
+      "q01": 3,
+      "q02": 3,
+      "q03": 3,
+      "q04": 3,
+      "q05": 3,
+      "q06": 3,
+      "q07": 3,
+      "q08": 3,
+      "q09": 3,
+      "q10": 3,
+      "q11": 3,
+      "q12": 3,
+      "q13": 3,
+      "q14": 3,
+      "q15": 3,
+      "q16": 3,
+      "q17": 3,
+      "q18": 3,
+      "q19": 3,
+      "q20": 3,
+      "q21": 3,
+      "q22": 3,
+      "q23": 3,
+      "q24": 3,
+      "q25": 3
+    },
+    "expected": [
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 98.6,
+        "breakdown": {
+          "security": 100,
+          "economy": 100,
+          "health": 100,
+          "energy_environment": 100,
+          "fiscal": 100,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 96.2,
+        "breakdown": {
+          "security": 100,
+          "economy": 100,
+          "health": 100,
+          "energy_environment": 75,
+          "fiscal": 100,
+          "foreign_policy": 100,
+          "anticorruption": 100
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 76.2,
+        "breakdown": {
+          "security": 75,
+          "economy": 75,
+          "health": 75,
+          "energy_environment": 75,
+          "fiscal": 75,
+          "foreign_policy": 75,
+          "anticorruption": 100
+        }
+      },
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 75.0,
+        "breakdown": {
+          "security": 75,
+          "economy": 75,
+          "health": 75,
+          "energy_environment": 75,
+          "fiscal": 75,
+          "foreign_policy": 75,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 57.5,
+        "breakdown": {
+          "security": 50,
+          "economy": 50,
+          "health": 75,
+          "energy_environment": 50,
+          "fiscal": 75,
+          "foreign_policy": 50,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 55.0,
+        "breakdown": {
+          "security": 50,
+          "economy": 50,
+          "health": 75,
+          "energy_environment": 50,
+          "fiscal": 50,
+          "foreign_policy": 50,
+          "anticorruption": 75
+        }
+      }
+    ]
+  },
+  {
+    "name": "uniform_4",
+    "answers": {
+      "q01": 4,
+      "q02": 4,
+      "q03": 4,
+      "q04": 4,
+      "q05": 4,
+      "q06": 4,
+      "q07": 4,
+      "q08": 4,
+      "q09": 4,
+      "q10": 4,
+      "q11": 4,
+      "q12": 4,
+      "q13": 4,
+      "q14": 4,
+      "q15": 4,
+      "q16": 4,
+      "q17": 4,
+      "q18": 4,
+      "q19": 4,
+      "q20": 4,
+      "q21": 4,
+      "q22": 4,
+      "q23": 4,
+      "q24": 4,
+      "q25": 4
+    },
+    "expected": [
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 92.2,
+        "breakdown": {
+          "security": 98,
+          "economy": 85,
+          "health": 94,
+          "energy_environment": 100,
+          "fiscal": 83,
+          "anticorruption": 83
+        }
+      },
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 88.8,
+        "breakdown": {
+          "security": 98,
+          "economy": 85,
+          "health": 94,
+          "energy_environment": 75,
+          "fiscal": 83,
+          "foreign_policy": 92,
+          "anticorruption": 92
+        }
+      },
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 77.2,
+        "breakdown": {
+          "security": 77,
+          "economy": 90,
+          "health": 69,
+          "energy_environment": 75,
+          "fiscal": 58,
+          "foreign_policy": 83,
+          "anticorruption": 83
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 74.0,
+        "breakdown": {
+          "security": 73,
+          "economy": 60,
+          "health": 81,
+          "energy_environment": 75,
+          "fiscal": 92,
+          "foreign_policy": 67,
+          "anticorruption": 92
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 59.7,
+        "breakdown": {
+          "security": 52,
+          "economy": 65,
+          "health": 69,
+          "energy_environment": 50,
+          "fiscal": 58,
+          "foreign_policy": 58,
+          "anticorruption": 83
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 52.8,
+        "breakdown": {
+          "security": 48,
+          "economy": 35,
+          "health": 81,
+          "energy_environment": 50,
+          "fiscal": 67,
+          "foreign_policy": 42,
+          "anticorruption": 67
+        }
+      }
+    ]
+  },
+  {
+    "name": "uniform_5",
+    "answers": {
+      "q01": 5,
+      "q02": 5,
+      "q03": 5,
+      "q04": 5,
+      "q05": 5,
+      "q06": 5,
+      "q07": 5,
+      "q08": 5,
+      "q09": 5,
+      "q10": 5,
+      "q11": 5,
+      "q12": 5,
+      "q13": 5,
+      "q14": 5,
+      "q15": 5,
+      "q16": 5,
+      "q17": 5,
+      "q18": 5,
+      "q19": 5,
+      "q20": 5,
+      "q21": 5,
+      "q22": 5,
+      "q23": 5,
+      "q24": 5,
+      "q25": 5
+    },
+    "expected": [
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 85.8,
+        "breakdown": {
+          "security": 95,
+          "economy": 70,
+          "health": 88,
+          "energy_environment": 100,
+          "fiscal": 67,
+          "anticorruption": 92
+        }
+      },
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 81.4,
+        "breakdown": {
+          "security": 95,
+          "economy": 70,
+          "health": 88,
+          "energy_environment": 75,
+          "fiscal": 67,
+          "foreign_policy": 83,
+          "anticorruption": 83
+        }
+      },
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 77.4,
+        "breakdown": {
+          "security": 80,
+          "economy": 95,
+          "health": 62,
+          "energy_environment": 75,
+          "fiscal": 42,
+          "foreign_policy": 92,
+          "anticorruption": 92
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 70.2,
+        "breakdown": {
+          "security": 70,
+          "economy": 45,
+          "health": 88,
+          "energy_environment": 75,
+          "fiscal": 92,
+          "foreign_policy": 58,
+          "anticorruption": 83
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 61.9,
+        "breakdown": {
+          "security": 55,
+          "economy": 80,
+          "health": 62,
+          "energy_environment": 50,
+          "fiscal": 42,
+          "foreign_policy": 67,
+          "anticorruption": 92
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 50.6,
+        "breakdown": {
+          "security": 45,
+          "economy": 20,
+          "health": 88,
+          "energy_environment": 50,
+          "fiscal": 83,
+          "foreign_policy": 33,
+          "anticorruption": 58
+        }
+      }
+    ]
+  },
+  {
+    "name": "alternating",
+    "answers": {
+      "q01": 5,
+      "q02": 1,
+      "q03": 5,
+      "q04": 1,
+      "q05": 5,
+      "q06": 1,
+      "q07": 5,
+      "q08": 1,
+      "q09": 5,
+      "q10": 1,
+      "q11": 5,
+      "q12": 1,
+      "q13": 5,
+      "q14": 1,
+      "q15": 5,
+      "q16": 1,
+      "q17": 5,
+      "q18": 1,
+      "q19": 5,
+      "q20": 1,
+      "q21": 5,
+      "q22": 1,
+      "q23": 5,
+      "q24": 1,
+      "q25": 5
+    },
+    "expected": [
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 82.5,
+        "breakdown": {
+          "security": 95,
+          "economy": 80,
+          "health": 88,
+          "energy_environment": 67,
+          "fiscal": 100,
+          "anticorruption": 25
+        }
+      },
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 76.7,
+        "breakdown": {
+          "security": 95,
+          "economy": 80,
+          "health": 88,
+          "energy_environment": 42,
+          "fiscal": 100,
+          "foreign_policy": 50,
+          "anticorruption": 50
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 72.0,
+        "breakdown": {
+          "security": 80,
+          "economy": 95,
+          "health": 62,
+          "energy_environment": 42,
+          "fiscal": 75,
+          "foreign_policy": 75,
+          "anticorruption": 50
+        }
+      },
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 66.7,
+        "breakdown": {
+          "security": 70,
+          "economy": 55,
+          "health": 88,
+          "energy_environment": 92,
+          "fiscal": 75,
+          "foreign_policy": 25,
+          "anticorruption": 25
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 58.3,
+        "breakdown": {
+          "security": 55,
+          "economy": 70,
+          "health": 62,
+          "energy_environment": 17,
+          "fiscal": 50,
+          "foreign_policy": 100,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 51.7,
+        "breakdown": {
+          "security": 45,
+          "economy": 30,
+          "health": 88,
+          "energy_environment": 83,
+          "fiscal": 75,
+          "foreign_policy": 0,
+          "anticorruption": 25
+        }
+      }
+    ]
+  },
+  {
+    "name": "random_0",
+    "answers": {
+      "q01": 1,
+      "q02": 3,
+      "q03": 5,
+      "q04": 5,
+      "q05": 1,
+      "q06": 2,
+      "q07": 5,
+      "q08": 5,
+      "q09": 5,
+      "q10": 4,
+      "q11": 5,
+      "q12": 5,
+      "q13": 4,
+      "q14": 5,
+      "q15": 4,
+      "q16": 2,
+      "q17": 1,
+      "q18": 5,
+      "q19": 1,
+      "q20": 1,
+      "q21": 3,
+      "q22": 1,
+      "q23": 4,
+      "q24": 1,
+      "q25": 4
+    },
+    "expected": [
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 86.1,
+        "breakdown": {
+          "security": 98,
+          "economy": 82,
+          "health": 88,
+          "energy_environment": 83,
+          "fiscal": 62,
+          "foreign_policy": 100,
+          "anticorruption": 67
+        }
+      },
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 84.6,
+        "breakdown": {
+          "security": 98,
+          "economy": 82,
+          "health": 88,
+          "energy_environment": 92,
+          "fiscal": 62,
+          "anticorruption": 42
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 76.9,
+        "breakdown": {
+          "security": 73,
+          "economy": 92,
+          "health": 88,
+          "energy_environment": 83,
+          "fiscal": 38,
+          "foreign_policy": 75,
+          "anticorruption": 67
+        }
+      },
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 68.5,
+        "breakdown": {
+          "security": 77,
+          "economy": 57,
+          "health": 62,
+          "energy_environment": 67,
+          "fiscal": 88,
+          "foreign_policy": 75,
+          "anticorruption": 42
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 58.1,
+        "breakdown": {
+          "security": 48,
+          "economy": 68,
+          "health": 88,
+          "energy_environment": 58,
+          "fiscal": 12,
+          "foreign_policy": 50,
+          "anticorruption": 92
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 51.0,
+        "breakdown": {
+          "security": 52,
+          "economy": 32,
+          "health": 62,
+          "energy_environment": 42,
+          "fiscal": 88,
+          "foreign_policy": 50,
+          "anticorruption": 42
+        }
+      }
+    ]
+  },
+  {
+    "name": "random_1",
+    "answers": {
+      "q01": 3,
+      "q02": 2,
+      "q03": 4,
+      "q04": 3,
+      "q05": 3,
+      "q06": 3,
+      "q07": 4,
+      "q08": 5,
+      "q09": 1,
+      "q10": 3,
+      "q11": 1,
+      "q12": 5,
+      "q13": 5,
+      "q14": 3,
+      "q15": 3,
+      "q16": 4,
+      "q17": 2,
+      "q18": 5,
+      "q19": 3,
+      "q20": 1,
+      "q21": 3,
+      "q22": 3,
+      "q23": 4,
+      "q24": 4,
+      "q25": 1
+    },
+    "expected": [
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 90.6,
+        "breakdown": {
+          "security": 98,
+          "economy": 88,
+          "health": 100,
+          "energy_environment": 75,
+          "fiscal": 96,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 87.3,
+        "breakdown": {
+          "security": 98,
+          "economy": 88,
+          "health": 100,
+          "energy_environment": 50,
+          "fiscal": 96,
+          "foreign_policy": 83,
+          "anticorruption": 100
+        }
+      },
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 79.4,
+        "breakdown": {
+          "security": 73,
+          "economy": 88,
+          "health": 75,
+          "energy_environment": 100,
+          "fiscal": 79,
+          "foreign_policy": 58,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 71.8,
+        "breakdown": {
+          "security": 77,
+          "economy": 62,
+          "health": 75,
+          "energy_environment": 50,
+          "fiscal": 71,
+          "foreign_policy": 92,
+          "anticorruption": 100
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 61.9,
+        "breakdown": {
+          "security": 48,
+          "economy": 62,
+          "health": 75,
+          "energy_environment": 75,
+          "fiscal": 79,
+          "foreign_policy": 33,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 50.6,
+        "breakdown": {
+          "security": 52,
+          "economy": 38,
+          "health": 75,
+          "energy_environment": 25,
+          "fiscal": 46,
+          "foreign_policy": 67,
+          "anticorruption": 75
+        }
+      }
+    ]
+  },
+  {
+    "name": "random_2",
+    "answers": {
+      "q01": 4,
+      "q02": 5,
+      "q03": 5,
+      "q04": 4,
+      "q05": 1,
+      "q06": 4,
+      "q07": 5,
+      "q08": 5,
+      "q09": 4,
+      "q10": 4,
+      "q11": 5,
+      "q12": 3,
+      "q13": 4,
+      "q14": 5,
+      "q15": 4,
+      "q16": 5,
+      "q17": 5,
+      "q18": 1,
+      "q19": 5,
+      "q20": 2,
+      "q21": 2,
+      "q22": 1,
+      "q23": 5,
+      "q24": 1,
+      "q25": 5
+    },
+    "expected": [
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 82.7,
+        "breakdown": {
+          "security": 86,
+          "economy": 88,
+          "health": 91,
+          "energy_environment": 92,
+          "fiscal": 62,
+          "foreign_policy": 62,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 82.1,
+        "breakdown": {
+          "security": 86,
+          "economy": 88,
+          "health": 91,
+          "energy_environment": 83,
+          "fiscal": 62,
+          "anticorruption": 50
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 80.5,
+        "breakdown": {
+          "security": 61,
+          "economy": 88,
+          "health": 84,
+          "energy_environment": 92,
+          "fiscal": 88,
+          "foreign_policy": 88,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 66.7,
+        "breakdown": {
+          "security": 36,
+          "economy": 62,
+          "health": 84,
+          "energy_environment": 67,
+          "fiscal": 88,
+          "foreign_policy": 88,
+          "anticorruption": 100
+        }
+      },
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 63.3,
+        "breakdown": {
+          "security": 89,
+          "economy": 62,
+          "health": 66,
+          "energy_environment": 58,
+          "fiscal": 38,
+          "foreign_policy": 38,
+          "anticorruption": 50
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 45.8,
+        "breakdown": {
+          "security": 64,
+          "economy": 38,
+          "health": 66,
+          "energy_environment": 33,
+          "fiscal": 38,
+          "foreign_policy": 12,
+          "anticorruption": 50
+        }
+      }
+    ]
+  },
+  {
+    "name": "random_3",
+    "answers": {
+      "q01": 4,
+      "q02": 4,
+      "q03": 2,
+      "q04": 4,
+      "q05": 2,
+      "q06": 1,
+      "q07": 4,
+      "q08": 4,
+      "q09": 5,
+      "q10": 3,
+      "q11": 5,
+      "q12": 4,
+      "q13": 3,
+      "q14": 5,
+      "q15": 5,
+      "q16": 4,
+      "q17": 4,
+      "q18": 4,
+      "q19": 2,
+      "q20": 3,
+      "q21": 3,
+      "q22": 1,
+      "q23": 1,
+      "q24": 2,
+      "q25": 5
+    },
+    "expected": [
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 89.3,
+        "breakdown": {
+          "security": 86,
+          "economy": 88,
+          "health": 100,
+          "energy_environment": 96,
+          "fiscal": 88,
+          "foreign_policy": 88,
+          "anticorruption": 67
+        }
+      },
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 85.3,
+        "breakdown": {
+          "security": 86,
+          "economy": 88,
+          "health": 100,
+          "energy_environment": 79,
+          "fiscal": 88,
+          "anticorruption": 42
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 83.6,
+        "breakdown": {
+          "security": 89,
+          "economy": 88,
+          "health": 75,
+          "energy_environment": 96,
+          "fiscal": 88,
+          "foreign_policy": 62,
+          "anticorruption": 67
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 64.9,
+        "breakdown": {
+          "security": 64,
+          "economy": 62,
+          "health": 75,
+          "energy_environment": 71,
+          "fiscal": 62,
+          "foreign_policy": 38,
+          "anticorruption": 92
+        }
+      },
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 64.3,
+        "breakdown": {
+          "security": 61,
+          "economy": 62,
+          "health": 75,
+          "energy_environment": 54,
+          "fiscal": 62,
+          "foreign_policy": 88,
+          "anticorruption": 42
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 46.8,
+        "breakdown": {
+          "security": 36,
+          "economy": 38,
+          "health": 75,
+          "energy_environment": 29,
+          "fiscal": 62,
+          "foreign_policy": 62,
+          "anticorruption": 42
+        }
+      }
+    ]
+  },
+  {
+    "name": "random_4",
+    "answers": {
+      "q01": 4,
+      "q02": 5,
+      "q03": 4,
+      "q04": 3,
+      "q05": 2,
+      "q06": 3,
+      "q07": 4,
+      "q08": 4,
+      "q09": 5,
+      "q10": 4,
+      "q11": 4,
+      "q12": 5,
+      "q13": 1,
+      "q14": 3,
+      "q15": 3,
+      "q16": 4,
+      "q17": 1,
+      "q18": 4,
+      "q19": 5,
+      "q20": 3,
+      "q21": 4,
+      "q22": 2,
+      "q23": 4,
+      "q24": 4,
+      "q25": 1
+    },
+    "expected": [
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 86.1,
+        "breakdown": {
+          "security": 86,
+          "economy": 98,
+          "health": 78,
+          "energy_environment": 83,
+          "fiscal": 83,
+          "foreign_policy": 88,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 86.0,
+        "breakdown": {
+          "security": 86,
+          "economy": 98,
+          "health": 78,
+          "energy_environment": 92,
+          "fiscal": 83,
+          "anticorruption": 50
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 76.2,
+        "breakdown": {
+          "security": 61,
+          "economy": 78,
+          "health": 97,
+          "energy_environment": 83,
+          "fiscal": 58,
+          "foreign_policy": 88,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 72.5,
+        "breakdown": {
+          "security": 89,
+          "economy": 72,
+          "health": 53,
+          "energy_environment": 67,
+          "fiscal": 92,
+          "foreign_policy": 62,
+          "anticorruption": 50
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 57.5,
+        "breakdown": {
+          "security": 36,
+          "economy": 52,
+          "health": 97,
+          "energy_environment": 58,
+          "fiscal": 33,
+          "foreign_policy": 62,
+          "anticorruption": 100
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 55.0,
+        "breakdown": {
+          "security": 64,
+          "economy": 48,
+          "health": 53,
+          "energy_environment": 42,
+          "fiscal": 92,
+          "foreign_policy": 38,
+          "anticorruption": 50
+        }
+      }
+    ]
+  },
+  {
+    "name": "random_5",
+    "answers": {
+      "q01": 3,
+      "q02": 4,
+      "q03": 3,
+      "q04": 1,
+      "q05": 2,
+      "q06": 4,
+      "q07": 2,
+      "q08": 4,
+      "q09": 1,
+      "q10": 1,
+      "q11": 1,
+      "q12": 4,
+      "q13": 5,
+      "q14": 5,
+      "q15": 1,
+      "q16": 5,
+      "q17": 2,
+      "q18": 2,
+      "q19": 1,
+      "q20": 5,
+      "q21": 1,
+      "q22": 5,
+      "q23": 3,
+      "q24": 3,
+      "q25": 2
+    },
+    "expected": [
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 87.3,
+        "breakdown": {
+          "security": 84,
+          "economy": 92,
+          "health": 81,
+          "energy_environment": 96,
+          "fiscal": 88,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 82.7,
+        "breakdown": {
+          "security": 91,
+          "economy": 82,
+          "health": 94,
+          "energy_environment": 71,
+          "fiscal": 62,
+          "foreign_policy": 88,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 81.1,
+        "breakdown": {
+          "security": 84,
+          "economy": 92,
+          "health": 81,
+          "energy_environment": 79,
+          "fiscal": 88,
+          "foreign_policy": 62,
+          "anticorruption": 50
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 67.7,
+        "breakdown": {
+          "security": 66,
+          "economy": 57,
+          "health": 94,
+          "energy_environment": 46,
+          "fiscal": 62,
+          "foreign_policy": 88,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 63.6,
+        "breakdown": {
+          "security": 59,
+          "economy": 68,
+          "health": 56,
+          "energy_environment": 79,
+          "fiscal": 88,
+          "foreign_policy": 38,
+          "anticorruption": 50
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 42.3,
+        "breakdown": {
+          "security": 34,
+          "economy": 43,
+          "health": 56,
+          "energy_environment": 54,
+          "fiscal": 62,
+          "foreign_policy": 12,
+          "anticorruption": 25
+        }
+      }
+    ]
+  },
+  {
+    "name": "random_6",
+    "answers": {
+      "q01": 1,
+      "q02": 3,
+      "q03": 5,
+      "q04": 5,
+      "q05": 4,
+      "q06": 2,
+      "q07": 5,
+      "q08": 2,
+      "q09": 4,
+      "q10": 5,
+      "q11": 2,
+      "q12": 5,
+      "q13": 5,
+      "q14": 3,
+      "q15": 1,
+      "q16": 4,
+      "q17": 2,
+      "q18": 2,
+      "q19": 5,
+      "q20": 3,
+      "q21": 5,
+      "q22": 4,
+      "q23": 4,
+      "q24": 2,
+      "q25": 5
+    },
+    "expected": [
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 87.9,
+        "breakdown": {
+          "security": 98,
+          "economy": 85,
+          "health": 88,
+          "energy_environment": 75,
+          "fiscal": 96,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 84.6,
+        "breakdown": {
+          "security": 98,
+          "economy": 85,
+          "health": 88,
+          "energy_environment": 50,
+          "fiscal": 96,
+          "foreign_policy": 79,
+          "anticorruption": 100
+        }
+      },
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 75.7,
+        "breakdown": {
+          "security": 77,
+          "economy": 60,
+          "health": 88,
+          "energy_environment": 100,
+          "fiscal": 71,
+          "foreign_policy": 54,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 75.6,
+        "breakdown": {
+          "security": 73,
+          "economy": 90,
+          "health": 62,
+          "energy_environment": 50,
+          "fiscal": 79,
+          "foreign_policy": 96,
+          "anticorruption": 100
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 58.2,
+        "breakdown": {
+          "security": 52,
+          "economy": 35,
+          "health": 88,
+          "energy_environment": 75,
+          "fiscal": 71,
+          "foreign_policy": 29,
+          "anticorruption": 75
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 54.3,
+        "breakdown": {
+          "security": 48,
+          "economy": 65,
+          "health": 62,
+          "energy_environment": 25,
+          "fiscal": 54,
+          "foreign_policy": 71,
+          "anticorruption": 75
+        }
+      }
+    ]
+  },
+  {
+    "name": "random_7",
+    "answers": {
+      "q01": 2,
+      "q02": 4,
+      "q03": 1,
+      "q04": 1,
+      "q05": 4,
+      "q06": 1,
+      "q07": 1,
+      "q08": 3,
+      "q09": 3,
+      "q10": 1,
+      "q11": 1,
+      "q12": 5,
+      "q13": 4,
+      "q14": 3,
+      "q15": 3,
+      "q16": 4,
+      "q17": 3,
+      "q18": 1,
+      "q19": 4,
+      "q20": 4,
+      "q21": 5,
+      "q22": 5,
+      "q23": 2,
+      "q24": 2,
+      "q25": 5
+    },
+    "expected": [
+      {
+        "id": "roy-barreras",
+        "candidate": "Roy Barreras",
+        "score": 84.6,
+        "breakdown": {
+          "security": 93,
+          "economy": 85,
+          "health": 81,
+          "energy_environment": 92,
+          "fiscal": 67,
+          "foreign_policy": 71,
+          "anticorruption": 92
+        }
+      },
+      {
+        "id": "claudia-lopez",
+        "candidate": "Claudia López",
+        "score": 81.3,
+        "breakdown": {
+          "security": 82,
+          "economy": 90,
+          "health": 56,
+          "energy_environment": 83,
+          "fiscal": 92,
+          "anticorruption": 92
+        }
+      },
+      {
+        "id": "sergio-fajardo",
+        "candidate": "Sergio Fajardo",
+        "score": 78.6,
+        "breakdown": {
+          "security": 82,
+          "economy": 90,
+          "health": 56,
+          "energy_environment": 58,
+          "fiscal": 92,
+          "foreign_policy": 96,
+          "anticorruption": 83
+        }
+      },
+      {
+        "id": "ivan-cepeda",
+        "candidate": "Iván Cepeda",
+        "score": 67.1,
+        "breakdown": {
+          "security": 68,
+          "economy": 60,
+          "health": 81,
+          "energy_environment": 67,
+          "fiscal": 67,
+          "foreign_policy": 46,
+          "anticorruption": 92
+        }
+      },
+      {
+        "id": "paloma-valencia",
+        "candidate": "Paloma Valencia",
+        "score": 61.1,
+        "breakdown": {
+          "security": 57,
+          "economy": 65,
+          "health": 31,
+          "energy_environment": 58,
+          "fiscal": 83,
+          "foreign_policy": 79,
+          "anticorruption": 83
+        }
+      },
+      {
+        "id": "abelardo-de-la-espriella",
+        "candidate": "Abelardo de la Espriella",
+        "score": 39.8,
+        "breakdown": {
+          "security": 32,
+          "economy": 40,
+          "health": 31,
+          "energy_environment": 33,
+          "fiscal": 58,
+          "foreign_policy": 54,
+          "anticorruption": 58
+        }
+      }
+    ]
+  }
+]
