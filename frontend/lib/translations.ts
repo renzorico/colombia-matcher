@@ -4,6 +4,9 @@
 export type Lang = "es" | "en";
 
 const es = {
+  archive: {
+    banner: "Archivo · Construido para las elecciones presidenciales de Colombia 2026. Los datos no se actualizan desde junio de 2026.",
+  },
   nav: {
     candidates: "Candidatos",
     quiz: "Quiz",
@@ -16,7 +19,7 @@ const es = {
     wordmark: "Aclara tu voto",
   },
   footer: {
-    tagline: "Herramienta independiente · Sin afiliación política · Datos curados manualmente · Actualizado junio 2026",
+    tagline: "Herramienta independiente · Sin afiliación política · Datos curados manualmente · Archivo: datos al 1 de junio de 2026",
     builtBy: "Construido por",
     role: "Data Scientist",
     photoCredit: "Fotos de candidatos:",
@@ -25,9 +28,9 @@ const es = {
   },
   home: {
     title: "Aclara tu voto",
-    subtitle: "Segunda vuelta: 21 de junio. Descubre con cuál de los dos candidatos estás más alineado. 25 preguntas. Sin sesgos.",
-    secondRoundBanner: "Segunda vuelta presidencial — 21 de junio de 2026",
-    secondRoundBannerSub: "Abelardo de la Espriella (43.74%) vs. Iván Cepeda (40.90%)",
+    subtitle: "Proyecto archivado de las elecciones presidenciales 2026. Descubre con qué candidato coincidías más. 25 preguntas. Sin sesgos.",
+    secondRoundBanner: "Resultado de la segunda vuelta — 21 de junio de 2026",
+    secondRoundBannerSub: "Abelardo de la Espriella, presidente electo (49.66%) · Iván Cepeda (48.70%)",
     statsCandidates: "finalistas",
     statsTopics: "temas clave",
     statsQuestions: "preguntas",
@@ -83,7 +86,7 @@ const es = {
     noDataTitle: "Completa el quiz primero para ver tus resultados.",
     noDataDesc: "Responde 25 preguntas para descubrir con qué candidato tienes más afinidad.",
     noDataCta: "Hacer el quiz →",
-    errorServer: "El servidor de datos no está disponible. Intenta más tarde.",
+    errorServer: "No se pudieron calcular los resultados. Vuelve a hacer el quiz.",
     errorRestart: "Volver a empezar",
     explainerToggle: "¿Cómo se interpretan estos porcentajes?",
     explainerBody: (
@@ -92,7 +95,7 @@ const es = {
     explainerBody2: "El porcentaje total es un promedio ponderado: Seguridad (25%), Economía (20%), Salud (15%), Energía (15%), Fiscal (10%), Exterior (10%), Anticorrupción (5%).",
     explainerBody3: "Un resultado de 65%–75% ya indica afinidad alta. Por encima de 80% es muy alta.",
     explainerMethodLink: "Ver metodología completa →",
-    secondRoundNote: "Segunda vuelta: 21 de junio. Los resultados comparan tus respuestas con los 6 candidatos originales. Los dos finalistas aparecen destacados.",
+    secondRoundNote: "Archivo de la elección 2026. Los resultados comparan tus respuestas con los 6 candidatos de primera vuelta. Los dos finalistas aparecen destacados.",
     topAffinity: "Tu mejor afinidad",
     viewProfile: "Ver perfil",
     viewProfileArrow: "Ver perfil →",
@@ -131,7 +134,7 @@ const es = {
     loading: "Cargando candidatos...",
     errorPrefix: "Error al cargar candidatos.",
     backToHome: "Volver al inicio",
-    info: "Segunda vuelta: 21 de junio de 2026. Los perfiles muestran posturas documentadas en discursos, programas y entrevistas. Los candidatos eliminados en primera vuelta se mantienen como referencia.",
+    info: "Archivo de la elección 2026. Los perfiles muestran posturas documentadas en discursos, programas y entrevistas hasta el 1 de junio de 2026. Los candidatos eliminados en primera vuelta se mantienen como referencia.",
     secondRoundBadge: "Segunda vuelta",
     eliminatedBadge: "Eliminado en 1a vuelta",
     filterAll: "Todos",
@@ -345,29 +348,29 @@ const es = {
         note: "Desplegado en Vercel. Build estático con SSG para páginas de candidatos.",
       },
       {
-        layer: "Backend",
-        tech: "FastAPI · Python 3.11 · Pydantic",
-        note: "Desplegado en Railway. REST API con /questions, /quiz/submit, /candidates/full.",
+        layer: "Motor de afinidad",
+        tech: "TypeScript · Vitest",
+        note: "Corre en el navegador. Portado desde el scorer de referencia en Python, con tests de paridad que garantizan resultados idénticos.",
       },
       {
         layer: "Datos",
         tech: "JSON canónico (candidates_canonical.json)",
-        note: "Single source of truth. Curado manualmente. Leído en startup por el backend.",
+        note: "Single source of truth. Curado manualmente. Incluido en el build; sin servidor ni base de datos.",
       },
       {
-        layer: "Proxy",
-        tech: "Next.js rewrites → /api/backend/:path*",
-        note: "El frontend proxea al backend. Elimina CORS en producción.",
+        layer: "Investigación (offline)",
+        tech: "Python · agentes de recolección, extracción y agregación",
+        note: "Propone cambios a los perfiles para revisión humana. No corre en producción.",
       },
     ],
     flow: [
       ["Usuario",          "responde 25 preguntas en el quiz"],
-      ["Quiz page",        "GET /questions → preguntas del backend canónico"],
-      ["Quiz page",        "POST /quiz/submit con respuestas (1–5 por pregunta)"],
-      ["Backend scorer",   "calcula afinidad ponderada por los 7 ejes temáticos"],
-      ["Backend scorer",   "devuelve Result[] ordenado por score (0–100%)"],
+      ["Quiz page",        "carga las 25 preguntas del JSON canónico"],
+      ["Quiz page",        "guarda las respuestas (1–5 por pregunta)"],
+      ["Scorer",           "calcula afinidad ponderada por los 7 ejes temáticos, en el navegador"],
+      ["Scorer",           "devuelve Result[] ordenado por score (0–100%)"],
       ["Results page",     "muestra candidatos + desglose por tema"],
-      ["/candidatos/[id]", "GET /candidates/full → perfil completo del candidato"],
+      ["/candidatos/[id]", "perfil completo del candidato, prerenderizado como HTML estático"],
     ] as [string, string][],
     agents: [
       {
@@ -473,6 +476,9 @@ const es = {
 };
 
 const en: typeof es = {
+  archive: {
+    banner: "Archive · Built for Colombia's 2026 presidential election. Data has not been updated since June 2026.",
+  },
   nav: {
     candidates: "Candidates",
     quiz: "Quiz",
@@ -485,7 +491,7 @@ const en: typeof es = {
     wordmark: "Find your Vote",
   },
   footer: {
-    tagline: "Independent tool · No political affiliation · Manually curated data · Updated June 2026",
+    tagline: "Independent tool · No political affiliation · Manually curated data · Archive: data as of June 1, 2026",
     builtBy: "Built by",
     role: "Data Scientist",
     photoCredit: "Candidate photos:",
@@ -494,9 +500,9 @@ const en: typeof es = {
   },
   home: {
     title: "Find your Vote",
-    subtitle: "Runoff: June 21. Discover which of the two candidates aligns most with your views. 25 questions. No bias.",
-    secondRoundBanner: "Presidential runoff — June 21, 2026",
-    secondRoundBannerSub: "Abelardo de la Espriella (43.74%) vs. Ivan Cepeda (40.90%)",
+    subtitle: "An archived project from the 2026 presidential election. Find out which candidate you matched most. 25 questions. No bias.",
+    secondRoundBanner: "Runoff result — June 21, 2026",
+    secondRoundBannerSub: "Abelardo de la Espriella, president-elect (49.66%) · Iván Cepeda (48.70%)",
     statsCandidates: "finalists",
     statsTopics: "key topics",
     statsQuestions: "questions",
@@ -552,7 +558,7 @@ const en: typeof es = {
     noDataTitle: "Complete the quiz first to see your results.",
     noDataDesc: "Answer 25 questions to discover which candidate you align with most.",
     noDataCta: "Take the quiz →",
-    errorServer: "The data server is unavailable. Please try again later.",
+    errorServer: "Results could not be calculated. Please retake the quiz.",
     errorRestart: "Start over",
     explainerToggle: "How should these percentages be interpreted?",
     explainerBody: (
@@ -561,7 +567,7 @@ const en: typeof es = {
     explainerBody2: "The total score is a weighted average: Security (25%), Economy (20%), Health (15%), Energy (15%), Fiscal (10%), Foreign Policy (10%), Anti-corruption (5%).",
     explainerBody3: "A score of 65%–75% already indicates high affinity. Above 80% is very high.",
     explainerMethodLink: "View full methodology →",
-    secondRoundNote: "Runoff: June 21. Results compare your answers against all 6 original candidates. The two finalists are highlighted.",
+    secondRoundNote: "Archive of the 2026 election. Results compare your answers against all 6 first-round candidates. The two finalists are highlighted.",
     topAffinity: "Your best match",
     viewProfile: "View profile",
     viewProfileArrow: "View profile →",
@@ -600,7 +606,7 @@ const en: typeof es = {
     loading: "Loading candidates...",
     errorPrefix: "Error loading candidates.",
     backToHome: "Back to home",
-    info: "Runoff: June 21, 2026. Profiles show documented stances from speeches, government programs, and interviews. Candidates eliminated in the first round are kept as reference.",
+    info: "Archive of the 2026 election. Profiles show documented stances from speeches, government programs, and interviews up to June 1, 2026. Candidates eliminated in the first round are kept as reference.",
     secondRoundBadge: "Runoff",
     eliminatedBadge: "Eliminated in 1st round",
     filterAll: "All",
@@ -814,29 +820,29 @@ const en: typeof es = {
         note: "Deployed on Vercel. Static build with SSG for candidate pages.",
       },
       {
-        layer: "Backend",
-        tech: "FastAPI · Python 3.11 · Pydantic",
-        note: "Deployed on Railway. REST API with /questions, /quiz/submit, /candidates/full.",
+        layer: "Affinity engine",
+        tech: "TypeScript · Vitest",
+        note: "Runs in the browser. Ported from the Python reference scorer, with parity tests that guarantee identical results.",
       },
       {
         layer: "Data",
         tech: "Canonical JSON (candidates_canonical.json)",
-        note: "Single source of truth. Manually curated. Read on startup by the backend.",
+        note: "Single source of truth. Manually curated. Bundled at build time; no server or database.",
       },
       {
-        layer: "Proxy",
-        tech: "Next.js rewrites → /api/backend/:path*",
-        note: "Frontend proxies to backend. Eliminates CORS in production.",
+        layer: "Research (offline)",
+        tech: "Python · collection, extraction and aggregation agents",
+        note: "Proposes profile changes for human review. Does not run in production.",
       },
     ],
     flow: [
       ["User",             "answers 25 questions in the quiz"],
-      ["Quiz page",        "GET /questions → questions from canonical backend"],
-      ["Quiz page",        "POST /quiz/submit with answers (1–5 per question)"],
-      ["Backend scorer",   "calculates affinity weighted across 7 thematic axes"],
-      ["Backend scorer",   "returns Result[] sorted by score (0–100%)"],
+      ["Quiz page",        "loads the 25 questions from the canonical JSON"],
+      ["Quiz page",        "stores answers (1–5 per question)"],
+      ["Scorer",           "calculates affinity weighted across 7 thematic axes, in the browser"],
+      ["Scorer",           "returns Result[] sorted by score (0–100%)"],
       ["Results page",     "displays candidates + breakdown by topic"],
-      ["/candidatos/[id]", "GET /candidates/full → full candidate profile"],
+      ["/candidatos/[id]", "full candidate profile, prerendered as static HTML"],
     ] as [string, string][],
     agents: [
       {

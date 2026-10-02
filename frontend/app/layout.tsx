@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import ArchiveBanner from "@/components/ArchiveBanner";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/lib/i18n";
@@ -55,6 +56,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <LanguageProvider>
+          <ArchiveBanner />
           <NavBar />
           <div className="flex flex-1 flex-col">{children}</div>
           <Footer />
