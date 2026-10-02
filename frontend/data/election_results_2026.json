@@ -1,0 +1,806 @@
+{
+  "meta": {
+    "generated_at": "2026-10-02",
+    "notes": "Resultados oficiales de la Registraduría Nacional. Los totales por departamento (escrutinio) difieren del total nacional en menos de 0,01 %. Primera vuelta solo a nivel nacional.",
+    "sources": [
+      {
+        "title": "2026 Colombian presidential election (resultados por departamento, transcritos de la Registraduría)",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/2026_Colombian_presidential_election"
+      },
+      {
+        "title": "Resultados elecciones presidenciales Colombia 2026: De la Espriella, presidente electo",
+        "publisher": "El Tiempo",
+        "url": "https://www.eltiempo.com/politica/elecciones-colombia-2026/resultados-segunda-vuelta-presidencial-2026-siga-el-minuto-a-minuto-del-preconteo-de-la-registraduria-nacional-3565893"
+      },
+      {
+        "title": "¿Qué tanto cambiaron las votaciones por departamento entre primera y segunda vuelta?",
+        "publisher": "El Colombiano",
+        "url": "https://www.elcolombiano.com/especiales/elecciones-2026/asi-cambiaron-votaciones-departamentos-segunda-vuelta-antioquia-clave-abelardo-espriella-JJ38020867"
+      },
+      {
+        "title": "El mapa, municipio por municipio, de la segunda vuelta presidencial",
+        "publisher": "El Tiempo",
+        "url": "https://www.eltiempo.com/politica/elecciones-colombia-2026/el-mapa-municipio-por-municipio-de-la-segunda-vuelta-presidencial-abelardo-de-la-espriella-gano-en-758-mas-de-seis-de-cada-diez-en-el-pais-3566255"
+      },
+      {
+        "title": "Resultado de la segunda vuelta en Colombia, en vivo",
+        "publisher": "CNN en Español",
+        "url": "https://cnnespanol.cnn.com/2026/06/21/colombia/live-news/segunda-vuelta-elecciones-presidenciales-resultado-cepeda-espriella-orix"
+      }
+    ]
+  },
+  "national": {
+    "round1": {
+      "date": "2026-05-31",
+      "registered": 41421973,
+      "votes_cast": 23978304,
+      "turnout_pct": 57.89,
+      "blank": {
+        "votes": 406970,
+        "pct": 1.72
+      },
+      "invalid": {
+        "votes": 292975,
+        "pct": 1.22
+      },
+      "candidates": [
+        {
+          "name": "Abelardo de la Espriella",
+          "id": "abelardo-de-la-espriella",
+          "votes": 10361499,
+          "pct": 43.75
+        },
+        {
+          "name": "Iván Cepeda",
+          "id": "ivan-cepeda",
+          "votes": 9688361,
+          "pct": 40.9
+        },
+        {
+          "name": "Paloma Valencia",
+          "id": "paloma-valencia",
+          "votes": 1639685,
+          "pct": 6.92
+        },
+        {
+          "name": "Sergio Fajardo",
+          "id": "sergio-fajardo",
+          "votes": 1009073,
+          "pct": 4.26
+        },
+        {
+          "name": "Claudia López",
+          "id": "claudia-lopez",
+          "votes": 225517,
+          "pct": 0.95
+        },
+        {
+          "name": "Santiago Botero",
+          "id": null,
+          "votes": 206140,
+          "pct": 0.87
+        },
+        {
+          "name": "Mauricio Lizcano",
+          "id": null,
+          "votes": 53839,
+          "pct": 0.23
+        },
+        {
+          "name": "Miguel Uribe Londoño",
+          "id": null,
+          "votes": 28657,
+          "pct": 0.12
+        },
+        {
+          "name": "Sondra Macollins",
+          "id": null,
+          "votes": 19889,
+          "pct": 0.08
+        },
+        {
+          "name": "Roy Barreras",
+          "id": "roy-barreras",
+          "votes": 14108,
+          "pct": 0.06
+        },
+        {
+          "name": "Luis Gilberto Murillo",
+          "id": null,
+          "votes": 13270,
+          "pct": 0.06
+        },
+        {
+          "name": "Carlos Caicedo",
+          "id": null,
+          "votes": 12694,
+          "pct": 0.05
+        },
+        {
+          "name": "Gustavo Matamoros",
+          "id": null,
+          "votes": 5627,
+          "pct": 0.02
+        }
+      ]
+    },
+    "round2": {
+      "date": "2026-06-21",
+      "registered": 41421973,
+      "votes_cast": 26345588,
+      "turnout_pct": 63.6,
+      "blank": {
+        "votes": 426848,
+        "pct": 1.64
+      },
+      "invalid": {
+        "votes": 250262,
+        "pct": 0.95
+      },
+      "candidates": [
+        {
+          "name": "Abelardo de la Espriella",
+          "id": "abelardo-de-la-espriella",
+          "votes": 12960166,
+          "pct": 49.66
+        },
+        {
+          "name": "Iván Cepeda",
+          "id": "ivan-cepeda",
+          "votes": 12708312,
+          "pct": 48.7
+        }
+      ]
+    },
+    "inauguration": "2026-08-07"
+  },
+  "round2ByRegion": [
+    {
+      "name": "Amazonas",
+      "geoName": "AMAZONAS",
+      "abroad": false,
+      "espriella": {
+        "votes": 10584,
+        "pct": 36.7
+      },
+      "cepeda": {
+        "votes": 17849,
+        "pct": 61.9
+      },
+      "blank": {
+        "votes": 403,
+        "pct": 1.4
+      },
+      "valid": 28836,
+      "invalid": 267
+    },
+    {
+      "name": "Antioquia",
+      "geoName": "ANTIOQUIA",
+      "abroad": false,
+      "espriella": {
+        "votes": 2185834,
+        "pct": 64.4
+      },
+      "cepeda": {
+        "votes": 1133681,
+        "pct": 33.4
+      },
+      "blank": {
+        "votes": 73530,
+        "pct": 2.2
+      },
+      "valid": 3393045,
+      "invalid": 36049
+    },
+    {
+      "name": "Arauca",
+      "geoName": "ARAUCA",
+      "abroad": false,
+      "espriella": {
+        "votes": 63523,
+        "pct": 56.6
+      },
+      "cepeda": {
+        "votes": 46420,
+        "pct": 41.4
+      },
+      "blank": {
+        "votes": 2280,
+        "pct": 2.0
+      },
+      "valid": 112223,
+      "invalid": 1840
+    },
+    {
+      "name": "Atlántico",
+      "geoName": "ATLANTICO",
+      "abroad": false,
+      "espriella": {
+        "votes": 505091,
+        "pct": 40.4
+      },
+      "cepeda": {
+        "votes": 732403,
+        "pct": 58.6
+      },
+      "blank": {
+        "votes": 12102,
+        "pct": 1.0
+      },
+      "valid": 1249596,
+      "invalid": 5563
+    },
+    {
+      "name": "Bogotá D.C.",
+      "geoName": "SANTAFE DE BOGOTA D.C",
+      "abroad": false,
+      "espriella": {
+        "votes": 1933243,
+        "pct": 45.4
+      },
+      "cepeda": {
+        "votes": 2235514,
+        "pct": 52.5
+      },
+      "blank": {
+        "votes": 91516,
+        "pct": 2.1
+      },
+      "valid": 4260273,
+      "invalid": 32968
+    },
+    {
+      "name": "Bolívar",
+      "geoName": "BOLIVAR",
+      "abroad": false,
+      "espriella": {
+        "votes": 391458,
+        "pct": 39.4
+      },
+      "cepeda": {
+        "votes": 591870,
+        "pct": 59.5
+      },
+      "blank": {
+        "votes": 11191,
+        "pct": 1.1
+      },
+      "valid": 994519,
+      "invalid": 4841
+    },
+    {
+      "name": "Boyacá",
+      "geoName": "BOYACA",
+      "abroad": false,
+      "espriella": {
+        "votes": 441557,
+        "pct": 60.2
+      },
+      "cepeda": {
+        "votes": 280199,
+        "pct": 38.2
+      },
+      "blank": {
+        "votes": 11456,
+        "pct": 1.6
+      },
+      "valid": 733212,
+      "invalid": 7874
+    },
+    {
+      "name": "Caldas",
+      "geoName": "CALDAS",
+      "abroad": false,
+      "espriella": {
+        "votes": 306735,
+        "pct": 58.8
+      },
+      "cepeda": {
+        "votes": 203704,
+        "pct": 39.0
+      },
+      "blank": {
+        "votes": 11469,
+        "pct": 2.2
+      },
+      "valid": 521908,
+      "invalid": 10002
+    },
+    {
+      "name": "Caquetá",
+      "geoName": "CAQUETA",
+      "abroad": false,
+      "espriella": {
+        "votes": 101588,
+        "pct": 48.6
+      },
+      "cepeda": {
+        "votes": 102286,
+        "pct": 49.0
+      },
+      "blank": {
+        "votes": 4981,
+        "pct": 2.4
+      },
+      "valid": 208855,
+      "invalid": 3517
+    },
+    {
+      "name": "Casanare",
+      "geoName": "CASANARE",
+      "abroad": false,
+      "espriella": {
+        "votes": 161203,
+        "pct": 69.1
+      },
+      "cepeda": {
+        "votes": 68474,
+        "pct": 29.3
+      },
+      "blank": {
+        "votes": 3625,
+        "pct": 1.6
+      },
+      "valid": 233302,
+      "invalid": 2976
+    },
+    {
+      "name": "Cauca",
+      "geoName": "CAUCA",
+      "abroad": false,
+      "espriella": {
+        "votes": 176901,
+        "pct": 22.9
+      },
+      "cepeda": {
+        "votes": 585479,
+        "pct": 75.6
+      },
+      "blank": {
+        "votes": 11585,
+        "pct": 1.5
+      },
+      "valid": 773965,
+      "invalid": 14264
+    },
+    {
+      "name": "Cesar",
+      "geoName": "CESAR",
+      "abroad": false,
+      "espriella": {
+        "votes": 265645,
+        "pct": 48.0
+      },
+      "cepeda": {
+        "votes": 281730,
+        "pct": 50.9
+      },
+      "blank": {
+        "votes": 6324,
+        "pct": 1.1
+      },
+      "valid": 553699,
+      "invalid": 4803
+    },
+    {
+      "name": "Chocó",
+      "geoName": "CHOCO",
+      "abroad": false,
+      "espriella": {
+        "votes": 33360,
+        "pct": 17.8
+      },
+      "cepeda": {
+        "votes": 152674,
+        "pct": 81.4
+      },
+      "blank": {
+        "votes": 1573,
+        "pct": 0.8
+      },
+      "valid": 187607,
+      "invalid": 2720
+    },
+    {
+      "name": "Colombianos en el exterior",
+      "geoName": null,
+      "abroad": true,
+      "espriella": {
+        "votes": 390949,
+        "pct": 63.8
+      },
+      "cepeda": {
+        "votes": 213140,
+        "pct": 34.8
+      },
+      "blank": {
+        "votes": 8960,
+        "pct": 1.5
+      },
+      "valid": 613049,
+      "invalid": 1046
+    },
+    {
+      "name": "Córdoba",
+      "geoName": "CORDOBA",
+      "abroad": false,
+      "espriella": {
+        "votes": 349190,
+        "pct": 40.8
+      },
+      "cepeda": {
+        "votes": 499149,
+        "pct": 58.3
+      },
+      "blank": {
+        "votes": 8124,
+        "pct": 0.9
+      },
+      "valid": 856463,
+      "invalid": 5326
+    },
+    {
+      "name": "Cundinamarca",
+      "geoName": "CUNDINAMARCA",
+      "abroad": false,
+      "espriella": {
+        "votes": 896844,
+        "pct": 52.9
+      },
+      "cepeda": {
+        "votes": 768378,
+        "pct": 45.3
+      },
+      "blank": {
+        "votes": 29859,
+        "pct": 1.8
+      },
+      "valid": 1695081,
+      "invalid": 20252
+    },
+    {
+      "name": "Guainía",
+      "geoName": "GUAINIA",
+      "abroad": false,
+      "espriella": {
+        "votes": 5388,
+        "pct": 35.3
+      },
+      "cepeda": {
+        "votes": 9690,
+        "pct": 63.5
+      },
+      "blank": {
+        "votes": 185,
+        "pct": 1.2
+      },
+      "valid": 15263,
+      "invalid": 121
+    },
+    {
+      "name": "Guaviare",
+      "geoName": "GUAVIARE",
+      "abroad": false,
+      "espriella": {
+        "votes": 20678,
+        "pct": 52.8
+      },
+      "cepeda": {
+        "votes": 17504,
+        "pct": 44.7
+      },
+      "blank": {
+        "votes": 990,
+        "pct": 2.5
+      },
+      "valid": 39172,
+      "invalid": 860
+    },
+    {
+      "name": "Huila",
+      "geoName": "HUILA",
+      "abroad": false,
+      "espriella": {
+        "votes": 375032,
+        "pct": 61.1
+      },
+      "cepeda": {
+        "votes": 229048,
+        "pct": 37.3
+      },
+      "blank": {
+        "votes": 9469,
+        "pct": 1.5
+      },
+      "valid": 613549,
+      "invalid": 6653
+    },
+    {
+      "name": "La Guajira",
+      "geoName": "LA GUAJIRA",
+      "abroad": false,
+      "espriella": {
+        "votes": 126501,
+        "pct": 38.5
+      },
+      "cepeda": {
+        "votes": 198557,
+        "pct": 60.5
+      },
+      "blank": {
+        "votes": 3389,
+        "pct": 1.0
+      },
+      "valid": 328447,
+      "invalid": 3719
+    },
+    {
+      "name": "Magdalena",
+      "geoName": "MAGDALENA",
+      "abroad": false,
+      "espriella": {
+        "votes": 255098,
+        "pct": 41.9
+      },
+      "cepeda": {
+        "votes": 347228,
+        "pct": 57.0
+      },
+      "blank": {
+        "votes": 6570,
+        "pct": 1.1
+      },
+      "valid": 608896,
+      "invalid": 3929
+    },
+    {
+      "name": "Meta",
+      "geoName": "META",
+      "abroad": false,
+      "espriella": {
+        "votes": 339754,
+        "pct": 59.1
+      },
+      "cepeda": {
+        "votes": 225693,
+        "pct": 39.3
+      },
+      "blank": {
+        "votes": 9027,
+        "pct": 1.6
+      },
+      "valid": 574474,
+      "invalid": 8364
+    },
+    {
+      "name": "Nariño",
+      "geoName": "NARIÑO",
+      "abroad": false,
+      "espriella": {
+        "votes": 188619,
+        "pct": 22.2
+      },
+      "cepeda": {
+        "votes": 651839,
+        "pct": 76.7
+      },
+      "blank": {
+        "votes": 9061,
+        "pct": 1.1
+      },
+      "valid": 849519,
+      "invalid": 9078
+    },
+    {
+      "name": "Norte de Santander",
+      "geoName": "NORTE DE SANTANDER",
+      "abroad": false,
+      "espriella": {
+        "votes": 602652,
+        "pct": 76.6
+      },
+      "cepeda": {
+        "votes": 174152,
+        "pct": 22.1
+      },
+      "blank": {
+        "votes": 10291,
+        "pct": 1.3
+      },
+      "valid": 787095,
+      "invalid": 5939
+    },
+    {
+      "name": "Putumayo",
+      "geoName": "PUTUMAYO",
+      "abroad": false,
+      "espriella": {
+        "votes": 33900,
+        "pct": 20.1
+      },
+      "cepeda": {
+        "votes": 131958,
+        "pct": 78.5
+      },
+      "blank": {
+        "votes": 2196,
+        "pct": 1.3
+      },
+      "valid": 168054,
+      "invalid": 1881
+    },
+    {
+      "name": "Quindío",
+      "geoName": "QUINDIO",
+      "abroad": false,
+      "espriella": {
+        "votes": 179562,
+        "pct": 58.3
+      },
+      "cepeda": {
+        "votes": 122068,
+        "pct": 39.7
+      },
+      "blank": {
+        "votes": 6207,
+        "pct": 2.0
+      },
+      "valid": 307837,
+      "invalid": 4666
+    },
+    {
+      "name": "Risaralda",
+      "geoName": "RISARALDA",
+      "abroad": false,
+      "espriella": {
+        "votes": 288680,
+        "pct": 53.8
+      },
+      "cepeda": {
+        "votes": 237624,
+        "pct": 44.2
+      },
+      "blank": {
+        "votes": 10937,
+        "pct": 2.0
+      },
+      "valid": 537241,
+      "invalid": 7775
+    },
+    {
+      "name": "San Andrés y Providencia",
+      "geoName": "ARCHIPIELAGO DE SAN ANDRES PROVIDENCIA Y SANTA CATALINA",
+      "abroad": false,
+      "espriella": {
+        "votes": 10024,
+        "pct": 43.8
+      },
+      "cepeda": {
+        "votes": 12311,
+        "pct": 53.8
+      },
+      "blank": {
+        "votes": 547,
+        "pct": 2.4
+      },
+      "valid": 22882,
+      "invalid": 109
+    },
+    {
+      "name": "Santander",
+      "geoName": "SANTANDER",
+      "abroad": false,
+      "espriella": {
+        "votes": 822592,
+        "pct": 64.6
+      },
+      "cepeda": {
+        "votes": 431551,
+        "pct": 33.9
+      },
+      "blank": {
+        "votes": 19443,
+        "pct": 1.5
+      },
+      "valid": 1273586,
+      "invalid": 10568
+    },
+    {
+      "name": "Sucre",
+      "geoName": "SUCRE",
+      "abroad": false,
+      "espriella": {
+        "votes": 188380,
+        "pct": 39.9
+      },
+      "cepeda": {
+        "votes": 279312,
+        "pct": 59.2
+      },
+      "blank": {
+        "votes": 4190,
+        "pct": 0.9
+      },
+      "valid": 471882,
+      "invalid": 2893
+    },
+    {
+      "name": "Tolima",
+      "geoName": "TOLIMA",
+      "abroad": false,
+      "espriella": {
+        "votes": 425172,
+        "pct": 57.8
+      },
+      "cepeda": {
+        "votes": 299389,
+        "pct": 40.7
+      },
+      "blank": {
+        "votes": 10609,
+        "pct": 1.4
+      },
+      "valid": 735170,
+      "invalid": 8952
+    },
+    {
+      "name": "Valle del Cauca",
+      "geoName": "VALLE DEL CAUCA",
+      "abroad": false,
+      "espriella": {
+        "votes": 870000,
+        "pct": 37.7
+      },
+      "cepeda": {
+        "votes": 1404083,
+        "pct": 60.8
+      },
+      "blank": {
+        "votes": 34374,
+        "pct": 1.5
+      },
+      "valid": 2308457,
+      "invalid": 20140
+    },
+    {
+      "name": "Vaupés",
+      "geoName": "VAUPES",
+      "abroad": false,
+      "espriella": {
+        "votes": 2119,
+        "pct": 18.1
+      },
+      "cepeda": {
+        "votes": 9481,
+        "pct": 80.9
+      },
+      "blank": {
+        "votes": 124,
+        "pct": 1.0
+      },
+      "valid": 11724,
+      "invalid": 74
+    },
+    {
+      "name": "Vichada",
+      "geoName": "VICHADA",
+      "abroad": false,
+      "espriella": {
+        "votes": 11686,
+        "pct": 44.6
+      },
+      "cepeda": {
+        "votes": 14274,
+        "pct": 54.4
+      },
+      "blank": {
+        "votes": 261,
+        "pct": 1.0
+      },
+      "valid": 26221,
+      "invalid": 233
+    }
+  ]
+}

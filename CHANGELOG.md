@@ -11,6 +11,8 @@ After the election the project became a portfolio archive. The FastAPI backend (
 - Site-wide archive banner and the June 21 runoff result (De la Espriella 49.66%, Cepeda 48.70%)
 - Canonical data moved to `frontend/data/`, shared with the offline Python research pipeline
 - Removed the unused TypeScript research pipeline, debug routes, review admin page, and Railway/Render/Docker configs
+- New `/eleccion-2026` page: official results of both rounds, runoff choropleth by department, net-vote breakdown, full department table, and key findings (Cepeda won 19 of 33 departments but lost; votes abroad were 71% of the winning margin)
+- Portrait candidate cards with carousel arrows; avatars crop instead of letterboxing; lint clean
 
 ---
 

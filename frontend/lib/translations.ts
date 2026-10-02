@@ -4,14 +4,76 @@
 export type Lang = "es" | "en";
 
 const es = {
+  election: {
+    eyebrow: "Segunda vuelta · 21 de junio de 2026",
+    title: "Abelardo de la Espriella, presidente electo",
+    lead: (votes: string, points: string) =>
+      `Ganó la segunda vuelta por ${votes} votos (${points} puntos) frente a Iván Cepeda. Toma posesión el 7 de agosto de 2026.`,
+    votesUnit: "votos",
+    statMargin: "Diferencia",
+    statMarginSub: (points: string) => `${points} puntos porcentuales`,
+    statTurnout: "Participación",
+    statTurnoutSub: (round1: string) => `${round1} en primera vuelta`,
+    statBlank: "Voto en blanco",
+    statRegions: "Departamentos ganados",
+    statRegionsSub: (winner: number, runnerUp: number) => `De la Espriella ${winner} · Cepeda ${runnerUp}`,
+    mapTitle: "¿Quién ganó en cada departamento?",
+    mapSubtitle: "El color indica el ganador; más oscuro, mayor ventaja en puntos porcentuales.",
+    legendEspriella: "Ventaja De la Espriella",
+    legendCepeda: "Ventaja Cepeda",
+    legendPoints: "puntos",
+    tooltipLead: "Ventaja",
+    tooltipNet: "votos netos",
+    mapLoading: "Cargando mapa…",
+    insightsTitle: "Las claves del resultado",
+    insights: [
+      {
+        title: "Perdió el mapa, ganó la elección",
+        body: (n: Record<string, string>) =>
+          `Cepeda ganó en ${n.runnerUpRegions} de 33 departamentos, pero De la Espriella arrasó en los más poblados: solo Antioquia le dio ${n.antioquiaNet} votos de ventaja.`,
+      },
+      {
+        title: "El voto en el exterior inclinó la balanza",
+        body: (n: Record<string, string>) =>
+          `Dentro de Colombia la diferencia fue de unos ${n.domesticNet} votos. Los colombianos en el exterior le dieron a De la Espriella ${n.abroadNet} votos netos: el ${n.abroadShare} de su margen final.`,
+      },
+      {
+        title: "Cepeda creció más entre vueltas",
+        body: (n: Record<string, string>) =>
+          `Entre la primera y la segunda vuelta Cepeda sumó ${n.runnerUpGain} votos y De la Espriella ${n.winnerGain}. No alcanzó: partía ${n.round1Gap} votos atrás.`,
+      },
+    ],
+    contributorsTitle: "Dónde se ganó y dónde se perdió",
+    contributorsSubtitle: "Votos netos por región: diferencia entre los votos de cada candidato.",
+    tableTitle: "Resultados por departamento",
+    tableRegion: "Región",
+    tableLead: "Ventaja",
+    tableSortMargin: "Ordenar por ventaja",
+    tableSortVotes: "Ordenar por votos",
+    tableAbroadNote: "Colombianos en el exterior: no aparece en el mapa.",
+    showAll: "Ver las 34 regiones",
+    showLess: "Ver menos",
+    firstRoundTitle: "Primera vuelta · 31 de mayo de 2026",
+    firstRoundSubtitle: (turnout: string) =>
+      `Participación del ${turnout}. Los dos más votados pasaron a segunda vuelta.`,
+    firstRoundOthers: "Otros 8 candidatos",
+    viewProfile: "Ver perfil",
+    quizCtaTitle: "¿Con quién coincidías tú?",
+    quizCtaBody: "El quiz sigue disponible: compara tus posiciones con las de los 6 candidatos, tema por tema.",
+    quizCtaButton: "Hacer el quiz",
+    sourcesTitle: "Fuentes y metodología",
+    dataNote:
+      "Resultados oficiales de la Registraduría Nacional del Estado Civil (escrutinio). El sitio de resultados de la Registraduría ya no está en línea: las cifras por departamento se tomaron de su transcripción en Wikipedia y se verificaron contra El Colombiano. Los totales por departamento difieren del total nacional en menos del 0,01 %. La primera vuelta se muestra solo a nivel nacional porque la tabla departamental publicada contiene inconsistencias.",
+  },
   archive: {
-    banner: "Archivo · Construido para las elecciones presidenciales de Colombia 2026. Los datos no se actualizan desde junio de 2026.",
+    banner: "Archivo · Construido para las elecciones presidenciales de Colombia 2026. Perfiles de candidatos al 1 de junio de 2026; resultados oficiales del 21 de junio.",
     bannerShort: "Archivo · Elecciones presidenciales Colombia 2026",
   },
   nav: {
     candidates: "Candidatos",
     quiz: "Quiz",
     electoralRisks: "Riesgos Electorales",
+    results2026: "Resultados 2026",
     methodology: "Metodología",
     howWeMadeIt: "¿Cómo lo hicimos?",
     behindScenes: "Detrás de cámaras",
@@ -20,7 +82,7 @@ const es = {
     wordmark: "Aclara tu voto",
   },
   footer: {
-    tagline: "Herramienta independiente · Sin afiliación política · Datos curados manualmente · Archivo: datos al 1 de junio de 2026",
+    tagline: "Herramienta independiente · Sin afiliación política · Datos curados manualmente · Perfiles al 1 de junio de 2026",
     builtBy: "Construido por",
     role: "Data Scientist",
     photoCredit: "Fotos de candidatos:",
@@ -32,6 +94,7 @@ const es = {
     subtitle: "Proyecto archivado de las elecciones presidenciales 2026. Descubre con qué candidato coincidías más. 25 preguntas. Sin sesgos.",
     secondRoundBanner: "Resultado de la segunda vuelta — 21 de junio de 2026",
     secondRoundBannerSub: "Abelardo de la Espriella, presidente electo (49.66%) · Iván Cepeda (48.70%)",
+    secondRoundBannerLink: "Ver resultados completos →",
     statsCandidates: "finalistas",
     statsTopics: "temas clave",
     statsQuestions: "preguntas",
@@ -479,14 +542,76 @@ const es = {
 };
 
 const en: typeof es = {
+  election: {
+    eyebrow: "Runoff · June 21, 2026",
+    title: "Abelardo de la Espriella, president-elect",
+    lead: (votes: string, points: string) =>
+      `He won the runoff by ${votes} votes (${points} points) over Iván Cepeda. He takes office on August 7, 2026.`,
+    votesUnit: "votes",
+    statMargin: "Margin",
+    statMarginSub: (points: string) => `${points} percentage points`,
+    statTurnout: "Turnout",
+    statTurnoutSub: (round1: string) => `${round1} in the first round`,
+    statBlank: "Blank vote",
+    statRegions: "Departments won",
+    statRegionsSub: (winner: number, runnerUp: number) => `De la Espriella ${winner} · Cepeda ${runnerUp}`,
+    mapTitle: "Who won each department?",
+    mapSubtitle: "Colour shows the winner; darker means a wider lead in percentage points.",
+    legendEspriella: "De la Espriella lead",
+    legendCepeda: "Cepeda lead",
+    legendPoints: "points",
+    tooltipLead: "Lead",
+    tooltipNet: "net votes",
+    mapLoading: "Loading map…",
+    insightsTitle: "What decided it",
+    insights: [
+      {
+        title: "Lost the map, won the election",
+        body: (n: Record<string, string>) =>
+          `Cepeda carried ${n.runnerUpRegions} of 33 departments, but De la Espriella dominated the most populous ones: Antioquia alone gave him a ${n.antioquiaNet}-vote lead.`,
+      },
+      {
+        title: "Voters abroad tipped the balance",
+        body: (n: Record<string, string>) =>
+          `Inside Colombia the gap was about ${n.domesticNet} votes. Colombians abroad gave De la Espriella ${n.abroadNet} net votes: ${n.abroadShare} of his final margin.`,
+      },
+      {
+        title: "Cepeda grew more between rounds",
+        body: (n: Record<string, string>) =>
+          `Between the two rounds Cepeda added ${n.runnerUpGain} votes and De la Espriella ${n.winnerGain}. It was not enough: he started ${n.round1Gap} votes behind.`,
+      },
+    ],
+    contributorsTitle: "Where it was won and lost",
+    contributorsSubtitle: "Net votes by region: the difference between the two candidates' votes.",
+    tableTitle: "Results by department",
+    tableRegion: "Region",
+    tableLead: "Lead",
+    tableSortMargin: "Sort by lead",
+    tableSortVotes: "Sort by votes",
+    tableAbroadNote: "Colombians abroad: not shown on the map.",
+    showAll: "Show all 34 regions",
+    showLess: "Show less",
+    firstRoundTitle: "First round · May 31, 2026",
+    firstRoundSubtitle: (turnout: string) =>
+      `Turnout ${turnout}. The top two advanced to the runoff.`,
+    firstRoundOthers: "8 other candidates",
+    viewProfile: "View profile",
+    quizCtaTitle: "Who did you match?",
+    quizCtaBody: "The quiz is still live: compare your positions with all 6 candidates, topic by topic.",
+    quizCtaButton: "Take the quiz",
+    sourcesTitle: "Sources and method",
+    dataNote:
+      "Official results from Colombia's National Civil Registry (Registraduría), final count. The Registraduría results site is no longer online: department figures come from their Wikipedia transcription, verified against El Colombiano. Department totals differ from the national total by less than 0.01%. The first round is shown at national level only because the published department table contains inconsistencies.",
+  },
   archive: {
-    banner: "Archive · Built for Colombia's 2026 presidential election. Data has not been updated since June 2026.",
+    banner: "Archive · Built for Colombia's 2026 presidential election. Candidate profiles as of June 1, 2026; official results from June 21.",
     bannerShort: "Archive · Colombia 2026 presidential election",
   },
   nav: {
     candidates: "Candidates",
     quiz: "Quiz",
     electoralRisks: "Electoral Risks",
+    results2026: "2026 Results",
     methodology: "Methodology",
     howWeMadeIt: "How We Built It",
     behindScenes: "Behind the Scenes",
@@ -495,7 +620,7 @@ const en: typeof es = {
     wordmark: "Find your Vote",
   },
   footer: {
-    tagline: "Independent tool · No political affiliation · Manually curated data · Archive: data as of June 1, 2026",
+    tagline: "Independent tool · No political affiliation · Manually curated data · Profiles as of June 1, 2026",
     builtBy: "Built by",
     role: "Data Scientist",
     photoCredit: "Candidate photos:",
@@ -507,6 +632,7 @@ const en: typeof es = {
     subtitle: "An archived project from the 2026 presidential election. Find out which candidate you matched most. 25 questions. No bias.",
     secondRoundBanner: "Runoff result — June 21, 2026",
     secondRoundBannerSub: "Abelardo de la Espriella, president-elect (49.66%) · Iván Cepeda (48.70%)",
+    secondRoundBannerLink: "See full results →",
     statsCandidates: "finalists",
     statsTopics: "key topics",
     statsQuestions: "questions",

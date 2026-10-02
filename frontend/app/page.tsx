@@ -78,6 +78,13 @@ export default function Home() {
         <p className="mt-1 text-sm" style={{ color: "var(--foreground)" }}>
           {t.home.secondRoundBannerSub}
         </p>
+        <Link
+          href="/eleccion-2026"
+          className="mt-2 text-sm font-semibold underline underline-offset-2"
+          style={{ color: "var(--secondary)" }}
+        >
+          {t.home.secondRoundBannerLink}
+        </Link>
       </section>
 
       {/* ── Stat blocks ───────────────────────────────────────────────────── */}

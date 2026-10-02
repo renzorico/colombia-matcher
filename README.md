@@ -8,6 +8,8 @@ Herramienta cívica construida para las elecciones presidenciales de Colombia 20
 
 El usuario responde 25 preguntas y descubre con qué candidato comparte más posiciones, con desglose por tema y links a las fuentes consultadas. Disponible en español e inglés.
 
+**[Resultados 2026](https://nobotestuvoto.vercel.app/eleccion-2026):** resultados oficiales de ambas vueltas, mapa por departamento y las claves del resultado (por ejemplo: el voto en el exterior aportó el 71 % del margen de victoria).
+
 ---
 
 ## Arquitectura
@@ -69,8 +71,8 @@ El score final es la suma ponderada del acuerdo por tema. Los temas con datos nu
 ```
 colombia-matcher/
 ├── frontend/                        # sitio desplegado (Next.js 16)
-│   ├── data/                        # JSON canónico: candidatos, fuentes, preguntas
-│   ├── app/                         # quiz, resultados, candidatos, metodología, riesgos electorales
+│   ├── data/                        # JSON canónico: candidatos, fuentes, preguntas, resultados 2026
+│   ├── app/                         # quiz, resultados, candidatos, eleccion-2026, metodología, riesgos electorales
 │   ├── components/
 │   └── lib/
 │       ├── scorer.ts                # motor de afinidad (port de backend/scorer.py)
@@ -81,7 +83,7 @@ colombia-matcher/
 │   ├── data/                        # propuestas y log de revisión
 │   ├── scorer.py · loader.py · topics.py   # implementación de referencia
 │   └── tests/                       # pytest
-└── scripts/                         # enriquecimiento de perfiles y generación de fixtures
+└── scripts/                         # enriquecimiento de perfiles, fixtures de paridad, datos electorales
 ```
 
 ---
@@ -109,6 +111,12 @@ Si cambias los datos o la lógica de scoring, regenera los fixtures de paridad:
 
 ```bash
 python3 scripts/generate_scorer_fixtures.py
+```
+
+Resultados electorales (descarga, valida contra el total nacional y escribe `frontend/data/election_results_2026.json`):
+
+```bash
+python3 scripts/build_election_results.py
 ```
 
 ---

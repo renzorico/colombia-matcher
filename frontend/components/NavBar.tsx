@@ -12,6 +12,7 @@ export default function NavBar() {
   const { t } = useLanguage();
 
   const MAIN_LINKS = [
+    { href: "/eleccion-2026",       label: t.nav.results2026 },
     { href: "/candidatos",          label: t.nav.candidates },
     { href: "/quiz",                label: t.nav.quiz },
     { href: "/riesgos-electorales", label: t.nav.electoralRisks },
